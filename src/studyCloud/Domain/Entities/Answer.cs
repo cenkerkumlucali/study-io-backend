@@ -4,7 +4,8 @@ namespace Domain.Entities;
 
 public class Answer:Entity
 {
-    public int QuestionId { get; set; }
+    public int QuestionId{ get; set; }
+    public Question Question{ get; set; }
     public string Text { get; set; }
     public bool IsCorrect { get; set; }
 
@@ -13,11 +14,11 @@ public class Answer:Entity
         
     }
 
-    public Answer(int id, string text, int questionId, bool isCorrect) : this()
+    public Answer(int id, string text, Question question, bool isCorrect) : this()
     {
         Id = id;
         Text = text;
-        QuestionId = questionId;
+        Question = question;
         IsCorrect = isCorrect;
     }
 }

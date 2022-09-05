@@ -7,9 +7,14 @@ namespace Persistence.Contexts
     public class BaseDbContext : DbContext
     {
         protected IConfiguration Configuration { get; set; }
+        
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
-       
+        public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<SelectedAnswer> SelectedAnswers { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -38,13 +43,34 @@ namespace Persistence.Contexts
                 a.Property(p => p.CategoryId).HasColumnName("CategoryId");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
-
-
-
-            Category[] categorySeeds = { new(1, "Test 1"), new(2, "Test 2") };
-            modelBuilder.Entity<Category>().HasData(categorySeeds);
-
            
+            
+            modelBuilder.Entity<Answer>(a =>
+            {
+                a.ToTable("Answers").HasKey(k => k.Id);
+                a.Property(p => p.QuestionId).HasColumnName("QuestionId");
+                a.Property(p => p.Text).HasColumnName("Text");
+                a.Property(p => p.IsCorrect).HasColumnName("IsCorrect");
+            });
+
+            modelBuilder.Entity<Question>(a =>
+            {
+                a.ToTable("Questions").HasKey(k => k.Id);
+                a.Property(p => p.AnswerId).HasColumnName("AnswerId");
+                a.Property(p => p.Text).HasColumnName("Text");
+                a.Property(p => p.QuizId).HasColumnName("QuizId");
+            }).Entity<Question>()
+                .HasMany(c => c.Answers)
+                .WithOne(e => e.Question)
+                .HasForeignKey(c => c.QuestionId);;
+            
+            
+            modelBuilder.Entity<SelectedAnswer>(a =>
+            {
+                a.ToTable("SelectedAnswers").HasKey(k => k.QuestionId);
+                a.Property(p => p.PossibleAnswerId).HasColumnName("PossibleAnswerId");
+            });
+            
         }
     }
 }

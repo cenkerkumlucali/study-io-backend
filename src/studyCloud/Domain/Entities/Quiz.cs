@@ -2,24 +2,21 @@ using Core.Persistence.Repositories;
 
 namespace Domain.Entities;
 
-public class Quiz : Entity
+public class Quiz:Entity
 {
-    public string Question { get; set; }
-    public List<Answer> Answers { get; set; }
-    public Category Category { get; set; }
-    public SubCategory SubCategory { get; set; }
+    
+    public int CategoryId { get; set; }
+    public int SubCategoryId { get; set; }
 
     public Quiz()
     {
+        
     }
 
-    public Quiz(int id, string question, List<Answer> answers,  Category category,
-        SubCategory subCategory) : this()
+    public Quiz(int id, int categoryId, int subCategoryId) : this()
     {
         Id = id;
-        Question = question;
-        Answers = answers;
-        Category = category;
-        SubCategory = subCategory;
+        CategoryId = categoryId;
+        SubCategoryId = subCategoryId;
     }
 }
