@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HBFlbKiGbzFg6ne+jngoOWjDEgWrBovfpsXfpzpwt3R9y+Ggbt/kiD6dYfQ32GELZyuC/Yrx6aGoOzXi3yCMMA==",
+  "success": true,
+  "projectFilePath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "/Users/cenkerkumlucali/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
