@@ -11,6 +11,7 @@ namespace Persistence.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<QuizHistory> QuizHistories { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<SelectedAnswer> SelectedAnswers { get; set; }
         public DbSet<Answer> Answers { get; set; }
@@ -36,6 +37,7 @@ namespace Persistence.Contexts
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
+            
             modelBuilder.Entity<SubCategory>(a =>
             {
                 a.ToTable("SubCategories").HasKey(k => k.Id);
@@ -43,7 +45,23 @@ namespace Persistence.Contexts
                 a.Property(p => p.CategoryId).HasColumnName("CategoryId");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
-           
+            
+            modelBuilder.Entity<Quiz>(a =>
+            {
+                a.ToTable("Quizzes").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.CategoryId).HasColumnName("CategoryId");
+                a.Property(p => p.SubCategoryId).HasColumnName("SubCategoryId");
+            });
+            
+            modelBuilder.Entity<QuizHistory>(a =>
+            {
+                a.ToTable("QuizHistories").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.UserId).HasColumnName("UserId");
+                a.Property(p => p.QuizId).HasColumnName("QuizId");
+                a.Property(p => p.QuizDate).HasColumnName("QuizDate");
+            });
             
             modelBuilder.Entity<Answer>(a =>
             {
@@ -56,7 +74,6 @@ namespace Persistence.Contexts
             modelBuilder.Entity<Question>(a =>
             {
                 a.ToTable("Questions").HasKey(k => k.Id);
-                a.Property(p => p.AnswerId).HasColumnName("AnswerId");
                 a.Property(p => p.Text).HasColumnName("Text");
                 a.Property(p => p.QuizId).HasColumnName("QuizId");
             }).Entity<Question>()
@@ -67,8 +84,11 @@ namespace Persistence.Contexts
             
             modelBuilder.Entity<SelectedAnswer>(a =>
             {
-                a.ToTable("SelectedAnswers").HasKey(k => k.QuestionId);
+                a.ToTable("SelectedAnswers").HasKey(k => k.Id);
+                a.Property(p => p.QuestionId).HasColumnName("QuestionId");
                 a.Property(p => p.PossibleAnswerId).HasColumnName("PossibleAnswerId");
+                a.Property(p => p.UserId).HasColumnName("UserId");
+                a.Property(p => p.QuizHistoryId).HasColumnName("QuizHistoryId");
             });
             
         }
