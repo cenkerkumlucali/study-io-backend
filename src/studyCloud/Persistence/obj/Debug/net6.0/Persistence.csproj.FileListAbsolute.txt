@@ -42,3 +42,5 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/obj/Debug/net6.0/refint/Persistence.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.pdb
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/obj/Debug/net6.0/ref/Persistence.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.runtimeconfig.json
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.genruntimeconfig.cache

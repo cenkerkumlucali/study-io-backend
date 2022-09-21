@@ -400,6 +400,9 @@
             "projectReferences": {
               "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
                 "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj"
+              },
+              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {
+                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj"
               }
             }
           }

@@ -2,9 +2,7 @@ using Application;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security;
 using Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Persistence.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 

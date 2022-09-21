@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enums\" />
+    <ProjectReference Include="..\..\corePackages\Core.Security\Core.Security.csproj" />
   </ItemGroup>
 
 </Project>

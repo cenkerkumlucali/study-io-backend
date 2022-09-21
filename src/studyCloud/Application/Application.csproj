@@ -17,4 +17,11 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Category\Constants" />
+    <Folder Include="Features\Category\Rules" />
+    <Folder Include="Features\SubCategory\Constants" />
+    <Folder Include="Features\SubCategory\Rules" />
+  </ItemGroup>
+
 </Project>
