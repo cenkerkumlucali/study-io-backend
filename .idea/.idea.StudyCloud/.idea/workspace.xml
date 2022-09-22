@@ -6,167 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f304ca50-4347-4cfd-9f27-3a63287c967a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Commands/DeleteCategory/DeletedCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Commands/UpdateCategory/UpdateCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Dtos/DeletedCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Dtos/GetByIdCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Dtos/ListCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Dtos/UpdatedCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Models/CategoryListModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Queries/GetByIdCategory/GetByIdCategoryQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Queries/GetListCategory/GetListCategoryQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Commands/DeleteSubCategory/DeleteSubCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Commands/UpdateSubCategory/UpdateSubCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Dtos/DeletedSubCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Dtos/GetByIdSubCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Dtos/ListSubCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Dtos/UpdatedSubCategoryDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Comments/ICommentImageRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Comments/ICommentLikeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Comments/ICommentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Feeds/IPostImageRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Feeds/IPostLikeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Feeds/IPostRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Follows/IFollowRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Mentions/IMentionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Quizzes/IAnswerRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Quizzes/IQuestionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Quizzes/IQuizHistoryRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Quizzes/IQuizRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Quizzes/ISelectedAnswerRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Users/IUserCoinRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Users/IUserImageRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Comments/Comment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Comments/CommentImage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Comments/CommentLike.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Feeds/Post.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Feeds/PostImage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Feeds/PostLike.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Follow/Follow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Mentions/Mention.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Users/UserCoin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Users/UserImage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Enums/MentionType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Comments/CommentImageRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Comments/CommentLikeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Comments/CommentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Feeds/PostImageRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Feeds/PostLikeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Feeds/PostRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Follows/FollowRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Mentions/MentionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Quizzes/AnswerRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Quizzes/QuestionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Quizzes/QuizHistoryRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Quizzes/QuizRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Quizzes/SelectedAnswerRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Users/UserCoinRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Users/UserImageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StudyCloud.sln" beforeDir="false" afterPath="$PROJECT_DIR$/StudyIo.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.CrossCuttingConcers/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.CrossCuttingConcers/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.ElasticSearch/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.ElasticSearch/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.Mailing/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.Mailing/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.Persistence/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.Persistence/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/corePackages/Core.Security/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/corePackages/Core.Security/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Commands/CreateCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Commands/CreateCategory/CreateCategoryCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Profiles/MappingProfiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Profiles/MappingProfiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Commands/CreateSubCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Commands/CreateSubCategory/CreateSubCategoryCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Profiles/MappingProfiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Features/SubCategory/Profiles/MappingProfiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/ICategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Categories/ICategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/ISubCategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/Services/Repositories/Categories/ISubCategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Application.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/bin/Debug/net6.0/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Application.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/Application.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/ref/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/ref/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/refint/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/Debug/net6.0/refint/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Answer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quizzes/Answer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Categories/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quizzes/Question.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quiz.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quizzes/Quiz.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/QuizHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quizzes/QuizHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/SelectedAnswer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Quizzes/SelectedAnswer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/SubCategory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/Entities/Categories/SubCategory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/bin/Debug/net6.0/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/ref/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/ref/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/refint/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Debug/net6.0/refint/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/Domain.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Domain/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Infrastructure/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/Contexts/BaseDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Contexts/BaseDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/Persistence.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Persistence.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/PersistenceServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/PersistenceServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Categories/CategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/SubCategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/Repositories/Categories/SubCategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Application.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/bin/Debug/net6.0/Persistence.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/ref/Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/ref/Persistence.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/refint/Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Debug/net6.0/refint/Persistence.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Persistence.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Persistence.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Persistence.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/Persistence.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/Persistence/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/Controllers/CategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Application.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Persistence.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/Persistence.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/bin/Debug/net6.0/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/src/studyCloud/WebAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyCloud/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/studyCloud/Application/Features/Category/Commands/DeleteCategory/DeleteCategoryCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/studyCloud/Persistence/Contexts/BaseDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/studyCloud/Persistence/PersistenceServiceRegistration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/studyCloud/WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
@@ -245,7 +86,7 @@
       <workItem from="1662402710339" duration="7166000" />
       <workItem from="1662486235707" duration="7818000" />
       <workItem from="1663695703048" duration="12844000" />
-      <workItem from="1663784530453" duration="6219000" />
+      <workItem from="1663784530453" duration="6687000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1662410386334</created>
@@ -261,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662498321656</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updated">
+      <created>1663791841416</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663791841416</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +132,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="First Commit" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
 </project>

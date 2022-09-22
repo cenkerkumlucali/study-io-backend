@@ -107,7 +107,7 @@ namespace Persistence.Contexts
                 a.Property(p => p.QuizHistoryId).HasColumnName("QuizHistoryId");
             });
 
-            
+
             modelBuilder.Entity<Comment>(a =>
             {
                 a.ToTable("Comments").HasKey(k => k.Id);
@@ -138,7 +138,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.CommentId).HasColumnName("CommentId");
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.HasOne(p => p.Comment);
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);;
+                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                ;
             });
             modelBuilder.Entity<PostLike>(a =>
             {
@@ -147,7 +148,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.PostId).HasColumnName("PostId");
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.HasOne(p => p.Post);
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);;
+                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                ;
             });
             modelBuilder.Entity<Post>(a =>
             {
@@ -156,31 +158,33 @@ namespace Persistence.Contexts
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.Property(p => p.Content).HasColumnName("Content");
                 a.Property(p => p.CreatedDate).HasColumnName("CreatedDate");
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);;
+                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                ;
                 a.HasMany(p => p.PostLikes);
                 a.HasMany(p => p.Comments);
             });
-            
+
             modelBuilder.Entity<PostImage>(a =>
             {
                 a.ToTable("PostImages").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.PostId).HasColumnName("PostId");
                 a.Property(p => p.ImagePath).HasColumnName("ImagePath");
-                a.HasOne(p => p.Post).WithMany().OnDelete(DeleteBehavior.Restrict);;
+                a.HasOne(p => p.Post).WithMany().OnDelete(DeleteBehavior.Restrict);
             });
-            
+
             modelBuilder.Entity<Follow>(a =>
             {
                 a.ToTable("Follows").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.FollowingId).HasColumnName("FollowingId");
                 a.Property(p => p.FollowerId).HasColumnName("FollowerId");
-                a.HasOne(x => x.Following).WithMany().HasForeignKey(x => x.FollowingId).OnDelete(DeleteBehavior.Restrict); 
-                a.HasOne(x => x.Follewer).WithMany().HasForeignKey(x => x.FollowerId).OnDelete(DeleteBehavior.Restrict); 
-
+                a.Property(p => p.CreatedDate).HasColumnName("CreatedDate");
+                a.HasOne(x => x.Following).WithMany().HasForeignKey(x => x.FollowingId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                a.HasOne(x => x.Follewer).WithMany().HasForeignKey(x => x.FollowerId).OnDelete(DeleteBehavior.Restrict);
             });
-            
+
             modelBuilder.Entity<Mention>(a =>
             {
                 a.ToTable("Mentions").HasKey(k => k.Id);
@@ -196,16 +200,17 @@ namespace Persistence.Contexts
                 a.HasOne(x => x.Target).WithMany().HasForeignKey(x => x.TargetId).OnDelete(DeleteBehavior.Restrict);
                 a.HasOne(p => p.Comment);
             });
-            
+
             modelBuilder.Entity<UserCoin>(a =>
             {
                 a.ToTable("UserCoins").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.Property(p => p.Coin).HasColumnName("Coin");
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);;
+                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                ;
             });
-            
+
             modelBuilder.Entity<UserImage>(a =>
             {
                 a.ToTable("UserImages").HasKey(k => k.Id);
@@ -217,4 +222,3 @@ namespace Persistence.Contexts
         }
     }
 }
-
