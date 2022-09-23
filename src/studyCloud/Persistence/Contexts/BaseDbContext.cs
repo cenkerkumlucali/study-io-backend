@@ -96,7 +96,7 @@ namespace Persistence.Contexts
                 a.HasMany(c => c.Answers)
                     .WithOne(e => e.Question)
                     .HasForeignKey(c => c.QuestionId);
-                a.HasOne(p => p.Quiz).WithMany().HasForeignKey(p => p.QuizId);
+                a.HasOne(p => p.Quiz).WithMany().HasForeignKey(p => p.QuizId).OnDelete(DeleteBehavior.Cascade);
             });
 
 
@@ -107,6 +107,9 @@ namespace Persistence.Contexts
                 a.Property(p => p.PossibleAnswerId).HasColumnName("PossibleAnswerId");
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.Property(p => p.QuizHistoryId).HasColumnName("QuizHistoryId");
+                a.HasOne(p => p.QuizHistory).WithMany().HasForeignKey(p => p.QuizHistoryId).OnDelete(DeleteBehavior.Cascade); 
+                a.HasOne(p => p.User).WithMany().HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade); 
+                a.HasOne(p => p.PossibleAnswer).WithMany().HasForeignKey(p => p.PossibleAnswerId).OnDelete(DeleteBehavior.Cascade); 
             });
 
 
@@ -121,7 +124,8 @@ namespace Persistence.Contexts
                 a.HasMany(m => m.Childrens)
                     .WithOne(m => m.Parent).OnDelete(DeleteBehavior.SetNull)
                     .HasForeignKey(m => m.ParentId);
-                a.HasOne(p => p.Parent).WithMany().OnDelete(DeleteBehavior.Restrict);
+                a.HasOne(p => p.Parent).WithMany().HasForeignKey(p=>p.ParentId).OnDelete(DeleteBehavior.Cascade);
+                a.HasOne(p => p.User).WithMany().HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<CommentImage>(a =>
@@ -130,7 +134,7 @@ namespace Persistence.Contexts
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.CommentId).HasColumnName("CommentId");
                 a.Property(p => p.ImagePath).HasColumnName("ImagePath");
-                a.HasOne(p => p.Comment);
+                a.HasOne(p => p.Comment).WithMany().HasForeignKey(p=>p.CommentId);
             });
 
             modelBuilder.Entity<CommentLike>(a =>
@@ -140,8 +144,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.CommentId).HasColumnName("CommentId");
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.HasOne(p => p.Comment);
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
-                ;
+                a.HasOne(p => p.User).WithMany().HasForeignKey(p=>p.UserId).OnDelete(DeleteBehavior.Cascade);
+                a.HasOne(p => p.Comment).WithMany().HasForeignKey(p => p.CommentId);
             });
             modelBuilder.Entity<PostLike>(a =>
             {
@@ -149,8 +153,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.PostId).HasColumnName("PostId");
                 a.Property(p => p.UserId).HasColumnName("UserId");
-                a.HasOne(p => p.Post);
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                a.HasOne(p => p.Post).WithMany().HasForeignKey(p=>p.PostId);
+                a.HasOne(p => p.User).WithMany().HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
                 ;
             });
             modelBuilder.Entity<Post>(a =>
@@ -160,8 +164,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.UserId).HasColumnName("UserId");
                 a.Property(p => p.Content).HasColumnName("Content");
                 a.Property(p => p.CreatedDate).HasColumnName("CreatedDate");
-                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
-                ;
+                a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Cascade);
+                
                 a.HasMany(p => p.PostLikes);
                 a.HasMany(p => p.Comments);
             });
