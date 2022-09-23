@@ -579,24 +579,35 @@
     ]
   },
   "packageFolders": {
-    "/Users/cenkerkumlucali/.nuget/packages/": {}
+    "C:\\Users\\user3\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj",
       "projectName": "Core.Persistence",
-      "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
-      "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-      "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/obj/",
+      "projectPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj",
+      "packagesPath": "C:\\Users\\user3\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\user3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -630,8 +641,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -640,7 +650,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

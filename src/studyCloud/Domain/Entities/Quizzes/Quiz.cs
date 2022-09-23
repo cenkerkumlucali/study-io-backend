@@ -1,4 +1,5 @@
 using Core.Persistence.Repositories;
+using Domain.Entities.Categories;
 
 namespace Domain.Entities.Quizzes;
 
@@ -7,6 +8,8 @@ public class Quiz:Entity
     public string Name { get; set; }
     public int CategoryId { get; set; }
     public int SubCategoryId { get; set; }
+    public Category Category { get; set; }
+    public SubCategory SubCategory { get; set; }
 
     public Quiz()
     {

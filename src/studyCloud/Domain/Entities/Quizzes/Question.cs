@@ -12,8 +12,9 @@ public class Question : Entity
     {
     }
 
-    public Question(int quizId, string question, List<Answer> answers) : this()
+    public Question(int id, int quizId, string question, List<Answer> answers) : this()
     {
+        Id = Id;
         QuizId = quizId;
         Text = question;
         Answers = answers;
