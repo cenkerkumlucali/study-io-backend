@@ -88,14 +88,16 @@ namespace Persistence.Contexts
             });
 
             modelBuilder.Entity<Question>(a =>
-                {
-                    a.ToTable("Questions").HasKey(k => k.Id);
-                    a.Property(p => p.Text).HasColumnName("Text");
-                    a.Property(p => p.QuizId).HasColumnName("QuizId");
-                }).Entity<Question>()
-                .HasMany(c => c.Answers)
-                .WithOne(e => e.Question)
-                .HasForeignKey(c => c.QuestionId);
+            {
+                a.ToTable("Questions").HasKey(k => k.Id);
+                a.Property(p => p.Text).HasColumnName("Text");
+                a.Property(p => p.QuizId).HasColumnName("QuizId");
+
+                a.HasMany(c => c.Answers)
+                    .WithOne(e => e.Question)
+                    .HasForeignKey(c => c.QuestionId);
+                a.HasOne(p => p.Quiz).WithMany().HasForeignKey(p => p.QuizId);
+            });
 
 
             modelBuilder.Entity<SelectedAnswer>(a =>
@@ -219,6 +221,21 @@ namespace Persistence.Contexts
                 a.Property(p => p.ImagePath).HasColumnName("ImagePath");
                 a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
             });
+
+            Category[] categorySeeds =
+            {
+                new(1, "YKS"),
+                new(2, "KPSS"),
+                new(3, "DGS"),
+            };
+            modelBuilder.Entity<Category>().HasData(categorySeeds);
+            SubCategory[] subCategoriesSeeds =
+            {
+                new(1, 1, "TYT (Temel Yeterlilik Testi)"),
+                new(2, 1, "AYT (Alan Yeterlilik Testleri)"),
+            };
+            modelBuilder.Entity<SubCategory>().HasData(subCategoriesSeeds);
+
         }
     }
 }
