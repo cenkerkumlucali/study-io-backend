@@ -92,7 +92,7 @@ namespace Persistence.Contexts
                 a.ToTable("Questions").HasKey(k => k.Id);
                 a.Property(p => p.Text).HasColumnName("Text");
                 a.Property(p => p.QuizId).HasColumnName("QuizId");
-
+                a.Property(p => p.Difficulty).HasColumnName("Difficulty");
                 a.HasMany(c => c.Answers)
                     .WithOne(e => e.Question)
                     .HasForeignKey(c => c.QuestionId);
