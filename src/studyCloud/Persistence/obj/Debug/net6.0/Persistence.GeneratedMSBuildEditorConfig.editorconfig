@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Persistence
-build_property.ProjectDir = C:\Users\user3\source\repos\study-io-backend\src\studyCloud\Persistence\
+build_property.ProjectDir = /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/

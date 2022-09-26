@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Security\\Core.Security.csproj": {}
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj": {
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj",
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
         "projectName": "Core.Persistence",
-        "projectPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj",
-        "packagesPath": "C:\\Users\\user3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\obj\\",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
+        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user3\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +53,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -71,43 +63,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Security\\Core.Security.csproj": {
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Security\\Core.Security.csproj",
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj",
         "projectName": "Core.Security",
-        "projectPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Security\\Core.Security.csproj",
-        "packagesPath": "C:\\Users\\user3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Security\\obj\\",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj",
+        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user3\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj": {
-                "projectPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Persistence\\Core.Persistence.csproj"
+              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
+                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj"
               }
             }
           }
@@ -149,7 +132,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -158,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

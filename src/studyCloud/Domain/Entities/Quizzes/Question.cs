@@ -8,8 +8,9 @@ public class Question : Entity
     public int QuizId { get; set; }
     public string Text { get; set; }
     public Difficulty Difficulty { get; set; }
-    public Quiz Quiz { get; set; }
-    public List<Answer> Answers { get; set; }
+    public virtual Quiz Quiz { get; set; }
+    public virtual List<Answer> Answers { get; set; }
+
 
     public Question()
     {

@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\Core.Mailing.csproj": {}
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/Core.Mailing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\Core.Mailing.csproj": {
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/Core.Mailing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\Core.Mailing.csproj",
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/Core.Mailing.csproj",
         "projectName": "Core.Mailing",
-        "projectPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\Core.Mailing.csproj",
-        "packagesPath": "C:\\Users\\user3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\obj\\",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/Core.Mailing.csproj",
+        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user3\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +61,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -79,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

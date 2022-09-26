@@ -5,7 +5,7 @@ namespace Domain.Entities.Quizzes;
 public class Answer:Entity
 {
     public int QuestionId{ get; set; }
-    public Question Question{ get; set; }
+    public virtual Question Question{ get; set; }
     public string Text { get; set; }
     public bool IsCorrect { get; set; }
 

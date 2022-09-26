@@ -10,7 +10,7 @@ public class Quiz:Entity
     public int SubCategoryId { get; set; }
     public Category Category { get; set; }
     public SubCategory SubCategory { get; set; }
-    public List<Question> Questions { get; set; }
+
 
     public Quiz()
     {

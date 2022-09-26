@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{6BD74151-BD48-480A-A1EF-771FE678D06D}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.src.studyCloud.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/studyCloud/Persistence/Contexts/BaseDbContext.cs">
+    <Files>
+      <File FileName="src/studyCloud/Persistence/Contexts/BaseDbContext.cs" Line="199" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="StudyCloud" expanded="True">
+            <Node name="src" expanded="True">
+              <Node name="studyCloud" expanded="True">
+                <Node name="Persistence" expanded="True">
+                  <Node name="Contexts" expanded="True">
+                    <Node name="BaseDbContext.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

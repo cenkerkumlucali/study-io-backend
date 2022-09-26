@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "n+G15WXzmrYaukk3s1eTFMcxWO/2jcFf4CD9BfMIIAKIyzNWPCGJF/K6V4h3TLlOD8HhzQCOKgyCT1FbqnRK6Q==",
+  "dgSpecHash": "Da3kRzKSGN/rzPJy9Pcag67ZYkRkdgDhx8DKJ5Vd+0Xgm4BUVce7c9KqYILdcycKZMF7F7CQpHIJ3Vf/reez+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user3\\source\\repos\\study-io-backend\\src\\corePackages\\Core.Mailing\\Core.Mailing.csproj",
+  "projectFilePath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Mailing/Core.Mailing.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\user3\\.nuget\\packages\\mailkit\\3.1.1\\mailkit.3.1.1.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\mimekit\\3.1.1\\mimekit.3.1.1.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\system.formats.asn1\\6.0.0\\system.formats.asn1.6.0.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\user3\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.0\\system.security.cryptography.pkcs.6.0.0.nupkg.sha512"
+    "/Users/cenkerkumlucali/.nuget/packages/mailkit/3.1.1/mailkit.3.1.1.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/microsoft.extensions.configuration.binder/6.0.0/microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/mimekit/3.1.1/mimekit.3.1.1.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/portable.bouncycastle/1.9.0/portable.bouncycastle.1.9.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.formats.asn1/6.0.0/system.formats.asn1.6.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.security.cryptography.pkcs/6.0.0/system.security.cryptography.pkcs.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

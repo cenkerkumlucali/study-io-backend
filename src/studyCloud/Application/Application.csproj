@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Categories\Constants" />
-    <Folder Include="Features\Categories\Rules" />
     <Folder Include="Features\Comments\CommentImage\Constants" />
     <Folder Include="Features\Comments\CommentImage\Rules" />
     <Folder Include="Features\Comments\CommentLike\Constants" />
