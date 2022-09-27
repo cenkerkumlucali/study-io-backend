@@ -8,7 +8,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.Feeds.Post.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
@@ -18,9 +18,10 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Feeds.Post, DeletePostCommand>().ReverseMap();
         CreateMap<Domain.Entities.Feeds.Post, UpdatedPostDto>().ReverseMap();
         CreateMap<Domain.Entities.Feeds.Post, UpdatePostCommand>().ReverseMap();
-        
-        CreateMap<IPaginate<Domain.Entities.Feeds.Post>,PostListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.Post,ListPostDto>().ReverseMap();
+
+        CreateMap<IPaginate<Domain.Entities.Feeds.Post>, PostListModel>().ReverseMap();
+        CreateMap<Domain.Entities.Feeds.Post, ListPostDto>()
+            .ForMember(c => c.UserEmail, c => c.MapFrom(c => c.User.Email)).ReverseMap();
 
         CreateMap<Domain.Entities.Feeds.Post, GetByIdPostDto>().ReverseMap();
     }

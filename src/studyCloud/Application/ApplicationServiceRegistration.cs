@@ -1,4 +1,5 @@
 using System.Reflection;
+using Application.Features.Categories.Rules;
 using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
@@ -15,8 +16,8 @@ public static class ApplicationServiceRegistration
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(Assembly.GetExecutingAssembly());
-
-        //services.AddScoped<SomeFeatureEntityBusinessRules>();
+        
+        services.AddScoped<CategoryBusinessRules>();
         
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

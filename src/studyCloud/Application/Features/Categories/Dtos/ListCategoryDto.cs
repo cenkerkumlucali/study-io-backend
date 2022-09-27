@@ -1,3 +1,5 @@
+using Domain.Entities.Categories;
+
 namespace Application.Features.Categories.Dtos;
 
 public class ListCategoryDto

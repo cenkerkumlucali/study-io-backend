@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Comments.Comment.Queries.GetListComment;
 
@@ -26,7 +27,10 @@ public class GetListCommentQuery : IRequest<CommentListModel>
         {
             IPaginate<Domain.Entities.Comments.Comment> comment =
                 await _commentRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include:c=>c.Include(c=>c.User)
+                        .Include(c=>c.Parent)
+                        .Include(c=>c.Parent.User));
             CommentListModel mappedCommentListModel =
                 _mapper.Map<CommentListModel>(comment);
             return mappedCommentListModel;

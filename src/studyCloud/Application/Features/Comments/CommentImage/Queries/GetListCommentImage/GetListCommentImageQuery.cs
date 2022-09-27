@@ -5,6 +5,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Comments.CommentImage.Queries.GetListCommentImage;
 
@@ -23,11 +24,14 @@ public class GetListCommentImageQuery : IRequest<CommentImageListModel>
             _mapper = mapper;
         }
 
-        public async Task<CommentImageListModel> Handle(GetListCommentImageQuery request, CancellationToken cancellationToken)
+        public async Task<CommentImageListModel> Handle(GetListCommentImageQuery request,
+            CancellationToken cancellationToken)
         {
             IPaginate<Domain.Entities.Comments.CommentImage> commentImage =
                 await _commentImageRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include: c => c.Include(c => c.Comment)
+                        .Include(c => c.Comment.User));
             CommentImageListModel mappedCommentImageListModel =
                 _mapper.Map<CommentImageListModel>(commentImage);
             return mappedCommentImageListModel;

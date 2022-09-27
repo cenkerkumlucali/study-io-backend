@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Categories.Queries.GetListCategory;
 

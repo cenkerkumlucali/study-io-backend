@@ -6,6 +6,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Feeds.Post.Queries.GetListPost;
 
@@ -28,7 +29,8 @@ public class GetListPostQuery : IRequest<PostListModel>
         {
             IPaginate<Domain.Entities.Feeds.Post> post =
                 await _postRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include:c=>c.Include(c=>c.User));
             PostListModel mappedPostListModel =
                 _mapper.Map<PostListModel>(post);
             return mappedPostListModel;

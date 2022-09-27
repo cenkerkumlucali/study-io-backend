@@ -5,7 +5,6 @@ namespace Domain.Entities.Comments;
 
 public class Comment:Entity
 {
-
     public int? ParentId {get; set;}
     public virtual Comment Parent { get; set; }
     public int UserId { get; set; }

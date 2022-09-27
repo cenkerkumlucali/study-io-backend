@@ -10,8 +10,8 @@ public class Post:Entity
     public virtual User User { get; set; }
     public string Content { get; set; }
     public DateTime CreatedDate { get; set; }
-    public virtual List<Comment> Comments { get; set; }
-    public virtual List<PostLike> PostLikes { get; set; }
+    public virtual List<Comment>? Comments { get; set; }
+    public virtual List<PostLike>? PostLikes { get; set; }
 
     public Post()
     {

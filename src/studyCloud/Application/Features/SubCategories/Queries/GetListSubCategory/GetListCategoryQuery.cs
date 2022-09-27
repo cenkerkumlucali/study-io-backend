@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.SubCategories.Queries.GetListSubCategory;
 
@@ -26,7 +27,8 @@ public class GetListSubCategoryQuery : IRequest<SubCategoryListModel>
         {
             IPaginate<Domain.Entities.Categories.SubCategory> subCategory =
                 await _subCategoryRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include:c=>c.Include(c=>c.Category));
             SubCategoryListModel mappedSubCategoryListModel =
                 _mapper.Map<SubCategoryListModel>(subCategory);
             return mappedSubCategoryListModel;
