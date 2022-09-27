@@ -8,7 +8,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.Quizzes.Answer.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
@@ -18,9 +18,10 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Quizzes.Answer, DeleteAnswerCommand>().ReverseMap();
         CreateMap<Domain.Entities.Quizzes.Answer, UpdatedAnswerDto>().ReverseMap();
         CreateMap<Domain.Entities.Quizzes.Answer, UpdateAnswerCommand>().ReverseMap();
-        
-        CreateMap<IPaginate<Domain.Entities.Quizzes.Answer>,AnswerListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Quizzes.Answer,ListAnswerDto>().ReverseMap();
+
+        CreateMap<IPaginate<Domain.Entities.Quizzes.Answer>, AnswerListModel>().ReverseMap();
+        CreateMap<Domain.Entities.Quizzes.Answer, ListAnswerDto>()
+            .ForMember(c => c.Question, opt => opt.MapFrom(c => c.Question.Text)).ReverseMap();
 
         CreateMap<Domain.Entities.Quizzes.Answer, GetByIdAnswerDto>().ReverseMap();
     }

@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Users.UserImage.Queries.GetListUserCoin;
 
@@ -26,7 +27,8 @@ public class GetListUserImageQuery : IRequest<UserImageListModel>
         {
             IPaginate<Domain.Entities.Users.UserImage> userImage =
                 await _userImageRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include:c=>c.Include(c=>c.User));
             UserImageListModel mappedUserImageListModel =
                 _mapper.Map<UserImageListModel>(userImage);
             return mappedUserImageListModel;

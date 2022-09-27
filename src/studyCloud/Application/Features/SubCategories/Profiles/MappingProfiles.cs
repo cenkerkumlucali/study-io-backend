@@ -8,7 +8,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.SubCategories.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
@@ -18,9 +18,10 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Categories.SubCategory, DeleteSubCategoryCommand>().ReverseMap();
         CreateMap<Domain.Entities.Categories.SubCategory, UpdatedSubCategoryDto>().ReverseMap();
         CreateMap<Domain.Entities.Categories.SubCategory, UpdateSubCategoryCommand>().ReverseMap();
-        
-        CreateMap<IPaginate<Domain.Entities.Categories.SubCategory>,SubCategoryListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory,ListSubCategoryDto>().ReverseMap();
+
+        CreateMap<IPaginate<Domain.Entities.Categories.SubCategory>, SubCategoryListModel>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, ListSubCategoryDto>()
+            .ForMember(c => c.CategoryName, opt => opt.MapFrom(c => c.Category.Name)).ReverseMap();
 
         CreateMap<Domain.Entities.Categories.SubCategory, GetByIdSubCategoryDto>().ReverseMap();
     }

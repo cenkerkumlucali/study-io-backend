@@ -7,6 +7,7 @@ using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities.Mentions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Quizzes.Answer.Queries.GetListAnswer;
 
@@ -29,7 +30,8 @@ public class GetListAnswerQuery : IRequest<AnswerListModel>
         {
             IPaginate<Domain.Entities.Quizzes.Answer> answer =
                 await _answerRepository.GetListAsync(index: request.PageRequest.Page,
-                    size: request.PageRequest.PageSize);
+                    size: request.PageRequest.PageSize,
+                    include:c=>c.Include(c=>c.Question));
             AnswerListModel mappedAnswerListModel =
                 _mapper.Map<AnswerListModel>(answer);
             return mappedAnswerListModel;

@@ -8,7 +8,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.Users.UserCoin.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
@@ -18,9 +18,10 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Users.UserCoin, DeleteUserCoinCommand>().ReverseMap();
         CreateMap<Domain.Entities.Users.UserCoin, UpdatedUserCoinDto>().ReverseMap();
         CreateMap<Domain.Entities.Users.UserCoin, UpdateUserCoinCommand>().ReverseMap();
-        
-        CreateMap<IPaginate<Domain.Entities.Users.UserCoin>,UserCoinListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Users.UserCoin,ListUserCoinDto>().ReverseMap();
+
+        CreateMap<IPaginate<Domain.Entities.Users.UserCoin>, UserCoinListModel>().ReverseMap();
+        CreateMap<Domain.Entities.Users.UserCoin, ListUserCoinDto>()
+            .ForMember(c => c.UserEmail, opt => opt.MapFrom(c => c.User.Email)).ReverseMap();
 
         CreateMap<Domain.Entities.Users.UserCoin, GetByIdUserCoinDto>().ReverseMap();
     }

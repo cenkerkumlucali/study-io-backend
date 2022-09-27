@@ -8,7 +8,7 @@ using Core.Persistence.Paging;
 
 namespace Application.Features.Users.UserImage.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
@@ -18,9 +18,11 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Users.UserImage, DeleteUserImageCommand>().ReverseMap();
         CreateMap<Domain.Entities.Users.UserImage, UpdatedUserImageDto>().ReverseMap();
         CreateMap<Domain.Entities.Users.UserImage, UpdateUserImageCommand>().ReverseMap();
-        
-        CreateMap<IPaginate<Domain.Entities.Users.UserImage>,UserImageListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Users.UserImage,ListUserImageDto>().ReverseMap();
+
+        CreateMap<IPaginate<Domain.Entities.Users.UserImage>, UserImageListModel>().ReverseMap();
+        CreateMap<Domain.Entities.Users.UserImage, ListUserImageDto>()
+            .ForMember(c => c.UserEmail, opt => opt.MapFrom(c => c.User.Email)).ReverseMap();
+
 
         CreateMap<Domain.Entities.Users.UserImage, GetByIdUserImageDto>().ReverseMap();
     }
