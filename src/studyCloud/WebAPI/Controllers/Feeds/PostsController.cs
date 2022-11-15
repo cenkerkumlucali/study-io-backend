@@ -15,31 +15,31 @@ public class PostsController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreatePostCommand createPostCommand)
+        [FromBody] CreatePostCommandRequest createPostCommand)
     {
-        CreatedPostDto result = await Mediator.Send(createPostCommand);
+        CreatePostCommandResponse result = await Mediator.Send(createPostCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdatePostCommand updatePostCommand)
+        [FromBody] UpdatePostCommandRequest updatePostCommand)
     {
-        UpdatedPostDto result = await Mediator.Send(updatePostCommand);
+        UpdatePostCommandResponse result = await Mediator.Send(updatePostCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeletePostCommand deletePostCommand)
+        [FromRoute] DeletePostCommandRequest deletePostCommand)
     {
-        DeletedPostDto result = await Mediator.Send(deletePostCommand);
+        DeletePostCommandResponse result = await Mediator.Send(deletePostCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListPostQuery getListPostQuery)
+        [FromQuery] GetListPostQueryRequest getListPostQuery)
     {
         PostListModel result = await Mediator.Send(getListPostQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class PostsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdPostQuery getByIdPostQuery)
+        [FromQuery] GetByIdPostQueryRequest getByIdPostQuery)
     {
-        GetByIdPostDto result = await Mediator.Send(getByIdPostQuery);
+        GetByIdPostQueryResponse result = await Mediator.Send(getByIdPostQuery);
         return Ok(result);
     }
 }

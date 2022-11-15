@@ -1,13 +1,14 @@
-using Core.Persistence.Repositories;
-using Core.Security.Entities;
+using Domain.Entities.Common;
+using Domain.Entities.Users;
+
 
 namespace Domain.Entities.Quizzes;
 
-public class SelectedAnswer : Entity
+public class SelectedAnswer : BaseEntity
 {
     public int UserId { get; set; }
     public int QuestionId { get; set; }
-    public int PossibleAnswerId { get; set; }
+    public int AnswerId { get; set; }
     public int QuizHistoryId { get; set; }
 
     public virtual User User { get; set; }
@@ -24,6 +25,6 @@ public class SelectedAnswer : Entity
         QuizHistoryId = quizHistoryId;
         Id = id;
         QuestionId = questionId;
-        PossibleAnswerId = possibleAnswerId;
+        AnswerId = possibleAnswerId;
     }
 }

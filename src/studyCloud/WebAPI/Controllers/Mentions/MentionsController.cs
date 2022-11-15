@@ -15,31 +15,31 @@ public class MentionsController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateMentionCommand createMentionCommand)
+        [FromBody] CreateMentionCommandRequest createMentionCommand)
     {
-        CreatedMentionDto result = await Mediator.Send(createMentionCommand);
+        CreateMentionCommandResponse result = await Mediator.Send(createMentionCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateMentionCommand updateMentionCommand)
+        [FromBody] UpdateMentionCommandRequest updateMentionCommand)
     {
-        UpdatedMentionDto result = await Mediator.Send(updateMentionCommand);
+        UpdateMentionCommandResponse result = await Mediator.Send(updateMentionCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteMentionCommand deleteMentionCommand)
+        [FromRoute] DeleteMentionCommandRequest deleteMentionCommand)
     {
-        DeletedMentionDto result = await Mediator.Send(deleteMentionCommand);
+        DeleteMentionCommandResponse result = await Mediator.Send(deleteMentionCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListMentionQuery getListMentionQuery)
+        [FromQuery] GetListMentionQueryRequest getListMentionQuery)
     {
         MentionListModel result = await Mediator.Send(getListMentionQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class MentionsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdMentionQuery getByIdMentionQuery)
+        [FromQuery] GetByIdMentionQueryRequest getByIdMentionQuery)
     {
-        GetByIdMentionDto result = await Mediator.Send(getByIdMentionQuery);
+        GetByIdMentionQueryResponse result = await Mediator.Send(getByIdMentionQuery);
         return Ok(result);
     }
 }

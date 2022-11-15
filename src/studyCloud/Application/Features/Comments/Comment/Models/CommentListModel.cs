@@ -1,9 +1,9 @@
-using Application.Features.Comments.Comment.Dtos;
-using Core.Persistence.Paging;
+using Application.DTOs.Paging;
+using Application.Features.Comments.Comment.Queries.GetListComment;
 
 namespace Application.Features.Comments.Comment.Models;
 
 public class CommentListModel:BasePageableModel
 {
-    public IList<ListCommentDto> Items { get; set; }
+    public IList<ListCommentQueryResponse> Items { get; set; }
 }

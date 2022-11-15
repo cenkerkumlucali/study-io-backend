@@ -15,31 +15,31 @@ public class PostImagesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreatePostImageCommand createPostImageCommand)
+        [FromBody] CreatePostImageCommandRequest createPostImageCommand)
     {
-        CreatedPostImageDto result = await Mediator.Send(createPostImageCommand);
+        CreatePostFileCommandResponse result = await Mediator.Send(createPostImageCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdatePostImageCommand updatePostImageCommand)
+        [FromBody] UpdatePostImageCommandRequest updatePostImageCommand)
     {
-        UpdatedPostImageDto result = await Mediator.Send(updatePostImageCommand);
+        UpdatedPostFileQueryResponse result = await Mediator.Send(updatePostImageCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeletePostImageCommand deletePostImageCommand)
+        [FromRoute] DeletePostImageCommandRequest deletePostImageCommand)
     {
-        DeletedPostImageDto result = await Mediator.Send(deletePostImageCommand);
+        DeletePostFileCommandResponse result = await Mediator.Send(deletePostImageCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListPostImageQuery getListPostImageQuery)
+        [FromQuery] GetListPostImageQueryRequest getListPostImageQuery)
     {
         PostImageListModel result = await Mediator.Send(getListPostImageQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class PostImagesController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdPostImageQuery getByIdPostImageQuery)
+        [FromQuery] GetByIdPostImageQueryRequest getByIdPostImageQuery)
     {
-        GetByIdPostImageDto result = await Mediator.Send(getByIdPostImageQuery);
+        GetByIdPostFileQueryResponse result = await Mediator.Send(getByIdPostImageQuery);
         return Ok(result);
     }
 }

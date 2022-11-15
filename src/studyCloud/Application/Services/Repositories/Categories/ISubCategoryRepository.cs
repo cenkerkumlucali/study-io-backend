@@ -1,4 +1,3 @@
-using Core.Persistence.Repositories;
 using Domain.Entities.Categories;
 
 namespace Application.Services.Repositories.Categories;

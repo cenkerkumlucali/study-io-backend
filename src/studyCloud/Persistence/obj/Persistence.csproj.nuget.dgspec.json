@@ -4,14 +4,14 @@
     "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/Persistence.csproj": {}
   },
   "projects": {
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/Core.Application.csproj": {
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/Core.Application.csproj",
-        "projectName": "Core.Application",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/Core.Application.csproj",
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj",
+        "projectName": "Application",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj",
         "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/obj/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
@@ -26,11 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/Core.CrossCuttingConcerns.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/Core.CrossCuttingConcerns.csproj"
-              },
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj"
+              "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj": {
+                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj"
               }
             }
           }
@@ -45,159 +42,37 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[10.3.6, )"
             },
-            "FluentValidation.DependencyInjectionExtensions": {
-              "target": "Package",
-              "version": "[10.3.6, )"
-            },
-            "MediatR": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[10.0.1, )"
-            },
-            "Microsoft.AspNetCore.Http.Abstractions": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.Extensions.Caching.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/Core.CrossCuttingConcerns.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/Core.CrossCuttingConcerns.csproj",
-        "projectName": "Core.CrossCuttingConcerns",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/Core.CrossCuttingConcerns.csproj",
-        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.CrossCuttingConcers/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "FluentValidation": {
-              "target": "Package",
-              "version": "[10.3.6, )"
             },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
             },
-            "Microsoft.Extensions.Configuration.Binder": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Serilog": {
-              "target": "Package",
-              "version": "[2.10.0, )"
-            },
-            "Serilog.Sinks.File": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
-        "projectName": "Core.Persistence",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj",
-        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[6.0.8, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "System.Linq.Dynamic.Core": {
               "target": "Package",
@@ -220,18 +95,81 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj",
-        "projectName": "Core.Security",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj",
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj",
         "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/obj/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
+        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
@@ -246,8 +184,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj"
+              "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj": {
+                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj"
               }
             }
           }
@@ -262,17 +200,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.Extensions.Configuration.Abstractions": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
               "version": "[6.0.0, )"
             },
-            "Microsoft.Extensions.Configuration.Binder": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
               "version": "[6.15.1, )"
+            },
+            "NEST.JsonNetSerializer": {
+              "target": "Package",
+              "version": "[7.17.0, )"
             },
             "Otp.NET": {
               "target": "Package",
@@ -299,140 +245,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj",
-        "projectName": "Application",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/Application.csproj",
-        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/Core.Application.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Application/Core.Application.csproj"
-              },
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj"
-              },
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[11.0.0, )"
-            },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[10.0.1, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj",
-        "packagesPath": "/Users/cenkerkumlucali/.nuget/packages/",
-        "outputPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/cenkerkumlucali/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Persistence/Core.Persistence.csproj"
-              },
-              "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj": {
-                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/corePackages/Core.Security/Core.Security.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -463,6 +276,9 @@
               },
               "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj": {
                 "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Domain/Domain.csproj"
+              },
+              "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj"
               }
             }
           }
@@ -477,6 +293,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.58.0-beta01, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -487,9 +311,25 @@
               "target": "Package",
               "version": "[6.0.8, )"
             },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0-preview.3.22175.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.7, )"
             }
           },
           "imports": [
@@ -508,7 +348,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }

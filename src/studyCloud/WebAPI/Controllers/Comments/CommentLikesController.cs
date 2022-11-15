@@ -15,41 +15,41 @@ public class CommentLikesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateCommentLikeCommand createCommentLikeCommand)
+        [FromBody] CreateCommentLikeCommandRequest createCommentLikeCommand)
     {
-        CreatedCommentLikeDto result = await Mediator.Send(createCommentLikeCommand);
+        CreateCommentLikeCommandResponse result = await Mediator.Send(createCommentLikeCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateCommentLikeCommand updateCommentLikeCommand)
+        [FromBody] UpdateCommentLikeCommandRequest updateCommentLikeCommand)
     {
-        UpdatedCommentLikeDto result = await Mediator.Send(updateCommentLikeCommand);
+        UpdateCommentLikeCommandResponse result = await Mediator.Send(updateCommentLikeCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteCommentLikeCommand deleteCommentLikeCommand)
+        [FromRoute] DeleteCommentLikeCommandRequest deleteCommentLikeCommand)
     {
-        DeletedCommentLikeDto result = await Mediator.Send(deleteCommentLikeCommand);
+        DeleteCommentLikeCommandResponse result = await Mediator.Send(deleteCommentLikeCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListCommentLikeQuery getListCommentLikeQuery)
+        [FromQuery] GetListCommentLikeQueryRequest getListCommentLikeQueryRequest)
     {
-        CommentLikeListModel result = await Mediator.Send(getListCommentLikeQuery);
+        CommentLikeListModel result = await Mediator.Send(getListCommentLikeQueryRequest);
         return Ok(result);
     }
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdCommentLikeQuery getByIdCommentLikeQuery)
+        [FromQuery] GetByIdCommentLikeQueryRequest getByIdCommentLikeQuery)
     {
-        GetByIdCommentLikeDto result = await Mediator.Send(getByIdCommentLikeQuery);
+        GetByIdCommentLikeQueryResponse result = await Mediator.Send(getByIdCommentLikeQuery);
         return Ok(result);
     }
 }

@@ -15,31 +15,31 @@ public class FollowsController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateFollowCommand createFollowCommand)
+        [FromBody] CreateFollowCommandRequest createFollowCommand)
     {
-        CreatedFollowDto result = await Mediator.Send(createFollowCommand);
+        CreateFollowCommandResponse result = await Mediator.Send(createFollowCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateFollowCommand updateFollowCommand)
+        [FromBody] UpdateFollowCommandRequest updateFollowCommand)
     {
-        UpdatedFollowDto result = await Mediator.Send(updateFollowCommand);
+        UpdateFollowCommandResponse result = await Mediator.Send(updateFollowCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteFollowCommand deleteFollowCommand)
+        [FromRoute] DeleteFollowCommandRequest deleteFollowCommand)
     {
-        DeletedFollowDto result = await Mediator.Send(deleteFollowCommand);
+        DeleteFollowCommandResponse result = await Mediator.Send(deleteFollowCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListFollowQuery getListFollowQuery)
+        [FromQuery] GetListFollowQueryRequest getListFollowQuery)
     {
         FollowListModel result = await Mediator.Send(getListFollowQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class FollowsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdFollowQuery getByIdFollowQuery)
+        [FromQuery] GetByIdFollowQueryRequest getByIdFollowQuery)
     {
-        GetByIdFollowDto result = await Mediator.Send(getByIdFollowQuery);
+        GetByIdFollowQueryResponse result = await Mediator.Send(getByIdFollowQuery);
         return Ok(result);
     }
 }

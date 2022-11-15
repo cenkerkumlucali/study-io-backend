@@ -1,8 +1,8 @@
+using Application.Abstractions.Services.Paging;
 using Application.Features.Users.UserImage.Models;
+using Application.RequestParameters;
 using Application.Services.Repositories.Users;
 using AutoMapper;
-using Core.Application.Requests;
-using Core.Persistence.Paging;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,10 +25,10 @@ public class GetListUserImageQuery : IRequest<UserImageListModel>
 
         public async Task<UserImageListModel> Handle(GetListUserImageQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<Domain.Entities.Users.UserImage> userImage =
+            IPaginate<Domain.Entities.Users.UserImageFile> userImage =
                 await _userImageRepository.GetListAsync(index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize,
-                    include:c=>c.Include(c=>c.User));
+                    include:c=>c.Include(c=>c.Users));
             UserImageListModel mappedUserImageListModel =
                 _mapper.Map<UserImageListModel>(userImage);
             return mappedUserImageListModel;

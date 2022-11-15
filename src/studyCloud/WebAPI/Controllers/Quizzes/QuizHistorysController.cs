@@ -15,31 +15,31 @@ public class QuizHistorysController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateQuizHistoryCommand createQuizHistoryCommand)
+        [FromBody] CreateQuizHistoryCommandRequest createQuizHistoryCommand)
     {
-        CreatedQuizHistoryDto result = await Mediator.Send(createQuizHistoryCommand);
+        CreateQuizHistoryCommandResponse result = await Mediator.Send(createQuizHistoryCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateQuizHistoryCommand updateQuizHistoryCommand)
+        [FromBody] UpdateQuizHistoryCommandRequest updateQuizHistoryCommand)
     {
-        UpdatedQuizHistoryDto result = await Mediator.Send(updateQuizHistoryCommand);
+        UpdateQuizHistoryQueryResponse result = await Mediator.Send(updateQuizHistoryCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteQuizHistoryCommand deleteQuizHistoryCommand)
+        [FromRoute] DeleteQuizHistoryCommandRequest deleteQuizHistoryCommand)
     {
-        DeletedQuizHistoryDto result = await Mediator.Send(deleteQuizHistoryCommand);
+        DeleteQuizHistoryCommandResponse result = await Mediator.Send(deleteQuizHistoryCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListQuizHistoryQuery getListQuizHistoryQuery)
+        [FromQuery] GetListQuizHistoryQueryRequest getListQuizHistoryQuery)
     {
         QuizHistoryListModel result = await Mediator.Send(getListQuizHistoryQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class QuizHistorysController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdQuizHistoryQuery getByIdQuizHistoryQuery)
+        [FromQuery] GetByIdQuizHistoryQueryRequest getByIdQuizHistoryQuery)
     {
-        GetByIdQuizHistoryDto result = await Mediator.Send(getByIdQuizHistoryQuery);
+        GetByIdQuizHistoryQueryResponse result = await Mediator.Send(getByIdQuizHistoryQuery);
         return Ok(result);
     }
 }

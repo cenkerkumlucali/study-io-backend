@@ -1,10 +1,9 @@
-using Application.Features.Feeds.PostImage.Dtos;
+using Application.DTOs.Paging;
 using Application.Features.Follows.Dtos;
-using Core.Persistence.Paging;
 
 namespace Application.Features.Follows.Models;
 
 public class FollowListModel:BasePageableModel
 {
-    public IList<ListFollowDto> Items { get; set; }
+    public IList<ListFollowQueryResponse> Items { get; set; }
 }

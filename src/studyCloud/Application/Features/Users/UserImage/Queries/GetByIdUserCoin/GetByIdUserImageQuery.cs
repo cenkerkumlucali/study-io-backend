@@ -21,7 +21,7 @@ public class GetByIdUserImageQuery : IRequest<GetByIdUserImageDto>
 
         public async Task<GetByIdUserImageDto> Handle(GetByIdUserImageQuery request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Users.UserImage? userImage =
+            Domain.Entities.Users.UserImageFile? userImage =
                 await _userImageRepository.GetAsync(c => c.Id == request.Id);
             GetByIdUserImageDto getByIdUserImageDto =
                 _mapper.Map<GetByIdUserImageDto>(userImage);

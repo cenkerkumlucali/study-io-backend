@@ -15,31 +15,31 @@ public class SubCategoriesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateSubCategoryCommand createSubCategoryCommand)
+        [FromBody] CreateSubCategoryCommandRequest createSubCategoryCommand)
     {
-        CreatedSubCategoryDto result = await Mediator.Send(createSubCategoryCommand);
+        CreateSubCategoryCommandResponse result = await Mediator.Send(createSubCategoryCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateSubCategoryCommand updateSubCategoryCommand)
+        [FromBody] UpdateSubCategoryCommandRequest updateSubCategoryCommand)
     {
-        UpdatedSubCategoryDto result = await Mediator.Send(updateSubCategoryCommand);
+        UpdateSubCategoryCommandResponse result = await Mediator.Send(updateSubCategoryCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteSubCategoryCommand deleteSubCategoryCommand)
+        [FromRoute] DeleteSubCategoryCommandRequest deleteSubCategoryCommand)
     {
-        DeletedSubCategoryDto result = await Mediator.Send(deleteSubCategoryCommand);
+        DeleteSubCategoryCommandResponse result = await Mediator.Send(deleteSubCategoryCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListSubCategoryQuery getListSubCategoryQuery)
+        [FromQuery] GetListSubCategoryQueryRequest getListSubCategoryQuery)
     {
         SubCategoryListModel result = await Mediator.Send(getListSubCategoryQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class SubCategoriesController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdSubCategoryQuery getByIdSubCategoryQuery)
+        [FromQuery] GetByIdSubCategoryQueryRequest getByIdSubCategoryQuery)
     {
-        GetByIdSubCategoryDto result = await Mediator.Send(getByIdSubCategoryQuery);
+        GetByIdSubCategoryQueryResponse result = await Mediator.Send(getByIdSubCategoryQuery);
         return Ok(result);
     }
 }

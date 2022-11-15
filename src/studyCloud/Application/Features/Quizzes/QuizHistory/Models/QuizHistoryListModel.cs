@@ -1,10 +1,9 @@
-using Application.Features.Quizzes.Answer.Dtos;
+using Application.DTOs.Paging;
 using Application.Features.Quizzes.QuizHistory.Dtos;
-using Core.Persistence.Paging;
 
 namespace Application.Features.Quizzes.QuizHistory.Models;
 
 public class QuizHistoryListModel:BasePageableModel
 {
-    public IList<ListQuizHistoryDto> Items { get; set; }
+    public IList<ListQuizHistoryQueryResponse> Items { get; set; }
 }

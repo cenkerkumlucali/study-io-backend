@@ -1,10 +1,11 @@
+using Application.Abstractions.Services.Paging;
 using Application.Features.Comments.Comment.Commands.CreateComment;
 using Application.Features.Comments.Comment.Commands.DeleteComment;
 using Application.Features.Comments.Comment.Commands.UpdateComment;
-using Application.Features.Comments.Comment.Dtos;
 using Application.Features.Comments.Comment.Models;
+using Application.Features.Comments.Comment.Queries.GetByIdComment;
+using Application.Features.Comments.Comment.Queries.GetListComment;
 using AutoMapper;
-using Core.Persistence.Paging;
 
 namespace Application.Features.Comments.Comment.Profiles;
 
@@ -12,17 +13,16 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Domain.Entities.Comments.Comment, CreatedCommentDto>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, CreateCommentCommand>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, DeletedCommentDto>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, DeleteCommentCommand>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, UpdatedCommentDto>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, UpdateCommentCommand>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, CreateCommentCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, CreateCommentCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, DeleteCommentCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, DeleteCommentCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, UpdateCommentCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, UpdateCommentCommandRequest>().ReverseMap();
 
         CreateMap<IPaginate<Domain.Entities.Comments.Comment>, CommentListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Comments.Comment, ListCommentDto>()
-            .ForMember(c => c.UserEmail, c => c.MapFrom(c => c.User.Email)).ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, ListCommentQueryResponse>().ReverseMap();
 
-        CreateMap<Domain.Entities.Comments.Comment, GetByIdCommentDto>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, GetByIdCommentQueryResponse>().ReverseMap();
     }
 }

@@ -1,5 +1,4 @@
 using Application.Features.Users.UserImage.Dtos;
-using Application.Services.Repositories.Feeds;
 using Application.Services.Repositories.Users;
 using AutoMapper;
 using MediatR;
@@ -25,8 +24,8 @@ public class CreateUserImageCommand:IRequest<CreatedUserImageDto>
 
         public async Task<CreatedUserImageDto> Handle(CreateUserImageCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Users.UserImage mappedUserImage = _mapper.Map<Domain.Entities.Users.UserImage>(request);
-            Domain.Entities.Users.UserImage createdUserImage = await _userImageRepository.AddAsync(mappedUserImage);
+            Domain.Entities.Users.UserImageFile mappedUserImage = _mapper.Map<Domain.Entities.Users.UserImageFile>(request);
+            Domain.Entities.Users.UserImageFile createdUserImage = await _userImageRepository.AddAsync(mappedUserImage);
             CreatedUserImageDto mappedCreateUserImageDto = _mapper.Map<CreatedUserImageDto>(createdUserImage);
             return mappedCreateUserImageDto;
         }

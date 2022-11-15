@@ -15,31 +15,31 @@ public class AnswersController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateAnswerCommand createAnswerCommand)
+        [FromBody] CreateAnswerCommandRequest createAnswerCommand)
     {
-        CreatedAnswerDto result = await Mediator.Send(createAnswerCommand);
+        CreateAnswerCommandResponse result = await Mediator.Send(createAnswerCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateAnswerCommand updateAnswerCommand)
+        [FromBody] UpdateAnswerCommandRequest updateAnswerCommand)
     {
-        UpdatedAnswerDto result = await Mediator.Send(updateAnswerCommand);
+        UpdatedAnswerCommandResponse result = await Mediator.Send(updateAnswerCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteAnswerCommand deleteAnswerCommand)
+        [FromRoute] DeleteAnswerCommandRequest deleteAnswerCommand)
     {
-        DeletedAnswerDto result = await Mediator.Send(deleteAnswerCommand);
+        DeleteAnswerCommandResponse result = await Mediator.Send(deleteAnswerCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListAnswerQuery getListAnswerQuery)
+        [FromQuery] GetListAnswerQueryRequest getListAnswerQuery)
     {
         AnswerListModel result = await Mediator.Send(getListAnswerQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class AnswersController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdAnswerQuery getByIdAnswerQuery)
+        [FromQuery] GetByIdAnswerQueryRequest getByIdAnswerQuery)
     {
-        GetByIdAnswerDto result = await Mediator.Send(getByIdAnswerQuery);
+        GetByIdAnswerQueryResponse result = await Mediator.Send(getByIdAnswerQuery);
         return Ok(result);
     }
 }

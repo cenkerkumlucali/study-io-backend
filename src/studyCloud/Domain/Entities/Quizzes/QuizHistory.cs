@@ -1,9 +1,9 @@
-using Core.Persistence.Repositories;
-using Core.Security.Entities;
+using Domain.Entities.Common;
+using Domain.Entities.Users;
 
 namespace Domain.Entities.Quizzes;
 
-public class QuizHistory:Entity
+public class QuizHistory:BaseEntity
 {
     public int UserId { get; set; }
     public int QuizId { get; set; }

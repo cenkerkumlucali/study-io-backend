@@ -1,9 +1,8 @@
-using Core.Persistence.Repositories;
-using Core.Security.Entities;
+using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Users;
 
-public class UserCoin:Entity
+public class UserCoin:BaseEntity
 {
     public int UserId { get; set; }
     public virtual User User { get; set; }

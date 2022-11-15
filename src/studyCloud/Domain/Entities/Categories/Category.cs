@@ -1,20 +1,9 @@
-using Core.Persistence.Repositories;
+using Domain.Entities.Common;
 
 namespace Domain.Entities.Categories;
 
-public class Category:Entity
+public class Category:BaseEntity
 { 
     public string Name { get; set; }
     public virtual IList<SubCategory> SubCategories { get; set; }
-
-    public Category()
-    {
-        
-    }
-
-    public Category(int id, string name) : this()
-    {
-        Id = id;
-        Name = name;
-    }
 }

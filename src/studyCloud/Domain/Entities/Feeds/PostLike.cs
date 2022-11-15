@@ -1,25 +1,13 @@
-using Core.Persistence.Repositories;
-using Core.Security.Entities;
+using Domain.Entities.Common;
+using Domain.Entities.Users;
 
 namespace Domain.Entities.Feeds;
 
-public class PostLike:Entity
+public class PostLike:BaseEntity
 {
     public int UserId { get; set; }
     public int PostId { get; set; }
     public virtual User User { get; set; }
     public virtual Post Post { get; set; }
-    public DateTime CreatedDate { get; set; }
-
-    public PostLike()
-    {
-        
-    }
-
-    public PostLike(int id, int userId, int postId) : this()
-    {
-        Id = id;
-        UserId = userId;
-        PostId = postId;
-    }
+    
 }

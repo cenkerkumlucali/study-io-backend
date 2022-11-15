@@ -1,7 +1,7 @@
+using Application.Abstractions.Services.Paging;
+using Application.Exceptions;
 using Application.Features.Categories.Constants;
 using Application.Services.Repositories.Categories;
-using Core.CrossCuttingConcerns.Exceptions;
-using Core.Persistence.Paging;
 using Domain.Entities.Categories;
 
 namespace Application.Features.Categories.Rules;

@@ -1,12 +1,13 @@
-using Core.Persistence.Repositories;
-using Core.Security.Entities;
 using Domain.Entities.Comments;
 using Domain.Entities.Feeds;
 using Domain.Enums;
+using Domain.Entities.Common;
+using Domain.Entities.Users;
+
 
 namespace Domain.Entities.Mentions;
 
-public class Mention : Entity
+public class Mention : BaseEntity
 {
     public int AgentId { get; set; }
     public virtual User Agent { get; set; }
@@ -15,9 +16,8 @@ public class Mention : Entity
     public int PostId { get; set; }
     public virtual Post Post { get; set; }
     public int CommentId { get; set; }
-    public virtual Comment Comment { get; set; }
+    public virtual Comment? Comment { get; set; }
     public MentionType MentionType { get; set; }
-    public DateTime CreatedDate { get; set; }
 
     public Mention()
     {

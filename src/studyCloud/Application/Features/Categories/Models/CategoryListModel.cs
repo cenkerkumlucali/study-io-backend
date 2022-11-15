@@ -1,9 +1,9 @@
-using Application.Features.Categories.Dtos;
-using Core.Persistence.Paging;
+using Application.DTOs.Paging;
+using Application.Features.Categories.Queries.GetListCategory;
 
 namespace Application.Features.Categories.Models;
 
 public class CategoryListModel:BasePageableModel
 {
-    public IList<ListCategoryDto> Items { get; set; }
+    public IList<ListCategoryQueryResponse> Items { get; set; }
 }

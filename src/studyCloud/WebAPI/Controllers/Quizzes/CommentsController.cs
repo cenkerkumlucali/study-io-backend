@@ -15,31 +15,31 @@ public class SelectedAnswersController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateSelectedAnswerCommand createSelectedAnswerCommand)
+        [FromBody] CreateSelectedAnswerCommandRequest createSelectedAnswerCommand)
     {
-        CreatedSelectedAnswerDto result = await Mediator.Send(createSelectedAnswerCommand);
+        CreateSelectedAnswerCommandResponse result = await Mediator.Send(createSelectedAnswerCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateSelectedAnswerCommand updateSelectedAnswerCommand)
+        [FromBody] UpdateSelectedAnswerCommandRequest updateSelectedAnswerCommand)
     {
-        UpdatedSelectedAnswerDto result = await Mediator.Send(updateSelectedAnswerCommand);
+        UpdateSelectedAnswerCommandResponse result = await Mediator.Send(updateSelectedAnswerCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteSelectedAnswerCommand deleteSelectedAnswerCommand)
+        [FromRoute] DeleteSelectedAnswerCommandRequest deleteSelectedAnswerCommand)
     {
-        DeletedSelectedAnswerDto result = await Mediator.Send(deleteSelectedAnswerCommand);
+        DeleteSelectedAnswerCommandResponse result = await Mediator.Send(deleteSelectedAnswerCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListSelectedAnswerQuery getListSelectedAnswerQuery)
+        [FromQuery] GetListSelectedAnswerQueryRequest getListSelectedAnswerQuery)
     {
         SelectedAnswerListModel result = await Mediator.Send(getListSelectedAnswerQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class SelectedAnswersController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdSelectedAnswerQuery getByIdSelectedAnswerQuery)
+        [FromQuery] GetByIdSelectedAnswerQueryRequest getByIdSelectedAnswerQuery)
     {
-        GetByIdSelectedAnswerDto result = await Mediator.Send(getByIdSelectedAnswerQuery);
+        GetByIdSelectedAnswerQueryResponse result = await Mediator.Send(getByIdSelectedAnswerQuery);
         return Ok(result);
     }
 }

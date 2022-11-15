@@ -1,9 +1,9 @@
-using Core.Persistence.Repositories;
 using Domain.Enums;
+using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Quizzes;
 
-public class Question : Entity
+public class Question : BaseEntity
 {
     public int QuizId { get; set; }
     public string Text { get; set; }

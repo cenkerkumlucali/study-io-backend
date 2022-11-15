@@ -15,31 +15,31 @@ public class UserCoinsController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateUserCoinCommand createUserCoinCommand)
+        [FromBody] CreateUserCoinCommandRequest createUserCoinCommand)
     {
-        CreatedUserCoinDto result = await Mediator.Send(createUserCoinCommand);
+        CreateUserCoinCommandResponse result = await Mediator.Send(createUserCoinCommand);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateUserCoinCommand updateUserCoinCommand)
+        [FromBody] UpdateUserCoinCommandRequest updateUserCoinCommand)
     {
-        UpdatedUserCoinDto result = await Mediator.Send(updateUserCoinCommand);
+        UpdateUserCoinCommandResponse result = await Mediator.Send(updateUserCoinCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteUserCoinCommand deleteUserCoinCommand)
+        [FromRoute] DeleteUserCoinCommandRequest deleteUserCoinCommand)
     {
-        DeletedUserCoinDto result = await Mediator.Send(deleteUserCoinCommand);
+        DeleteUserCoinCommandResponse result = await Mediator.Send(deleteUserCoinCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListUserCoinQuery getListUserCoinQuery)
+        [FromQuery] GetListUserCoinQueryRequest getListUserCoinQuery)
     {
         UserCoinListModel result = await Mediator.Send(getListUserCoinQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class UserCoinsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdUserCoinQuery getByIdUserCoinQuery)
+        [FromQuery] GetByIdUserCoinQueryRequest getByIdUserCoinQuery)
     {
-        GetByIdUserCoinDto result = await Mediator.Send(getByIdUserCoinQuery);
+        GetByIdUserCoinQueryResponse result = await Mediator.Send(getByIdUserCoinQuery);
         return Ok(result);
     }
 }

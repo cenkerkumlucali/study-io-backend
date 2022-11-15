@@ -1,22 +1,11 @@
-using Core.Persistence.Repositories;
+using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Categories;
 
-public class SubCategory:Entity
+public class SubCategory:BaseEntity
 {
-    public int CategoryId { get; set; }
     public string Name { get; set; }
+    public int CategoryId { get; set; }
     public virtual Category Category { get; set; }
-
-    public SubCategory()
-    {
-        
-    }
-
-    public SubCategory(int id, int categoryId, string name) : this()
-    {
-        Id = id;
-        CategoryId = categoryId;
-        Name = name;
-    }
+    
 }

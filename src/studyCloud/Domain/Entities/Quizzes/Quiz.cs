@@ -1,9 +1,9 @@
-using Core.Persistence.Repositories;
 using Domain.Entities.Categories;
+using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Quizzes;
 
-public class Quiz:Entity
+public class Quiz:BaseEntity
 {
     public string Name { get; set; }
     public int CategoryId { get; set; }

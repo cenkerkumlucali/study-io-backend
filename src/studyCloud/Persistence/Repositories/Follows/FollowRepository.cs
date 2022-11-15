@@ -1,5 +1,4 @@
 using Application.Services.Repositories.Follows;
-using Core.Persistence.Repositories;
 using Domain.Entities.Follow;
 using Persistence.Contexts;
 

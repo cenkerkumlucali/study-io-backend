@@ -1,10 +1,10 @@
+using Application.Abstractions.Services.Paging;
 using Application.Features.SubCategories.Commands.CreateSubCategory;
 using Application.Features.SubCategories.Commands.DeleteSubCategory;
 using Application.Features.SubCategories.Commands.UpdateSubCategory;
 using Application.Features.SubCategories.Dtos;
 using Application.Features.SubCategories.Models;
 using AutoMapper;
-using Core.Persistence.Paging;
 
 namespace Application.Features.SubCategories.Profiles;
 
@@ -12,17 +12,17 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Domain.Entities.Categories.SubCategory, CreatedSubCategoryDto>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, CreateSubCategoryCommand>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, DeletedSubCategoryDto>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, DeleteSubCategoryCommand>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, UpdatedSubCategoryDto>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, UpdateSubCategoryCommand>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, CreateSubCategoryCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, CreateSubCategoryCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, DeleteSubCategoryCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, DeleteSubCategoryCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, UpdateSubCategoryCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, UpdateSubCategoryCommandRequest>().ReverseMap();
 
         CreateMap<IPaginate<Domain.Entities.Categories.SubCategory>, SubCategoryListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Categories.SubCategory, ListSubCategoryDto>()
+        CreateMap<Domain.Entities.Categories.SubCategory, ListSubCategoryQueryResponse>()
             .ForMember(c => c.CategoryName, opt => opt.MapFrom(c => c.Category.Name)).ReverseMap();
 
-        CreateMap<Domain.Entities.Categories.SubCategory, GetByIdSubCategoryDto>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, GetByIdSubCategoryQueryResponse>().ReverseMap();
     }
 }

@@ -1,5 +1,4 @@
 using Application.Services.Repositories.Mentions;
-using Core.Persistence.Repositories;
 using Domain.Entities.Mentions;
 using Persistence.Contexts;
 

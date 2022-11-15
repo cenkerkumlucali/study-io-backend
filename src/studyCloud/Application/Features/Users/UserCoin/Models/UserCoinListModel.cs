@@ -1,9 +1,9 @@
+using Application.DTOs.Paging;
 using Application.Features.Users.UserCoin.Dtos;
-using Core.Persistence.Paging;
 
 namespace Application.Features.Users.UserCoin.Models;
 
 public class UserCoinListModel:BasePageableModel
 {
-    public IList<ListUserCoinDto> Items { get; set; }
+    public IList<ListUserCoinQueryResponse> Items { get; set; }
 }

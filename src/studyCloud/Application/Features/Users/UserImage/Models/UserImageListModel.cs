@@ -1,5 +1,5 @@
+using Application.DTOs.Paging;
 using Application.Features.Users.UserImage.Dtos;
-using Core.Persistence.Paging;
 
 namespace Application.Features.Users.UserImage.Models;
 

@@ -1,5 +1,4 @@
 using Application.Services.Repositories.Users;
-using Core.Persistence.Repositories;
 using Domain.Entities.Users;
 using Persistence.Contexts;
 

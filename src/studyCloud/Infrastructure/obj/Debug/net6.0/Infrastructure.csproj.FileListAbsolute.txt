@@ -24,3 +24,8 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/obj/Debug/net6.0/refint/Infrastructure.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/obj/Debug/net6.0/Infrastructure.pdb
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/obj/Debug/net6.0/ref/Infrastructure.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/bin/Debug/net6.0/Application.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/bin/Debug/net6.0/Domain.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/bin/Debug/net6.0/Application.pdb
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/bin/Debug/net6.0/Domain.pdb
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/obj/Debug/net6.0/Infrastructure.csproj.CopyComplete

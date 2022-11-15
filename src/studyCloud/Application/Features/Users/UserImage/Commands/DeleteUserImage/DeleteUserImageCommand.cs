@@ -1,5 +1,4 @@
 using Application.Features.Users.UserImage.Dtos;
-using Application.Services.Repositories.Feeds;
 using Application.Services.Repositories.Users;
 using AutoMapper;
 using MediatR;
@@ -22,8 +21,8 @@ public class DeleteUserImageCommand:IRequest<DeletedUserImageDto>
 
         public async Task<DeletedUserImageDto> Handle(DeleteUserImageCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Users.UserImage userImage = _mapper.Map<Domain.Entities.Users.UserImage>(request);
-            Domain.Entities.Users.UserImage deletedUserImage =
+            Domain.Entities.Users.UserImageFile userImage = _mapper.Map<Domain.Entities.Users.UserImageFile>(request);
+            Domain.Entities.Users.UserImageFile deletedUserImage =
                 await _UserImageRepository.DeleteAsync(userImage);
             DeletedUserImageDto deletedUserImageDto =
                 _mapper.Map<DeletedUserImageDto>(deletedUserImage);

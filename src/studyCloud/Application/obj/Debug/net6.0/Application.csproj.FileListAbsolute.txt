@@ -18,16 +18,8 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Application.deps.json
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Application.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Application.pdb
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Application.dll
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.CrossCuttingConcerns.dll
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Persistence.dll
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Security.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Domain.dll
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Application.pdb
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Persistence.pdb
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Domain.pdb
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.CrossCuttingConcerns.pdb
-/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/bin/Debug/net6.0/Core.Security.pdb
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/obj/Debug/net6.0/Application.csproj.AssemblyReference.cache
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/obj/Debug/net6.0/Application.GeneratedMSBuildEditorConfig.editorconfig
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Application/obj/Debug/net6.0/Application.AssemblyInfoInputs.cache

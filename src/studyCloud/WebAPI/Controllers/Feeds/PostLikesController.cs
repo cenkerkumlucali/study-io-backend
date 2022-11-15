@@ -15,31 +15,31 @@ public class PostLikesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreatePostLikeCommand createPostLikeCommand)
+        [FromBody] CreatePostLikeCommandRequest createPostLikeCommandRequest)
     {
-        CreatedPostLikeDto result = await Mediator.Send(createPostLikeCommand);
+        CreatePostLikeCommandResponse result = await Mediator.Send(createPostLikeCommandRequest);
         return Created("", result);
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdatePostLikeCommand updatePostLikeCommand)
+        [FromBody] UpdatePostLikeCommandRequest updatePostLikeCommand)
     {
-        UpdatedPostLikeDto result = await Mediator.Send(updatePostLikeCommand);
+        UpdatePostLikeCommandResponse result = await Mediator.Send(updatePostLikeCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeletePostLikeCommand deletePostLikeCommand)
+        [FromRoute] DeletePostLikeCommandRequest deletePostLikeCommand)
     {
-        DeletedPostLikeDto result = await Mediator.Send(deletePostLikeCommand);
+        DeletePostLikeCommandResponse result = await Mediator.Send(deletePostLikeCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListPostLikeQuery getListPostLikeQuery)
+        [FromQuery] GetListPostLikeQueryRequest getListPostLikeQuery)
     {
         PostLikeListModel result = await Mediator.Send(getListPostLikeQuery);
         return Ok(result);
@@ -47,9 +47,9 @@ public class PostLikesController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdPostLikeQuery getByIdPostLikeQuery)
+        [FromQuery] GetByIdPostLikeQueryRequest getByIdPostLikeQuery)
     {
-        GetByIdPostLikeDto result = await Mediator.Send(getByIdPostLikeQuery);
+        GetByIdPostLikeQueryResponse result = await Mediator.Send(getByIdPostLikeQuery);
         return Ok(result);
     }
 }
