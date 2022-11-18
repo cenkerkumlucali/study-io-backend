@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Quizzes.Answer.Dtos;
+using Application.Features.Quizzes.Answer.Queries.GetListAnswer;
 
 namespace Application.Features.Quizzes.Answer.Models;
 
