@@ -10,7 +10,7 @@ namespace WebAPI.Controllers.Comments;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CommentImagesController:BaseController
+public class CommentFilesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(

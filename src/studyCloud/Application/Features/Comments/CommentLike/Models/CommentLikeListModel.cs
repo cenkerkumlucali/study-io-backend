@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Comments.CommentLike.Dtos;
+using Application.Features.Comments.CommentLike.Queries.GetListCommentLike;
 
 namespace Application.Features.Comments.CommentLike.Models;
 

@@ -4,6 +4,10 @@ using Application.Features.Comments.Comment.Commands.UpdateComment;
 using Application.Features.Comments.Comment.Models;
 using Application.Features.Comments.Comment.Queries.GetByIdComment;
 using Application.Features.Comments.Comment.Queries.GetListComment;
+using Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
+using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
+using Application.Features.Comments.CommentFile.Models;
+using Application.Features.Comments.CommentFile.Queries.GetListCommentFile;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Comments;
@@ -50,5 +54,30 @@ public class CommentsController:BaseController
     {
         GetByIdCommentQueryResponse result = await Mediator.Send(getByIdCommentQuery);
         return Ok(result);
+    }
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Upload(
+        [FromQuery] CreateCommentFileCommandRequest createCommentFileCommandRequest)
+    {
+        createCommentFileCommandRequest.Files = Request.Form.Files;
+        CreateCommentFileCommandResponse response = await Mediator.Send(createCommentFileCommandRequest);
+        return Ok();
+    }
+
+    [HttpGet("[action]/{id}")]
+    public async Task<IActionResult> GetProductImages(
+        [FromRoute] GetListCommentFileQueryRequest listCommentFileQueryRequest)
+    {
+        CommentImageListModel response = await Mediator.Send(listCommentFileQueryRequest);
+        return Ok(response);
+    }
+
+    [HttpDelete("[action]/{id}")]
+    public async Task<IActionResult> DeleteProductImage(
+        [FromRoute] DeleteCommentFileCommandRequest deleteCommentFileCommandRequest, [FromQuery] string imageId)
+    {
+        deleteCommentFileCommandRequest.ImageId = imageId;
+        DeleteCommentFileCommandResponse response = await Mediator.Send(deleteCommentFileCommandRequest);
+        return Ok();
     }
 }
