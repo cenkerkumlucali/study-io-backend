@@ -1,7 +1,7 @@
 ﻿using Application.Features.Users.User.Dtos;
 using Application.Features.Users.User.Rules;
+using Application.Repositories.Services.Users;
 using Application.Security.Hashing;
-using Application.Services.Repositories.Users;
 using AutoMapper;
 using MediatR;
 

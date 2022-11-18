@@ -15,7 +15,8 @@ public class User:BaseEntity
 
     public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
-    public virtual ICollection<Follow.Follow> Follows { get; set; }
+    public virtual ICollection<Follow> Follows { get; set; }
+    public ICollection<UserImageFile> UserImageFiles { get; set; }
 
 
     public User()

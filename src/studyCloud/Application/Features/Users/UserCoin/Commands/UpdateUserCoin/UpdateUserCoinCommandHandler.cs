@@ -1,5 +1,4 @@
-using Application.Features.Users.UserCoin.Dtos;
-using Application.Services.Repositories.Users;
+using Application.Repositories.Services.Users;
 using AutoMapper;
 using MediatR;
 

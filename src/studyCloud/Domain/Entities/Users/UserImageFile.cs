@@ -1,6 +1,6 @@
 namespace Domain.Entities.Users;
 
-public class UserImageFile: File.File
+public class UserImageFile: File
 {
-    public List<User> Users { get; set; }
+    public ICollection<User> Users { get; set; }
 }
