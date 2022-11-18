@@ -1,4 +1,3 @@
-using Application.Features.Feeds.Post.Dtos;
 using MediatR;
 
 namespace Application.Features.Feeds.Post.Commands.UpdatePost;

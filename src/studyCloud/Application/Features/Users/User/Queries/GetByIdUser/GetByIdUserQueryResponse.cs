@@ -1,4 +1,4 @@
-namespace Application.Features.Users.User.Dtos;
+namespace Application.Features.Users.User.Queries.GetByIdUser;
 
 public class GetByIdUserQueryResponse
 {

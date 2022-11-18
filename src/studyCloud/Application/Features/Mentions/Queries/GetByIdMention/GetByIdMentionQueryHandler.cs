@@ -1,7 +1,6 @@
-using Application.Features.Mentions.Dtos;
-using Application.Services.Repositories.Mentions;
+using Application.Repositories.Services.Mentions;
 using AutoMapper;
-using Domain.Entities.Mentions;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Mentions.Queries.GetByIdMention;

@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Mentions.Dtos;
+using Application.Features.Mentions.Queries.GetListMention;
 
 namespace Application.Features.Mentions.Models;
 

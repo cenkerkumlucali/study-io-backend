@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Feeds.PostImage.Dtos;
+using Application.Features.Feeds.PostImage.Queries.GetListPostImage;
 
 namespace Application.Features.Feeds.PostImage.Models;
 

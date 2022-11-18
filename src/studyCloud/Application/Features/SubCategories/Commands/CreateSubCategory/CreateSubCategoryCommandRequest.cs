@@ -1,4 +1,3 @@
-using Application.Features.SubCategories.Dtos;
 using MediatR;
 
 namespace Application.Features.SubCategories.Commands.CreateSubCategory;

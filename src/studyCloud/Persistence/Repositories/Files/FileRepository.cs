@@ -1,6 +1,6 @@
-using Application.Services.Repositories.Files;
+using Application.Repositories.Services.Files;
 using Persistence.Contexts;
-using File = Domain.Entities.File.File;
+using File = Domain.Entities.File;
 
 namespace Persistence.Repositories.Files;
 

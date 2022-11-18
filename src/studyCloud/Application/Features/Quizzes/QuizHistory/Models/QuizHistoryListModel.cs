@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Quizzes.QuizHistory.Dtos;
+using Application.Features.Quizzes.QuizHistory.Queries.GetListQuizHistory;
 
 namespace Application.Features.Quizzes.QuizHistory.Models;
 

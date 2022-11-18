@@ -2,10 +2,11 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Follows.Commands.CreateFollow;
 using Application.Features.Follows.Commands.DeleteFollow;
 using Application.Features.Follows.Commands.UpdateFollow;
-using Application.Features.Follows.Dtos;
 using Application.Features.Follows.Models;
+using Application.Features.Follows.Queries.GetByIdFollow;
+using Application.Features.Follows.Queries.GetListFollow;
 using AutoMapper;
-using Domain.Entities.Follow;
+using Domain.Entities;
 
 namespace Application.Features.Follows.Profiles;
 

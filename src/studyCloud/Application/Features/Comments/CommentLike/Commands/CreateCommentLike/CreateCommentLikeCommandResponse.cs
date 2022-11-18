@@ -1,4 +1,4 @@
-namespace Application.Features.Comments.CommentLike.Dtos;
+namespace Application.Features.Comments.CommentLike.Commands.CreateCommentLike;
 
 public class CreateCommentLikeCommandResponse
 {

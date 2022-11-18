@@ -1,4 +1,4 @@
-namespace Application.Features.Follows.Dtos;
+namespace Application.Features.Follows.Queries.GetListFollow;
 
 public class ListFollowQueryResponse
 {

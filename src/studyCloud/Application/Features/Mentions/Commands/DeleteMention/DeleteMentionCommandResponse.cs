@@ -1,4 +1,4 @@
-namespace Application.Features.Mentions.Dtos;
+namespace Application.Features.Mentions.Commands.DeleteMention;
 
 public class DeleteMentionCommandResponse
 {

@@ -9,8 +9,9 @@ public class Post : BaseEntity
     public int UserId { get; set; }
     public virtual User User { get; set; }
     public string Content { get; set; }
-    public virtual List<Comment>? Comments { get; set; }
-    public virtual List<PostLike>? PostLikes { get; set; }
+    public virtual ICollection<Comment>? Comments { get; set; }
+    public virtual ICollection<PostLike>? PostLikes { get; set; }
+    public ICollection<PostImageFile> PostImageFiles { get; set; }
 
     public Post()
     {

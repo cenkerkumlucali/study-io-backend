@@ -382,3 +382,9 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Nest.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Nest.JsonNetSerializer.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/BouncyCastle.Crypto.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Azure.Core.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Azure.Storage.Blobs.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Azure.Storage.Common.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/System.IO.Hashing.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/System.Memory.Data.dll

@@ -1,4 +1,4 @@
-using Application.Services.Repositories.Categories;
+using Application.Repositories.Services.Categories;
 using Domain.Entities.Categories;
 using Persistence.Contexts;
 

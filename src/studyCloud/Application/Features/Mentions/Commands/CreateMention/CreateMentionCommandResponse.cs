@@ -1,6 +1,6 @@
 using Domain.Enums;
 
-namespace Application.Features.Mentions.Dtos;
+namespace Application.Features.Mentions.Commands.CreateMention;
 
 public class CreateMentionCommandResponse
 {

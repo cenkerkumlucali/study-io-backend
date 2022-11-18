@@ -1,5 +1,4 @@
-using Application.Features.Feeds.PostImage.Dtos;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
@@ -18,8 +17,8 @@ public class DeletePostImageCommandHandler:IRequestHandler<DeletePostImageComman
 
     public async Task<DeletePostFileCommandResponse> Handle(DeletePostImageCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImage postImage = _mapper.Map<Domain.Entities.Feeds.PostImage>(request);
-        Domain.Entities.Feeds.PostImage deletedPostImage =
+        Domain.Entities.Feeds.PostImageFile postImage = _mapper.Map<Domain.Entities.Feeds.PostImageFile>(request);
+        Domain.Entities.Feeds.PostImageFile deletedPostImage =
             await _postImageRepository.DeleteAsync(postImage);
         DeletePostFileCommandResponse deletedPostImageDto =
             _mapper.Map<DeletePostFileCommandResponse>(deletedPostImage);

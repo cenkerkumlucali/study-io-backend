@@ -1,4 +1,3 @@
-using Application.Features.Quizzes.QuizHistory.Dtos;
 using MediatR;
 
 namespace Application.Features.Quizzes.QuizHistory.Commands.DeleteQuizHistory;

@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.QuizHistory.Dtos;
+namespace Application.Features.Quizzes.QuizHistory.Commands.UpdateQuizHistory;
 
 public class UpdateQuizHistoryQueryResponse
 {

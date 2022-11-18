@@ -1,13 +1,13 @@
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities.Categories;
 using Domain.Entities.Comments;
 using Domain.Entities.Common;
 using Domain.Entities.Feeds;
-using Domain.Entities.Follow;
-using Domain.Entities.Mentions;
 using Domain.Entities.Quizzes;
 using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using File = Domain.Entities.File;
 
 namespace Persistence.Contexts
 {
@@ -26,13 +26,13 @@ namespace Persistence.Contexts
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostImage> PostImages { get; set; }
+        public DbSet<PostImageFile> PostImages { get; set; }
         public DbSet<PostLike> PostLikes { get; set; }
         public DbSet<Follow> Follows { get; set; }
         public DbSet<Mention> Mentions { get; set; }
         public DbSet<UserCoin> UserCoins { get; set; }
         public DbSet<UserImageFile> UserImageFiles { get; set; }
-        public DbSet<Domain.Entities.File.File> Files { get; set; }
+        public DbSet<File> Files { get; set; }
 
 
         public BaseDbContext(DbContextOptions options) : base(options)

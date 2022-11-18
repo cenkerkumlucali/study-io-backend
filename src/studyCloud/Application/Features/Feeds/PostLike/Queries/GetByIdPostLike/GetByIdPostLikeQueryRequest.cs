@@ -1,4 +1,3 @@
-using Application.Features.Feeds.PostLike.Dtos;
 using MediatR;
 
 namespace Application.Features.Feeds.PostLike.Queries.GetByIdPostLike;

@@ -1,22 +1,30 @@
+using Application.Abstractions.Services;
+using Application.Repositories.Services.Categories;
+using Application.Repositories.Services.Comments;
+using Application.Repositories.Services.Feeds;
+using Application.Repositories.Services.Files;
+using Application.Repositories.Services.Follows;
+using Application.Repositories.Services.Mentions;
+using Application.Repositories.Services.OperationClaim;
+using Application.Repositories.Services.Quizzes;
+using Application.Repositories.Services.RefreshToken;
+using Application.Repositories.Services.UserOperationClaim;
+using Application.Repositories.Services.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
-using Application.Services.Repositories.Categories;
-using Application.Services.Repositories.Comments;
-using Application.Services.Repositories.Feeds;
-using Application.Services.Repositories.Files;
-using Application.Services.Repositories.Follows;
-using Application.Services.Repositories.Mentions;
-using Application.Services.Repositories.Quizzes;
-using Application.Services.Repositories.Users;
 using Persistence.Repositories.Categories;
 using Persistence.Repositories.Comments;
 using Persistence.Repositories.Feeds;
 using Persistence.Repositories.Files;
 using Persistence.Repositories.Follows;
 using Persistence.Repositories.Mentions;
+using Persistence.Repositories.OperationClaim;
 using Persistence.Repositories.Quizzes;
+using Persistence.Repositories.RefreshToken;
+using Persistence.Repositories.UserOperationClaim;
 using Persistence.Repositories.Users;
+using Persistence.Services;
 
 namespace Persistence
 {
@@ -45,7 +53,13 @@ namespace Persistence
             services.AddScoped<IUserCoinRepository,UserCoinRepository>();
             services.AddScoped<IUserImageRepository,UserImageRepository>();
             services.AddScoped<IUserRepository,UserRepository>();
+            services.AddScoped<IOperationClaimRepository,OperationClaimRepository>();
+            services.AddScoped<IUserOperationClaimRepository,UserOperationClaimRepository>();
             services.AddScoped<IFileRepository,FileRepository>();
+            services.AddScoped<IRefreshTokenRepository,RefreshTokenRepository>();
+            
+            services.AddScoped<IAuthService,AuthManager>();
+            services.AddScoped<IUserService,UserManager>();
            
 
             return services;

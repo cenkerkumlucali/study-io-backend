@@ -2,8 +2,9 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Quizzes.SelectedAnswer.Commands.CreateSelectedAnswer;
 using Application.Features.Quizzes.SelectedAnswer.Commands.DeleteSelectedAnswer;
 using Application.Features.Quizzes.SelectedAnswer.Commands.UpdateSelectedAnswer;
-using Application.Features.Quizzes.SelectedAnswer.Dtos;
 using Application.Features.Quizzes.SelectedAnswer.Models;
+using Application.Features.Quizzes.SelectedAnswer.Queries.GetByIdSelectedAnswer;
+using Application.Features.Quizzes.SelectedAnswer.Queries.GetListSelectedAnswer;
 using AutoMapper;
 
 namespace Application.Features.Quizzes.SelectedAnswer.Profiles;

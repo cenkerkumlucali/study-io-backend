@@ -1,4 +1,3 @@
-using Application.Features.Follows.Dtos;
 using MediatR;
 
 namespace Application.Features.Follows.Queries.GetByIdFollow;

@@ -1,7 +1,6 @@
 using Application.Features.Quizzes.Quiz.Commands.CreateQuiz;
 using Application.Features.Quizzes.Quiz.Commands.DeleteQuiz;
 using Application.Features.Quizzes.Quiz.Commands.UpdateQuiz;
-using Application.Features.Quizzes.Quiz.Dtos;
 using Application.Features.Quizzes.Quiz.Models;
 using Application.Features.Quizzes.Quiz.Queries.GetByIdQuiz;
 using Application.Features.Quizzes.Quiz.Queries.GetListQuiz;

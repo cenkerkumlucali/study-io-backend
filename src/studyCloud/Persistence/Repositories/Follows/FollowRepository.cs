@@ -1,5 +1,5 @@
-using Application.Services.Repositories.Follows;
-using Domain.Entities.Follow;
+using Application.Repositories.Services.Follows;
+using Domain.Entities;
 using Persistence.Contexts;
 
 namespace Persistence.Repositories.Follows;

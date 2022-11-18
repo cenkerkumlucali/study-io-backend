@@ -1,4 +1,4 @@
-namespace Application.Features.Users.User.Dtos;
+namespace Application.Features.Users.User.Commands.CreateUser;
 
 public class CreateUserCommandResponse
 {

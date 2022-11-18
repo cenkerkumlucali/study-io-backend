@@ -1,4 +1,4 @@
-namespace Application.Features.Users.UserCoin.Dtos;
+namespace Application.Features.Users.UserCoin.Queries.GetListUserCoin;
 
 public class ListUserCoinQueryResponse
 {

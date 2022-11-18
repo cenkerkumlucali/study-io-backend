@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.Answer.Dtos;
+namespace Application.Features.Quizzes.Answer.Commands.UpdateAnswer;
 
 public class UpdatedAnswerCommandResponse
 {

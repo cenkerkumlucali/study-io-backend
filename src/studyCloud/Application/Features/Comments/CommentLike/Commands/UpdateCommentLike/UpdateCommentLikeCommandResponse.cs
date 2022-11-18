@@ -1,4 +1,4 @@
-namespace Application.Features.Comments.CommentLike.Dtos;
+namespace Application.Features.Comments.CommentLike.Commands.UpdateCommentLike;
 
 public class UpdateCommentLikeCommandResponse
 {

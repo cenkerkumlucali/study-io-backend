@@ -2,8 +2,9 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Users.UserCoin.Commands.CreateUserCoin;
 using Application.Features.Users.UserCoin.Commands.DeleteUserCoin;
 using Application.Features.Users.UserCoin.Commands.UpdateUserCoin;
-using Application.Features.Users.UserCoin.Dtos;
 using Application.Features.Users.UserCoin.Models;
+using Application.Features.Users.UserCoin.Queries.GetByIdUserCoin;
+using Application.Features.Users.UserCoin.Queries.GetListUserCoin;
 using AutoMapper;
 
 namespace Application.Features.Users.UserCoin.Profiles;

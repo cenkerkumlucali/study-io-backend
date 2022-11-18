@@ -1,4 +1,4 @@
-namespace Application.Features.Feeds.PostImage.Dtos;
+namespace Application.Features.Feeds.PostImage.Commands.DeletePostImage;
 
 public class DeletePostFileCommandResponse
 {

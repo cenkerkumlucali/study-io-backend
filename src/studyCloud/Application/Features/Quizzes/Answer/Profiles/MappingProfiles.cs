@@ -2,8 +2,9 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Quizzes.Answer.Commands.CreateAnswer;
 using Application.Features.Quizzes.Answer.Commands.DeleteAnswer;
 using Application.Features.Quizzes.Answer.Commands.UpdateAnswer;
-using Application.Features.Quizzes.Answer.Dtos;
 using Application.Features.Quizzes.Answer.Models;
+using Application.Features.Quizzes.Answer.Queries.GetByIdAnswer;
+using Application.Features.Quizzes.Answer.Queries.GetListAnswer;
 using AutoMapper;
 
 namespace Application.Features.Quizzes.Answer.Profiles;

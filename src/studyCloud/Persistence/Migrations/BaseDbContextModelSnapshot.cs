@@ -22,6 +22,21 @@ namespace Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("CommentCommentImageFile", b =>
+                {
+                    b.Property<int>("CommentImageFilesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CommentsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CommentImageFilesId", "CommentsId");
+
+                    b.HasIndex("CommentsId");
+
+                    b.ToTable("CommentCommentImageFile");
+                });
+
             modelBuilder.Entity("Domain.Entities.Categories.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -81,9 +96,6 @@ namespace Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CommentImageFileId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
@@ -94,7 +106,7 @@ namespace Persistence.Migrations
                     b.Property<int?>("ParentId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("UpdatedDate")
@@ -104,8 +116,6 @@ namespace Persistence.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CommentImageFileId");
 
                     b.HasIndex("ParentId");
 
@@ -160,9 +170,6 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("PostImageId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -170,8 +177,6 @@ namespace Persistence.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PostImageId");
 
                     b.HasIndex("UserId");
 
@@ -207,7 +212,7 @@ namespace Persistence.Migrations
                     b.ToTable("PostLikes");
                 });
 
-            modelBuilder.Entity("Domain.Entities.File.File", b =>
+            modelBuilder.Entity("Domain.Entities.File", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -241,7 +246,7 @@ namespace Persistence.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("File");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Follow.Follow", b =>
+            modelBuilder.Entity("Domain.Entities.Follow", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +284,7 @@ namespace Persistence.Migrations
                     b.ToTable("Follows", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.Mentions.Mention", b =>
+            modelBuilder.Entity("Domain.Entities.Mention", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -597,12 +602,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("UserImageFileId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserImageFileId");
 
                     b.ToTable("User");
                 });
@@ -663,25 +663,70 @@ namespace Persistence.Migrations
                     b.ToTable("UserOperationClaim");
                 });
 
+            modelBuilder.Entity("PostPostImageFile", b =>
+                {
+                    b.Property<int>("PostImageFilesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PostsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PostImageFilesId", "PostsId");
+
+                    b.HasIndex("PostsId");
+
+                    b.ToTable("PostPostImageFile");
+                });
+
+            modelBuilder.Entity("UserUserImageFile", b =>
+                {
+                    b.Property<int>("UserImageFilesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserImageFilesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UserUserImageFile");
+                });
+
             modelBuilder.Entity("Domain.Entities.Comments.CommentImageFile", b =>
                 {
-                    b.HasBaseType("Domain.Entities.File.File");
+                    b.HasBaseType("Domain.Entities.File");
 
                     b.HasDiscriminator().HasValue("CommentImageFile");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Feeds.PostImage", b =>
+            modelBuilder.Entity("Domain.Entities.Feeds.PostImageFile", b =>
                 {
-                    b.HasBaseType("Domain.Entities.File.File");
+                    b.HasBaseType("Domain.Entities.File");
 
-                    b.HasDiscriminator().HasValue("PostImage");
+                    b.HasDiscriminator().HasValue("PostImageFile");
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.UserImageFile", b =>
                 {
-                    b.HasBaseType("Domain.Entities.File.File");
+                    b.HasBaseType("Domain.Entities.File");
 
                     b.HasDiscriminator().HasValue("UserImageFile");
+                });
+
+            modelBuilder.Entity("CommentCommentImageFile", b =>
+                {
+                    b.HasOne("Domain.Entities.Comments.CommentImageFile", null)
+                        .WithMany()
+                        .HasForeignKey("CommentImageFilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Comments.Comment", null)
+                        .WithMany()
+                        .HasForeignKey("CommentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.Categories.SubCategory", b =>
@@ -697,17 +742,15 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Comments.Comment", b =>
                 {
-                    b.HasOne("Domain.Entities.Comments.CommentImageFile", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("CommentImageFileId");
-
                     b.HasOne("Domain.Entities.Comments.Comment", "Parent")
                         .WithMany("Childrens")
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("Domain.Entities.Feeds.Post", null)
+                    b.HasOne("Domain.Entities.Feeds.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()
@@ -716,6 +759,8 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Parent");
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -741,10 +786,6 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Feeds.Post", b =>
                 {
-                    b.HasOne("Domain.Entities.Feeds.PostImage", null)
-                        .WithMany("Posts")
-                        .HasForeignKey("PostImageId");
-
                     b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -773,7 +814,7 @@ namespace Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Follow.Follow", b =>
+            modelBuilder.Entity("Domain.Entities.Follow", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "Follewer")
                         .WithMany()
@@ -794,7 +835,7 @@ namespace Persistence.Migrations
                     b.Navigation("Following");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Mentions.Mention", b =>
+            modelBuilder.Entity("Domain.Entities.Mention", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "Agent")
                         .WithMany()
@@ -935,13 +976,6 @@ namespace Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Users.User", b =>
-                {
-                    b.HasOne("Domain.Entities.Users.UserImageFile", null)
-                        .WithMany("Users")
-                        .HasForeignKey("UserImageFileId");
-                });
-
             modelBuilder.Entity("Domain.Entities.Users.UserCoin", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "User")
@@ -970,6 +1004,36 @@ namespace Persistence.Migrations
                     b.Navigation("OperationClaim");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PostPostImageFile", b =>
+                {
+                    b.HasOne("Domain.Entities.Feeds.PostImageFile", null)
+                        .WithMany()
+                        .HasForeignKey("PostImageFilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Feeds.Post", null)
+                        .WithMany()
+                        .HasForeignKey("PostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserUserImageFile", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.UserImageFile", null)
+                        .WithMany()
+                        .HasForeignKey("UserImageFilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Users.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.Categories.Category", b =>
@@ -1003,21 +1067,6 @@ namespace Persistence.Migrations
                     b.Navigation("RefreshTokens");
 
                     b.Navigation("UserOperationClaims");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Comments.CommentImageFile", b =>
-                {
-                    b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Feeds.PostImage", b =>
-                {
-                    b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Users.UserImageFile", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,6 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Quizzes.Answer.Models;
-using Application.Services.Repositories.Quizzes;
+using Application.Repositories.Services.Quizzes;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

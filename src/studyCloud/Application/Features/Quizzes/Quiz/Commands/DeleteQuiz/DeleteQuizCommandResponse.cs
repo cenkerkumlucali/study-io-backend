@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.Quiz.Dtos;
+namespace Application.Features.Quizzes.Quiz.Commands.DeleteQuiz;
 
 public class DeleteQuizCommandResponse
 {

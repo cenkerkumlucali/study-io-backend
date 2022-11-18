@@ -1,6 +1,6 @@
 namespace Domain.Entities.Feeds;
 
-public class PostImage:File.File
+public class PostImageFile:File
 {
     public ICollection<Post> Posts { get; set; }
 }

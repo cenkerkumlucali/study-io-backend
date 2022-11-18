@@ -1,7 +1,7 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Users.UserImage.Models;
+using Application.Repositories.Services.Users;
 using Application.RequestParameters;
-using Application.Services.Repositories.Users;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

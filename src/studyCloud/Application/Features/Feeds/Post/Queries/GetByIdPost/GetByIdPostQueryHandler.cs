@@ -1,7 +1,7 @@
-using Application.Features.Feeds.Post.Dtos;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Feeds.Post.Queries.GetByIdPost;
 
@@ -19,7 +19,9 @@ public class GetByIdPostQueryHandler:IRequestHandler<GetByIdPostQueryRequest,Get
     public async Task<GetByIdPostQueryResponse> Handle(GetByIdPostQueryRequest request, CancellationToken cancellationToken)
     {
         Domain.Entities.Feeds.Post? post =
-            await _postRepository.GetAsync(c => c.Id == request.Id);
+            await _postRepository.GetAsync(c => c.Id == request.Id,
+                c=>c.Include(c=>c.Comments)
+                    .Include(c=>c.User));
         GetByIdPostQueryResponse getByIdPostDto =
             _mapper.Map<GetByIdPostQueryResponse>(post);
         return getByIdPostDto;

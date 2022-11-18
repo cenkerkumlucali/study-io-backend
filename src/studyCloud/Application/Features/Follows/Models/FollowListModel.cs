@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.Follows.Dtos;
+using Application.Features.Follows.Queries.GetListFollow;
 
 namespace Application.Features.Follows.Models;
 

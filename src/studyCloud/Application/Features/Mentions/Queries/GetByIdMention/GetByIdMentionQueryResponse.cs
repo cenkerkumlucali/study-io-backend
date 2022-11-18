@@ -1,6 +1,6 @@
 using Domain.Enums;
 
-namespace Application.Features.Mentions.Dtos;
+namespace Application.Features.Mentions.Queries.GetByIdMention;
 
 public class GetByIdMentionQueryResponse
 {

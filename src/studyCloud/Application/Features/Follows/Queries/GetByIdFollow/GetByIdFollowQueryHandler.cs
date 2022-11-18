@@ -1,7 +1,6 @@
-using Application.Features.Follows.Dtos;
-using Application.Services.Repositories.Follows;
+using Application.Repositories.Services.Follows;
 using AutoMapper;
-using Domain.Entities.Follow;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Follows.Queries.GetByIdFollow;

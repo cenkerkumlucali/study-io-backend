@@ -1,7 +1,6 @@
 using Application.Features.Feeds.Post.Commands.CreatePost;
 using Application.Features.Feeds.Post.Commands.DeletePost;
 using Application.Features.Feeds.Post.Commands.UpdatePost;
-using Application.Features.Feeds.Post.Dtos;
 using Application.Features.Feeds.Post.Models;
 using Application.Features.Feeds.Post.Queries.GetByIdPost;
 using Application.Features.Feeds.Post.Queries.GetListPost;

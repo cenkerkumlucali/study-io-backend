@@ -1,6 +1,6 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Feeds.PostImage.Models;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
@@ -19,7 +19,7 @@ public class GetListPostImageQueryHandler : IRequestHandler<GetListPostImageQuer
 
     public async Task<PostImageListModel> Handle(GetListPostImageQueryRequest request, CancellationToken cancellationToken)
     {
-        IPaginate<Domain.Entities.Feeds.PostImage> postImage =
+        IPaginate<Domain.Entities.Feeds.PostImageFile> postImage =
             await _postImageRepository.GetListAsync(index: request.PageRequest.Page,
                 size: request.PageRequest.PageSize);
         PostImageListModel mappedPostImageListModel =

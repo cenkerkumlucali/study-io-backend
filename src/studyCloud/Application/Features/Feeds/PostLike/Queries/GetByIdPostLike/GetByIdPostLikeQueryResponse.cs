@@ -1,4 +1,4 @@
-namespace Application.Features.Feeds.PostLike.Dtos;
+namespace Application.Features.Feeds.PostLike.Queries.GetByIdPostLike;
 
 public class GetByIdPostLikeQueryResponse
 {

@@ -1,5 +1,4 @@
-using Application.Features.Feeds.PostImage.Dtos;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
@@ -19,8 +18,8 @@ public class CreatePostImageCommandHandler:IRequestHandler<CreatePostImageComman
 
     public async Task<CreatePostFileCommandResponse> Handle(CreatePostImageCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImage mappedPostImage = _mapper.Map<Domain.Entities.Feeds.PostImage>(request);
-        Domain.Entities.Feeds.PostImage createdPostImage = await _postImageRepository.AddAsync(mappedPostImage);
+        Domain.Entities.Feeds.PostImageFile mappedPostImage = _mapper.Map<Domain.Entities.Feeds.PostImageFile>(request);
+        Domain.Entities.Feeds.PostImageFile createdPostImage = await _postImageRepository.AddAsync(mappedPostImage);
         CreatePostFileCommandResponse mappedCreatePostImageDto = _mapper.Map<CreatePostFileCommandResponse>(createdPostImage);
         return mappedCreatePostImageDto;
     }

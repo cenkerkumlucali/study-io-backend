@@ -1,6 +1,6 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Feeds.PostLike.Models;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 

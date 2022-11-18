@@ -1,5 +1,5 @@
-using Application.Services.Repositories.Mentions;
-using Domain.Entities.Mentions;
+using Application.Repositories.Services.Mentions;
+using Domain.Entities;
 using Persistence.Contexts;
 
 namespace Persistence.Repositories.Mentions;

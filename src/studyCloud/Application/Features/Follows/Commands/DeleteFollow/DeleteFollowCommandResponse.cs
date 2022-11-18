@@ -1,4 +1,4 @@
-namespace Application.Features.Follows.Dtos;
+namespace Application.Features.Follows.Commands.DeleteFollow;
 
 public class DeleteFollowCommandResponse
 {

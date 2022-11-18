@@ -1,4 +1,4 @@
-namespace Application.Features.Comments.CommentLike.Dtos;
+namespace Application.Features.Comments.CommentLike.Queries.GetByIdCommentLike;
 
 public class GetByIdCommentLikeQueryResponse
 {

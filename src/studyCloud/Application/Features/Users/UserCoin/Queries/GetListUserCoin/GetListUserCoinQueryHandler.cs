@@ -1,6 +1,6 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Users.UserCoin.Models;
-using Application.Services.Repositories.Users;
+using Application.Repositories.Services.Users;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

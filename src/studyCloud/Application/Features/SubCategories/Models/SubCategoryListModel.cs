@@ -1,5 +1,5 @@
 using Application.DTOs.Paging;
-using Application.Features.SubCategories.Dtos;
+using Application.Features.SubCategories.Queries.GetListSubCategory;
 
 namespace Application.Features.SubCategories.Models;
 

@@ -1,6 +1,6 @@
 using Application.Features.Users.User.Dtos;
 using Application.Features.Users.User.Rules;
-using Application.Services.Repositories.Users;
+using Application.Repositories.Services.Users;
 using AutoMapper;
 using MediatR;
 

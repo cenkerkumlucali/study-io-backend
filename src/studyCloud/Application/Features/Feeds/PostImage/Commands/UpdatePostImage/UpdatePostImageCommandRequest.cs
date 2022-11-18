@@ -1,4 +1,3 @@
-using Application.Features.Feeds.PostImage.Dtos;
 using MediatR;
 
 namespace Application.Features.Feeds.PostImage.Commands.UpdatePostImage;

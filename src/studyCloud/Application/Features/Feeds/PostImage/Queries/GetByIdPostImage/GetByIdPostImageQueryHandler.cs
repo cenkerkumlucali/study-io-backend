@@ -1,5 +1,4 @@
-using Application.Features.Feeds.PostImage.Dtos;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
@@ -18,7 +17,7 @@ public class GetByIdPostImageQueryHandler:IRequestHandler<GetByIdPostImageQueryR
 
     public async Task<GetByIdPostFileQueryResponse> Handle(GetByIdPostImageQueryRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImage? postImage =
+        Domain.Entities.Feeds.PostImageFile? postImage =
             await _postImageRepository.GetAsync(c => c.Id == request.Id);
         GetByIdPostFileQueryResponse getByIdPostImageDto =
             _mapper.Map<GetByIdPostFileQueryResponse>(postImage);

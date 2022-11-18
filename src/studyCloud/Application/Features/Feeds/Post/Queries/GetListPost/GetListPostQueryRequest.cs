@@ -7,6 +7,4 @@ namespace Application.Features.Feeds.Post.Queries.GetListPost;
 public class GetListPostQueryRequest : IRequest<PostListModel>
 {
     public PageRequest PageRequest { get; set; }
-
-   
 }

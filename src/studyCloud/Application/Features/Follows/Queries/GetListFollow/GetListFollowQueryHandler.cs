@@ -1,8 +1,8 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.Follows.Models;
-using Application.Services.Repositories.Follows;
+using Application.Repositories.Services.Follows;
 using AutoMapper;
-using Domain.Entities.Follow;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Follows.Queries.GetListFollow;

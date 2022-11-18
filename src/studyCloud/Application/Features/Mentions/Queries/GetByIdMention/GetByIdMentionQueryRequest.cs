@@ -1,4 +1,3 @@
-using Application.Features.Mentions.Dtos;
 using MediatR;
 
 namespace Application.Features.Mentions.Queries.GetByIdMention;

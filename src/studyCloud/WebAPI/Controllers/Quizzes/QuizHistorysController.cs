@@ -1,7 +1,6 @@
 using Application.Features.Quizzes.QuizHistory.Commands.CreateQuizHistory;
 using Application.Features.Quizzes.QuizHistory.Commands.DeleteQuizHistory;
 using Application.Features.Quizzes.QuizHistory.Commands.UpdateQuizHistory;
-using Application.Features.Quizzes.QuizHistory.Dtos;
 using Application.Features.Quizzes.QuizHistory.Models;
 using Application.Features.Quizzes.QuizHistory.Queries.GetByIdQuizHistory;
 using Application.Features.Quizzes.QuizHistory.Queries.GetListQuizHistory;

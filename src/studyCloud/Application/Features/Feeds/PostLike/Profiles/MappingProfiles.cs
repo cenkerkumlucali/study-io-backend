@@ -2,8 +2,9 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Feeds.PostLike.Commands.CreatePostLike;
 using Application.Features.Feeds.PostLike.Commands.DeletePostLike;
 using Application.Features.Feeds.PostLike.Commands.UpdatePostLike;
-using Application.Features.Feeds.PostLike.Dtos;
 using Application.Features.Feeds.PostLike.Models;
+using Application.Features.Feeds.PostLike.Queries.GetByIdPostLike;
+using Application.Features.Feeds.PostLike.Queries.GetListPostLike;
 using AutoMapper;
 
 namespace Application.Features.Feeds.PostLike.Profiles;

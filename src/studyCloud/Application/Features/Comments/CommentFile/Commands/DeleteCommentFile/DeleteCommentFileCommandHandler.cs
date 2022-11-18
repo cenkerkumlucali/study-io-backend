@@ -1,4 +1,4 @@
-using Application.Services.Repositories.Comments;
+using Application.Repositories.Services.Comments;
 using AutoMapper;
 using MediatR;
 

@@ -1,4 +1,4 @@
-using Application.Services.Repositories.Quizzes;
+using Application.Repositories.Services.Quizzes;
 using Domain.Entities.Quizzes;
 using Persistence.Contexts;
 

@@ -1,5 +1,4 @@
-using Application.Features.Quizzes.SelectedAnswer.Dtos;
-using Application.Services.Repositories.Quizzes;
+using Application.Repositories.Services.Quizzes;
 using AutoMapper;
 using MediatR;
 

@@ -1,5 +1,5 @@
 using Application.Features.Categories.Rules;
-using Application.Services.Repositories.Categories;
+using Application.Repositories.Services.Categories;
 using AutoMapper;
 using MediatR;
 

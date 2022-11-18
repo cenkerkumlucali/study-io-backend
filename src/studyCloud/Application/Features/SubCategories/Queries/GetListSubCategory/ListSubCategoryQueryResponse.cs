@@ -1,4 +1,4 @@
-namespace Application.Features.SubCategories.Dtos;
+namespace Application.Features.SubCategories.Queries.GetListSubCategory;
 
 public class ListSubCategoryQueryResponse
 {

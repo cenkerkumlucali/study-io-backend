@@ -1,5 +1,4 @@
-using Application.Features.Feeds.Post.Dtos;
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 

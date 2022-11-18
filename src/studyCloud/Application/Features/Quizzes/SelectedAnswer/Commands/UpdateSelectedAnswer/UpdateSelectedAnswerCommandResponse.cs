@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.SelectedAnswer.Dtos;
+namespace Application.Features.Quizzes.SelectedAnswer.Commands.UpdateSelectedAnswer;
 
 public class UpdateSelectedAnswerCommandResponse
 {

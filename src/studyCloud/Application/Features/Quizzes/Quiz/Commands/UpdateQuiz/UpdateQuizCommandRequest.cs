@@ -1,4 +1,3 @@
-using Application.Features.Quizzes.Quiz.Dtos;
 using MediatR;
 
 namespace Application.Features.Quizzes.Quiz.Commands.UpdateQuiz;

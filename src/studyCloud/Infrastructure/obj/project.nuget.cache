@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Hdd46TbYoLzJbnEtZfDdBn3n2OZRd3FnH9ibNGEdiafrLZef6sEUO90OUyVB0xioFseDYRW5Kg7IL9x3x5jlag==",
+  "dgSpecHash": "y+43Eo1stsVqEMWFtkjN/7ZnSPQ6zwCHqcfT8uSjnFlD0QVYiF1NLbRTZHHdmqBhw9GXbeVMKyNHdsBVWoljCQ==",
   "success": true,
   "projectFilePath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/cenkerkumlucali/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/azure.storage.blobs/12.14.1/azure.storage.blobs.12.14.1.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/azure.storage.common/12.13.0/azure.storage.common.12.13.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/elasticsearch.net/7.17.5/elasticsearch.net.7.17.5.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/fluentvalidation/10.3.6/fluentvalidation.10.3.6.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/mailkit/3.4.2/mailkit.3.4.2.nupkg.sha512",
@@ -36,6 +39,7 @@
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.aspnetcore.routing/2.2.0/microsoft.aspnetcore.routing.2.2.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.aspnetcore.routing.abstractions/2.2.0/microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.dotnet.platformabstractions/2.1.0/microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/microsoft.entityframeworkcore/6.0.8/microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
@@ -86,9 +90,12 @@
     "/Users/cenkerkumlucali/.nuget/packages/system.io/4.1.0/system.io.4.1.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.io.filesystem/4.0.1/system.io.filesystem.4.0.1.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.io.filesystem.primitives/4.0.1/system.io.filesystem.primitives.4.0.1.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.io.hashing/6.0.0/system.io.hashing.6.0.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.linq/4.1.0/system.linq.4.1.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.linq.dynamic.core/1.2.17/system.linq.dynamic.core.1.2.17.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.linq.expressions/4.1.0/system.linq.expressions.4.1.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.memory.data/1.0.2/system.memory.data.1.0.2.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.objectmodel/4.0.12/system.objectmodel.4.0.12.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.reflection/4.1.0/system.reflection.4.1.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.reflection.emit/4.0.1/system.reflection.emit.4.0.1.nupkg.sha512",
@@ -111,10 +118,11 @@
     "/Users/cenkerkumlucali/.nuget/packages/system.security.permissions/4.5.0/system.security.permissions.4.5.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.security.principal.windows/4.5.0/system.security.principal.windows.4.5.0.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.text.encoding/4.0.11/system.text.encoding.4.0.11.nupkg.sha512",
-    "/Users/cenkerkumlucali/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.text.encodings.web/4.7.2/system.text.encodings.web.4.7.2.nupkg.sha512",
+    "/Users/cenkerkumlucali/.nuget/packages/system.text.json/4.7.2/system.text.json.4.7.2.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.threading/4.0.11/system.threading.4.0.11.nupkg.sha512",
     "/Users/cenkerkumlucali/.nuget/packages/system.threading.tasks/4.0.11/system.threading.tasks.4.0.11.nupkg.sha512",
-    "/Users/cenkerkumlucali/.nuget/packages/system.threading.tasks.extensions/4.5.1/system.threading.tasks.extensions.4.5.1.nupkg.sha512"
+    "/Users/cenkerkumlucali/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

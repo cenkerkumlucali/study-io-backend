@@ -1,4 +1,4 @@
-using Application.Services.Repositories.Feeds;
+using Application.Repositories.Services.Feeds;
 using Domain.Entities.Feeds;
 using Persistence.Contexts;
 

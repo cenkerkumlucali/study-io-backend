@@ -2,8 +2,9 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Comments.CommentLike.Commands.CreateCommentLike;
 using Application.Features.Comments.CommentLike.Commands.DeleteCommentLike;
 using Application.Features.Comments.CommentLike.Commands.UpdateCommentLike;
-using Application.Features.Comments.CommentLike.Dtos;
 using Application.Features.Comments.CommentLike.Models;
+using Application.Features.Comments.CommentLike.Queries.GetByIdCommentLike;
+using Application.Features.Comments.CommentLike.Queries.GetListCommentLike;
 using AutoMapper;
 
 namespace Application.Features.Comments.CommentLike.Profiles;

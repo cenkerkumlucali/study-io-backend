@@ -5,6 +5,8 @@ using Application.Features.Users.User.Commands.UpdateUser;
 using Application.Features.Users.User.Commands.UpdateUserFromAuth;
 using Application.Features.Users.User.Dtos;
 using Application.Features.Users.User.Models;
+using Application.Features.Users.User.Queries.GetByIdUser;
+using Application.Features.Users.User.Queries.GetListUser;
 using AutoMapper;
 
 namespace Application.Features.Users.User.Profiles;

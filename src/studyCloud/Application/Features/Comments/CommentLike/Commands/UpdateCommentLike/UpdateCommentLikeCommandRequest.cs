@@ -1,4 +1,3 @@
-using Application.Features.Comments.CommentLike.Dtos;
 using MediatR;
 
 namespace Application.Features.Comments.CommentLike.Commands.UpdateCommentLike;

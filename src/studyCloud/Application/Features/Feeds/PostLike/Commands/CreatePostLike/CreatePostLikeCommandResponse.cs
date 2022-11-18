@@ -1,4 +1,4 @@
-namespace Application.Features.Feeds.PostLike.Dtos;
+namespace Application.Features.Feeds.PostLike.Commands.CreatePostLike;
 
 public class CreatePostLikeCommandResponse
 {

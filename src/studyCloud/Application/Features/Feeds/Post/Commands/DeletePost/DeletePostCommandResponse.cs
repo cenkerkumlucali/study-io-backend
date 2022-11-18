@@ -1,4 +1,4 @@
-namespace Application.Features.Feeds.Post.Dtos;
+namespace Application.Features.Feeds.Post.Commands.DeletePost;
 
 public class DeletePostCommandResponse
 {

@@ -1,4 +1,3 @@
-using Application.Features.Users.UserCoin.Dtos;
 using MediatR;
 
 namespace Application.Features.Users.UserCoin.Queries.GetByIdUserCoin;

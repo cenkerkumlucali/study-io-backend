@@ -1,6 +1,6 @@
 using Application.Abstractions.Services.Paging;
 using Application.Features.SubCategories.Models;
-using Application.Services.Repositories.Categories;
+using Application.Repositories.Services.Categories;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

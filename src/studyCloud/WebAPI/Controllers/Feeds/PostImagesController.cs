@@ -1,7 +1,6 @@
 using Application.Features.Feeds.PostImage.Commands.CreatePostImage;
 using Application.Features.Feeds.PostImage.Commands.DeletePostImage;
 using Application.Features.Feeds.PostImage.Commands.UpdatePostImage;
-using Application.Features.Feeds.PostImage.Dtos;
 using Application.Features.Feeds.PostImage.Models;
 using Application.Features.Feeds.PostImage.Queries.GetByIdPostImage;
 using Application.Features.Feeds.PostImage.Queries.GetListPostImage;

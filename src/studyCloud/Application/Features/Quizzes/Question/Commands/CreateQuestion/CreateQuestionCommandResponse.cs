@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.Question.Dtos;
+namespace Application.Features.Quizzes.Question.Commands.CreateQuestion;
 
 public class CreateQuestionCommandResponse
 {

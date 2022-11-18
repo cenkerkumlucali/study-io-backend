@@ -1,4 +1,4 @@
-namespace Application.Features.Quizzes.Answer.Dtos;
+namespace Application.Features.Quizzes.Answer.Queries.GetListAnswer;
 
 public class ListAnswerQueryResponse
 {
