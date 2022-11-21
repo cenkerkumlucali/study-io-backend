@@ -14,9 +14,9 @@ public class CommentFilesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateCommentFileCommandRequest createCommentImageCommand)
+        [FromQuery]  CreateCommentImageFileCommandRequest createCommentImageCommand)
     {
-        CreateCommentFileCommandResponse result = await Mediator.Send(createCommentImageCommand);
+        CreateCommentImageFileCommandResponse result = await Mediator.Send(createCommentImageCommand);
         return Created("", result);
     }
 

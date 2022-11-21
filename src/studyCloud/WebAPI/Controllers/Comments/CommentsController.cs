@@ -57,10 +57,10 @@ public class CommentsController:BaseController
     }
     [HttpPost("[action]")]
     public async Task<IActionResult> Upload(
-        [FromQuery] CreateCommentFileCommandRequest createCommentFileCommandRequest)
+        [FromQuery] CreateCommentImageFileCommandRequest createCommentFileCommandRequest)
     {
         createCommentFileCommandRequest.Files = Request.Form.Files;
-        CreateCommentFileCommandResponse response = await Mediator.Send(createCommentFileCommandRequest);
+        CreateCommentImageFileCommandResponse response = await Mediator.Send(createCommentFileCommandRequest);
         return Ok();
     }
 
