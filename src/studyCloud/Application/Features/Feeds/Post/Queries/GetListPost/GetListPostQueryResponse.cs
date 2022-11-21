@@ -6,8 +6,6 @@ public class GetListPostQueryResponse
     public string FullName { get; set; }
     public string Content { get; set; }
     public string FilePath { get; set; }//TODO liste olarak resimleri veya dosyaları çek
-
     public int CommentCount { get; set; }
-    // public ICollection<PostCommentDto> Comments { get; set; }
     public DateTime CreatedDate { get; set; }
 }

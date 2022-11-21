@@ -22,14 +22,14 @@ public class MappingProfiles : Profile
 
         CreateMap<Domain.Entities.Feeds.Post, GetListPostQueryResponse>()
             .ForMember(c => c.FullName, c => c.MapFrom(c => c.User.FirstName + " " + c.User.LastName))
-            .ForPath(c => c.CommentCount, opt=>opt.MapFrom(c=>c.Comments.Count))
+            .ForPath(c => c.CommentCount, opt => opt.MapFrom(c => c.Comments.Count))
             .ReverseMap();
 
         CreateMap<IPaginate<Domain.Entities.Feeds.Post>, PostListModel>().ReverseMap();
         CreateMap<Domain.Entities.Feeds.Post, GetByIdPostQueryResponse>()
             .ForMember(c => c.FullName, c => c.MapFrom(c => c.User.FirstName + " " + c.User.LastName))
-            .ForPath(c => c.Comments, opt=>opt.MapFrom(c=>c.Comments))
-            .ForPath(c => c.CommentCount, opt=>opt.MapFrom(c=>c.Comments.Count))
+            .ForPath(c => c.Comments, opt => opt.MapFrom(c => c.Comments))
+            .ForPath(c => c.CommentCount, opt => opt.MapFrom(c => c.Comments.Count))
             .ReverseMap();
     }
 }
