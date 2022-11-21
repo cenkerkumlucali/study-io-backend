@@ -23,7 +23,7 @@ public class StorageService : IStorageService
     public List<string> GetFiles(string pathOrContainerName)
         => _storage.GetFiles(pathOrContainerName);
 
-    public bool HasFile(string pathOrContainerName, string fileName)
+    public Task<bool> HasFile(string pathOrContainerName, string fileName)
         => _storage.HasFile(pathOrContainerName, fileName);
 
     public Task<List<(string fileName, string pathOrContainerName)>> UploadAsync(string pathOrContainerName,

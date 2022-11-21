@@ -1,6 +1,6 @@
 namespace Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
 
-public class CreateCommentFileCommandResponse
+public class CreateCommentImageFileCommandResponse
 {
     public int Id { get; set; }
     public int UserId { get; set; }

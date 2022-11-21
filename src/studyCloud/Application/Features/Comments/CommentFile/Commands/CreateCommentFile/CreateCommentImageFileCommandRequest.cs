@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
 
-public class CreateCommentFileCommandRequest:IRequest<CreateCommentFileCommandResponse>
+public class CreateCommentImageFileCommandRequest:IRequest<CreateCommentImageFileCommandResponse>
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
     public IFormFileCollection? Files { get; set; }
 }
