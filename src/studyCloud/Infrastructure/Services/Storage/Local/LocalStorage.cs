@@ -41,7 +41,7 @@ public class LocalStorage: Storage, ILocalStorage
         List<(string fileName, string path)> datas = new();
         foreach (IFormFile file in files)
         {
-            string fileNewName = await FileRenameAsync(path, file.Name, HasFile);
+            string fileNewName = await FileRenameAsync(path, file.Name, (path1, fileName) => HasFile(path1, fileName));
             await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
             datas.Add((fileNewName, $"{path}\\{fileNewName}"));
         }
@@ -58,5 +58,5 @@ public class LocalStorage: Storage, ILocalStorage
         return directoryInfo.GetFiles().Select(c => c.Name).ToList();
     }
 
-    public bool HasFile(string path, string fileName) => File.Exists($"{path}\\{fileName}");
+    public async Task<bool> HasFile(string path, string fileName) =>  File.Exists($"{path}\\{fileName}");
 }

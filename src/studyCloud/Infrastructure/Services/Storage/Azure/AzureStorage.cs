@@ -25,7 +25,7 @@ public class AzureStorage: Storage, IAzureStorage
         List<(string fileName, string pathOrContainerName)> datas = new();
         foreach (IFormFile file in files)
         {
-            string fileNewName = await FileRenameAsync(containerName, file.Name, HasFile);
+            string fileNewName = await FileRenameAsync(containerName, file.Name, (containerName1, fileName) => HasFile(containerName1, fileName));
 
             BlobClient blobClient = _blobContainerClient.GetBlobClient(fileNewName);
             await blobClient.UploadAsync(file.OpenReadStream());
@@ -48,7 +48,7 @@ public class AzureStorage: Storage, IAzureStorage
         return _blobContainerClient.GetBlobs().Select(c => c.Name).ToList();
     }
 
-    public bool HasFile(string containerName, string fileName)
+    public async Task<bool> HasFile(string containerName, string fileName)
     {
         _blobContainerClient = _blobServiceClient.GetBlobContainerClient(containerName);
         return _blobContainerClient.GetBlobs().Any(c => c.Name == fileName);

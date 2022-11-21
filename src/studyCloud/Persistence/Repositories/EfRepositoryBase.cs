@@ -69,6 +69,14 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         await Context.SaveChangesAsync();
         return entity;
     }
+    
+    public async Task<bool> AddRangeAsync(List<TEntity> entities)
+    {
+        await Context.Set<TEntity>().AddRangeAsync(entities);
+        await Context.SaveChangesAsync();
+        return true;
+    }
+
 
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {

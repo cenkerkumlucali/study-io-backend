@@ -22,6 +22,7 @@ public interface IAsyncRepository<T> : IQuery<T> where T : BaseEntity
                                              CancellationToken cancellationToken = default);
 
     Task<T> AddAsync(T entity);
+    Task<bool> AddRangeAsync(List<T> entities);
     Task<T> UpdateAsync(T entity);
     Task<T> DeleteAsync(T entity);
 }
