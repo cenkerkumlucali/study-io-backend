@@ -9,7 +9,6 @@ namespace Infrastructure.Services.Storage.AWS;
 public class AwsStorage : Storage, IAwsStorage
 {
     private IAmazonS3 _amazonS3;
-    static private AmazonS3Client s3Client = new AmazonS3Client();
 
     public AwsStorage(IAmazonS3 amazonS3)
     {
@@ -32,10 +31,14 @@ public class AwsStorage : Storage, IAwsStorage
             {
                 BucketName = bucketName,
                 Key = $"{bucketName}/{fileNewName}",
-                InputStream = file.OpenReadStream()
+                InputStream = file.OpenReadStream(),
+                AutoCloseStream = true,
+                CannedACL = S3CannedACL.PublicRead,
+                StorageClass = S3StorageClass.ReducedRedundancy
             };
             request.Metadata.Add("Content-Type", file.ContentType);
             datas.Add((fileNewName, $"{bucketName}/{fileNewName}"));
+            
             await _amazonS3.PutObjectAsync(request);
         }
 
@@ -52,14 +55,9 @@ public class AwsStorage : Storage, IAwsStorage
 
     public async Task<bool> HasFile(string bucketName, string fileName)
     {
-        ListObjectsV2Request request = new()
-        {
-            BucketName = bucketName,
-        };
+        ListObjectsV2Request request = new() { BucketName = bucketName, };
         ListObjectsV2Response response = await _amazonS3.ListObjectsV2Async(request);
-
         bool result = response.S3Objects.Any(c => c.Key == $"{bucketName}/{fileName}");
-
         return result;
     }
 
@@ -71,6 +69,7 @@ public class AwsStorage : Storage, IAwsStorage
         ListObjectsV2Request request = new()
         {
             BucketName = bucketName,
+            Prefix = prefix
         };
         ListObjectsV2Response response = await _amazonS3.ListObjectsV2Async(request);
         List<S3ObjectDto> objectDatas = response.S3Objects.Select(@object =>
