@@ -51,13 +51,13 @@ public class PostsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdPostQueryRequest getByIdPostQuery)
+        [FromRoute] GetByIdPostQueryRequest getByIdPostQuery)
     {
         GetByIdPostQueryResponse result = await Mediator.Send(getByIdPostQuery);
         return Ok(result);
     }
     [HttpPost("[action]")]
-    public async Task<IActionResult> Upload(
+    public async Task<IActionResult> UploadImage(
         [FromQuery] CreatePostImageFileCommandRequest createPostImageFileCommandRequest)
     {
         createPostImageFileCommandRequest.Files = Request.Form.Files;
@@ -66,7 +66,7 @@ public class PostsController:BaseController
     }
 
     [HttpGet("[action]/{id}")]
-    public async Task<IActionResult> GetCommentImages(
+    public async Task<IActionResult> GetPostImages(
         [FromRoute] GetListPostImageFileQueryRequest getListPostImageFileQueryRequest)
     {
         PostImageListModel response = await Mediator.Send(getListPostImageFileQueryRequest);
@@ -74,7 +74,7 @@ public class PostsController:BaseController
     }
 
     [HttpDelete("[action]/{id}")]
-    public async Task<IActionResult> DeleteProductImage(
+    public async Task<IActionResult> DeleteImage(
         [FromRoute] DeletePostImageCommandRequest deletePostImageCommandRequest, [FromQuery] int imageId)
     {
         deletePostImageCommandRequest.ImageId = imageId;

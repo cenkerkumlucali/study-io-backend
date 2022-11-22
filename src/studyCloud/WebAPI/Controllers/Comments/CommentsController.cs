@@ -55,7 +55,7 @@ public class CommentsController:BaseController
         return Ok(result);
     }
     [HttpPost("[action]")]
-    public async Task<IActionResult> Upload(
+    public async Task<IActionResult> UploadImage(
         [FromQuery] CreateCommentImageFileCommandRequest createCommentFileCommandRequest)
     {
         createCommentFileCommandRequest.Files = Request.Form.Files;
@@ -72,7 +72,7 @@ public class CommentsController:BaseController
     }
 
     [HttpDelete("[action]/{id}")]
-    public async Task<IActionResult> DeleteProductImage(
+    public async Task<IActionResult> DeleteImage(
         [FromRoute] DeleteCommentFileCommandRequest deleteCommentFileCommandRequest, [FromQuery] string imageId)
     {
         deleteCommentFileCommandRequest.ImageId = imageId;
