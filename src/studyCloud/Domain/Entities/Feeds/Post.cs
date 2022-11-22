@@ -11,7 +11,7 @@ public class Post : BaseEntity
     public string Content { get; set; }
     public virtual ICollection<Comment>? Comments { get; set; }
     public virtual ICollection<PostLike>? PostLikes { get; set; }
-    public ICollection<PostImageFile> PostImageFiles { get; set; }
+    public virtual ICollection<PostImageFile> PostImageFiles { get; set; }
 
     public Post()
     {
