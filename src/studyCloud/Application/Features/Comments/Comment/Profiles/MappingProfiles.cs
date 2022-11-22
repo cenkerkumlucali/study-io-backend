@@ -25,6 +25,7 @@ public class MappingProfiles : Profile
             .ForMember(c => c.Childrens, c => c.MapFrom(c => c.Childrens))
             .ForMember(c => c.LikeCount, c => c.MapFrom(c => c.CommentLikes.Count))
             .ForMember(c => c.CommentCount, c => c.MapFrom(c => c.Childrens.Count))
+            .ForMember(c => c.Urls, c => c.MapFrom(c => c.CommentImageFiles.Select(c=>c.Url)))
             .ReverseMap();
 
         CreateMap<Domain.Entities.Comments.Comment, ListCommentQueryResponse>().ReverseMap();

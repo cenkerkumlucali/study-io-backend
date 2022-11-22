@@ -1,8 +1,6 @@
-using Application.Abstractions.Services.Paging;
 using Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
 using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
 using Application.Features.Comments.CommentFile.Commands.UpdateCommentFile;
-using Application.Features.Comments.CommentFile.Models;
 using Application.Features.Comments.CommentFile.Queries.GetByIdCommentFile;
 using Application.Features.Comments.CommentFile.Queries.GetListCommentFile;
 using AutoMapper;
@@ -20,7 +18,6 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Comments.CommentImageFile, UpdateCommentFileCommandResponse>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile, UpdateCommentFileCommandRequest>().ReverseMap();
         
-        CreateMap<IPaginate<Domain.Entities.Comments.CommentImageFile>,CommentImageListModel>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile,ListCommentFileQueryResponse>().ReverseMap();
 
         CreateMap<Domain.Entities.Comments.CommentImageFile, GetByIdCommentFileQueryResponse>().ReverseMap();
