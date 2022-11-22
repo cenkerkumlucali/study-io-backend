@@ -2,14 +2,14 @@ using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
-namespace Application.Features.Feeds.PostImage.Queries.GetByIdPostImage;
+namespace Application.Features.Feeds.PostImageFile.Queries.GetByIdPostImage;
 
 public class GetByIdPostImageQueryHandler:IRequestHandler<GetByIdPostImageQueryRequest,GetByIdPostFileQueryResponse>
 {
-    private readonly IPostImageRepository _postImageRepository;
+    private readonly IPostImageFileRepository _postImageRepository;
     private IMapper _mapper;
 
-    public GetByIdPostImageQueryHandler(IPostImageRepository postImageRepository, IMapper mapper)
+    public GetByIdPostImageQueryHandler(IPostImageFileRepository postImageRepository, IMapper mapper)
     {
         _postImageRepository = postImageRepository;
         _mapper = mapper;

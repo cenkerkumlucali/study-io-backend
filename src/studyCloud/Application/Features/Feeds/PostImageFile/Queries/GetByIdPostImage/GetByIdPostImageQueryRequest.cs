@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Features.Feeds.PostImage.Queries.GetByIdPostImage;
+namespace Application.Features.Feeds.PostImageFile.Queries.GetByIdPostImage;
 
 public class GetByIdPostImageQueryRequest:IRequest<GetByIdPostFileQueryResponse>
 {

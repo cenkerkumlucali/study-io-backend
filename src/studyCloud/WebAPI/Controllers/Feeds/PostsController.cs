@@ -1,9 +1,14 @@
+using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
 using Application.Features.Feeds.Post.Commands.CreatePost;
 using Application.Features.Feeds.Post.Commands.DeletePost;
 using Application.Features.Feeds.Post.Commands.UpdatePost;
 using Application.Features.Feeds.Post.Models;
 using Application.Features.Feeds.Post.Queries.GetByIdPost;
 using Application.Features.Feeds.Post.Queries.GetListPost;
+using Application.Features.Feeds.PostImageFile.Commands.CreatePostImage;
+using Application.Features.Feeds.PostImageFile.Commands.DeletePostImage;
+using Application.Features.Feeds.PostImageFile.Models;
+using Application.Features.Feeds.PostImageFile.Queries.GetListPostImage;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Feeds;
@@ -50,5 +55,30 @@ public class PostsController:BaseController
     {
         GetByIdPostQueryResponse result = await Mediator.Send(getByIdPostQuery);
         return Ok(result);
+    }
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Upload(
+        [FromQuery] CreatePostImageFileCommandRequest createPostImageFileCommandRequest)
+    {
+        createPostImageFileCommandRequest.Files = Request.Form.Files;
+        CreatePostImageFileCommandResponse response = await Mediator.Send(createPostImageFileCommandRequest);
+        return Ok();
+    }
+
+    [HttpGet("[action]/{id}")]
+    public async Task<IActionResult> GetCommentImages(
+        [FromRoute] GetListPostImageFileQueryRequest getListPostImageFileQueryRequest)
+    {
+        PostImageListModel response = await Mediator.Send(getListPostImageFileQueryRequest);
+        return Ok(response);
+    }
+
+    [HttpDelete("[action]/{id}")]
+    public async Task<IActionResult> DeleteProductImage(
+        [FromRoute] DeletePostImageCommandRequest deletePostImageCommandRequest, [FromQuery] int imageId)
+    {
+        deletePostImageCommandRequest.ImageId = imageId;
+        DeletePostFileCommandResponse response = await Mediator.Send(deletePostImageCommandRequest);
+        return Ok(response);
     }
 }

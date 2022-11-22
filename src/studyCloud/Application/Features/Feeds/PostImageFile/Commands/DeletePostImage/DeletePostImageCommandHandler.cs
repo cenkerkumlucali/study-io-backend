@@ -2,14 +2,14 @@ using Application.Repositories.Services.Feeds;
 using AutoMapper;
 using MediatR;
 
-namespace Application.Features.Feeds.PostImage.Commands.DeletePostImage;
+namespace Application.Features.Feeds.PostImageFile.Commands.DeletePostImage;
 
 public class DeletePostImageCommandHandler:IRequestHandler<DeletePostImageCommandRequest,DeletePostFileCommandResponse>
 {
-    private IPostImageRepository _postImageRepository;
+    private IPostImageFileRepository _postImageRepository;
     private IMapper _mapper;
 
-    public DeletePostImageCommandHandler(IPostImageRepository postImageRepository, IMapper mapper)
+    public DeletePostImageCommandHandler(IPostImageFileRepository postImageRepository, IMapper mapper)
     {
         _postImageRepository = postImageRepository;
         _mapper = mapper;

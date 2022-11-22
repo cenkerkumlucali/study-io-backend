@@ -1,6 +1,6 @@
-namespace Application.Features.Feeds.PostImage.Commands.CreatePostImage;
+namespace Application.Features.Feeds.PostImageFile.Commands.UpdatePostImage;
 
-public class CreatePostFileCommandResponse
+public class UpdatePostImageFileQueryResponse
 {
     public int Id { get; set; }
     public int UserId { get; set; }
