@@ -6,10 +6,10 @@ namespace Application.Features.Comments.CommentFile.Queries.GetByIdCommentFile;
 
 public class GetByIdCommentFileQueryHandler:IRequestHandler<GetByIdCommentFileQueryRequest,GetByIdCommentFileQueryResponse>
 {
-    private ICommentImageRepository _commentImageRepository;
+    private ICommentImageFileRepository _commentImageRepository;
     private IMapper _mapper;
 
-    public GetByIdCommentFileQueryHandler(ICommentImageRepository commentImageRepository, IMapper mapper)
+    public GetByIdCommentFileQueryHandler(ICommentImageFileRepository commentImageRepository, IMapper mapper)
     {
         _commentImageRepository = commentImageRepository;
         _mapper = mapper;

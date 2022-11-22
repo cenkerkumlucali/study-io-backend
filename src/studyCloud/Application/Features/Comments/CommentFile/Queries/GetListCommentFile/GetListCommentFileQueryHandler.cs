@@ -1,5 +1,4 @@
 using Application.Abstractions.Services.Paging;
-using Application.Features.Comments.CommentFile.Models;
 using Application.Repositories.Services.Comments;
 using AutoMapper;
 using MediatR;
@@ -7,26 +6,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Comments.CommentFile.Queries.GetListCommentFile;
 
-public class GetListCommentFileQueryHandler : IRequestHandler<GetListCommentFileQueryRequest, CommentImageListModel>
+public class GetListCommentFileQueryHandler : IRequestHandler<GetListCommentFileQueryRequest, ListCommentFileQueryResponse>
 {
-    private ICommentImageRepository _commentImageRepository;
+    private ICommentImageFileRepository _commentImageRepository;
     private IMapper _mapper;
 
-    public GetListCommentFileQueryHandler(ICommentImageRepository commentImageRepository, IMapper mapper)
+    public GetListCommentFileQueryHandler(ICommentImageFileRepository commentImageRepository, IMapper mapper)
     {
         _commentImageRepository = commentImageRepository;
         _mapper = mapper;
     }
 
-    public async Task<CommentImageListModel> Handle(GetListCommentFileQueryRequest request,
+    public async Task<ListCommentFileQueryResponse> Handle(GetListCommentFileQueryRequest request,
         CancellationToken cancellationToken)
     {
         IPaginate<Domain.Entities.Comments.CommentImageFile> commentImage =
-            await _commentImageRepository.GetListAsync(index: request.PageRequest.Page,
-                size: request.PageRequest.PageSize,
+            await _commentImageRepository.GetListAsync(c=>c.Id == request.Id,
                 include: c => c.Include(c=>c.Comments));
-        CommentImageListModel mappedCommentImageListModel =
-            _mapper.Map<CommentImageListModel>(commentImage);
+        ListCommentFileQueryResponse mappedCommentImageListModel =
+            _mapper.Map<ListCommentFileQueryResponse>(commentImage);
         return mappedCommentImageListModel;
     }
 }

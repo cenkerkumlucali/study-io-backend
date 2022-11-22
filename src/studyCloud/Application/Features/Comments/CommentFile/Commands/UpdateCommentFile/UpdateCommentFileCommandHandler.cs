@@ -6,10 +6,10 @@ namespace Application.Features.Comments.CommentFile.Commands.UpdateCommentFile;
 
 public class UpdateCommentFileCommandHandler:IRequestHandler<UpdateCommentFileCommandRequest,UpdateCommentFileCommandResponse>
 {
-    private ICommentImageRepository _commentImageRepository;
+    private ICommentImageFileRepository _commentImageRepository;
     private IMapper _mapper;
 
-    public UpdateCommentFileCommandHandler(ICommentImageRepository commentImageRepository, IMapper mapper)
+    public UpdateCommentFileCommandHandler(ICommentImageFileRepository commentImageRepository, IMapper mapper)
     {
         _commentImageRepository = commentImageRepository;
         _mapper = mapper;

@@ -6,10 +6,10 @@ namespace Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
 
 public class DeleteCommentFileCommandHandler:IRequestHandler<DeleteCommentFileCommandRequest,DeleteCommentFileCommandResponse>
 {
-    private ICommentImageRepository _commentImageRepository;
+    private ICommentImageFileRepository _commentImageRepository;
     private IMapper _mapper;
 
-    public DeleteCommentFileCommandHandler(ICommentImageRepository commentImageRepository, IMapper mapper)
+    public DeleteCommentFileCommandHandler(ICommentImageFileRepository commentImageRepository, IMapper mapper)
     {
         _commentImageRepository = commentImageRepository;
         _mapper = mapper;

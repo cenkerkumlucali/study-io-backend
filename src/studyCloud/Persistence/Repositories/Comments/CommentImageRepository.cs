@@ -4,7 +4,7 @@ using Persistence.Contexts;
 
 namespace Persistence.Repositories.Comments;
 
-public class CommentImageRepository:EfRepositoryBase<CommentImageFile,BaseDbContext>,ICommentImageRepository
+public class CommentImageRepository:EfRepositoryBase<CommentImageFile,BaseDbContext>,ICommentImageFileRepository
 {
     public CommentImageRepository(BaseDbContext context) : base(context)
     {

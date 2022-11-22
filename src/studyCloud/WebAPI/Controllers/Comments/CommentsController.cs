@@ -6,7 +6,6 @@ using Application.Features.Comments.Comment.Queries.GetByIdComment;
 using Application.Features.Comments.Comment.Queries.GetListComment;
 using Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
 using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
-using Application.Features.Comments.CommentFile.Models;
 using Application.Features.Comments.CommentFile.Queries.GetListCommentFile;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,7 +49,7 @@ public class CommentsController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdCommentQueryRequest getByIdCommentQuery)
+        [FromRoute] GetByIdCommentQueryRequest getByIdCommentQuery)
     {
         GetByIdCommentQueryResponse result = await Mediator.Send(getByIdCommentQuery);
         return Ok(result);
@@ -65,10 +64,10 @@ public class CommentsController:BaseController
     }
 
     [HttpGet("[action]/{id}")]
-    public async Task<IActionResult> GetProductImages(
+    public async Task<IActionResult> GetCommentImages(
         [FromRoute] GetListCommentFileQueryRequest listCommentFileQueryRequest)
     {
-        CommentImageListModel response = await Mediator.Send(listCommentFileQueryRequest);
+        ListCommentFileQueryResponse response = await Mediator.Send(listCommentFileQueryRequest);
         return Ok(response);
     }
 
