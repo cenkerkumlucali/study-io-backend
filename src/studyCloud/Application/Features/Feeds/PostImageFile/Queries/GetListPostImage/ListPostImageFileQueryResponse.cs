@@ -1,6 +1,6 @@
-namespace Application.Features.Feeds.PostImage.Queries.GetListPostImage;
+namespace Application.Features.Feeds.PostImageFile.Queries.GetListPostImage;
 
-public class ListPostFileQueryResponse
+public class ListPostImageFileQueryResponse
 {
     public int Id { get; set; }
     public string UserEmail { get; set; }
