@@ -25,19 +25,20 @@ public class AwsStorage : Storage, IAwsStorage
 
         foreach (IFormFile file in files)
         {
-            string fileNewName = await FileRenameAsync(bucketName, file.FileName, async (bucketName1, fileName) => await HasFile(bucketName1, fileName));
+            var type = Path.GetExtension(file.FileName);
+            var randomName = Guid.NewGuid().ToString();
 
             PutObjectRequest request = new()
             {
                 BucketName = bucketName,
-                Key = $"{bucketName}/{fileNewName}",
+                Key = $"{bucketName}/{randomName}{type}",
                 InputStream = file.OpenReadStream(),
                 AutoCloseStream = true,
                 CannedACL = S3CannedACL.PublicRead,
                 StorageClass = S3StorageClass.ReducedRedundancy
             };
             request.Metadata.Add("Content-Type", file.ContentType);
-            datas.Add((fileNewName, $"{bucketName}/{fileNewName}"));
+            datas.Add((randomName, $"{bucketName}/{randomName}{type}"));
             
             await _amazonS3.PutObjectAsync(request);
         }

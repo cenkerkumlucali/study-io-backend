@@ -25,11 +25,12 @@ public class AzureStorage: Storage, IAzureStorage
         List<(string fileName, string pathOrContainerName)> datas = new();
         foreach (IFormFile file in files)
         {
-            string fileNewName = await FileRenameAsync(containerName, file.Name, (containerName1, fileName) => HasFile(containerName1, fileName));
+            var type = Path.GetExtension(file.FileName);
+            var randomName = Guid.NewGuid().ToString();
 
-            BlobClient blobClient = _blobContainerClient.GetBlobClient(fileNewName);
+            BlobClient blobClient = _blobContainerClient.GetBlobClient(randomName+type);
             await blobClient.UploadAsync(file.OpenReadStream());
-            datas.Add((fileNewName, $"{containerName}/{fileNewName}"));
+            datas.Add((randomName, $"{containerName}/{randomName}{type}"));
         }
 
         return datas;
