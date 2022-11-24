@@ -15,6 +15,7 @@
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.17" />
   </ItemGroup>
 
@@ -30,8 +31,8 @@
     <Folder Include="Features\Comments\CommentLike\Rules" />
     <Folder Include="Features\Comments\Comment\Constants" />
     <Folder Include="Features\Comments\Comment\Rules" />
-    <Folder Include="Features\Feeds\PostImage\Constants" />
-    <Folder Include="Features\Feeds\PostImage\Rules" />
+    <Folder Include="Features\Feeds\PostImageFile\Constants" />
+    <Folder Include="Features\Feeds\PostImageFile\Rules" />
     <Folder Include="Features\Feeds\PostLike\Constants" />
     <Folder Include="Features\Feeds\PostLike\Dtos" />
     <Folder Include="Features\Feeds\PostLike\Rules" />
@@ -56,10 +57,16 @@
     <Folder Include="Features\SubCategories\Constants" />
     <Folder Include="Features\SubCategories\Dtos" />
     <Folder Include="Features\SubCategories\Rules" />
+    <Folder Include="Features\Users\Block\Constants" />
+    <Folder Include="Features\Users\Block\Dtos" />
+    <Folder Include="Features\Users\Block\Models" />
+    <Folder Include="Features\Users\Block\Queries" />
+    <Folder Include="Features\Users\Block\Rules" />
     <Folder Include="Features\Users\UserCoin\Constants" />
     <Folder Include="Features\Users\UserCoin\Dtos" />
     <Folder Include="Features\Users\UserCoin\Rules" />
     <Folder Include="Features\Users\UserImage\Constants" />
+    <Folder Include="Features\Users\UserImage\Dtos" />
     <Folder Include="Features\Users\UserImage\Rules" />
     <Folder Include="Persistence" />
     <Folder Include="Security" />

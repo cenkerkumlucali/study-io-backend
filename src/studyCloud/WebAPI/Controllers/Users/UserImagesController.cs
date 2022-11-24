@@ -1,45 +1,44 @@
 using Application.Features.Users.UserImage.Commands.CreateUserImage;
 using Application.Features.Users.UserImage.Commands.DeleteUserImage;
 using Application.Features.Users.UserImage.Commands.UpdateUserImage;
-using Application.Features.Users.UserImage.Dtos;
 using Application.Features.Users.UserImage.Models;
-using Application.Features.Users.UserImage.Queries.GetByIdUserCoin;
-using Application.Features.Users.UserImage.Queries.GetListUserCoin;
+using Application.Features.Users.UserImage.Queries.GetByIdUserImage;
+using Application.Features.Users.UserImage.Queries.GetListUserImage;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Users;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserImagesController:BaseController
+public class UserImagesController : BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreateUserImageCommand createUserImageCommand)
+        [FromQuery] CreateUserImageCommandRequest createUserImageCommand)
     {
-        CreatedUserImageDto result = await Mediator.Send(createUserImageCommand);
+        CreateUserImageCommandResponse result = await Mediator.Send(createUserImageCommand);
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("[action]")]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateUserImageCommand updateUserImageCommand)
+        [FromQuery] UpdateUserImageCommandRequest updateUserImageCommand)
     {
-        UpdatedUserImageDto result = await Mediator.Send(updateUserImageCommand);
+        UpdateUserImageCommandResponse result = await Mediator.Send(updateUserImageCommand);
         return Created("", result);
     }
 
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(
-        [FromRoute] DeleteUserImageCommand deleteUserImageCommand)
+        [FromRoute] DeleteUserImageCommandRequest deleteUserImageCommand)
     {
-        DeletedUserImageDto result = await Mediator.Send(deleteUserImageCommand);
+        DeleteUserImageCommandResponse result = await Mediator.Send(deleteUserImageCommand);
         return Created("", result);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetList(
-        [FromQuery] GetListUserImageQuery getListUserImageQuery)
+        [FromQuery] GetListUserImageQueryRequest getListUserImageQuery)
     {
         UserImageListModel result = await Mediator.Send(getListUserImageQuery);
         return Ok(result);
@@ -47,9 +46,9 @@ public class UserImagesController:BaseController
 
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(
-        [FromQuery] GetByIdUserImageQuery getByIdUserImageQuery)
+        [FromQuery] GetByIdUserImageQueryRequest getByIdUserImageQuery)
     {
-        GetByIdUserImageDto result = await Mediator.Send(getByIdUserImageQuery);
+        GetByIdUserImageQueryResponse result = await Mediator.Send(getByIdUserImageQuery);
         return Ok(result);
     }
 }

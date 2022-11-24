@@ -57,12 +57,16 @@ namespace Persistence
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IBlockRepository, BlockRepository>();
 
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
-            services.AddScoped<ICommentImageFileService, CommentImageFileManager>();
             services.AddScoped<ICommentService, CommentManager>();
+            services.AddScoped<ICommentImageFileService, CommentImageFileManager>();
             services.AddScoped<IPostImageFileService, PostImageFileManager>();
+            services.AddScoped<IUserImageService, UserImageManager>();
+            services.AddScoped<IBlockService, BlockManager>();
+            services.AddScoped<IFollowService, FollowManager>();
 
 
             return services;

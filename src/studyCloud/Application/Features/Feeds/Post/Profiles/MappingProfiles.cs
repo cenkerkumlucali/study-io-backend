@@ -30,6 +30,8 @@ public class MappingProfiles : Profile
             .ForMember(c => c.FullName, c => c.MapFrom(c => c.User.FirstName + " " + c.User.LastName))
             .ForPath(c => c.Comments, opt => opt.MapFrom(c => c.Comments))
             .ForPath(c => c.CommentCount, opt => opt.MapFrom(c => c.Comments.Count))
+            .ForPath(c => c.Urls, opt => opt.MapFrom(c => c.PostImageFiles.Select(c=>c.Url)))
+            .ForPath(c => c.ProfileImageUrl, opt => opt.MapFrom(c => c.User.UserImageFiles.FirstOrDefault().Url))
             .ReverseMap();
     }
 }

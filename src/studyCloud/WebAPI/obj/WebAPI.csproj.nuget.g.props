@@ -20,6 +20,8 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">/Users/cenkerkumlucali/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/cenkerkumlucali/.nuget/packages/awssdk.core/3.7.100.21</PkgAWSSDK_Core>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">/Users/cenkerkumlucali/.nuget/packages/awssdk.s3/3.7.101.21</PkgAWSSDK_S3>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/cenkerkumlucali/.nuget/packages/microsoft.entityframeworkcore.tools/6.0.8</PkgMicrosoft_EntityFrameworkCore_Tools>
   </PropertyGroup>
 </Project>

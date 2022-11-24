@@ -13,8 +13,6 @@ namespace Persistence.Contexts
 {
     public class BaseDbContext : DbContext
     {
-
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
@@ -33,11 +31,13 @@ namespace Persistence.Contexts
         public DbSet<UserCoin> UserCoins { get; set; }
         public DbSet<UserImageFile> UserImageFiles { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<Block> Blocks { get; set; }
 
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
         }
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             IEnumerable<EntityEntry<BaseEntity>> datas = ChangeTracker
@@ -63,8 +63,7 @@ namespace Persistence.Contexts
                 a.Property(p => p.FollowingId).HasColumnName("FollowingId");
                 a.Property(p => p.FollowerId).HasColumnName("FollowerId");
                 a.Property(p => p.CreatedDate).HasColumnName("CreatedDate");
-                a.HasOne(x => x.Following).WithMany().HasForeignKey(x => x.FollowingId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                a.HasOne(x => x.Following).WithMany().HasForeignKey(x => x.FollowingId).OnDelete(DeleteBehavior.Restrict);
                 a.HasOne(x => x.Follewer).WithMany().HasForeignKey(x => x.FollowerId).OnDelete(DeleteBehavior.Restrict);
             });
             // modelBuilder.Entity<Category>(a =>
@@ -258,8 +257,6 @@ namespace Persistence.Contexts
             //     a.Property(p => p.ImagePath).HasColumnName("ImagePath");
             //     a.HasOne(p => p.User).WithMany().OnDelete(DeleteBehavior.Restrict);
             // });
-
-
         }
     }
 }

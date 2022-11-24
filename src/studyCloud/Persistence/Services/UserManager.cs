@@ -13,6 +13,12 @@ public class UserManager : IUserService
         _userRepository = userRepository;
     }
 
+    public async Task<User> AddAsync(User user)
+    {
+        User createdUser = await _userRepository.AddAsync(user);
+        return createdUser;
+    }
+
     public async Task<User?> GetByEmail(string email)
     {
         User? user = await _userRepository.GetAsync(u => u.Email == email);
@@ -29,5 +35,22 @@ public class UserManager : IUserService
     {
         User updatedUser = await _userRepository.UpdateAsync(user);
         return updatedUser;
+    }
+
+    public async Task<User> GetByUserName(string userName)
+    {
+        User user = await _userRepository.GetAsync(c => c.UserName == userName);
+        return user;
+    }
+
+    public async Task<bool> ResetPassword(string email)
+    {
+        var user = GetByEmail(email);
+        if (user == null)
+        {
+            
+        }
+
+        return true;
     }
 }

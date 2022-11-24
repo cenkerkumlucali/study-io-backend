@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "WebAPI/1.0.0": {
         "dependencies": {
+          "AWSSDK.Extensions.NETCore.Setup": "3.7.2",
+          "AWSSDK.S3": "3.7.101.21",
           "Application": "1.0.0",
           "Infrastructure": "1.0.0",
           "MediatR": "10.0.1",
@@ -43,6 +45,39 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.0.0.0"
+          }
+        }
+      },
+      "AWSSDK.Core/3.7.100.21": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.100.21"
+          }
+        }
+      },
+      "AWSSDK.Extensions.NETCore.Setup/3.7.2": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.100.21",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0-preview.3.22175.4",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.1.0"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.101.21": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.100.21"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.101.21"
           }
         }
       },
@@ -892,11 +927,31 @@
           }
         }
       },
+      "Polly/7.2.3": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.3.0"
+          }
+        }
+      },
       "Portable.BouncyCastle/1.9.0": {
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.9.0.0",
             "fileVersion": "1.9.0.1"
+          }
+        }
+      },
+      "RabbitMQ.Client/6.4.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Threading.Channels": "4.7.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.4.0.0"
           }
         }
       },
@@ -1123,6 +1178,7 @@
           "System.Threading": "4.0.11"
         }
       },
+      "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
           "System.Text.Encodings.Web": "6.0.0",
@@ -1345,6 +1401,7 @@
           "System.Threading.Tasks": "4.0.11"
         }
       },
+      "System.Threading.Channels/4.7.1": {},
       "System.Threading.Tasks/4.0.11": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1383,6 +1440,7 @@
           "MimeKit": "3.4.2",
           "NEST": "7.17.5",
           "Newtonsoft.Json": "13.0.1",
+          "RabbitMQ.Client": "6.4.0",
           "System.Linq.Dynamic.Core": "1.2.17"
         },
         "runtime": {
@@ -1400,6 +1458,8 @@
       },
       "Infrastructure/1.0.0": {
         "dependencies": {
+          "AWSSDK.Extensions.NETCore.Setup": "3.7.2",
+          "AWSSDK.S3": "3.7.101.21",
           "Application": "1.0.0",
           "Azure.Storage.Blobs": "12.14.1",
           "MailKit": "3.4.2",
@@ -1408,6 +1468,7 @@
           "Microsoft.IdentityModel.Tokens": "6.15.1",
           "NEST.JsonNetSerializer": "7.17.0",
           "Otp.NET": "1.2.2",
+          "Polly": "7.2.3",
           "System.IdentityModel.Tokens.Jwt": "6.10.0"
         },
         "runtime": {
@@ -1453,6 +1514,27 @@
       "sha512": "sha512-0asw5WxdCFh2OTi9Gv+oKyH9SzxwYQSnO8TV5Dd0GggovILzJW4UimP26JAcxc3yB5NnC5urooZ1BBs8ElpiBw==",
       "path": "automapper.extensions.microsoft.dependencyinjection/11.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512"
+    },
+    "AWSSDK.Core/3.7.100.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yU8kCoEHA39yqFrxqlkEKANHW5Bp3n4CaAwVmZNcq+pyl9o2lK33s3N+7gpns+jvn7BRF6C8EJ4c6sqlGg9h7Q==",
+      "path": "awssdk.core/3.7.100.21",
+      "hashPath": "awssdk.core.3.7.100.21.nupkg.sha512"
+    },
+    "AWSSDK.Extensions.NETCore.Setup/3.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iFjbEnVB0f6Hr8L3EfdelHG7zxVQrOmeP9UIrX3IODR1eTsrqVrmq0mazdIr0GZK1YG2/DZiVt6tNyV1bayndw==",
+      "path": "awssdk.extensions.netcore.setup/3.7.2",
+      "hashPath": "awssdk.extensions.netcore.setup.3.7.2.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.101.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mpm5rRg3HvzlgIhTocX3eJktySPh7/dpsau3x9mtl55jNj6HEhJqHs4ZKxhvnrSKDGZrwjx6ADHzlMkPKud0lw==",
+      "path": "awssdk.s3/3.7.101.21",
+      "hashPath": "awssdk.s3.3.7.101.21.nupkg.sha512"
     },
     "Azure.Core/1.25.0": {
       "type": "package",
@@ -2098,12 +2180,26 @@
       "path": "otp.net/1.2.2",
       "hashPath": "otp.net.1.2.2.nupkg.sha512"
     },
+    "Polly/7.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ==",
+      "path": "polly/7.2.3",
+      "hashPath": "polly.7.2.3.nupkg.sha512"
+    },
     "Portable.BouncyCastle/1.9.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-eZZBCABzVOek+id9Xy04HhmgykF0wZg9wpByzrWN7q8qEI0Qen9b7tfd7w8VA3dOeesumMG7C5ZPy0jk7PSRHw==",
       "path": "portable.bouncycastle/1.9.0",
       "hashPath": "portable.bouncycastle.1.9.0.nupkg.sha512"
+    },
+    "RabbitMQ.Client/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1znR1gGU+xYVSpO5z8nQolcUKA/yydnxQn7Ug9+RUXxTSLMm/eE58VKGwahPBjELXvDnX0k/kBrAitFLRjx9LA==",
+      "path": "rabbitmq.client/6.4.0",
+      "hashPath": "rabbitmq.client.6.4.0.nupkg.sha512"
     },
     "runtime.native.System/4.0.0": {
       "type": "package",
@@ -2272,6 +2368,13 @@
       "sha512": "sha512-I+y02iqkgmCAyfbqOmSDOgqdZQ5tTj80Akm5BPSS8EeB0VGWdy6X1KCoYe8Pk6pwDoAKZUOdLVxnTJcExiv5zw==",
       "path": "system.linq.expressions/4.1.0",
       "hashPath": "system.linq.expressions.4.1.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
     },
     "System.Memory.Data/1.0.2": {
       "type": "package",
@@ -2482,6 +2585,13 @@
       "sha512": "sha512-N+3xqIcg3VDKyjwwCGaZ9HawG9aC6cSDI+s7ROma310GQo8vilFZa86hqKppwTHleR/G0sfOzhvgnUxWCR/DrQ==",
       "path": "system.threading/4.0.11",
       "hashPath": "system.threading.4.0.11.nupkg.sha512"
+    },
+    "System.Threading.Channels/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6akRtHK/wab3246t4p5v3HQrtQk8LboOt5T4dtpNgsp3zvDeM4/Gx8V12t0h+c/W9/enUrilk8n6EQqdQorZAA==",
+      "path": "system.threading.channels/4.7.1",
+      "hashPath": "system.threading.channels.4.7.1.nupkg.sha512"
     },
     "System.Threading.Tasks/4.0.11": {
       "type": "package",

@@ -8,6 +8,4 @@ public class RegisterCommandRequest : IRequest<RegisterCommandResponse>
 {
     public UserForRegisterDto UserForRegisterDto { get; set; }
     public string IPAddress { get; set; }
-
-    
 }

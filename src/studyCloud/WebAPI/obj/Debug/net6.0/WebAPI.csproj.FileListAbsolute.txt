@@ -388,3 +388,8 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/System.IO.Hashing.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/System.Memory.Data.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/AWSSDK.Core.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/AWSSDK.Extensions.NETCore.Setup.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/AWSSDK.S3.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/RabbitMQ.Client.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Polly.dll

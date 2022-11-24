@@ -23,12 +23,12 @@ public class JwtHelper : ITokenHelper
         _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
     }
 
-    public AccessToken CreateToken(User user, IList<OperationClaim> operationClaims)
+    public async Task<AccessToken> CreateToken(User user, IList<OperationClaim> operationClaims)
     {
         _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
         SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
         SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
-        JwtSecurityToken jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
+        JwtSecurityToken jwt = await CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
         JwtSecurityTokenHandler jwtSecurityTokenHandler = new();
         string? token = jwtSecurityTokenHandler.WriteToken(jwt);
 
@@ -53,7 +53,7 @@ public class JwtHelper : ITokenHelper
         return refreshToken;
     }
 
-    public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+    public async Task<JwtSecurityToken> CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
                                                    SigningCredentials signingCredentials,
                                                    IList<OperationClaim> operationClaims)
     {
@@ -62,13 +62,13 @@ public class JwtHelper : ITokenHelper
             tokenOptions.Audience,
             expires: _accessTokenExpiration,
             notBefore: DateTime.Now,
-            claims: SetClaims(user, operationClaims),
+            claims: await SetClaims(user, operationClaims),
             signingCredentials: signingCredentials
         );
         return jwt;
     }
 
-    private IEnumerable<Claim> SetClaims(User user, IList<OperationClaim> operationClaims)
+    private async Task<IEnumerable<Claim>> SetClaims(User user, IList<OperationClaim> operationClaims)
     {
         List<Claim> claims = new();
         claims.AddNameIdentifier(user.Id.ToString());

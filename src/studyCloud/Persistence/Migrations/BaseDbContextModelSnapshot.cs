@@ -239,6 +239,10 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Files");
@@ -250,8 +254,7 @@ namespace Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("Id");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
@@ -295,7 +298,7 @@ namespace Persistence.Migrations
                     b.Property<int>("AgentId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("CommentId")
+                    b.Property<int?>("CommentId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedDate")
@@ -304,7 +307,7 @@ namespace Persistence.Migrations
                     b.Property<int>("MentionType")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PostId")
+                    b.Property<int?>("PostId")
                         .HasColumnType("integer");
 
                     b.Property<int>("TargetId")
@@ -489,6 +492,32 @@ namespace Persistence.Migrations
                     b.ToTable("SelectedAnswers");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Users.Block", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgentId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("TargetId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("TargetId");
+
+                    b.ToTable("Blocks");
+                });
+
             modelBuilder.Entity("Domain.Entities.Users.OperationClaim", b =>
                 {
                     b.Property<int>("Id")
@@ -584,6 +613,12 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Introduce")
+                        .HasColumnType("text");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -596,11 +631,18 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -845,15 +887,11 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.Entities.Comments.Comment", "Comment")
                         .WithMany()
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CommentId");
 
                     b.HasOne("Domain.Entities.Feeds.Post", "Post")
                         .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.HasOne("Domain.Entities.Users.User", "Target")
                         .WithMany()
@@ -963,6 +1001,25 @@ namespace Persistence.Migrations
                     b.Navigation("QuizHistory");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.Block", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.User", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Users.User", "Target")
+                        .WithMany()
+                        .HasForeignKey("TargetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agent");
+
+                    b.Navigation("Target");
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.RefreshToken", b =>

@@ -9,12 +9,12 @@ namespace Domain.Entities;
 public class Mention : BaseEntity
 {
     public int AgentId { get; set; }
-    public virtual User Agent { get; set; }
     public int TargetId { get; set; }
+    public int? PostId { get; set; }
+    public int? CommentId { get; set; }
+    public virtual User Agent { get; set; }
     public virtual User Target { get; set; }
-    public int PostId { get; set; }
-    public virtual Post Post { get; set; }
-    public int CommentId { get; set; }
+    public virtual Post? Post { get; set; }
     public virtual Comment? Comment { get; set; }
     public MentionType MentionType { get; set; }
 

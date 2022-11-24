@@ -1,9 +1,9 @@
 using Application.DTOs.Paging;
-using Application.Features.Users.UserImage.Dtos;
+using Application.Features.Users.UserImage.Queries.GetListUserImage;
 
 namespace Application.Features.Users.UserImage.Models;
 
 public class UserImageListModel : BasePageableModel
 {
-    public IList<ListUserImageDto> Items { get; set; }
+    public IList<ListUserImageQueryResponse> Items { get; set; }
 }

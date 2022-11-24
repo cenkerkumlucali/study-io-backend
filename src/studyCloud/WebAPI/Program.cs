@@ -3,8 +3,10 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Amazon.S3;
 using Application;
+using Application.DTOs.JWT;
 using Application.Exceptions;
 using Infrastructure;
+using Infrastructure.Security.Encryption;
 using Infrastructure.Services.Storage.AWS;
 using Infrastructure.Services.Storage.Local;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +14,11 @@ using Microsoft.IdentityModel.Tokens;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
-
+static IHost BuildWebHost(IConfiguration configuration, string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseDefaultServiceProvider((context, options) => { options.ValidateOnBuild = false; })
+        .ConfigureAppConfiguration(i => i.AddConfiguration(configuration))
+        .ConfigureWebHostDefaults(webBuilder => { }).Build();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("http://localhost:4200", "https://localhost:4200/")
@@ -31,33 +37,29 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer("Admin", options =>
+    .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateAudience =
-                true, //Oluşturulacak token değerinin kimlerin/hangi originlerin/sitelerin kullanacığını belirlediğimiz değerdir.
-            ValidateIssuer = true, //Oluşturulacak token değerinin kimin dağıttığını ifade edeceğimiz alandır.
-            ValidateLifetime = true, //Oluşturulan token değerinin süresini kontrol edicek olan doğrulamadır.
-            ValidateIssuerSigningKey =
-                true, //Üretilecek token değerinin uygulamamıza ait bir değer olduğunu ifade eden security key verisinin doğrulanmasıdır.
-
-            ValidAudience = builder.Configuration["Token:Audience"],
-            ValidIssuer = builder.Configuration["Token:Issuer"],
-            IssuerSigningKey =
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])),
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = tokenOptions.Issuer,
+            ValidAudience = tokenOptions.Audience,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey),
             LifetimeValidator = (notBefore, expires, securityToken, validationParameters) =>
                 expires != null ? expires > DateTime.UtcNow : false,
-            NameClaimType =
-                ClaimTypes.Name //JWT üzerinde Name claimne karşılık gelen değeri User.Identity.Name propertysinden elde edebiliriz.
         };
     });
+
 
 var app = builder.Build();
 

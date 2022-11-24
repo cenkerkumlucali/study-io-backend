@@ -2,5 +2,12 @@ namespace Domain.Enums;
 
 public enum MentionType
 {
-    POST, COMMENT
+    FOLLOW,
+
+    LIKE_POST,  
+    MENTION_POST,
+
+    COMMENT,
+    LIKE_COMMENT,
+    MENTION_COMMENT,
 }

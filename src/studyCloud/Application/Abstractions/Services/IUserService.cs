@@ -4,7 +4,10 @@ namespace Application.Abstractions.Services;
 
 public interface IUserService
 {
-    public Task<User?> GetByEmail(string email);
-    public Task<User> GetById(int id);
-    public Task<User> Update(User user);
+    Task<User> AddAsync(User user);
+    Task<User?> GetByEmail(string email);
+    Task<User> GetById(int id);
+    Task<User> Update(User user);
+    Task<User> GetByUserName(string userName);
+    Task<bool> ResetPassword(string email);
 }
