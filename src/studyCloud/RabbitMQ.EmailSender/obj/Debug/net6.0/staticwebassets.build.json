@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Z24uLiA3+yal7BNLE1t5ndsapV8hhI/7JBxm4+LwiNQ=",
+  "Source": "RabbitMQ.EmailSender",
+  "BasePath": "_content/RabbitMQ.EmailSender",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
