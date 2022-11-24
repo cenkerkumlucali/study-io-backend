@@ -3,16 +3,19 @@ using Application.Abstractions.Services.ElasticSearch;
 using Application.Abstractions.Services.EmailAuthenticator;
 using Application.Abstractions.Services.JWT;
 using Application.Abstractions.Services.OtpAuthenticator;
+using Application.Abstractions.Services.RabbitMQ;
 using Application.Abstractions.Storage;
 using Application.Abstractions.Storage.AWS;
 using Application.Abstractions.Storage.Azure;
 using Application.Abstractions.Storage.Local;
+using Application.DTOs.RabbitMQ;
 using Infrastructure.Pipelines.Authorization;
 using Infrastructure.Pipelines.Caching;
 using Infrastructure.Services.ElasticSearch;
 using Infrastructure.Services.EmailAuthenticator;
 using Infrastructure.Services.JWT;
 using Infrastructure.Services.OtpAuthenticator.OtpNet;
+using Infrastructure.Services.RabbitMQ;
 using Infrastructure.Services.Storage;
 using Infrastructure.Services.Storage.AWS;
 using Infrastructure.Services.Storage.Azure;
@@ -34,6 +37,14 @@ public static class InfrastructureServiceRegistration
         services.AddScoped<IOtpAuthenticatorHelper, OtpNetOtpAuthenticatorHelper>();
         services.AddScoped<ITokenHelper, JwtHelper>();
         services.AddScoped<IElasticSearch, ElasticSearchManager>();
+        services.AddScoped<RabbitMQHelper>();
+        services.AddTransient<IRabbitMQEmailSenderService, RabbitMQEmailSenderService>();
+        
+        services.AddScoped<IRabbitMQService, RabbitMQService>();
+        services.AddScoped<IRabbitMQConfiguration, RabbitMQConfiguration>();
+        services.AddScoped<IObjectConvertFormat, ObjectConvertFormatManager>();
+        services.AddScoped<ISmtpConfiguration, SmtpConfiguration>();
+        services.AddScoped<IPublisherService, PublisherManager>();
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
