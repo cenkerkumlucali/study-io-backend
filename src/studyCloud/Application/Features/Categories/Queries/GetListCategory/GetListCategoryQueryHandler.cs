@@ -10,6 +10,7 @@ public class GetListCategoryQueryHandler : IRequestHandler<GetListCategoryQueryR
 {
     private ICategoryRepository _categoryRepository;
     private IMapper _mapper;
+   
 
     public GetListCategoryQueryHandler(ICategoryRepository categoryRepository, IMapper mapper)
     {

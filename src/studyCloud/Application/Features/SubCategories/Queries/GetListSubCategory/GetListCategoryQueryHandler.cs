@@ -18,12 +18,13 @@ public class GetListCategoryQueryHandler : IRequestHandler<GetListSubCategoryQue
         _mapper = mapper;
     }
 
-    public async Task<SubCategoryListModel> Handle(GetListSubCategoryQueryRequest request, CancellationToken cancellationToken)
+    public async Task<SubCategoryListModel> Handle(GetListSubCategoryQueryRequest request,
+        CancellationToken cancellationToken)
     {
         IPaginate<Domain.Entities.Categories.SubCategory> subCategory =
             await _subCategoryRepository.GetListAsync(index: request.PageRequest.Page,
                 size: request.PageRequest.PageSize,
-                include:c=>c.Include(c=>c.Category));
+                include: c => c.Include(c => c.Category));
         SubCategoryListModel mappedSubCategoryListModel =
             _mapper.Map<SubCategoryListModel>(subCategory);
         return mappedSubCategoryListModel;
