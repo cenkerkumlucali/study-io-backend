@@ -11,6 +11,7 @@ public class CreateCategoryCommandHandler:IRequestHandler<CreateCategoryCommandR
     private readonly IMapper _mapper;
     private readonly CategoryBusinessRules _categoryBusinessRules;
 
+
     public CreateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper, CategoryBusinessRules categoryBusinessRules)
     {
         _categoryRepository = categoryRepository;

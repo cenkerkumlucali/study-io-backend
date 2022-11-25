@@ -1,8 +1,11 @@
 using Application.Features.Follows.Commands.CreateFollow;
-using Application.Features.Follows.Commands.DeleteFollow;
+using Application.Features.Follows.Commands.DeleteFollower;
+using Application.Features.Follows.Commands.UnFollow;
 using Application.Features.Follows.Commands.UpdateFollow;
 using Application.Features.Follows.Models;
 using Application.Features.Follows.Queries.GetByIdFollow;
+using Application.Features.Follows.Queries.GetFollowers;
+using Application.Features.Follows.Queries.GetFollowings;
 using Application.Features.Follows.Queries.GetListFollow;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,12 +31,20 @@ public class FollowsController:BaseController
         return Created("", result);
     }
 
-    [HttpDelete("{Id}")]
-    public async Task<IActionResult> Delete(
-        [FromRoute] DeleteFollowCommandRequest deleteFollowCommand)
+    [HttpDelete("[action]")]
+    public async Task<IActionResult> UnFollow(
+        [FromBody] UnFollowCommandRequest deleteFollowCommand)
     {
-        DeleteFollowCommandResponse result = await Mediator.Send(deleteFollowCommand);
+        UnFollowCommandResponse result = await Mediator.Send(deleteFollowCommand);
         return Created("", result);
+    }
+    
+    [HttpDelete("[action]")]
+    public async Task<IActionResult> DeleteFollower(
+        [FromBody] DeleteFollowerCommandRequest deleteFollowerCommandRequest)
+    {
+        DeleteFollowerCommandResponse response = await Mediator.Send(deleteFollowerCommandRequest);
+        return Ok(response);
     }
 
     [HttpGet]
@@ -49,6 +60,22 @@ public class FollowsController:BaseController
         [FromQuery] GetByIdFollowQueryRequest getByIdFollowQuery)
     {
         GetByIdFollowQueryResponse result = await Mediator.Send(getByIdFollowQuery);
+        return Ok(result);
+    }
+    
+    [HttpGet("[action]/{UserId}")]
+    public async Task<IActionResult> GetFollewers(
+        [FromRoute] GetFollowersQueryRequest getFollowersQueryRequest)
+    {
+        GetFollowersQueryResponse result = await Mediator.Send(getFollowersQueryRequest);
+        return Ok(result);
+    }
+    
+    [HttpGet("[action]/{UserId}")]
+    public async Task<IActionResult> GetFollowings(
+        [FromRoute] GetFollowingsQueryRequest getFollowingsQueryRequest)
+    {
+        List<GetFollowingsQueryResponse> result = await Mediator.Send(getFollowingsQueryRequest);
         return Ok(result);
     }
 }
