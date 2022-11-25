@@ -1,6 +1,7 @@
 using Application.DTOs.User;
 using Application.Features.Auths.Commands.Login;
 using Application.Features.Auths.Commands.Register;
+using Application.Features.Users.RefreshTokenLogin;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,12 @@ public class AuthController : BaseController
         SetRefreshTokenToCookie(result.RefreshToken);
         return Created("",result.AccessToken);
     }
+    /*
+    {
+        "email": "cenkerkumlucali@gmail.com",
+         "password": "string"
+     }
+     */
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLoginDto)
     {
@@ -37,6 +44,13 @@ public class AuthController : BaseController
         SetRefreshTokenToCookie(result.RefreshToken);
 
         return Ok(result.AccessToken);
+    }
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenCommandRequest refreshTokenCommandRequest)
+    {
+        RefreshTokenCommandResponse response = await Mediator.Send(refreshTokenCommandRequest);
+        return Ok(response);
     }
     private void SetRefreshTokenToCookie(RefreshToken refreshToken)
     {
