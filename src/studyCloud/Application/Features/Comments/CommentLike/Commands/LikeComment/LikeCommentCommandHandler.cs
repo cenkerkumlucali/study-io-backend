@@ -2,25 +2,25 @@ using Application.Repositories.Services.Comments;
 using AutoMapper;
 using MediatR;
 
-namespace Application.Features.Comments.CommentLike.Commands.CreateCommentLike;
+namespace Application.Features.Comments.CommentLike.Commands.LikeComment;
 
-public class CreateCommentLikeCommandHandler:IRequestHandler<CreateCommentLikeCommandRequest,CreateCommentLikeCommandResponse>
+public class LikeCommentCommandHandler:IRequestHandler<LikeCommentCommandRequest,LikeCommentCommandResponse>
 {
     private readonly ICommentLikeRepository _commentLikeRepository;
     private readonly IMapper _mapper;
 
 
-    public CreateCommentLikeCommandHandler(ICommentLikeRepository commentLikeRepository, IMapper mapper)
+    public LikeCommentCommandHandler(ICommentLikeRepository commentLikeRepository, IMapper mapper)
     {
         _commentLikeRepository = commentLikeRepository;
         _mapper = mapper;
     }
 
-    public async Task<CreateCommentLikeCommandResponse> Handle(CreateCommentLikeCommandRequest request, CancellationToken cancellationToken)
+    public async Task<LikeCommentCommandResponse> Handle(LikeCommentCommandRequest request, CancellationToken cancellationToken)
     {
         Domain.Entities.Comments.CommentLike mappedCommentLike = _mapper.Map<Domain.Entities.Comments.CommentLike>(request);
         Domain.Entities.Comments.CommentLike createdCommentLike = await _commentLikeRepository.AddAsync(mappedCommentLike);
-        CreateCommentLikeCommandResponse mappedCreateCommentLikeDto = _mapper.Map<CreateCommentLikeCommandResponse>(createdCommentLike);
+        LikeCommentCommandResponse mappedCreateCommentLikeDto = _mapper.Map<LikeCommentCommandResponse>(createdCommentLike);
         return mappedCreateCommentLikeDto;
     }
 }
