@@ -4,6 +4,7 @@ using Application.Features.Comments.Comment.Commands.DeleteComment;
 using Application.Features.Comments.Comment.Commands.UpdateComment;
 using Application.Features.Comments.Comment.Models;
 using Application.Features.Comments.Comment.Queries.GetByIdComment;
+using Application.Features.Comments.Comment.Queries.GetByPostIdComment;
 using Application.Features.Comments.Comment.Queries.GetListComment;
 using Application.Features.Feeds.Post.Dtos;
 using AutoMapper;
@@ -31,5 +32,13 @@ public class MappingProfiles : Profile
         CreateMap<Domain.Entities.Comments.Comment, ListCommentQueryResponse>().ReverseMap();
         CreateMap<IPaginate<Domain.Entities.Comments.Comment>, CommentListModel>().ReverseMap();
         CreateMap<Domain.Entities.Comments.Comment, GetByIdCommentQueryResponse>().ReverseMap();
+        
+        CreateMap<Domain.Entities.Comments.Comment, GetByPostIdCommentQueryRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Comments.Comment, GetByPostIdCommentQueryResponse>().ForMember(c => c.FullName, c => c.MapFrom(c => c.User.FirstName + " " + c.User.LastName))
+            .ForMember(c => c.Replies, c => c.MapFrom(c => c.Childrens))
+            .ForMember(c => c.CommentLike, c => c.MapFrom(c => c.CommentLikes.Count))
+            .ForMember(c => c.CommentCount, c => c.MapFrom(c => c.Childrens.Count))
+            .ForMember(c => c.Urls, c => c.MapFrom(c => c.CommentImageFiles.Select(c=>c.Url)))
+            .ReverseMap();
     }
 }

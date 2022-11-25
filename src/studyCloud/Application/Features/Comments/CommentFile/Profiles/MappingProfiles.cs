@@ -12,14 +12,15 @@ public class MappingProfiles:Profile
     public MappingProfiles()
     {
         CreateMap<Domain.Entities.Comments.Comment, CreateCommentImageFileCommandResponse>().ReverseMap();
+        
         CreateMap<Domain.Entities.Comments.CommentImageFile, CreateCommentImageFileCommandRequest>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile, DeleteCommentFileCommandResponse>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile, DeleteCommentFileCommandRequest>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile, UpdateCommentFileCommandResponse>().ReverseMap();
         CreateMap<Domain.Entities.Comments.CommentImageFile, UpdateCommentFileCommandRequest>().ReverseMap();
-        
         CreateMap<Domain.Entities.Comments.CommentImageFile,ListCommentFileQueryResponse>().ReverseMap();
-
         CreateMap<Domain.Entities.Comments.CommentImageFile, GetByIdCommentFileQueryResponse>().ReverseMap();
+        
+       
     }
 }
