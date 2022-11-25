@@ -58,6 +58,8 @@ namespace Persistence
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IBlockRepository, BlockRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            
 
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();

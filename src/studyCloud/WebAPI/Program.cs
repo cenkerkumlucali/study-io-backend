@@ -12,12 +12,13 @@ using Infrastructure.Services.Storage.Local;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Persistence;
+using Persistence.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 static IHost BuildWebHost(IConfiguration configuration, string[] args) =>
     Host.CreateDefaultBuilder(args)
         .UseDefaultServiceProvider((context, options) => { options.ValidateOnBuild = false; })
-        .ConfigureAppConfiguration(i => i.AddConfiguration(configuration))
+        .ConfigureAppConfiguration(i => i.AddConfiguration(configuration))  
         .ConfigureWebHostDefaults(webBuilder => { }).Build();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
@@ -27,8 +28,10 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
         .AllowCredentials()
 ));
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddSingleton(sp => sp.ConfigureRedis(builder.Configuration));
 builder.Services.AddAWSService<IAmazonS3>();
 builder.Services.AddStorage<AwsStorage>();
+builder.Services.AddStackExchangeRedisCache(opt => opt.Configuration = "localhost:6379");
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
