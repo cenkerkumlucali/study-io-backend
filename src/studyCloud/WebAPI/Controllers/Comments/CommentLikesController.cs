@@ -1,6 +1,3 @@
-using Application.Features.Comments.CommentLike.Commands.CreateCommentLike;
-using Application.Features.Comments.CommentLike.Commands.DeleteCommentLike;
-using Application.Features.Comments.CommentLike.Commands.UpdateCommentLike;
 using Application.Features.Comments.CommentLike.Models;
 using Application.Features.Comments.CommentLike.Queries.GetByIdCommentLike;
 using Application.Features.Comments.CommentLike.Queries.GetListCommentLike;
@@ -10,31 +7,9 @@ namespace WebAPI.Controllers.Comments;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CommentLikesController:BaseController
+public class CommentLikesController : BaseController
 {
-    [HttpPost]
-    public async Task<IActionResult> Add(
-        [FromBody] CreateCommentLikeCommandRequest createCommentLikeCommand)
-    {
-        CreateCommentLikeCommandResponse result = await Mediator.Send(createCommentLikeCommand);
-        return Created("", result);
-    }
-
-    [HttpPost("update")]
-    public async Task<IActionResult> Update(
-        [FromBody] UpdateCommentLikeCommandRequest updateCommentLikeCommand)
-    {
-        UpdateCommentLikeCommandResponse result = await Mediator.Send(updateCommentLikeCommand);
-        return Created("", result);
-    }
-
-    [HttpDelete("{Id}")]
-    public async Task<IActionResult> Delete(
-        [FromRoute] DeleteCommentLikeCommandRequest deleteCommentLikeCommand)
-    {
-        DeleteCommentLikeCommandResponse result = await Mediator.Send(deleteCommentLikeCommand);
-        return Created("", result);
-    }
+    
 
     [HttpGet]
     public async Task<IActionResult> GetList(
