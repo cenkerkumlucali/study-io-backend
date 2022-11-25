@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Infrastructure.Security.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -11,6 +12,11 @@ namespace WebAPI.Controllers
         {
             if (Request.Headers.ContainsKey("X-Forwarded-For")) return Request.Headers["X-Forwarded-For"];
             return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
+        }
+        protected int GetUserIdFromRequest()
+        {
+            int userId = HttpContext.User.GetUserId();
+            return userId;
         }
     }
 }
