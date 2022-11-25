@@ -17,7 +17,7 @@ public class UnLikePostCommandHandler:IRequestHandler<UnLikePostCommandRequest,U
 
     public async Task<UnLikePostCommandResponse> Handle(UnLikePostCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostLike postLike = _mapper.Map<Domain.Entities.Feeds.PostLike>(request);
+        Domain.Entities.Feeds.PostLike? postLike = await _postLikeRepository.GetAsync(c => c.UserId == request.UserId && c.PostId == request.PostId);
         Domain.Entities.Feeds.PostLike deletedPostLike =
             await _postLikeRepository.DeleteAsync(postLike);
         UnLikePostCommandResponse deletedPostLikeDto =
