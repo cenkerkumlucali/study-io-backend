@@ -27,7 +27,8 @@ public class GetByIdPostQueryHandler : IRequestHandler<GetByIdPostQueryRequest, 
                     .Include(c => c.Comments)
                     .ThenInclude(c => c.CommentImageFiles)
                     .Include(c => c.Comments)
-                    .ThenInclude(c => c.CommentLikes));
+                    .ThenInclude(c => c.CommentLikes)
+                    .Include(c=>c.PostLikes));
 
         if (post?.Comments is not null) post.Comments = post?.Comments.Where(c => c.ParentId == null).ToList();
         
