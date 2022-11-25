@@ -1,4 +1,4 @@
-namespace Application.Features.Users.ResetPassword;
+namespace Application.Features.Users.ResetPassword.Commands.ResetPassword;
 
 public class ResetPasswordCommandResponse
 {

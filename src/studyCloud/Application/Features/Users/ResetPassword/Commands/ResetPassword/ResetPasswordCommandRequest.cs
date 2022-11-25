@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Features.Users.ResetPassword;
+namespace Application.Features.Users.ResetPassword.Commands.ResetPassword;
 
 public class ResetPasswordCommandRequest:IRequest<ResetPasswordCommandResponse>
 {

@@ -1,11 +1,10 @@
 using System.Text;
 using Application.Abstractions.Services.RabbitMQ;
-using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Application.Features.Users.ResetPassword;
+namespace Application.Features.Users.ResetPassword.Commands.ResetPassword;
 
 public class ResetPasswordCommandHandler:IRequestHandler<ResetPasswordCommandRequest,ResetPasswordCommandResponse>
 {
