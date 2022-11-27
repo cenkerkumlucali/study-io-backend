@@ -61,6 +61,7 @@ namespace Persistence
             services.AddScoped<IBlockRepository, BlockRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
+            services.AddScoped<IOtpAuthenticatorRepository, OtpAuthenticatorRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
