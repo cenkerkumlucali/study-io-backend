@@ -12,5 +12,6 @@ public interface IAuthService
     Task<RefreshToken> CreateRefreshToken(User user, string ipAddress);
     Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken);
     Task<AccessToken> RefreshTokenLoginAsync(string refreshToken);
-
+    Task DeleteOldEmailAuthenticators(User user);
+    Task<Domain.Entities.Users.EmailAuthenticator> CreateEmailAuthenticator(User user);
 }

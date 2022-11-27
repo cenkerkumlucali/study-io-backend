@@ -1,12 +1,13 @@
 using Application.Abstractions.Services;
+using Application.Abstractions.Services.EmailAuthenticator;
 using Application.Abstractions.Services.JWT;
 using Application.Abstractions.Services.Paging;
 using Application.DTOs.JWT;
 using Application.DTOs.User;
 using Application.Features.Auths.Commands.Register;
-using Application.Repositories.Services.OperationClaim;
 using Application.Repositories.Services.RefreshToken;
 using Application.Repositories.Services.UserOperationClaim;
+using Application.Repositories.Services.Users;
 using Application.Security.Hashing;
 using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -18,25 +19,22 @@ public class AuthManager : IAuthService
 {
     private readonly IUserOperationClaimRepository _userOperationClaimRepository;
     private readonly ITokenHelper _tokenHelper;
-    private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IRefreshTokenRepository _redisRefreshTokenRepository;
-    private readonly IOperationClaimRepository _operationClaimRepository;
-
+    private readonly IEmailAuthenticatorRepository _emailAuthenticatorRepository;
+    private readonly IEmailAuthenticatorHelper _emailAuthenticatorHelper;
     private readonly IUserService _userService;
 
     public AuthManager(IUserOperationClaimRepository userOperationClaimRepository,
-        IRefreshTokenRepository refreshTokenRepository,
         ITokenHelper tokenHelper,
         IUserService userService,
-        IRefreshTokenRepository redisRefreshTokenRepository,
-        IOperationClaimRepository operationClaimRepository)
+        IRefreshTokenRepository redisRefreshTokenRepository, IEmailAuthenticatorRepository emailAuthenticatorRepository, IEmailAuthenticatorHelper emailAuthenticatorHelper)
     {
         _userOperationClaimRepository = userOperationClaimRepository;
-        _refreshTokenRepository = refreshTokenRepository;
         _tokenHelper = tokenHelper;
         _userService = userService;
         _redisRefreshTokenRepository = redisRefreshTokenRepository;
-        _operationClaimRepository = operationClaimRepository;
+        _emailAuthenticatorRepository = emailAuthenticatorRepository;
+        _emailAuthenticatorHelper = emailAuthenticatorHelper;
     }
 
 
@@ -113,5 +111,24 @@ public class AuthManager : IAuthService
         }
         else
             throw new Exception("RefreshTokenLoginError");
+    }
+
+    public async Task DeleteOldEmailAuthenticators(User user)
+    {
+        IList<EmailAuthenticator> emailAuthenticators =
+            (await _emailAuthenticatorRepository.GetListAsync(r => r.UserId == user.Id)).Items;
+        foreach (EmailAuthenticator emailAuthenticator in emailAuthenticators)
+            await _emailAuthenticatorRepository.DeleteAsync(emailAuthenticator);
+    }
+
+    public async Task<EmailAuthenticator> CreateEmailAuthenticator(User user)
+    {
+        EmailAuthenticator emailAuthenticator = new()
+        {
+            UserId = user.Id,
+            ActivationKey = await _emailAuthenticatorHelper.CreateEmailActivationKey(),
+            IsVerified = false
+        };
+        return emailAuthenticator;
     }
 }
