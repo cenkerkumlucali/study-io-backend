@@ -62,12 +62,10 @@ public class MailService : IMailService
         await SendMailAsync(to, "Şifre Yenileme Talebi", mail.ToString(), true);
     }
 
-    public async Task SendCompletedOrderMailAsync(string to, string userName, string orderCode,
-        DateTime orderDate)
+    public async Task SendEnableEmailAuthenticatorAsync(string to, string firstName,string lastName,string verifyEmailUrlPrefix,string activationKey)
     {
-        string mail = $"Sayın {userName} Merhaba<br>" +
-                      $"{orderDate} tarihinde vermiş olduğunuz {orderCode} kodlu siparişiniz tamamlanmış ve kargo firmasına verilmiştir.<br>" +
-                      $"Hayırlı günler...";
-        await SendMailAsync(to, $"{orderCode} Sipariş numaralı Siparişiniz Tamamlandı", mail);
+        string mail = $"{firstName} {lastName} <br>" +
+                      $"Click on the link to verify your email: {verifyEmailUrlPrefix}?ActivationKey={activationKey})";
+        await SendMailAsync(to, $"Verify Your Email - Study.io", mail);
     }
 }

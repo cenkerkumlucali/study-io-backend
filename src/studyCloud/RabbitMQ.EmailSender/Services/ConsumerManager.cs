@@ -1,7 +1,10 @@
 using System.Text;
+using System.Text.Json;
 using Application.Abstractions.Services.RabbitMQ;
+// using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+
 
 namespace RabbitMQ.EmailSender.Services;
 
@@ -34,7 +37,7 @@ public class ConsumerManager : IConsumerService
                 _semaphore = new SemaphoreSlim(RabbitMQConsts.ParallelThreadsCount);
                 _connection = _rabbitMQServices.GetConnection();
                 _channel = _rabbitMQServices.GetModel(_connection);
-                _channel.QueueDeclare(queue: RabbitMQConsts.RabbitMqConstsList.QueueNameEmail.ToString(),
+                _channel.QueueDeclare(queue: RabbitMQConsts.RabbitMqConstsList.EmailSender.ToString(),
                                      durable: true,
                                      exclusive: false,
                                      autoDelete: false,
@@ -43,8 +46,8 @@ public class ConsumerManager : IConsumerService
                 _channel.BasicQos(0, RabbitMQConsts.ParallelThreadsCount, false);
                 _consumer = new EventingBasicConsumer(_channel);
                 _consumer.Received += Consumer_Received;
-                await Task.FromResult(_channel.BasicConsume(queue: "EmailSender".ToString(),
-                                           autoAck: false,
+                await Task.FromResult(_channel.BasicConsume(queue: RabbitMQConsts.RabbitMqConstsList.EmailSender.ToString(),
+                                           autoAck: false,  
                                            /* autoAck: bir mesajı aldıktan sonra bunu anladığına       
                                               dair(acknowledgment) kuyruğa bildirimde bulunur ya da timeout gibi vakalar oluştuğunda 
                                               mesajı geri çevirmek(Discard) veya yeniden kuyruğa aldırmak(Re-Queue) için dönüşler yapar*/
@@ -60,6 +63,8 @@ public class ConsumerManager : IConsumerService
         {
             try
             {
+                
+                
                 _semaphore.Wait();
                 var message = _objectConvertFormat.JsonToObject<object>(Encoding.UTF8.GetString(ea.Body.Span));
                 // MessageReceived?.Invoke(this, message);
@@ -68,15 +73,24 @@ public class ConsumerManager : IConsumerService
                 {
                     try
                     {
+                        MailMessageData? mailMessageData = JsonSerializer.Deserialize<MailMessageData>(Encoding.UTF8.GetString(ea.Body.Span));
                         // var task =
-                            _mailSender.SendPasswordResetMailAsync(message.ToString());
+                        switch (mailMessageData.RoutingKey)
+                        {
+                            case 0:
+                                _mailSender.SendPasswordResetMailAsync(mailMessageData.Email);
+                                break;
+                            case 1:
+                                _mailSender.SendEnableEmailAuthenticatorAsync(mailMessageData.Email,mailMessageData.FirstName,mailMessageData.LastName,mailMessageData.VerifyEmailUrlPrefix,mailMessageData.ActivationKey);
+                                break;
+                        }
                         // task.Wait();
                         // var result = task.;
                         // MessageProcessed?.Invoke(this);
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(ex.InnerException.Message.ToString());
+                        
                     }
                     finally
                     {
