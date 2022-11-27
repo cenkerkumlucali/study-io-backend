@@ -12,10 +12,12 @@ public class RabbitMQConsts
     public static string EmailSender = "EmailSender";
     public enum RabbitMqConstsList
     {
-        [Description("EmailSender")]
-        QueueNameEmail = 1,
-        [Description("QueueNameSms")]
-        QueueNameSms = 2
+        EmailSender = 1,
+        SmsSender = 2
     }
-
+    public enum RabbitMqQueueList
+    {
+        ResetPassword = 1,
+        EmailAuthenticator = 2
+    }
 }
