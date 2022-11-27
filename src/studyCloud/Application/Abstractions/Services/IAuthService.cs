@@ -14,4 +14,10 @@ public interface IAuthService
     Task<AccessToken> RefreshTokenLoginAsync(string refreshToken);
     Task DeleteOldEmailAuthenticators(User user);
     Task<Domain.Entities.Users.EmailAuthenticator> CreateEmailAuthenticator(User user);
+    Task<Domain.Entities.Users.OtpAuthenticator> CreateOtpAuthenticator(User user);
+    Task DeleteOldOtpAuthenticators(User user);
+    Task<string> ConvertSecretKeyToString(byte[] secretKey);
+    Task VerifyAuthenticatorCode(User user, string AuthenticatorCode);
+    Task SendAuthenticatorCode(User user);
+
 }
