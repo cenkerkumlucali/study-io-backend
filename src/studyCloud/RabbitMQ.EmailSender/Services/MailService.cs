@@ -68,4 +68,11 @@ public class MailService : IMailService
                       $"Click on the link to verify your email: {verifyEmailUrlPrefix}?ActivationKey={activationKey})";
         await SendMailAsync(to, $"Verify Your Email - Study.io", mail);
     }
+
+    public async Task SendAuthenticatorCodeAsync(string to, string firstName, string lastName, string authenticatorCode)
+    {
+        string mail = $"{firstName} {lastName} <br>" +
+                      $"Enter your authenticator code: {authenticatorCode}";
+        await SendMailAsync(to, $"Authenticator Code - Study.io", mail);
+    }
 }
