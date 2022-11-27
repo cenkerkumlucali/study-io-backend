@@ -30,22 +30,28 @@ public class LoginCommandHandler : IRequestHandler<LoginCommandRequest, LoginCom
     {
         User? user =
             await _userRepository.GetAsync(user => user.Email == request.UserForLoginDto.Email);
-            
+
         await _authBusinessRules.UserShouldBeExists(user);
         await _authBusinessRules.UserPasswordShouldBeMatch(user.Id, request.UserForLoginDto.Password);
-        if (user.AuthenticatorType != AuthenticatorType.None)
+        LoginCommandResponse loginCommandResponse = new();
+        if (user.AuthenticatorType is not AuthenticatorType.None)
         {
-                
+            if (request.UserForLoginDto.AuthenticatorCode is null)
+            {
+                await _authService.SendAuthenticatorCode(user);
+                loginCommandResponse.RequiredAuthenticatorType = user.AuthenticatorType;
+                return loginCommandResponse;
+            }
+
+            await _authService.VerifyAuthenticatorCode(user, request.UserForLoginDto.AuthenticatorCode);
         }
+
         AccessToken createdAccessToken = await _authService.CreateAccessToken(user);
         RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.IPAddress);
         RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
 
-        LoginCommandResponse loginCommandResponse = new()
-        {
-            AccessToken = createdAccessToken,
-            RefreshToken = addedRefreshToken
-        };
+        loginCommandResponse.AccessToken = createdAccessToken;
+        loginCommandResponse.RefreshToken = addedRefreshToken;
         return loginCommandResponse;
     }
 }
