@@ -61,7 +61,8 @@ public class RefreshTokenRepository : IRefreshTokenRepository
         }
 
         _logger.LogInformation("Refresh Token persisted successfully.");
-        return await GetAsync(refreshToken.UserId.ToString());
+        GetAsync(refreshToken.UserId.ToString());
+        return await GetAsync(refreshToken.Token);
     }
 
     private IServer GetServer()
