@@ -54,16 +54,6 @@ public class EnableEmailAuthenticatorCommandHandler : IRequestHandler<EnableEmai
         };
         
         _rabbitMQEmailSenderService.Send(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(emailAuthenticatorDto)));
-
-        // _mailService.SendMail(new Mail
-        // {
-        //     ToEmail = user.Email,
-        //     ToFullName = $"{user.FirstName} ${user.LastName}",
-        //     Subject = "Verify Your Email - RentACar",
-        //     TextBody =
-        //         $"Click on the link to verify your email: {request.VerifyEmailUrlPrefix}?ActivationKey={HttpUtility.UrlEncode(addedEmailAuthenticator.ActivationKey)}"
-        // });
-
         return Unit.Value;
     }
 }
