@@ -69,7 +69,7 @@ public class ConsumerManager : IConsumerService
                 var message = _objectConvertFormat.JsonToObject<object>(Encoding.UTF8.GetString(ea.Body.Span));
                 // MessageReceived?.Invoke(this, message);
                 // E-Posta akışını başlatma yeri
-                Task.Run(() =>
+                Task.Run(async () =>
                 {
                     try
                     {
@@ -78,10 +78,14 @@ public class ConsumerManager : IConsumerService
                         switch (mailMessageData.RoutingKey)
                         {
                             case 0:
-                                _mailSender.SendPasswordResetMailAsync(mailMessageData.Email);
+                                await _mailSender.SendPasswordResetMailAsync(mailMessageData.Email);
                                 break;
                             case 1:
-                                _mailSender.SendEnableEmailAuthenticatorAsync(mailMessageData.Email,mailMessageData.FirstName,mailMessageData.LastName,mailMessageData.VerifyEmailUrlPrefix,mailMessageData.ActivationKey);
+                                await _mailSender.SendEnableEmailAuthenticatorAsync(mailMessageData.Email,mailMessageData.FirstName,mailMessageData.LastName,mailMessageData.VerifyEmailUrlPrefix,mailMessageData.ActivationKey);
+                                break;
+                            case 2:
+                                await _mailSender.SendAuthenticatorCodeAsync(mailMessageData.Email, mailMessageData.FirstName,
+                                    mailMessageData.LastName, mailMessageData.ActivationKey);
                                 break;
                         }
                         // task.Wait();
