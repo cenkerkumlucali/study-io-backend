@@ -1,6 +1,8 @@
 using Application.DTOs.User;
+using Application.Features.Auths.Commands.EnableEmailAuthenticator;
 using Application.Features.Auths.Commands.Login;
 using Application.Features.Auths.Commands.Register;
+using Application.Features.Auths.Commands.VerifyEmailAuthenticator;
 using Application.Features.Users.RefreshTokenLogin;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,13 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class AuthController : BaseController
 {
+    private readonly WebAPIConfiguration _configuration;
+
+    public AuthController(IConfiguration configuration)
+    {
+        _configuration = configuration.GetSection("WebAPIConfiguration").Get<WebAPIConfiguration>();
+    }
+
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
     {
@@ -51,6 +60,27 @@ public class AuthController : BaseController
     {
         RefreshTokenCommandResponse response = await Mediator.Send(refreshTokenCommandRequest);
         return Ok(response);
+    }
+    [HttpGet("EnableEmailAuthenticator")]
+    public async Task<IActionResult> EnableEmailAuthenticator([FromQuery] EnableEmailAuthenticatorCommandRequest enableEmailAuthenticatorCommandRequest)
+    {
+        enableEmailAuthenticatorCommandRequest.VerifyEmailUrlPrefix =
+            $"{_configuration.APIDomain}/Auth/VerifyEmailAuthenticator";
+        
+        await Mediator.Send(enableEmailAuthenticatorCommandRequest);
+
+        return Ok();
+    }
+    [HttpGet("VerifyEmailAuthenticator")]
+    public async Task<IActionResult> VerifyEmailAuthenticator(
+        [FromQuery] VerifyEmailAuthenticatorCommandRequest verifyEmailAuthenticatorCommandRequest)
+    {
+        await Mediator.Send(verifyEmailAuthenticatorCommandRequest);
+        return Ok();
+    }
+    private string? GetRefreshTokenFromCookies()
+    {
+        return Request.Cookies["refreshToken"];
     }
     private void SetRefreshTokenToCookie(RefreshToken refreshToken)
     {
