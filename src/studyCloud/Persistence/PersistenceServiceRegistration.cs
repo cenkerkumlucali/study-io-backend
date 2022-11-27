@@ -13,6 +13,7 @@ using Application.Repositories.Services.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
+using Persistence.Repositories;
 using Persistence.Repositories.Categories;
 using Persistence.Repositories.Comments;
 using Persistence.Repositories.Feeds;
@@ -59,6 +60,7 @@ namespace Persistence
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IBlockRepository, BlockRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
