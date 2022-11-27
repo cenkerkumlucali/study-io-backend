@@ -254,7 +254,8 @@ namespace Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("Id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
@@ -262,11 +263,11 @@ namespace Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDate");
 
-                    b.Property<int?>("FollowerId")
+                    b.Property<int>("FollowerId")
                         .HasColumnType("integer")
                         .HasColumnName("FollowerId");
 
-                    b.Property<int?>("FollowingId")
+                    b.Property<int>("FollowingId")
                         .HasColumnType("integer")
                         .HasColumnName("FollowingId");
 
@@ -516,6 +517,36 @@ namespace Persistence.Migrations
                     b.HasIndex("TargetId");
 
                     b.ToTable("Blocks");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActivationKey")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EmailAuthenticators");
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.OperationClaim", b =>
@@ -858,21 +889,23 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Follow", b =>
                 {
-                    b.HasOne("Domain.Entities.Users.User", "Follewer")
+                    b.HasOne("Domain.Entities.Users.User", "Follower")
                         .WithMany()
                         .HasForeignKey("FollowerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "Following")
                         .WithMany()
                         .HasForeignKey("FollowingId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", null)
                         .WithMany("Follows")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Follewer");
+                    b.Navigation("Follower");
 
                     b.Navigation("Following");
                 });
@@ -1020,6 +1053,17 @@ namespace Persistence.Migrations
                     b.Navigation("Agent");
 
                     b.Navigation("Target");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.RefreshToken", b =>
