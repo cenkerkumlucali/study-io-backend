@@ -1,8 +1,11 @@
 using Application.DTOs.User;
 using Application.Features.Auths.Commands.EnableEmailAuthenticator;
+using Application.Features.Auths.Commands.EnableOtpAuthenticator;
 using Application.Features.Auths.Commands.Login;
 using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Commands.VerifyEmailAuthenticator;
+using Application.Features.Auths.Commands.VerifyOtpAuthenticator;
+using Application.Features.Auths.Dtos;
 using Application.Features.Users.RefreshTokenLogin;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -78,6 +81,22 @@ public class AuthController : BaseController
         await Mediator.Send(verifyEmailAuthenticatorCommandRequest);
         return Ok();
     }
+    
+    [HttpGet("EnableOtpAuthenticator")]
+    public async Task<IActionResult> EnableOtpAuthenticator([FromQuery] EnableOtpAuthenticatorCommandRequest enableOtpAuthenticatorCommandRequest)
+    {
+        EnabledOtpAuthenticatorCommandResponse result = await Mediator.Send(enableOtpAuthenticatorCommandRequest);
+        return Ok(result);
+    }
+    
+    [HttpPost("VerifyOtpAuthenticator")]
+    public async Task<IActionResult> VerifyOtpAuthenticator(
+        [FromQuery] VerifyOtpAuthenticatorCommandRequest verifyOtpAuthenticatorCommandRequest)
+    {
+        await Mediator.Send(verifyOtpAuthenticatorCommandRequest);
+        return Ok();
+    }
+    
     private string? GetRefreshTokenFromCookies()
     {
         return Request.Cookies["refreshToken"];
