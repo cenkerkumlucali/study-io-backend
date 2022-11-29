@@ -1,17 +1,20 @@
-using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
 using Application.Features.Feeds.Post.Commands.CreatePost;
 using Application.Features.Feeds.Post.Commands.DeletePost;
 using Application.Features.Feeds.Post.Commands.UpdatePost;
 using Application.Features.Feeds.Post.Models;
 using Application.Features.Feeds.Post.Queries.GetByIdPost;
+using Application.Features.Feeds.Post.Queries.GetListByUserId;
 using Application.Features.Feeds.Post.Queries.GetListPost;
 using Application.Features.Feeds.PostImageFile.Commands.CreatePostImage;
 using Application.Features.Feeds.PostImageFile.Commands.DeletePostImage;
 using Application.Features.Feeds.PostImageFile.Models;
 using Application.Features.Feeds.PostImageFile.Queries.GetListPostImage;
+using Application.Features.Feeds.PostLike.Commands.LikePost;
+using Application.Features.Feeds.PostLike.Commands.UnLikePost;
+using Application.Features.Feeds.PostLike.Queries.GetMembersLikedPost;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers.Feeds;
+namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -19,7 +22,7 @@ public class PostsController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(
-        [FromBody] CreatePostCommandRequest createPostCommand)
+        [FromQuery] CreatePostCommandRequest createPostCommand)
     {
         CreatePostCommandResponse result = await Mediator.Send(createPostCommand);
         return Created("", result);
@@ -56,6 +59,13 @@ public class PostsController:BaseController
         GetByIdPostQueryResponse result = await Mediator.Send(getByIdPostQuery);
         return Ok(result);
     }
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetListByUserId(
+        [FromQuery] GetListByUserIdQueryRequest getListByUserIdQueryRequest)
+    {
+        GetListByUserIdQueryResponse result = await Mediator.Send(getListByUserIdQueryRequest);
+        return Ok(result);
+    }
     [HttpPost("[action]")]
     public async Task<IActionResult> UploadImage(
         [FromQuery] CreatePostImageFileCommandRequest createPostImageFileCommandRequest)
@@ -79,6 +89,30 @@ public class PostsController:BaseController
     {
         deletePostImageCommandRequest.ImageId = imageId;
         DeletePostFileCommandResponse response = await Mediator.Send(deletePostImageCommandRequest);
+        return Ok(response);
+    }
+    
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetMembersLikedPost(
+        [FromQuery] GetMembersLikedPostQueryRequest getMembersLikedPostQueryRequest)
+    {
+        List<GetMembersLikedPostQueryResponse> response = await Mediator.Send(getMembersLikedPostQueryRequest);
+        return Ok(response);
+    }
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> LikePost(
+        [FromBody] LikePostCommandRequest createPostLikeCommandRequest)
+    {
+        LikePostCommandResponse response = await Mediator.Send(createPostLikeCommandRequest);
+        return Ok(response);
+    }
+
+    [HttpDelete("[action]")]
+    public async Task<IActionResult> UnLikePost(
+        [FromRoute] UnLikePostCommandRequest deletePostLikeCommand)
+    {
+        UnLikePostCommandResponse response = await Mediator.Send(deletePostLikeCommand);
         return Ok(response);
     }
 }
