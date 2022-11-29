@@ -1,12 +1,14 @@
 using Application.DTOs.User;
+using Application.Features.Auths.Commands.DisableEmailAuthenticator;
+using Application.Features.Auths.Commands.DisableOtpAuthenticator;
 using Application.Features.Auths.Commands.EnableEmailAuthenticator;
 using Application.Features.Auths.Commands.EnableOtpAuthenticator;
 using Application.Features.Auths.Commands.Login;
+using Application.Features.Auths.Commands.RefreshTokenLogin;
 using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Commands.VerifyEmailAuthenticator;
 using Application.Features.Auths.Commands.VerifyOtpAuthenticator;
 using Application.Features.Auths.Dtos;
-using Application.Features.Users.RefreshTokenLogin;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -64,6 +66,7 @@ public class AuthController : BaseController
         RefreshTokenCommandResponse response = await Mediator.Send(refreshTokenCommandRequest);
         return Ok(response);
     }
+ 
     [HttpGet("EnableEmailAuthenticator")]
     public async Task<IActionResult> EnableEmailAuthenticator([FromQuery] EnableEmailAuthenticatorCommandRequest enableEmailAuthenticatorCommandRequest)
     {
@@ -74,6 +77,14 @@ public class AuthController : BaseController
 
         return Ok();
     }
+    
+    [HttpGet("DisableEmailAuthenticator")]
+    public async Task<IActionResult> DisableEmailAuthenticator([FromQuery] DisableEmailAuthenticatorCommandRequest disableEmailAuthenticatorCommandRequest)
+    {
+        await Mediator.Send(disableEmailAuthenticatorCommandRequest);
+        return Ok();
+    }
+    
     [HttpGet("VerifyEmailAuthenticator")]
     public async Task<IActionResult> VerifyEmailAuthenticator(
         [FromQuery] VerifyEmailAuthenticatorCommandRequest verifyEmailAuthenticatorCommandRequest)
@@ -87,6 +98,13 @@ public class AuthController : BaseController
     {
         EnabledOtpAuthenticatorCommandResponse result = await Mediator.Send(enableOtpAuthenticatorCommandRequest);
         return Ok(result);
+    }
+    
+    [HttpGet("DisableOtpAuthenticator")]
+    public async Task<IActionResult> DisableOtpAuthenticator([FromQuery] DisableOtpAuthenticatorCommandRequest disableOtpAuthenticatorCommandRequest)
+    {
+        await Mediator.Send(disableOtpAuthenticatorCommandRequest);
+        return Ok();
     }
     
     [HttpPost("VerifyOtpAuthenticator")]
