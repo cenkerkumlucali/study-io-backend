@@ -1,5 +1,4 @@
 using System.Text;
-using System.Web;
 using Application.Abstractions.Services;
 using Application.Abstractions.Services.EmailAuthenticator;
 using Application.Abstractions.Services.JWT;
@@ -27,7 +26,7 @@ public class AuthManager : IAuthService
 {
     private readonly IUserOperationClaimRepository _userOperationClaimRepository;
     private readonly ITokenHelper _tokenHelper;
-    private readonly IRefreshTokenRepository _redisRefreshTokenRepository;
+    private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IEmailAuthenticatorRepository _emailAuthenticatorRepository;
     private readonly IEmailAuthenticatorHelper _emailAuthenticatorHelper;
     private readonly IOtpAuthenticatorHelper _otpAuthenticatorHelper;
@@ -39,12 +38,12 @@ public class AuthManager : IAuthService
     public AuthManager(IUserOperationClaimRepository userOperationClaimRepository,
         ITokenHelper tokenHelper,
         IUserService userService,
-        IRefreshTokenRepository redisRefreshTokenRepository, IEmailAuthenticatorRepository emailAuthenticatorRepository, IEmailAuthenticatorHelper emailAuthenticatorHelper, IOtpAuthenticatorHelper otpAuthenticatorHelper, IOtpAuthenticatorRepository otpAuthenticatorRepository, IRabbitMQEmailSenderService rabbitMqEmailSenderService)
+        IRefreshTokenRepository refreshTokenRepository, IEmailAuthenticatorRepository emailAuthenticatorRepository, IEmailAuthenticatorHelper emailAuthenticatorHelper, IOtpAuthenticatorHelper otpAuthenticatorHelper, IOtpAuthenticatorRepository otpAuthenticatorRepository, IRabbitMQEmailSenderService rabbitMqEmailSenderService)
     {
         _userOperationClaimRepository = userOperationClaimRepository;
         _tokenHelper = tokenHelper;
         _userService = userService;
-        _redisRefreshTokenRepository = redisRefreshTokenRepository;
+        _refreshTokenRepository = refreshTokenRepository;
         _emailAuthenticatorRepository = emailAuthenticatorRepository;
         _emailAuthenticatorHelper = emailAuthenticatorHelper;
         _otpAuthenticatorHelper = otpAuthenticatorHelper;
@@ -65,6 +64,7 @@ public class AuthManager : IAuthService
             LastName = userForRegisterDto.LastName,
             PasswordHash = passwordHash,
             PasswordSalt = passwordSalt,
+            Gender = Gender.EMPTY,
             Status = true
         };
         User createdUser = await _userService.AddAsync(newUser);
@@ -102,13 +102,13 @@ public class AuthManager : IAuthService
 
     public async Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken)
     {
-        RefreshToken addedRefreshToken = await _redisRefreshTokenRepository.UpdateAsync(refreshToken);
+        RefreshToken addedRefreshToken = await _refreshTokenRepository.UpdateAsync(refreshToken);
         return addedRefreshToken;
     }
 
     public async Task<AccessToken> RefreshTokenLoginAsync(string refreshToken)
     {
-        RefreshToken refresh = await _redisRefreshTokenRepository.GetByRefreshToken(refreshToken);
+        RefreshToken refresh = await _refreshTokenRepository.GetByRefreshToken(refreshToken);
         User user = await _userService.GetById(refresh.UserId);
         if (user is not null && refresh?.Expires > DateTime.UtcNow)
         {
@@ -126,6 +126,18 @@ public class AuthManager : IAuthService
         }
         else
             throw new Exception("RefreshTokenLoginError");
+    }
+
+    public async Task<RefreshToken?> GetRefreshTokenByToken(string token)
+    {
+        RefreshToken refreshToken = await _refreshTokenRepository.GetByRefreshToken(token);
+        return refreshToken;
+    }
+
+    public async Task RevokeDescendantRefreshTokens(RefreshToken refreshToken, string IPAddress, string reason)
+    {
+        RefreshToken childToken = await _refreshTokenRepository.GetByRefreshToken(refreshToken.Token);  
+        if (childToken != null && childToken.Revoked != null && childToken.Expires <= DateTime.UtcNow){}
     }
 
     public async Task DeleteOldEmailAuthenticators(User user)
