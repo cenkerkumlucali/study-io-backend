@@ -7,5 +7,4 @@ public class LoginCommandRequest : IRequest<LoginCommandResponse>
 {
     public UserForLoginDto UserForLoginDto { get; set; }
     public string IPAddress { get; set; }
-    public int RoutingKey => 2;
 }
