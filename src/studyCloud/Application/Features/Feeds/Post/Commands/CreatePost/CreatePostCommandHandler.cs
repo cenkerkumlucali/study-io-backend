@@ -1,25 +1,32 @@
-using Application.Repositories.Services.Feeds;
+using Application.Abstractions.Services;
+using Application.Features.Feeds.Post.Dtos;
 using AutoMapper;
 using MediatR;
 
 namespace Application.Features.Feeds.Post.Commands.CreatePost;
 
-public class CreatePostCommandHandler:IRequestHandler<CreatePostCommandRequest,CreatePostCommandResponse>
+public class CreatePostCommandHandler : IRequestHandler<CreatePostCommandRequest, CreatePostCommandResponse>
 {
-    private readonly IPostRepository _postRepository;
     private readonly IMapper _mapper;
+    private readonly IPostService _postService;
 
-
-    public CreatePostCommandHandler(IPostRepository postRepository, IMapper mapper)
+    public CreatePostCommandHandler(IMapper mapper, IPostService postService)
     {
-        _postRepository = postRepository;
         _mapper = mapper;
+        _postService = postService;
     }
 
-    public async Task<CreatePostCommandResponse> Handle(CreatePostCommandRequest request, CancellationToken cancellationToken)
+    public async Task<CreatePostCommandResponse> Handle(CreatePostCommandRequest request,
+        CancellationToken cancellationToken)
     {
         Domain.Entities.Feeds.Post mappedPost = _mapper.Map<Domain.Entities.Feeds.Post>(request);
-        Domain.Entities.Feeds.Post createdPost = await _postRepository.AddAsync(mappedPost);
+
+        PostUploadDto postUploadDto = new()
+        {
+            Post = mappedPost,
+            Files = request.Files
+        };
+        PostUploadDto createdPost = await _postService.Upload(postUploadDto);
         CreatePostCommandResponse mappedCreatePostDto = _mapper.Map<CreatePostCommandResponse>(createdPost);
         return mappedCreatePostDto;
     }
