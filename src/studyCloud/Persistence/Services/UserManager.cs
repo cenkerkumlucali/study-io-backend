@@ -31,6 +31,12 @@ public class UserManager : IUserService
         return user;
     }
 
+    public async Task<IList<User>> GetAllByUsernameIn(ICollection<string> userNames)
+    {
+        IList<User> users = (await _userRepository.GetListAsync(c => userNames.Contains(c.UserName))).Items;
+        return users;
+    }
+
     public async Task<User> Update(User user)
     {
         User updatedUser = await _userRepository.UpdateAsync(user);
