@@ -78,4 +78,10 @@ public class AuthBusinessRules
         if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             throw new BusinessException("Password don't match.");
     }
+    public Task UserShouldBeHaveAuthenticator(User user)
+    {
+        if (user.AuthenticatorType == AuthenticatorType.None)
+            throw new BusinessException("User have not a authenticator.");
+        return Task.CompletedTask;
+    }
 }
