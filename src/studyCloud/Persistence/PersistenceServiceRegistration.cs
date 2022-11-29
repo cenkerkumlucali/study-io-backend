@@ -72,6 +72,8 @@ namespace Persistence
             services.AddScoped<IUserImageService, UserImageManager>();
             services.AddScoped<IBlockService, BlockManager>();
             services.AddScoped<IFollowService, FollowManager>();
+            services.AddScoped<IPostService, PostManager>();
+            services.AddScoped<IMentionService, MentionManager>();
 
 
             return services;
