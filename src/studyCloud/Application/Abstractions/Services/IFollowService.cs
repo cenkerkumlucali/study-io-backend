@@ -9,5 +9,5 @@ public interface IFollowService
     Task<Follow> DeleteAsync(Follow follow);
     Task<Follow> DeleteFollowerAsync(Follow follow);
     Task<FollowerDto> GetFollowers(int memberId);
-
+    Task<List<Follow>> GetFollowings(int memberId);
 }
