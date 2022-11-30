@@ -1,27 +1,25 @@
-using Application.Repositories.Services.Follows;
+using Application.Abstractions.Services;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Follows.Queries.GetFollowings;
 
 public class GetFollowingsQueryHandler : IRequestHandler<GetFollowingsQueryRequest, List<GetFollowingsQueryResponse>>
 {
-    private readonly IFollowRepository _followRepository;
+    private readonly IFollowService _followService;
     private IMapper _mapper;
 
-    public GetFollowingsQueryHandler(IFollowRepository followRepository, IMapper mapper)
+    public GetFollowingsQueryHandler(IMapper mapper, IFollowService followService)
     {
-        _followRepository = followRepository;
         _mapper = mapper;
+        _followService = followService;
     }
 
     public async Task<List<GetFollowingsQueryResponse>> Handle(GetFollowingsQueryRequest request,
         CancellationToken cancellationToken)
     {
-        List<Follow> followings = await _followRepository.GetAllAsync(c => c.FollowerId == request.UserId,
-            include: c => c.Include(c => c.Following));
+        List<Follow> followings = await _followService.GetFollowings(request.UserId);
         List<GetFollowingsQueryResponse>? response = _mapper.Map<List<GetFollowingsQueryResponse>>(followings);
         return response;
     }
