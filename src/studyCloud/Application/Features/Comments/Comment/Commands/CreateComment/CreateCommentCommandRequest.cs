@@ -9,6 +9,4 @@ public class CreateCommentCommandRequest:IRequest<CreateCommentCommandResponse>
     public int? ParentId { get; set; }
     public string Content { get; set; }
     public DateTime CreatedDate { get; set; }
-    
-    
 }
