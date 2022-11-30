@@ -15,14 +15,20 @@ public class PostManager : IPostService
     private readonly IPostImageFileService _postImageFileService;
     private readonly IMentionService _mentionService;
     private readonly IUserService _userService;
+    private readonly IAlarmService _alarmService;
+    private readonly ICommentService _commentService;
+    private readonly IPostLikeService _postLikeService;
 
-    public PostManager(IPostRepository postRepository, IFollowService followService, IPostImageFileService postImageFileService, IMentionService mentionService, IUserService userService)
+    public PostManager(IPostRepository postRepository, IFollowService followService, IPostImageFileService postImageFileService, IMentionService mentionService, IUserService userService, IAlarmService alarmService, ICommentService commentService, IPostLikeService postLikeService)
     {
         _postRepository = postRepository;
         _followService = followService;
         _postImageFileService = postImageFileService;
         _mentionService = mentionService;
         _userService = userService;
+        _alarmService = alarmService;
+        _commentService = commentService;
+        _postLikeService = postLikeService;
     }
 
     public async Task<PostUploadDto> Upload(PostUploadDto postUploadDto)
@@ -36,6 +42,17 @@ public class PostManager : IPostService
             Post = createdPost,
             Files = postUploadDto.Files
         };
+    }
+
+    public async Task<Post> Delete(Post post)
+    {
+        await _postLikeService.DeleteAllInPost(post);
+        await _postImageFileService.DeleteAllInPost(post);
+        await _alarmService.DeleteAll(post.Id);
+        await _commentService.DeleteAllInPost(post);
+        await _mentionService.DeleteAll(post);
+        await _postRepository.DeleteAsync(post);
+        return post;
     }
 
     public async Task<List<object>> GetPostPageOfFollowingMembersByUserId(int userId, int page, int size)

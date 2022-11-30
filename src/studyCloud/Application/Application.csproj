@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Categories\Dtos" />
     <Folder Include="Features\Comments\CommentFile\Constants" />
     <Folder Include="Features\Comments\CommentFile\Rules" />
     <Folder Include="Features\Comments\CommentLike\Constants" />
@@ -38,7 +37,6 @@
     <Folder Include="Features\Feeds\PostLike\Rules" />
     <Folder Include="Features\Feeds\Post\Constants" />
     <Folder Include="Features\Feeds\Post\Rules" />
-    <Folder Include="Features\Follows\Constants" />
     <Folder Include="Features\Follows\Rules" />
     <Folder Include="Features\Mentions\Constants" />
     <Folder Include="Features\Mentions\Rules" />
@@ -60,7 +58,6 @@
     <Folder Include="Features\Users\Block\Constants" />
     <Folder Include="Features\Users\Block\Dtos" />
     <Folder Include="Features\Users\Block\Models" />
-    <Folder Include="Features\Users\Block\Queries" />
     <Folder Include="Features\Users\Block\Rules" />
     <Folder Include="Features\Users\UserCoin\Constants" />
     <Folder Include="Features\Users\UserCoin\Dtos" />

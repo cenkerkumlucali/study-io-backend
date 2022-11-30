@@ -3,6 +3,7 @@ using Application.Exceptions;
 using Application.Repositories.Services.Users;
 using Domain.Entities;
 using Domain.Entities.Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Services;
 
@@ -25,14 +26,15 @@ public class BlockManager : IBlockService
         User blockMember = await _userService.GetById(block.TargetId);
         if (blockMember is null)
             throw new BusinessException(ErrorCode.MEMBER_NOT_FOUND);
-        if (member.Id.Equals(blockMember.Id)) {
+        if (member.Id.Equals(blockMember.Id))
+        {
             throw new BusinessException(ErrorCode.BLOCK_MYSELF_FAIL);
         }
 
         Follow memberFollow = await _followService.FindByMemberIdAndFollowMemberId(member.Id, blockMember.Id);
         if (memberFollow is not null)
             await _followService.DeleteAsync(memberFollow);
-        Follow blockMemberFollow = await _followService.FindByMemberIdAndFollowMemberId(blockMember.Id,member.Id);
+        Follow blockMemberFollow = await _followService.FindByMemberIdAndFollowMemberId(blockMember.Id, member.Id);
         if (blockMemberFollow is not null)
             await _followService.DeleteAsync(blockMemberFollow);
         await _blockRepository.AddAsync(block);
@@ -45,18 +47,27 @@ public class BlockManager : IBlockService
         User blockMember = await _userService.GetById(block.TargetId);
         if (blockMember is null)
             throw new BusinessException(ErrorCode.MEMBER_NOT_FOUND);
-        if (member.Id.Equals(blockMember.Id)) {
+        if (member.Id.Equals(blockMember.Id))
+        {
             throw new BusinessException(ErrorCode.BLOCK_MYSELF_FAIL);
         }
 
-        Block blockResult = await FindByMemberIdAndBlockMemberId(member.Id, blockMember.Id);
-        await _blockRepository.DeleteAsync(blockResult);
+        Block? blockResult = await FindByMemberIdAndBlockMemberId(member.Id, blockMember.Id);
+        if (blockResult != null) await _blockRepository.DeleteAsync(blockResult);
         return true;
     }
 
-    public async Task<Block> FindByMemberIdAndBlockMemberId(int memberId, int blockMemberId)
+    public async Task<List<Block>> GetByUserId(int userId)
     {
-        Block block = await _blockRepository.GetAsync(c => c.AgentId == memberId && c.TargetId == blockMemberId);
+        List<Block> blockedUsers = (await _blockRepository.GetListAsync(c => c.AgentId == userId
+            ,include:c=>c.Include(c=>c.Target)
+                .ThenInclude(c=>c.UserImageFiles))).Items.ToList();
+        return blockedUsers;
+    }
+
+    private async Task<Block?> FindByMemberIdAndBlockMemberId(int memberId, int blockMemberId)
+    {
+        Block? block = await _blockRepository.GetAsync(c => c.AgentId == memberId && c.TargetId == blockMemberId);
         return block;
     }
 }

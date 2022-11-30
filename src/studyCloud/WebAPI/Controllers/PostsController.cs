@@ -110,7 +110,7 @@ public class PostsController:BaseController
 
     [HttpDelete("[action]")]
     public async Task<IActionResult> UnLikePost(
-        [FromRoute] UnLikePostCommandRequest deletePostLikeCommand)
+        [FromBody] UnLikePostCommandRequest deletePostLikeCommand)
     {
         UnLikePostCommandResponse response = await Mediator.Send(deletePostLikeCommand);
         return Ok(response);

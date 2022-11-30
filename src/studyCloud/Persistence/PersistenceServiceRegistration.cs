@@ -1,4 +1,5 @@
 using Application.Abstractions.Services;
+using Application.Repositories.Services.Alarm;
 using Application.Repositories.Services.Categories;
 using Application.Repositories.Services.Comments;
 using Application.Repositories.Services.Feeds;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
 using Persistence.Repositories;
+using Persistence.Repositories.Alarm;
 using Persistence.Repositories.Categories;
 using Persistence.Repositories.Comments;
 using Persistence.Repositories.Feeds;
@@ -62,6 +64,7 @@ namespace Persistence
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
             services.AddScoped<IOtpAuthenticatorRepository, OtpAuthenticatorRepository>();
+            services.AddScoped<IAlarmRepository, AlarmRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
@@ -74,6 +77,8 @@ namespace Persistence
             services.AddScoped<IFollowService, FollowManager>();
             services.AddScoped<IPostService, PostManager>();
             services.AddScoped<IMentionService, MentionManager>();
+            services.AddScoped<IAlarmService, AlarmManager>();
+            services.AddScoped<IPostLikeService, PostLikeManager>();
 
 
             return services;

@@ -144,6 +144,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.8, )"
+            },
+            "Redis.OM": {
+              "target": "Package",
+              "version": "[0.3.1, )"
             }
           },
           "imports": [

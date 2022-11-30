@@ -3,24 +3,25 @@ using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Users;
 
-public class User:BaseEntity
+public class User : BaseEntity
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
     public string UserName { get; set; }
     public string? PhoneNumber { get; set; }
+    public DateTime? Birthday { get; set; }
     public string? Introduce { get; set; }
     public byte[] PasswordSalt { get; set; }
     public byte[] PasswordHash { get; set; }
     public bool Status { get; set; }
     public AuthenticatorType AuthenticatorType { get; set; }
+    public Gender Gender { get; set; }
 
     public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
     public virtual ICollection<Follow> Follows { get; set; }
-    public ICollection<UserImageFile> UserImageFiles { get; set; }
-    public Gender Gender { get; set; }
+    public virtual ICollection<UserImageFile> UserImageFiles { get; set; }
 
 
     public User()

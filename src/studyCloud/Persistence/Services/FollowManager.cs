@@ -68,4 +68,13 @@ public class FollowManager : IFollowService
             }).ToList(),
         };
     }
+
+    public async Task<List<Follow>> GetFollowings(int memberId)
+    {
+        List<Follow> followings = await _followRepository.GetAllAsync(c => c.FollowerId == memberId,
+            include: c => c.Include(c => c.Following)
+                .ThenInclude(c=>c.UserImageFiles));
+        return followings;
+    }
+
 }

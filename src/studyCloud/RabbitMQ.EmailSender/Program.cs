@@ -15,7 +15,6 @@ builder.Services.AddScoped<IRabbitMQService, RabbitMQService>();
 builder.Services.AddScoped<IRabbitMQConfiguration, RabbitMQConfiguration>();
 builder.Services.AddScoped<IObjectConvertFormat, ObjectConvertFormatManager>();
 builder.Services.AddScoped<ISmtpConfiguration, SmtpConfiguration>();
-builder.Services.AddScoped<IPublisherService, PublisherManager>();
 builder.Services.AddScoped<IConsumerService, ConsumerManager>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -40,8 +39,6 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<IConsumerService, ConsumerManager>()
     .BuildServiceProvider();
 var consumerService = serviceProvider.GetService<IConsumerService>();
-Console.WriteLine("consumerService alındı.");
-Console.WriteLine($"consumerService.Start() başladı: {DateTime.Now.ToShortTimeString()}");
 await consumerService.Start();
 app.UseHttpsRedirection();
 

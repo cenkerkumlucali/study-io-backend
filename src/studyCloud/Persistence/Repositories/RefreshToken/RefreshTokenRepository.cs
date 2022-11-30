@@ -2,6 +2,7 @@ using System.Net;
 using Application.Repositories.Services.RefreshToken;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Redis.OM.Searching;
 using StackExchange.Redis;
 
 namespace Persistence.Repositories.RefreshToken;
@@ -44,6 +45,7 @@ public class RefreshTokenRepository : IRefreshTokenRepository
     public async Task<Domain.Entities.Users.RefreshToken> GetAsync(string id)
     {
         RedisValue data = await _database.StringGetAsync(id);
+        
 
         if (data.IsNullOrEmpty)
             return null;

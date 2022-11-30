@@ -6,5 +6,5 @@ public interface IBlockService
 {
     Task<bool> Block(Block block);
     Task<bool> Unblock(Block block);
-    Task<Block> FindByMemberIdAndBlockMemberId(int memberId, int blockMemberId);
+    Task<List<Block>> GetByUserId(int userId);
 }

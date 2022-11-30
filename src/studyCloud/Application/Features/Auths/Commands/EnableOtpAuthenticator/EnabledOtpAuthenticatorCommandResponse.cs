@@ -1,4 +1,4 @@
-﻿namespace Application.Features.Auths.Dtos;
+﻿namespace Application.Features.Auths.Commands.EnableOtpAuthenticator;
 
 public class EnabledOtpAuthenticatorCommandResponse
 {

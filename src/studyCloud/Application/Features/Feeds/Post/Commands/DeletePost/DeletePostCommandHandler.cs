@@ -1,4 +1,4 @@
-using Application.Repositories.Services.Feeds;
+using Application.Abstractions.Services;
 using AutoMapper;
 using MediatR;
 
@@ -6,12 +6,12 @@ namespace Application.Features.Feeds.Post.Commands.DeletePost;
 
 public class DeletePostCommandHandler:IRequestHandler<DeletePostCommandRequest,DeletePostCommandResponse>
 {
-    private IPostRepository _postRepository;
+    private IPostService _postService;
     private IMapper _mapper;
 
-    public DeletePostCommandHandler(IPostRepository postRepository, IMapper mapper)
+    public DeletePostCommandHandler(IPostService postService, IMapper mapper)
     {
-        _postRepository = postRepository;
+        _postService = postService;
         _mapper = mapper;
     }
 
@@ -19,7 +19,7 @@ public class DeletePostCommandHandler:IRequestHandler<DeletePostCommandRequest,D
     {
         Domain.Entities.Feeds.Post post = _mapper.Map<Domain.Entities.Feeds.Post>(request);
         Domain.Entities.Feeds.Post deletedPost =
-            await _postRepository.DeleteAsync(post);
+            await _postService.Delete(post);
         DeletePostCommandResponse deletedPostDto =
             _mapper.Map<DeletePostCommandResponse>(deletedPost);
         return deletedPostDto;

@@ -1,6 +1,7 @@
 using Application.Repositories.Services.Categories;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.SubCategories.Queries.GetByIdSubCategory;
 
@@ -18,7 +19,8 @@ public class GetByIdSubCategoryQueryHandler:IRequestHandler<GetByIdSubCategoryQu
     public async Task<GetByIdSubCategoryQueryResponse> Handle(GetByIdSubCategoryQueryRequest request, CancellationToken cancellationToken)
     {
         Domain.Entities.Categories.SubCategory? subCategory =
-            await _subCategoryRepository.GetAsync(c => c.Id == request.Id);
+            await _subCategoryRepository.GetAsync(c => c.Id == request.Id,
+                include:c=>c.Include(c=>c.Category));
         GetByIdSubCategoryQueryResponse getByIdSubCategoryDto =
             _mapper.Map<GetByIdSubCategoryQueryResponse>(subCategory);
         return getByIdSubCategoryDto;

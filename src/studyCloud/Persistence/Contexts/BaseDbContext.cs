@@ -33,13 +33,15 @@ namespace Persistence.Contexts
         public DbSet<File> Files { get; set; }
         public DbSet<Block> Blocks { get; set; }
         public DbSet<EmailAuthenticator> EmailAuthenticators { get; set; }
+        public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
+        public DbSet<Alarm> Alarms { get; set; }
 
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
             IEnumerable<EntityEntry<BaseEntity>> datas = ChangeTracker
                 .Entries<BaseEntity>().Where(e =>

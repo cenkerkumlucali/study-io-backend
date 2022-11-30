@@ -30,7 +30,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommandRequest, Re
     {
         await _authBusinessRules.UserEmailShouldBeNotExists(request.UserForRegisterDto.Email);
 
-        var registeredDto = await _authService.Register(request.UserForRegisterDto, request.IPAddress);
+        RegisterCommandResponse registeredDto = await _authService.Register(request.UserForRegisterDto, request.IPAddress);
         return registeredDto;
     }
 }

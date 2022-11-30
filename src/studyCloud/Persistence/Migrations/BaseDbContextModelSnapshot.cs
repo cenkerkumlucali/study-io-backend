@@ -37,6 +37,53 @@ namespace Persistence.Migrations
                     b.ToTable("CommentCommentImageFile");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Alarm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgentId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("AlarmType")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("FollowId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TargetId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("FollowId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("TargetId");
+
+                    b.ToTable("Alarms");
+                });
+
             modelBuilder.Entity("Domain.Entities.Categories.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -572,6 +619,37 @@ namespace Persistence.Migrations
                     b.ToTable("OperationClaim");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Users.OtpAuthenticator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("boolean");
+
+                    b.Property<byte[]>("SecretKey")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OtpAuthenticators");
+                });
+
             modelBuilder.Entity("Domain.Entities.Users.RefreshToken", b =>
                 {
                     b.Property<int>("Id")
@@ -632,6 +710,9 @@ namespace Persistence.Migrations
 
                     b.Property<int>("AuthenticatorType")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime?>("Birthday")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -800,6 +881,43 @@ namespace Persistence.Migrations
                         .HasForeignKey("CommentsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Alarm", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.User", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Comments.Comment", "Comment")
+                        .WithMany()
+                        .HasForeignKey("CommentId");
+
+                    b.HasOne("Domain.Entities.Follow", "Follow")
+                        .WithMany()
+                        .HasForeignKey("FollowId");
+
+                    b.HasOne("Domain.Entities.Feeds.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
+
+                    b.HasOne("Domain.Entities.Users.User", "Target")
+                        .WithMany()
+                        .HasForeignKey("TargetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agent");
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Follow");
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Target");
                 });
 
             modelBuilder.Entity("Domain.Entities.Categories.SubCategory", b =>
@@ -1056,6 +1174,17 @@ namespace Persistence.Migrations
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.OtpAuthenticator", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()

@@ -10,7 +10,7 @@ namespace WebAPI.Controllers.Quizzes;
 
 [Route("api/[controller]")]
 [ApiController]
-public class QuizHistorysController:BaseController
+public class QuizHistoriesController:BaseController
 {
     [HttpPost]
     public async Task<IActionResult> Add(

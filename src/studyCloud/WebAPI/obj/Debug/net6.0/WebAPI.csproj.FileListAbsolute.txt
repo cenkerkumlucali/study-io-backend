@@ -393,3 +393,11 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/AWSSDK.S3.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/RabbitMQ.Client.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Polly.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/System.Diagnostics.PerformanceCounter.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Redis.OM.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Ulid.dll

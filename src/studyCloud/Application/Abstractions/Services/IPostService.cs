@@ -6,5 +6,6 @@ namespace Application.Abstractions.Services;
 public interface IPostService
 {
     Task<PostUploadDto> Upload(PostUploadDto post);
+    Task<Post> Delete(Post post);
     Task<List<object>> GetPostPageOfFollowingMembersByUserId(int userId, int page, int size);
 }
