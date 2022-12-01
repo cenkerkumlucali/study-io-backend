@@ -1,4 +1,6 @@
-﻿using Application.Abstractions.Services.ElasticSearch;
+﻿using System.Diagnostics;
+using System.Reflection;
+using Application.Abstractions.Services.ElasticSearch;
 using Application.DTOs.ElasticSearch;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
@@ -58,7 +60,7 @@ public class ElasticSearchManager : IElasticSearch
                                                               .NumberOfShards(
                                                                   indexModel.NumberOfShards))
                                               .Aliases(x => x.Alias(indexModel.AliasName)));
-
+      
         return new ElasticSearchResult(
             response.IsValid,
             response.IsValid ? "Success" : response.ServerError.Error.Reason);
@@ -104,7 +106,23 @@ public class ElasticSearchManager : IElasticSearch
         ISearchResponse<T>? searchResponse = await elasticClient.SearchAsync<T>(s => s
                                                  .Index(fieldParameters.IndexName)
                                                  .From(fieldParameters.From)
-                                                 .Size(fieldParameters.Size));
+                                                 .Size(fieldParameters.Size).Query(q => q
+                                                     .Bool(b => b
+                                                         .Should(
+                                                             m => m.QueryString(qs => qs
+                                                                 .Query(fieldParameters.Value)
+                                                                 .Fuzziness(Fuzziness.Auto)
+                                                                 .MinimumShouldMatch("30%")
+
+                                                             ),
+                                                             m => m.MultiMatch(qs => qs
+                                                                 .Query(fieldParameters.Value)
+                                                                 .Type(Nest.TextQueryType.PhrasePrefix)
+                                                                 .MinimumShouldMatch("30%")
+                                                             )
+                                                         )
+                                                     )
+                                                 ));
 
         List<ElasticSearchGetModel<T>> list = searchResponse.Hits.Select(x => new ElasticSearchGetModel<T>
         {
@@ -169,6 +187,7 @@ public class ElasticSearchManager : IElasticSearch
 
     public async Task<IElasticSearchResult> UpdateByElasticIdAsync(ElasticSearchInsertUpdateModel model)
     {
+       
         ElasticClient elasticClient = GetElasticClient(model.IndexName);
         UpdateResponse<object>? response =
             await elasticClient.UpdateAsync<object>(model.ElasticId, u => u.Index(model.IndexName).Doc(model.Item));

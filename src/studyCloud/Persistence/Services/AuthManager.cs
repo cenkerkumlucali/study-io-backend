@@ -1,15 +1,18 @@
 using System.Text;
 using Application.Abstractions.Services;
+using Application.Abstractions.Services.ElasticSearch;
 using Application.Abstractions.Services.EmailAuthenticator;
 using Application.Abstractions.Services.JWT;
 using Application.Abstractions.Services.OtpAuthenticator;
 using Application.Abstractions.Services.Paging;
 using Application.Abstractions.Services.RabbitMQ;
+using Application.DTOs.ElasticSearch;
 using Application.DTOs.JWT;
 using Application.DTOs.User;
 using Application.Exceptions;
 using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Dtos;
+using Application.Features.Users.User.Dtos;
 using Application.Repositories.Services.RefreshToken;
 using Application.Repositories.Services.UserOperationClaim;
 using Application.Repositories.Services.Users;
@@ -24,6 +27,7 @@ namespace Persistence.Services;
 
 public class AuthManager : IAuthService
 {
+    private readonly IElasticSearch _elasticSearch;
     private readonly IUserOperationClaimRepository _userOperationClaimRepository;
     private readonly ITokenHelper _tokenHelper;
     private readonly IRefreshTokenRepository _refreshTokenRepository;
@@ -35,10 +39,16 @@ public class AuthManager : IAuthService
     private readonly IRabbitMQEmailSenderService _rabbitMQEmailSenderService;
 
 
-    public AuthManager(IUserOperationClaimRepository userOperationClaimRepository,
+    public AuthManager(IElasticSearch elasticSearch,
+        IUserOperationClaimRepository userOperationClaimRepository,
         ITokenHelper tokenHelper,
         IUserService userService,
-        IRefreshTokenRepository refreshTokenRepository, IEmailAuthenticatorRepository emailAuthenticatorRepository, IEmailAuthenticatorHelper emailAuthenticatorHelper, IOtpAuthenticatorHelper otpAuthenticatorHelper, IOtpAuthenticatorRepository otpAuthenticatorRepository, IRabbitMQEmailSenderService rabbitMqEmailSenderService)
+        IRefreshTokenRepository refreshTokenRepository, 
+        IEmailAuthenticatorRepository emailAuthenticatorRepository,
+        IEmailAuthenticatorHelper emailAuthenticatorHelper, 
+        IOtpAuthenticatorHelper otpAuthenticatorHelper,
+        IOtpAuthenticatorRepository otpAuthenticatorRepository,
+        IRabbitMQEmailSenderService rabbitMqEmailSenderService)
     {
         _userOperationClaimRepository = userOperationClaimRepository;
         _tokenHelper = tokenHelper;
@@ -49,6 +59,7 @@ public class AuthManager : IAuthService
         _otpAuthenticatorHelper = otpAuthenticatorHelper;
         _otpAuthenticatorRepository = otpAuthenticatorRepository;
         _rabbitMQEmailSenderService = rabbitMqEmailSenderService;
+        _elasticSearch = elasticSearch;
     }
 
 
@@ -76,6 +87,20 @@ public class AuthManager : IAuthService
 
         RegisterCommandResponse registeredDto = new()
             { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
+        await _userOperationClaimRepository.AddAsync(new UserOperationClaim { OperationClaimId = 1, UserId = createdUser.Id });
+       
+        ElasticSearchInsertUpdateModel model = new()
+        {
+            IndexName = "users",
+            Item = new UserDto()
+            {
+                Id = createdUser.Id,
+                FullName = createdUser.FirstName + " " + createdUser.LastName,
+                UserName = createdUser.UserName,
+                PictureUrl = null 
+            }
+        };
+        await _elasticSearch.InsertAsync(model);
         return registeredDto;
     }
 
