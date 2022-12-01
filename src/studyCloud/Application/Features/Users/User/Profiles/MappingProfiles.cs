@@ -1,12 +1,15 @@
 using Application.Abstractions.Services.Paging;
+using Application.Features.Feeds.Post.Dtos;
 using Application.Features.Users.User.Commands.CreateUser;
 using Application.Features.Users.User.Commands.DeleteUser;
+using Application.Features.Users.User.Commands.EditProfile;
 using Application.Features.Users.User.Commands.UpdateUser;
 using Application.Features.Users.User.Commands.UpdateUserFromAuth;
 using Application.Features.Users.User.Dtos;
 using Application.Features.Users.User.Models;
 using Application.Features.Users.User.Queries.GetByIdUser;
 using Application.Features.Users.User.Queries.GetListUser;
+using Application.Features.Users.User.Queries.Profile;
 using AutoMapper;
 
 namespace Application.Features.Users.User.Profiles;
@@ -25,6 +28,11 @@ public class MappingProfiles : Profile
         CreateMap<Domain.Entities.Users.User, DeleteUserCommandResponse>().ReverseMap();
         CreateMap<Domain.Entities.Users.User, GetByIdUserQueryResponse>().ReverseMap();
         CreateMap<Domain.Entities.Users.User, ListUserQueryResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Users.User, EditProfileCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.Users.User, EditProfileCommandResponse>().ReverseMap();
+        CreateMap<ProfileDto, PostListDto>().ReverseMap();
+        CreateMap<ProfileDto, ProfileQueryRequest>().ReverseMap();
+        CreateMap<ProfileDto, ProfileQueryResponse>().ReverseMap();
         CreateMap<IPaginate<Domain.Entities.Users.User>, UserListModel>().ReverseMap();
     }
 }
