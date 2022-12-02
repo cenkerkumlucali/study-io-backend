@@ -4,6 +4,7 @@ using Application.Features.Users.User.Dtos;
 using Application.Repositories.Services.Feeds;
 using Application.Repositories.Services.Follows;
 using Application.Repositories.Services.Users;
+using Application.Security.Hashing;
 using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -71,16 +72,6 @@ public class UserManager : IUserService
         return user;
     }
 
-    public async Task<bool> ResetPassword(string email)
-    {
-        var user = GetByEmail(email);
-        if (user == null)
-        {
-        }
-
-        return true;
-    }
-
     public async Task<ProfileDto> GetUserProfile(int targetId, int memberId)
     {
         User targetUser = await GetById(targetId);
@@ -106,6 +97,28 @@ public class UserManager : IUserService
             Posts = await getPosts(user.Id),
             IsMe = loginUserId == targetId
         };
+    }
+
+    public async Task<bool> ResetPassword(User user, string password, string confirmPassword)
+    {
+        byte[] passwordHash, passwordSalt;
+        HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+        user = new User
+        {
+            Id = user.Id,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            PhoneNumber = user.PhoneNumber,
+            UserName = user.UserName,
+            Gender = user.Gender,
+            Introduce = user.Introduce,
+            PasswordHash = passwordHash,
+            PasswordSalt = passwordSalt,
+            Status = user.Status
+        };
+        await _userRepository.UpdateAsync(user);
+        return true;
     }
 
     private async Task<IList<PostListDto>> getPosts(int targetId)

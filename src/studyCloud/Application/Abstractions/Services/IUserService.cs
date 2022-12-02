@@ -12,7 +12,7 @@ public interface IUserService
     Task<IList<User>> GetAllByIdIn(ICollection<int> ids);
     Task<User> Update(User user);
     Task<User> GetByUserName(string userName);
-    Task<bool> ResetPassword(string email);
     Task<ProfileDto> GetUserProfile(int username, int memberId);
     Task<ProfileDto> GetUserProfileByLoginMemberIdAndTargetId(int loginUserId, int targetId);
+    Task<bool> ResetPassword(User user, string password, string confirmPassword);
 }
