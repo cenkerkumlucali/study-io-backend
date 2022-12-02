@@ -35,7 +35,7 @@ namespace Persistence.Contexts
         public DbSet<EmailAuthenticator> EmailAuthenticators { get; set; }
         public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
         public DbSet<Alarm> Alarms { get; set; }
-
+        public DbSet<ResetPasswordAuthentication> ResetPasswordAuthentications { get; set; }
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
