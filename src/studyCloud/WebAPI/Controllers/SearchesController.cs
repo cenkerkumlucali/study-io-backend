@@ -1,7 +1,5 @@
 using Application.Abstractions.Services.ElasticSearch;
 using Application.DTOs.ElasticSearch;
-using Application.Features.Categories.Commands.CreateCategory;
-using Application.Features.Search.Queries;
 using Application.Features.Users.User.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,24 +16,17 @@ public class SearchesController : BaseController
         _elasticSearch = elasticSearch;
     }
 
-    [HttpGet("[action]")]
-    public async Task<IActionResult> Profile([FromQuery] GetUserQueryRequest getUserQueryRequest)
-    {
-        IList<GetUserQueryResponse> response = await Mediator.Send(getUserQueryRequest);
-        return Ok(response);
-    }
-
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] GetUserQueryRequest getUserQueryRequest)
+    public async Task<IActionResult> Get([FromQuery] string text)
     {
-        List<ElasticSearchGetModel<UserDto>> result = await
+        var result = (await
             _elasticSearch.GetSearchByField<UserDto>(
                 new SearchByFieldParameters
                 {
                     IndexName = "users",
                     FieldName = "UserName",
-                    Value = getUserQueryRequest.Text
-                });
+                    Value = text
+                })).Select(c=>c.Item);
 
         return Ok(result);
     }
