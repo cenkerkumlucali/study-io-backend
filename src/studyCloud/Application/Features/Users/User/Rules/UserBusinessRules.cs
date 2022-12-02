@@ -31,4 +31,14 @@ public class UserBusinessRules
             throw new BusinessException("Password don't match.");
         return Task.CompletedTask;
     }
+    
+    public Task CheckPasswordTheSame(string newPassword, string newPasswordVerify)
+    {
+        var result = newPassword == newPasswordVerify;
+        if (!result)
+        {
+            throw new BusinessException("Şifreler aynı değil");
+        }
+        return Task.CompletedTask;
+    }
 }
