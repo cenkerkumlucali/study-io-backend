@@ -49,17 +49,11 @@ public class MailService : IMailService
         }
     }
 
-    public async Task SendPasswordResetMailAsync(string to)
+    public async Task SendPasswordResetMailAsync(string to,string fullName,string authenticatorCode)
     {
-        StringBuilder mail = new();
-        mail.AppendLine(
-            "Merhaba<br>Eğer yeni şifre talebinde bulunduysanız aşağıdaki linkten şifrenizi yenileyebilirsiniz.<br><strong><a target=\"_blank\" href=\"");
-        mail.AppendLine(_configuration["AngularClientUrl"]);
-        mail.AppendLine("/update-password/");
-        mail.AppendLine("/");
-        mail.AppendLine(
-            "\">Yeni şifre talebi için tıklayınız...</a></strong><br><br><span style=\"font-size:12px;\">NOT : Eğer ki bu talep tarafınızca gerçekleştirilmemişse lütfen bu maili ciddiye almayınız.</span><br>Saygılarımızla...<br><br><br>NG - Study.Io");
-        await SendMailAsync(to, "Şifre Yenileme Talebi", mail.ToString(), true);
+        string mail =
+        $"Merhaba <strong>{fullName}</strong><br>Eğer yeni şifre talebinde bulunduysanız aşağıdaki kod ile şifrenizi yenileyebilirsiniz.<br><strong>{authenticatorCode}</strong><br><br><span style=\"font-size:12px;\">NOT : Eğer ki bu talep tarafınızca gerçekleştirilmemişse lütfen bu maili ciddiye almayınız.</span><br>Saygılarımızla...<br><br><br>Study.Io";
+        await SendMailAsync(to, "Şifre Yenileme Talebi", mail);
     }
 
     public async Task SendEnableEmailAuthenticatorAsync(string to, string firstName,string lastName,string verifyEmailUrlPrefix,string activationKey)
