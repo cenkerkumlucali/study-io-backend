@@ -19,6 +19,8 @@ public interface IAuthService
     Task DeleteOldOtpAuthenticators(User user);
     Task<string> ConvertSecretKeyToString(byte[] secretKey);
     Task VerifyAuthenticatorCode(User user, string AuthenticatorCode);
+    Task VerifyResetPasswordAuthenticationCode(User user, string AuthenticatorCode);
     Task SendAuthenticatorCode(User user);
+    Task SendResetPasswordAuthenticationCode(User user);
 
 }

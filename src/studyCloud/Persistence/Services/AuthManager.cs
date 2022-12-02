@@ -32,6 +32,7 @@ public class AuthManager : IAuthService
     private readonly ITokenHelper _tokenHelper;
     private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IEmailAuthenticatorRepository _emailAuthenticatorRepository;
+    private readonly IResetPasswordAuthenticationRepository _resetPasswordAuthenticationRepository;
     private readonly IEmailAuthenticatorHelper _emailAuthenticatorHelper;
     private readonly IOtpAuthenticatorHelper _otpAuthenticatorHelper;
     private readonly IOtpAuthenticatorRepository _otpAuthenticatorRepository;
@@ -43,12 +44,13 @@ public class AuthManager : IAuthService
         IUserOperationClaimRepository userOperationClaimRepository,
         ITokenHelper tokenHelper,
         IUserService userService,
-        IRefreshTokenRepository refreshTokenRepository, 
+        IRefreshTokenRepository refreshTokenRepository,
         IEmailAuthenticatorRepository emailAuthenticatorRepository,
-        IEmailAuthenticatorHelper emailAuthenticatorHelper, 
+        IEmailAuthenticatorHelper emailAuthenticatorHelper,
         IOtpAuthenticatorHelper otpAuthenticatorHelper,
         IOtpAuthenticatorRepository otpAuthenticatorRepository,
-        IRabbitMQEmailSenderService rabbitMqEmailSenderService)
+        IRabbitMQEmailSenderService rabbitMqEmailSenderService,
+        IResetPasswordAuthenticationRepository resetPasswordAuthenticationRepository)
     {
         _userOperationClaimRepository = userOperationClaimRepository;
         _tokenHelper = tokenHelper;
@@ -59,6 +61,7 @@ public class AuthManager : IAuthService
         _otpAuthenticatorHelper = otpAuthenticatorHelper;
         _otpAuthenticatorRepository = otpAuthenticatorRepository;
         _rabbitMQEmailSenderService = rabbitMqEmailSenderService;
+        _resetPasswordAuthenticationRepository = resetPasswordAuthenticationRepository;
         _elasticSearch = elasticSearch;
     }
 
@@ -87,8 +90,9 @@ public class AuthManager : IAuthService
 
         RegisterCommandResponse registeredDto = new()
             { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
-        await _userOperationClaimRepository.AddAsync(new UserOperationClaim { OperationClaimId = 1, UserId = createdUser.Id });
-       
+        await _userOperationClaimRepository.AddAsync(new UserOperationClaim
+            { OperationClaimId = 1, UserId = createdUser.Id });
+
         ElasticSearchInsertUpdateModel model = new()
         {
             IndexName = "users",
@@ -97,7 +101,7 @@ public class AuthManager : IAuthService
                 Id = createdUser.Id,
                 FullName = createdUser.FirstName + " " + createdUser.LastName,
                 UserName = createdUser.UserName,
-                PictureUrl = null 
+                PictureUrl = null
             }
         };
         await _elasticSearch.InsertAsync(model);
@@ -161,8 +165,10 @@ public class AuthManager : IAuthService
 
     public async Task RevokeDescendantRefreshTokens(RefreshToken refreshToken, string IPAddress, string reason)
     {
-        RefreshToken childToken = await _refreshTokenRepository.GetByRefreshToken(refreshToken.Token);  
-        if (childToken != null && childToken.Revoked != null && childToken.Expires <= DateTime.UtcNow){}
+        RefreshToken childToken = await _refreshTokenRepository.GetByRefreshToken(refreshToken.Token);
+        if (childToken != null && childToken.Revoked != null && childToken.Expires <= DateTime.UtcNow)
+        {
+        }
     }
 
     public async Task DeleteOldEmailAuthenticators(User user)
@@ -217,14 +223,53 @@ public class AuthManager : IAuthService
             await verifyAuthenticatorCodeWithOtp(user, AuthenticatorCode);
     }
 
+    public async Task VerifyResetPasswordAuthenticationCode(User user, string authenticatorCode)
+    {
+        ResetPasswordAuthentication? resetPasswordAuthenticator = await _resetPasswordAuthenticationRepository.GetAsync(e => e.UserId == user.Id);
+
+        if (resetPasswordAuthenticator.ActivationKey != authenticatorCode)
+            throw new BusinessException("Doğrulama kodu geçersiz.");
+
+        resetPasswordAuthenticator.ActivationKey = null;
+        await _resetPasswordAuthenticationRepository.UpdateAsync(resetPasswordAuthenticator);
+    }
+
     public async Task SendAuthenticatorCode(User user)
     {
         if (user.AuthenticatorType is AuthenticatorType.Email) await SendAuthenticatorCodeWithEmail(user);
     }
 
+    public async Task SendResetPasswordAuthenticationCode(User user)
+    {
+        ResetPasswordAuthentication? resetPasswordAuthenticator =
+            await _resetPasswordAuthenticationRepository.GetAsync(e => e.UserId == user.Id);
+        string authenticatorCode = await _emailAuthenticatorHelper.CreateEmailActivationCode();
+        if (resetPasswordAuthenticator != null)
+        {
+            resetPasswordAuthenticator.ActivationKey = authenticatorCode;
+            await _resetPasswordAuthenticationRepository.UpdateAsync(resetPasswordAuthenticator);
+        }
+        else await _resetPasswordAuthenticationRepository.AddAsync(new ResetPasswordAuthentication
+        {
+            UserId = user.Id,
+            ActivationKey = authenticatorCode,
+            IsVerified = false
+        });
+        ResetPasswordAuthenticatorDto resetPasswordAuthenticatorDto = new ResetPasswordAuthenticatorDto()
+        {
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            ActivationKey = authenticatorCode,
+            RoutingKey = 0
+        };
+        _rabbitMQEmailSenderService.Send(
+            Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(resetPasswordAuthenticatorDto)));
+    }
+
     private async Task SendAuthenticatorCodeWithEmail(User user)
     {
-        EmailAuthenticator emailAuthenticator = await _emailAuthenticatorRepository.GetAsync(e => e.UserId == user.Id);
+        EmailAuthenticator? emailAuthenticator = await _emailAuthenticatorRepository.GetAsync(e => e.UserId == user.Id);
 
         if (!emailAuthenticator.IsVerified) throw new BusinessException("E-posta doğrulayıcı doğrulanmış olmalıdır.");
 
@@ -240,8 +285,8 @@ public class AuthManager : IAuthService
             RoutingKey = 2
         };
         _rabbitMQEmailSenderService.Send(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(emailAuthenticatorDto)));
-
     }
+
     private async Task verifyAuthenticatorCodeWithEmail(User user, string authenticatorCode)
     {
         EmailAuthenticator emailAuthenticator = await _emailAuthenticatorRepository.GetAsync(e => e.UserId == user.Id);
