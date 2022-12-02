@@ -1,28 +1,42 @@
-using System.Text;
-using Application.Abstractions.Services.RabbitMQ;
-using Application.Features.Users.ResetPassword.Constants;
+using Application.Abstractions.Services;
+using Application.Features.Users.User.Rules;
+using Application.Repositories.Services.Users;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Application.Features.Users.ResetPassword.Commands;
 
-public class ResetPasswordCommandHandler:IRequestHandler<ResetPasswordCommandRequest>
+public class ResetPasswordCommandHandler:IRequestHandler<ResetPasswordCommandRequest,ResetPasswordCommandResponse>
 {
-    private readonly ILogger<ResetPasswordCommandHandler> _logger;
-    private readonly IRabbitMQEmailSenderService _rabbitMQEmailSenderService;
+    private readonly IUserRepository _userRepository;
+    private readonly UserBusinessRules _userBusinessRules;
+    private readonly IAuthService _authService;
+    private readonly IUserService _userService;
 
-    public ResetPasswordCommandHandler(IRabbitMQEmailSenderService rabbitMqEmailSenderService, ILogger<ResetPasswordCommandHandler> logger)
+    public ResetPasswordCommandHandler(IUserRepository userRepository, UserBusinessRules userBusinessRules, IAuthService authService, IUserService userService)
     {
-        _rabbitMQEmailSenderService = rabbitMqEmailSenderService;
-        _logger = logger;
+        _userRepository = userRepository;
+        _userBusinessRules = userBusinessRules;
+        _authService = authService;
+        _userService = userService;
     }
 
-    public async Task<Unit> Handle(ResetPasswordCommandRequest request, CancellationToken cancellationToken)
+    public async Task<ResetPasswordCommandResponse> Handle(ResetPasswordCommandRequest request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Send notifications through RabbitMQ");
+        Domain.Entities.Users.User? user = await _userRepository.GetAsyncNoTracking(c => c.Email == request.Email);
+        await _userBusinessRules.UserShouldBeExist(user);
+        ResetPasswordCommandResponse resetPasswordCommandResponse = new();
 
-         _rabbitMQEmailSenderService.Send(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request)));
-        return Unit.Value;
+        if (request.AuthenticatorCode is null)
+        {
+            await _authService.SendResetPasswordAuthenticationCode(user);
+            return resetPasswordCommandResponse;
+        }
+        await _authService.VerifyResetPasswordAuthenticationCode(user, request.AuthenticatorCode);
+        await _userBusinessRules.CheckPasswordTheSame(request.Password, request.ConfirmPassword);
+        await _userService.ResetPassword(user, request.Password, request.ConfirmPassword);
+        return new()
+        {
+            Message = "Şifre başarıyla değiştirilmiştir."
+        };
     }
 }
