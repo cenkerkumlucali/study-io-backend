@@ -4,6 +4,7 @@ using Domain.Entities.Categories;
 using Domain.Entities.Comments;
 using Domain.Entities.Common;
 using Domain.Entities.Feeds;
+using Domain.Entities.Lessons;
 using Domain.Entities.Quizzes;
 using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -36,6 +37,8 @@ namespace Persistence.Contexts
         public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
         public DbSet<Alarm> Alarms { get; set; }
         public DbSet<ResetPasswordAuthentication> ResetPasswordAuthentications { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<LessonSubject> LessonSubjects { get; set; }
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
