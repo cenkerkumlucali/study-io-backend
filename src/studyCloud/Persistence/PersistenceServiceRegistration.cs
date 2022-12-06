@@ -5,6 +5,7 @@ using Application.Repositories.Services.Comments;
 using Application.Repositories.Services.Feeds;
 using Application.Repositories.Services.Files;
 using Application.Repositories.Services.Follows;
+using Application.Repositories.Services.Lessons;
 using Application.Repositories.Services.Mentions;
 using Application.Repositories.Services.OperationClaim;
 using Application.Repositories.Services.Quizzes;
@@ -21,6 +22,7 @@ using Persistence.Repositories.Comments;
 using Persistence.Repositories.Feeds;
 using Persistence.Repositories.Files;
 using Persistence.Repositories.Follows;
+using Persistence.Repositories.Lessons;
 using Persistence.Repositories.Mentions;
 using Persistence.Repositories.OperationClaim;
 using Persistence.Repositories.Quizzes;
@@ -66,6 +68,8 @@ namespace Persistence
             services.AddScoped<IOtpAuthenticatorRepository, OtpAuthenticatorRepository>();
             services.AddScoped<IAlarmRepository, AlarmRepository>();
             services.AddScoped<IResetPasswordAuthenticationRepository, ResetPasswordAuthenticationRepository>();
+            services.AddScoped<ILessonRepository, LessonRepository>();
+            services.AddScoped<ILessonSubjectRepository, LessonSubjectRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
