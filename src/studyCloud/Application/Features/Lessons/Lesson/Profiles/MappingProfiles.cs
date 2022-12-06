@@ -1,8 +1,6 @@
-using Application.Abstractions.Services.Paging;
 using Application.Features.Lessons.Lesson.Commands.CreateLesson;
 using Application.Features.Lessons.Lesson.Commands.DeleteLesson;
 using Application.Features.Lessons.Lesson.Commands.UpdateLesson;
-using Application.Features.Lessons.Lesson.Models;
 using Application.Features.Lessons.Lesson.Queries.GetListLesson;
 using AutoMapper;
 
@@ -19,7 +17,6 @@ public class MappingProfiles : Profile
         CreateMap<Domain.Entities.Lessons.Lesson, UpdateLessonCommandRequest>().ReverseMap();
         CreateMap<Domain.Entities.Lessons.Lesson, UpdateLessonCommandResponse>().ReverseMap();
         
-        CreateMap<IPaginate<Domain.Entities.Lessons.Lesson>,LessonListModel>().ReverseMap();
         CreateMap<Domain.Entities.Lessons.Lesson,GetListLessonQueryResponse>()
             .ForMember(c=>c.SubCategoryName,opt=>opt.MapFrom(c=>c.SubCategory.Name))
             .ForMember(c=>c.Subjects,opt=>opt.MapFrom(c=>c.LessonSubjects)).ReverseMap();
