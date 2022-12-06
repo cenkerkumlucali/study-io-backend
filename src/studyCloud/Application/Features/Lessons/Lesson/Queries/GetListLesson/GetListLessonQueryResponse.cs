@@ -6,5 +6,5 @@ public class GetListLessonQueryResponse
 {
     public string SubCategoryName { get; set; }
     public string Name { get; set; }
-    public ICollection<LessonSubjectDto> Subjects { get; set; }
+    public List<LessonSubjectDto>? Subjects { get; set; }
 }

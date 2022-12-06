@@ -1,10 +1,7 @@
-using Application.Features.Lessons.Lesson.Models;
-using Application.RequestParameters;
 using MediatR;
 
 namespace Application.Features.Lessons.Lesson.Queries.GetListLesson;
 
-public class GetListLessonQueryRequest:IRequest<LessonListModel>
+public class GetListLessonQueryRequest : IRequest<List<GetListLessonQueryResponse>>
 {
-    public PageRequest PageRequest { get; set; }
 }
