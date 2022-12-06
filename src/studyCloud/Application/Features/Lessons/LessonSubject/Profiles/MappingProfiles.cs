@@ -10,7 +10,8 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Domain.Entities.Lessons.LessonSubject, LessonSubjectDto>().ReverseMap();
+        CreateMap<Domain.Entities.Lessons.LessonSubject, LessonSubjectDto>()
+            .ForMember(c => c.Children, c => c.MapFrom(c => c.Children)).ReverseMap();
         CreateMap<Domain.Entities.Lessons.LessonSubject, CreateLessonSubjectCommandRequest>().ReverseMap();
         CreateMap<Domain.Entities.Lessons.LessonSubject, CreateLessonSubjectCommandResponse>().ReverseMap();
         CreateMap<Domain.Entities.Lessons.LessonSubject, DeleteLessonSubjectCommandRequest>().ReverseMap();
