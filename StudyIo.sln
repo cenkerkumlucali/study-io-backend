@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{05992330-7AD7-42D0-8375-DACF8F23A17D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "studyCloud", "studyCloud", "{B3DA423B-01E3-44F4-B302-6E68A74732A6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "studyIo", "studyIo", "{B3DA423B-01E3-44F4-B302-6E68A74732A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\studyCloud\Application\Application.csproj", "{176F4B16-5E44-4358-9B3E-5913A29CC566}"
 EndProject
