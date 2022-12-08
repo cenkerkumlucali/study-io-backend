@@ -1,7 +1,7 @@
 using Application.Features.Lessons.Lesson.Commands.CreateLesson;
 using Application.Features.Lessons.Lesson.Commands.DeleteLesson;
 using Application.Features.Lessons.Lesson.Commands.UpdateLesson;
-using Application.Features.Lessons.Lesson.Queries.GetListLesson;
+using Application.Features.Lessons.Lesson.Queries.GetListLessonSubjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -35,10 +35,10 @@ public class LessonsController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetList(
-        [FromQuery] GetListLessonQueryRequest getListLessonQuery)
+    public async Task<IActionResult> GetListLessonSubjects(
+        [FromQuery] GetListLessonSubjectsQueryRequest getListLessonQuery)
     {
-        List<GetListLessonQueryResponse> result = await Mediator.Send(getListLessonQuery);
+        List<GetListLessonSubjectsQueryResponse> result = await Mediator.Send(getListLessonQuery);
         return Ok(result);
     }
 

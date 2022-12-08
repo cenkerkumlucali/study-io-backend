@@ -1,24 +1,22 @@
-using Application.Features.Lessons.LessonSubject.Dtos;
 using Application.Repositories.Services.Lessons;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Application.Features.Lessons.Lesson.Queries.GetListLesson;
+namespace Application.Features.Lessons.Lesson.Queries.GetListLessonSubjects;
 
-public class GetListLessonQueryHandler : IRequestHandler<GetListLessonQueryRequest,  List<GetListLessonQueryResponse>>
+public class GetListLessonSubjectsQueryHandler : IRequestHandler<GetListLessonSubjectsQueryRequest,  List<GetListLessonSubjectsQueryResponse>>
 {
     private readonly ILessonRepository _lessonRepository;
     private IMapper _mapper;
 
-    public GetListLessonQueryHandler(ILessonRepository lessonRepository, IMapper mapper)
+    public GetListLessonSubjectsQueryHandler(ILessonRepository lessonRepository, IMapper mapper)
     {
         _lessonRepository = lessonRepository;
         _mapper = mapper;
     }
 
-    public async Task< List<GetListLessonQueryResponse>> Handle(GetListLessonQueryRequest request,
+    public async Task< List<GetListLessonSubjectsQueryResponse>> Handle(GetListLessonSubjectsQueryRequest request,
         CancellationToken cancellationToken)
     {
         List<Domain.Entities.Lessons.Lesson> lesson =
@@ -28,7 +26,7 @@ public class GetListLessonQueryHandler : IRequestHandler<GetListLessonQueryReque
                     .ThenInclude(c => c.Parent)
                     .Include(c => c.LessonSubjects).ThenInclude(c => c.Children));
         
-        lesson = lesson.Where(parent => parent.LessonSubjects.Any(child => child.Parent is null))
+        lesson = lesson
             .Select(p => new Domain.Entities.Lessons.Lesson 
             { 
                 Name = p.Name,
@@ -36,7 +34,7 @@ public class GetListLessonQueryHandler : IRequestHandler<GetListLessonQueryReque
                 LessonSubjects = p.LessonSubjects.Where(c=>c.ParentId is null).ToList(),
             }).ToList();
 
-        List<GetListLessonQueryResponse>? mappedLesson = _mapper.Map<List<GetListLessonQueryResponse>>(lesson);
+        List<GetListLessonSubjectsQueryResponse>? mappedLesson = _mapper.Map<List<GetListLessonSubjectsQueryResponse>>(lesson);
         return mappedLesson;
     }
 }
