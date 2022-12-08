@@ -1,4 +1,5 @@
 using Domain.Entities.Common;
+using Domain.Entities.Quizzes;
 
 namespace Domain.Entities.Lessons;
 
@@ -10,4 +11,6 @@ public class LessonSubject : BaseEntity
     public virtual Lesson Lesson { get; set; }
     public virtual LessonSubject Parent { get; set; }
     public virtual ICollection<LessonSubject>? Children { get; set; }
+    public virtual ICollection<Quiz>? Quizzes { get; set; }
+
 }

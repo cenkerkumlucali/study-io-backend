@@ -7,7 +7,7 @@ public class Answer:BaseEntity
 {
     public int QuestionId{ get; set; }
     public virtual Question Question{ get; set; }
-    public string Content { get; set; }
+    public string? Content { get; set; }
     public bool IsCorrect { get; set; }
     [NotMapped]
     public override DateTime UpdatedDate { get; set; }

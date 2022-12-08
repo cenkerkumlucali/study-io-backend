@@ -1,4 +1,5 @@
 using Domain.Entities.Categories;
+using Domain.Entities.Lessons;
 using BaseEntity = Domain.Entities.Common.BaseEntity;
 
 namespace Domain.Entities.Quizzes;
@@ -6,21 +7,11 @@ namespace Domain.Entities.Quizzes;
 public class Quiz:BaseEntity
 {
     public string Name { get; set; }
-    public int CategoryId { get; set; }
-    public int SubCategoryId { get; set; }
-    public Category Category { get; set; }
-    public SubCategory SubCategory { get; set; }
-
-
-    public Quiz()
-    {
-    }
-
-    public Quiz(int id, int categoryId, int subCategoryId, string name) : this()
-    {
-        Id = id;
-        Name = name;
-        CategoryId = categoryId;
-        SubCategoryId = subCategoryId;
-    }
+    public int? SubCategoryId { get; set; }
+    public int? LessonId { get; set; }
+    public int? LessonSubjectId { get; set; }
+    public virtual Lesson Lesson { get; set; }
+    public virtual LessonSubject LessonSubject { get; set; }
+    public virtual SubCategory SubCategory { get; set; }
+    public virtual List<Question> Questions { get; set; }
 }

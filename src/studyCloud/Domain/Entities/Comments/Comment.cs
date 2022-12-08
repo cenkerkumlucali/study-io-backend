@@ -14,7 +14,7 @@ public class Comment : BaseEntity
     public int UserId { get; set; }
     public virtual User User { get; set; }
     public string Content { get; set; }
-    public virtual List<Comment>? Childrens { get; set; }
+    public virtual List<Comment>? Children { get; set; }
     public virtual List<CommentLike>? CommentLikes { get; set; }
     public virtual ICollection<CommentImageFile>? CommentImageFiles { get; set; }
 
