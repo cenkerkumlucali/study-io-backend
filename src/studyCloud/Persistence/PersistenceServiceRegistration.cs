@@ -70,6 +70,7 @@ namespace Persistence
             services.AddScoped<IResetPasswordAuthenticationRepository, ResetPasswordAuthenticationRepository>();
             services.AddScoped<ILessonRepository, LessonRepository>();
             services.AddScoped<ILessonSubjectRepository, LessonSubjectRepository>();
+            services.AddScoped<IQuestionImageRepository, QuestionImageRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
@@ -84,8 +85,10 @@ namespace Persistence
             services.AddScoped<IMentionService, MentionManager>();
             services.AddScoped<IAlarmService, AlarmManager>();
             services.AddScoped<IPostLikeService, PostLikeManager>();
-
-
+            services.AddScoped<IQuestionImageService, QuestionImageManager>();
+            services.AddScoped<IQuestionService, QuestionManager>();
+            services.AddScoped<IAnswerService, AnswerManager>();
+            
             return services;
         }
     }
