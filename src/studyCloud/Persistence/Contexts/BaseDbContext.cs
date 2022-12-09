@@ -4,6 +4,7 @@ using Domain.Entities.Categories;
 using Domain.Entities.Comments;
 using Domain.Entities.Common;
 using Domain.Entities.Feeds;
+using Domain.Entities.ImageFile;
 using Domain.Entities.Lessons;
 using Domain.Entities.Quizzes;
 using Domain.Entities.Users;
@@ -39,6 +40,10 @@ namespace Persistence.Contexts
         public DbSet<ResetPasswordAuthentication> ResetPasswordAuthentications { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<LessonSubject> LessonSubjects { get; set; }
+        public DbSet<QuestionImage> QuestionImages { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<PublisherImage> PublisherImages { get; set; }
+        public DbSet<Chat> ChatMessages { get; set; }
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
