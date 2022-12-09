@@ -8,6 +8,7 @@ using Application.Repositories.Services.Follows;
 using Application.Repositories.Services.Lessons;
 using Application.Repositories.Services.Mentions;
 using Application.Repositories.Services.OperationClaim;
+using Application.Repositories.Services.Publishers;
 using Application.Repositories.Services.Quizzes;
 using Application.Repositories.Services.RefreshToken;
 using Application.Repositories.Services.UserOperationClaim;
@@ -25,6 +26,7 @@ using Persistence.Repositories.Follows;
 using Persistence.Repositories.Lessons;
 using Persistence.Repositories.Mentions;
 using Persistence.Repositories.OperationClaim;
+using Persistence.Repositories.Publishers;
 using Persistence.Repositories.Quizzes;
 using Persistence.Repositories.RefreshToken;
 using Persistence.Repositories.UserOperationClaim;
@@ -71,6 +73,9 @@ namespace Persistence
             services.AddScoped<ILessonRepository, LessonRepository>();
             services.AddScoped<ILessonSubjectRepository, LessonSubjectRepository>();
             services.AddScoped<IQuestionImageRepository, QuestionImageRepository>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
+            services.AddScoped<IPublisherImageRepository, PublisherImageRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
@@ -88,6 +93,9 @@ namespace Persistence
             services.AddScoped<IQuestionImageService, QuestionImageManager>();
             services.AddScoped<IQuestionService, QuestionManager>();
             services.AddScoped<IAnswerService, AnswerManager>();
+            services.AddScoped<IPublisherService, PublisherManager>();
+            services.AddScoped<IPublisherImageService, PublisherImageManager>();
+            services.AddScoped<IChatService, ChatManager>();
             
             return services;
         }

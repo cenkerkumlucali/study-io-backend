@@ -2,6 +2,7 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Users.UserImage.Models;
 using Application.Repositories.Services.Users;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,7 @@ public class GetListUserImageQueryHandler : IRequestHandler<GetListUserImageQuer
 
     public async Task<UserImageListModel> Handle(GetListUserImageQueryRequest request, CancellationToken cancellationToken)
     {
-        IPaginate<Domain.Entities.Users.UserImageFile> userImage =
+        IPaginate<UserImageFile> userImage =
             await _userImageRepository.GetListAsync(index: request.PageRequest.Page,
                 size: request.PageRequest.PageSize,
                 include:c=>c.Include(c=>c.Users));

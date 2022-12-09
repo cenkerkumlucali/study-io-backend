@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Categories.Queries.GetByIdCategory;
 
-public class GetByIdCategoryQueryHandler:IRequestHandler<GetByIdCategoryQueryRequest,GetByIdCategoryCommandResponse>
+public class GetByIdCategoryQueryHandler:IRequestHandler<GetByIdCategoryQueryRequest,GetByIdCategoryQueryResponse>
 {
     private ICategoryRepository _categoryRepository;
     private IMapper _mapper;
@@ -18,15 +18,15 @@ public class GetByIdCategoryQueryHandler:IRequestHandler<GetByIdCategoryQueryReq
         _categoryBusinessRules = categoryBusinessRules;
     }
 
-    public async Task<GetByIdCategoryCommandResponse> Handle(GetByIdCategoryQueryRequest request, CancellationToken cancellationToken)
+    public async Task<GetByIdCategoryQueryResponse> Handle(GetByIdCategoryQueryRequest request, CancellationToken cancellationToken)
     {
             
         Domain.Entities.Categories.Category? category =
             await _categoryRepository.GetAsync(c => c.Id == request.Id);
         _categoryBusinessRules.CategoryShouldExistWhenRequested(category);
 
-        GetByIdCategoryCommandResponse getByIdCategoryDto =
-            _mapper.Map<GetByIdCategoryCommandResponse>(category);
+        GetByIdCategoryQueryResponse getByIdCategoryDto =
+            _mapper.Map<GetByIdCategoryQueryResponse>(category);
         return getByIdCategoryDto;
     }
 }

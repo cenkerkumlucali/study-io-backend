@@ -17,8 +17,8 @@ public class UpdatePostImageCommandHandler : IRequestHandler<UpdatePostImageComm
 
     public async Task<UpdatePostImageFileQueryResponse> Handle(UpdatePostImageCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImageFile postImage = _mapper.Map<Domain.Entities.Feeds.PostImageFile>(request);
-        Domain.Entities.Feeds.PostImageFile createdPostImage =
+        Domain.Entities.ImageFile.PostImageFile postImage = _mapper.Map<Domain.Entities.ImageFile.PostImageFile>(request);
+        Domain.Entities.ImageFile.PostImageFile createdPostImage =
             await _postImageRepository.UpdateAsync(postImage);
         UpdatePostImageFileQueryResponse updatedPostImageDto =
             _mapper.Map<UpdatePostImageFileQueryResponse>(createdPostImage);

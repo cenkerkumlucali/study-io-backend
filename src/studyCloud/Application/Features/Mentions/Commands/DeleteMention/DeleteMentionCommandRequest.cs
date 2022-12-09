@@ -4,6 +4,6 @@ namespace Application.Features.Mentions.Commands.DeleteMention;
 
 public class DeleteMentionCommandRequest:IRequest<DeleteMentionCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

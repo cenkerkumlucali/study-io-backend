@@ -2,8 +2,8 @@ namespace Application.Features.Follows.Commands.UpdateFollow;
 
 public class UpdateFollowCommandResponse
 {
-    public int Id { get; set; }
-    public int FollowerId { get; set; }
-    public int FollowingId { get; set; }
+    public long Id { get; set; }
+    public long FollowerId { get; set; }
+    public long FollowingId { get; set; }
     public DateTime CreatedDate { get; set; }
 }

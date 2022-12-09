@@ -2,9 +2,9 @@ namespace Application.Features.Quizzes.SelectedAnswer.Queries.GetListSelectedAns
 
 public class ListSelectedAnswerQueryResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string UserEmail { get; set; }
     public string Question { get; set; }
     public string PossibleAnswer { get; set; }
-    public int QuizHistoryId { get; set; }
+    public long QuizHistoryId { get; set; }
 }

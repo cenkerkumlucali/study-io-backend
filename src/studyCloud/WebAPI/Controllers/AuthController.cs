@@ -4,7 +4,7 @@ using Application.Features.Auths.Commands.DisableOtpAuthenticator;
 using Application.Features.Auths.Commands.EnableEmailAuthenticator;
 using Application.Features.Auths.Commands.EnableOtpAuthenticator;
 using Application.Features.Auths.Commands.Login;
-using Application.Features.Auths.Commands.RefreshTokenLogin;
+using Application.Features.Auths.Commands.RefreshToken;
 using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Commands.VerifyEmailAuthenticator;
 using Application.Features.Auths.Commands.VerifyOtpAuthenticator;

@@ -20,6 +20,7 @@
           "Microsoft.Extensions.Caching.StackExchangeRedis": "6.0.2",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Persistence": "1.0.0",
+          "SignalR": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -1585,10 +1586,20 @@
           "Microsoft.Extensions.Configuration.Json": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0-preview.3.22175.4",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.7",
+          "SignalR": "1.0.0",
           "StackExchange.Redis": "2.5.61"
         },
         "runtime": {
           "Persistence.dll": {}
+        }
+      },
+      "SignalR/1.0.0": {
+        "dependencies": {
+          "Application": "1.0.0",
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "SignalR.dll": {}
         }
       }
     }
@@ -2784,6 +2795,11 @@
       "sha512": ""
     },
     "Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SignalR/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

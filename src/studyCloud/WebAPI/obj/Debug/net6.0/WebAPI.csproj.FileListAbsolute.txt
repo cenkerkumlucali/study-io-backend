@@ -401,3 +401,5 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Redis.OM.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/Ulid.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/SignalR.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/WebAPI/bin/Debug/net6.0/SignalR.pdb

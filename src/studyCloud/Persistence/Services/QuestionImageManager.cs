@@ -3,6 +3,7 @@ using Application.Abstractions.Storage;
 using Application.Abstractions.Storage.AWS;
 using Application.DTOs.Storage.AWS;
 using Application.Repositories.Services.Quizzes;
+using Domain.Entities.ImageFile;
 using Domain.Entities.Quizzes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ public class QuestionImageManager : IQuestionImageService
         _storageService = storageService;
     }
 
-    public async Task Upload(int imageId, IFormFileCollection files)
+    public async Task Upload(long imageId, IFormFileCollection files)
     {
         List<(string fileName, string pathOrContainerName)> result =
             await _storageService.UploadAsync("study.io-question-image", files);

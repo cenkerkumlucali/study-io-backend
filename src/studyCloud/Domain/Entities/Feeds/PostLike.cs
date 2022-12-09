@@ -5,8 +5,8 @@ namespace Domain.Entities.Feeds;
 
 public class PostLike:BaseEntity
 {
-    public int UserId { get; set; }
-    public int PostId { get; set; }
+    public long UserId { get; set; }
+    public long PostId { get; set; }
     public virtual User User { get; set; }
     public virtual Post Post { get; set; }
     

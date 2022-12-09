@@ -1,6 +1,6 @@
 using Application.DTOs.JWT;
 
-namespace Application.Features.Auths.Commands.RefreshTokenLogin;
+namespace Application.Features.Auths.Commands.RefreshToken;
 
 public class RefreshTokenCommandResponse
 {

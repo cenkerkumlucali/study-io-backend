@@ -4,6 +4,6 @@ namespace Application.Features.SubCategories.Commands.DeleteSubCategory;
 
 public class DeleteSubCategoryCommandRequest:IRequest<DeleteSubCategoryCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

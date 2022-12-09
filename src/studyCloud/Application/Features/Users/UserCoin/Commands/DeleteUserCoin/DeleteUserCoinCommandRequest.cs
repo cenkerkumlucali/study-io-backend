@@ -4,6 +4,6 @@ namespace Application.Features.Users.UserCoin.Commands.DeleteUserCoin;
 
 public class DeleteUserCoinCommandRequest:IRequest<DeleteUserCoinCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
    
 }

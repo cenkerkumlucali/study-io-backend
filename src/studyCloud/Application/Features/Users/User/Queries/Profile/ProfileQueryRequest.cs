@@ -4,6 +4,6 @@ namespace Application.Features.Users.User.Queries.Profile;
 
 public class ProfileQueryRequest:IRequest<ProfileQueryResponse>
 {
-    public int MemberId { get; set; }
-    public int TargetId { get; set; }
+    public long MemberId { get; set; }
+    public long TargetId { get; set; }
 }

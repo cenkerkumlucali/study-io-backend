@@ -8,6 +8,6 @@ public class PostCommentDto
     public int CommentCount { get; set; }
     public List<string> Urls { get; set; }
     public DateTime CreatedDate { get; set; }
-    public ICollection<PostCommentDto>? Childrens { get; set; }
+    public ICollection<PostCommentDto>? Children { get; set; }
 
 }

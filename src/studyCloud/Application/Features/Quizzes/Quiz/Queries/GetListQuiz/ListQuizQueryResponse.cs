@@ -1,9 +1,13 @@
+
 namespace Application.Features.Quizzes.Quiz.Queries.GetListQuiz;
 
 public class ListQuizQueryResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; }
-    public int CategoryName { get; set; }
-    public int SubCategoryName { get; set; }
+    public string LessonName { get; set; }
+    public string SubCategoryName { get; set; }
+    public string CategoryName { get; set; }
+    public int QuestionCount { get; set; }
+    public object Difficulty { get; set; }  
 }

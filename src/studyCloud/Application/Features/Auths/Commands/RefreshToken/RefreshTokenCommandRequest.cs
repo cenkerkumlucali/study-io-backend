@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Features.Auths.Commands.RefreshTokenLogin;
+namespace Application.Features.Auths.Commands.RefreshToken;
 
 public class RefreshTokenCommandRequest:IRequest<RefreshTokenCommandResponse>
 {

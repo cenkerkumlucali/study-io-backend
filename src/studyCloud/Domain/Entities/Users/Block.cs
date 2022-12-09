@@ -5,8 +5,8 @@ namespace Domain.Entities.Users;
 
 public class Block : BaseEntity
 {
-    public int AgentId { get; set; }
-    public int TargetId { get; set; }
+    public long AgentId { get; set; }
+    public long TargetId { get; set; }
     public User Agent { get; set; }
     public User Target { get; set; }
     

@@ -5,5 +5,5 @@ namespace Application.Features.Auths.Commands.EnableOtpAuthenticator;
 
 public class EnableOtpAuthenticatorCommandRequest : IRequest<EnabledOtpAuthenticatorCommandResponse>
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
 }

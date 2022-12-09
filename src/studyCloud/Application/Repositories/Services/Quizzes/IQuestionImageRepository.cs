@@ -1,3 +1,4 @@
+using Domain.Entities.ImageFile;
 using Domain.Entities.Quizzes;
 
 namespace Application.Repositories.Services.Quizzes;

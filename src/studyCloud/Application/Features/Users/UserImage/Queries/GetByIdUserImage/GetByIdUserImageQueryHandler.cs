@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Users;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 
 namespace Application.Features.Users.UserImage.Queries.GetByIdUserImage;
@@ -17,7 +18,7 @@ public class GetByIdUserImageQueryHandler : IRequestHandler<GetByIdUserImageQuer
 
     public async Task<GetByIdUserImageQueryResponse> Handle(GetByIdUserImageQueryRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Users.UserImageFile? userImage =
+        UserImageFile? userImage =
             await _userImageRepository.GetAsync(c => c.Id == request.Id);
         GetByIdUserImageQueryResponse getByIdUserImageDto =
             _mapper.Map<GetByIdUserImageQueryResponse>(userImage);

@@ -5,7 +5,7 @@ namespace Application.Abstractions.Services;
 
 public interface IImageFileService<T>
 {
-    Task Upload(int id, IFormFileCollection files);
+    Task Upload(long id, IFormFileCollection files);
     Task<List<T>> GetAll();
     Task<List<T>> GetById(int id);
     Task<List<S3ObjectDto>> GetAllFilesAsync(string bucketName, string? prefix);

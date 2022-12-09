@@ -6,6 +6,7 @@ using Application.DTOs.ElasticSearch;
 using Application.DTOs.Storage.AWS;
 using Application.Features.Users.User.Dtos;
 using Application.Repositories.Services.Users;
+using Domain.Entities.ImageFile;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ public class UserImageManager:IUserImageService
     }
 
 
-    public async Task Upload(int userId, IFormFileCollection files)
+    public async Task Upload(long userId, IFormFileCollection files)
     {
         List<(string fileName, string pathOrContainerName)> result =
             await _storageService.UploadAsync("study.io-user-image", files);

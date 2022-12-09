@@ -4,9 +4,9 @@ namespace Application.Features.Comments.Comment.Commands.CreateComment;
 
 public class CreateCommentCommandRequest:IRequest<CreateCommentCommandResponse>
 {
-    public int UserId { get; set; }
-    public int PostId { get; set; }
-    public int? ParentId { get; set; }
+    public long UserId { get; set; }
+    public long PostId { get; set; }
+    public long? ParentId { get; set; }
     public string Content { get; set; }
     public DateTime CreatedDate { get; set; }
 }

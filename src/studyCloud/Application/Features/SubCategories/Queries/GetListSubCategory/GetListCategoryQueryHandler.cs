@@ -22,7 +22,8 @@ public class GetListCategoryQueryHandler : IRequestHandler<GetListSubCategoryQue
         CancellationToken cancellationToken)
     {
         IPaginate<Domain.Entities.Categories.SubCategory> subCategory =
-            await _subCategoryRepository.GetListAsync(index: request.PageRequest.Page,
+            await _subCategoryRepository.GetListAsync(c=>c.ParentId == null,
+                index: request.PageRequest.Page,
                 size: request.PageRequest.PageSize,
                 include: c => c.Include(c => c.Category));
         SubCategoryListModel mappedSubCategoryListModel =

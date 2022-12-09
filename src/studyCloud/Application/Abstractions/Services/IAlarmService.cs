@@ -6,18 +6,18 @@ namespace Application.Abstractions.Services;
 
 public interface IAlarmService
 {
-    Task<IList<AlarmDto>> GetAlarms(int userId, int page, int size);
-    Task Alert(int agentId, int targetId, int followId);
-    Task Alert(AlarmType alarmType, int agentId, int targetId, int postId);
-    Task Alert(AlarmType type, int agentId, int targetId, int postId, int comment);
-    Task AlertBatch(AlarmType type, int agentId, IList<int> targetIds, int postId);
-    Task AlertBatch(AlarmType type, int agentId, IList<int> targetIds, int postId, int comment);
-    Task DeletePost(AlarmType type, int agentId, int targetId, int postId);
+    Task<IList<AlarmDto>> GetAlarms(long userId, int page, int size);
+    Task Alert(long agentId, long targetId, long followId);
+    Task Alert(AlarmType alarmType, long agentId, long targetId, long postId);
+    Task Alert(AlarmType type, long agentId, long targetId, long postId, long comment);
+    Task AlertBatch(AlarmType type, long agentId, List<long> targetIds, long postId);
+    Task AlertBatch(AlarmType type, long agentId, List<long> targetIds, long postId, long comment);
+    Task DeletePost(AlarmType type, long agentId, long targetId, long postId);
     Task DeleteComment(AlarmType type, int agentId, int targetId, int commentId);
     Task DeleteFollow(AlarmType type, int agentId, int targetId, int followId);
-    Task DeleteAll(int postId);
+    Task DeleteAll(long postId);
     Task DeleteAll(IList<int> comments);
-    Task DeleteByTypeAndAgentAndTargetAndPost(AlarmType type, int agentId, int targetId, int postId);
+    Task DeleteByTypeAndAgentAndTargetAndPost(AlarmType type, long agentId, long targetId, long postId);
     Task DeleteByTypeAndAgentAndTargetAndComment(AlarmType type, int agentId, int targetId, int commentId);
     Task DeleteByTypeAndAgentAndTargetAndFollow(AlarmType type, int agentId, int targetId, int followId);
     Task<IList<Alarm>> GetAllByCommentIn(IList<int> comments);

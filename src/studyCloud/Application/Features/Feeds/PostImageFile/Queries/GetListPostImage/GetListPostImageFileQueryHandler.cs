@@ -19,7 +19,7 @@ public class GetListPostImageFileQueryHandler : IRequestHandler<GetListPostImage
 
     public async Task<PostImageListModel> Handle(GetListPostImageFileQueryRequest request, CancellationToken cancellationToken)
     {
-        IPaginate<Domain.Entities.Feeds.PostImageFile> postImage =
+        IPaginate<Domain.Entities.ImageFile.PostImageFile> postImage =
             await _postImageRepository.GetListAsync(index: request.PageRequest.Page,
                 size: request.PageRequest.PageSize);
         PostImageListModel mappedPostImageListModel =

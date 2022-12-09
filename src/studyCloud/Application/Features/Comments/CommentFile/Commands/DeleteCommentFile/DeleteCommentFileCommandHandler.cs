@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Comments;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 
 namespace Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
@@ -17,8 +18,8 @@ public class DeleteCommentFileCommandHandler:IRequestHandler<DeleteCommentFileCo
 
     public async Task<DeleteCommentFileCommandResponse> Handle(DeleteCommentFileCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Comments.CommentImageFile commentImage = _mapper.Map<Domain.Entities.Comments.CommentImageFile>(request);
-        Domain.Entities.Comments.CommentImageFile deletedCommentImage =
+        CommentImageFile commentImage = _mapper.Map<CommentImageFile>(request);
+        CommentImageFile deletedCommentImage =
             await _commentImageRepository.DeleteAsync(commentImage);
         DeleteCommentFileCommandResponse deletedCommentImageDto =
             _mapper.Map<DeleteCommentFileCommandResponse>(deletedCommentImage);

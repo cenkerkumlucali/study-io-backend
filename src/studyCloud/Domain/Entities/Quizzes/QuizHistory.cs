@@ -5,8 +5,8 @@ namespace Domain.Entities.Quizzes;
 
 public class QuizHistory:BaseEntity
 {
-    public int UserId { get; set; }
-    public int QuizId { get; set; }
+    public long UserId { get; set; }
+    public long QuizId { get; set; }
     public DateTime QuizDate { get; set; }
     public virtual User User { get; set; }
     public virtual Quiz Quiz { get; set; }

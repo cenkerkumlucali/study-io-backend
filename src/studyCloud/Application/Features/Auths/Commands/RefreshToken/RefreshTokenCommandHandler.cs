@@ -1,10 +1,9 @@
 using Application.Abstractions.Services;
 using Application.DTOs.JWT;
 using Application.Features.Auths.Rules;
-using Domain.Entities.Users;
 using MediatR;
 
-namespace Application.Features.Auths.Commands.RefreshTokenLogin;
+namespace Application.Features.Auths.Commands.RefreshToken;
 
 public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommandRequest, RefreshTokenCommandResponse>
 {
@@ -18,7 +17,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommandReq
 
     public async Task<RefreshTokenCommandResponse> Handle(RefreshTokenCommandRequest request,CancellationToken cancellationToken)
     {
-        RefreshToken? refreshToken = await _authService.GetRefreshTokenByToken(request.RefreshToken);
+        Domain.Entities.Users.RefreshToken? refreshToken = await _authService.GetRefreshTokenByToken(request.RefreshToken);
         await _authBusinessRules.RefreshTokenShouldBeActive(refreshToken);
         AccessToken token = await _authService.RefreshTokenLoginAsync(request.RefreshToken);
         return new RefreshTokenCommandResponse

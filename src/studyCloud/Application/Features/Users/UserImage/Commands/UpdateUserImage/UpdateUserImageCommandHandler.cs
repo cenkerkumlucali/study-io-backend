@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Users;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 
 namespace Application.Features.Users.UserImage.Commands.UpdateUserImage;
@@ -17,8 +18,8 @@ public class UpdateUserImageCommandHandler : IRequestHandler<UpdateUserImageComm
 
     public async Task<UpdateUserImageCommandResponse> Handle(UpdateUserImageCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Users.UserImageFile userImage = _mapper.Map<Domain.Entities.Users.UserImageFile>(request);
-        Domain.Entities.Users.UserImageFile createdUserImage =
+        UserImageFile userImage = _mapper.Map<UserImageFile>(request);
+        UserImageFile createdUserImage =
             await _userImageRepository.UpdateAsync(userImage);
         UpdateUserImageCommandResponse updatedUserImageDto =
             _mapper.Map<UpdateUserImageCommandResponse>(createdUserImage);

@@ -1,12 +1,13 @@
 using Domain.Entities.Comments;
 using Domain.Entities.Users;
 using Domain.Entities.Common;
+using Domain.Entities.ImageFile;
 
 namespace Domain.Entities.Feeds;
 
 public class Post : BaseEntity
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public virtual User User { get; set; }
     public string Content { get; set; }
     public virtual ICollection<Comment>? Comments { get; set; }

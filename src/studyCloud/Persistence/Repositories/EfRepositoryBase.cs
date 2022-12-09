@@ -53,7 +53,7 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
 
     public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0, int size = 10,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool enableTracking = true, CancellationToken cancellationToken = default)
     {
         IQueryable<TEntity> queryable = Query();
@@ -63,6 +63,16 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         if (orderBy != null)
             return  await orderBy(queryable).ToListAsync();
         return  await queryable.ToListAsync();
+    }
+
+    public async Task<List<TEntity>> GetAllByDynamicAsync(Dynamic dynamic,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool enableTracking = true, CancellationToken cancellationToken = default)
+    {
+        IQueryable<TEntity> queryable = Query().AsQueryable().ToDynamic(dynamic);
+        if (!enableTracking) queryable = queryable.AsNoTracking();
+        if (include != null) queryable = include(queryable);
+        return await queryable.ToListAsync();
     }
 
     public async Task<IPaginate<TEntity>> GetListByDynamicAsync(Dynamic dynamic,

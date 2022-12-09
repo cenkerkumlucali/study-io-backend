@@ -55,7 +55,7 @@ public class PostManager : IPostService
         return post;
     }
 
-    public async Task<List<object>> GetPostPageOfFollowingMembersByUserId(int userId, int page, int size)
+    public async Task<List<object>> GetPostPageOfFollowingMembersByUserId(long userId, int page, int size)
     {
         List<Follow> following = await _followService.GetFollowings(userId);
 
@@ -67,7 +67,7 @@ public class PostManager : IPostService
             {
                 PostId = post.Id,
                 UserName = follow.Following.UserName,
-                PictureUrl = follow.Following.UserImageFiles?.FirstOrDefault()?.Url,
+                PictureUrl = follow.Following.UserImageFiles?.LastOrDefault()?.Url,
                 FullName = follow.Following.FirstName + " " + follow.Following.LastName,
                 Content = post.Content,
                 FilePath = post.PostImageFiles.Select(c => c.Url),

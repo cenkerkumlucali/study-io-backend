@@ -58,14 +58,14 @@ public class MentionManager : IMentionService
         return true;
     }
 
-    public async Task<bool> DeleteAll(List<int> comments)
+    public async Task<bool> DeleteAll(List<long> comments)
     {
         IList<Mention> mentions = (await _mentionRepository.GetListAsync(c => comments.Contains(c.Id))).Items;
         await _mentionRepository.DeleteRangeAsync(mentions);
         return true;
     }
 
-    private async Task AddPostMentions(int agentId, int targetId, MentionType mentionType, int postId)
+    private async Task AddPostMentions(long agentId, long targetId, MentionType mentionType, long postId)
     {
         await _mentionRepository.AddAsync(new()
         {

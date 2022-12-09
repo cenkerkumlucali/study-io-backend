@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstractions\Hubs" />
     <Folder Include="Features\Comments\CommentFile\Constants" />
     <Folder Include="Features\Comments\CommentFile\Rules" />
     <Folder Include="Features\Comments\CommentLike\Constants" />
@@ -59,6 +60,7 @@
     <Folder Include="Features\Users\Block\Dtos" />
     <Folder Include="Features\Users\Block\Models" />
     <Folder Include="Features\Users\Block\Rules" />
+    <Folder Include="Features\Users\Chat\Queries" />
     <Folder Include="Features\Users\UserCoin\Constants" />
     <Folder Include="Features\Users\UserCoin\Dtos" />
     <Folder Include="Features\Users\UserCoin\Rules" />

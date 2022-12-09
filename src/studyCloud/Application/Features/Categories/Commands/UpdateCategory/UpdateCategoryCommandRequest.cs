@@ -5,7 +5,7 @@ namespace Application.Features.Categories.Commands.UpdateCategory;
 
 public class UpdateCategoryCommandRequest:IRequest<UpdatedCategoryCommandResponse>, ICacheRemoverRequest
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; }
     public bool BypassCache { get; }
     public string CacheKey => "category-list";

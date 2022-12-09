@@ -48,7 +48,7 @@ public class CategoriesController:BaseController
     public async Task<IActionResult> GetById(
         [FromQuery] GetByIdCategoryQueryRequest getByIdCategoryQuery)
     {
-        GetByIdCategoryCommandResponse result = await Mediator.Send(getByIdCategoryQuery);
+        GetByIdCategoryQueryResponse result = await Mediator.Send(getByIdCategoryQuery);
         return Ok(result);
     }
 }

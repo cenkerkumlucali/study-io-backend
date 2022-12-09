@@ -4,11 +4,11 @@ namespace Application.Features.Quizzes.SelectedAnswer.Commands.UpdateSelectedAns
 
 public class UpdateSelectedAnswerCommandRequest : IRequest<UpdateSelectedAnswerCommandResponse>
 {
-    public int Id { get; set; }
-    public int UserId { get; set; }
-    public int QuestionId { get; set; }
-    public int PossibleAnswerId { get; set; }
-    public int QuizHistoryId { get; set; }
+    public long Id { get; set; }
+    public long UserId { get; set; }
+    public long QuestionId { get; set; }
+    public long PossibleAnswerId { get; set; }
+    public long QuizHistoryId { get; set; }
 
    
 }

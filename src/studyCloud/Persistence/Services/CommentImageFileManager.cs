@@ -4,6 +4,7 @@ using Application.Abstractions.Storage.AWS;
 using Application.DTOs.Storage.AWS;
 using Application.Repositories.Services.Comments;
 using Domain.Entities.Comments;
+using Domain.Entities.ImageFile;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,12 +25,12 @@ public class CommentImageFileManager:ICommentImageFileService
         _awsStorage = awsStorage;
     }
 
-    public async Task Upload(int commentId, IFormFileCollection files)
+    public async Task Upload(long commentId, IFormFileCollection files)
     {
         List<(string fileName, string pathOrContainerName)> result =
             await _storageService.UploadAsync("study.io-comment-image", files);
         Domain.Entities.Comments.Comment? comment = await _commentRepository.GetAsync(c => c.Id == commentId);
-        await _commentImageFileRepository.AddRangeAsync(result.Select(r => new Domain.Entities.Comments.CommentImageFile
+        await _commentImageFileRepository.AddRangeAsync(result.Select(r => new CommentImageFile
         {
             FileName = r.fileName,  
             Path = r.pathOrContainerName,

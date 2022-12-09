@@ -2,7 +2,7 @@ namespace Application.Features.Alarm.Dtos;
 
 public class AlarmDto
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Type { get; set; }
     public string Message { get; set; }
     public string PictureUrl { get; set; }

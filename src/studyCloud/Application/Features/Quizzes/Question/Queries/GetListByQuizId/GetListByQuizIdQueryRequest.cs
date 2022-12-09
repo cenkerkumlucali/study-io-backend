@@ -7,5 +7,5 @@ namespace Application.Features.Quizzes.Question.Queries.GetListByQuizId;
 public class GetListByQuizIdQueryRequest:IRequest<GetByQuizIdModel>
 {
     public PageRequest PageRequest { get; set; }
-    public int QuizId { get; set; }
+    public long QuizId { get; set; }
 }

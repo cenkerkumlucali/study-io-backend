@@ -6,7 +6,7 @@ namespace Application.Features.Quizzes.Quiz.Commands.DeleteQuiz;
 
 public class DeleteQuizCommandRequest:IRequest<DeleteQuizCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public class DeleteQuizCommandHandler:IRequestHandler<DeleteQuizCommandRequest,DeleteQuizCommandResponse>
     {
         private readonly IQuizRepository _quizRepository;

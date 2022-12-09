@@ -5,7 +5,7 @@ namespace Application.Features.Users.User.Queries.GetByIdUser;
 
 public class GetByIdUserQueryRequest : IRequest<GetByIdUserQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 
    
 }

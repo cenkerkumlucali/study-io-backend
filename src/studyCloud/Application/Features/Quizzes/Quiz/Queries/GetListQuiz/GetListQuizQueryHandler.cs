@@ -3,6 +3,7 @@ using Application.Features.Quizzes.Quiz.Models;
 using Application.Repositories.Services.Quizzes;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Quizzes.Quiz.Queries.GetListQuiz;
 
@@ -19,9 +20,13 @@ public class GetListQuizQueryHandler : IRequestHandler<GetListQuizQueryRequest, 
 
     public async Task<QuizListModel> Handle(GetListQuizQueryRequest request, CancellationToken cancellationToken)
     {
-        IPaginate<Domain.Entities.Quizzes.Quiz> quiz =
-            await _quizRepository.GetListAsync(index: request.PageRequest.Page,
-                size: request.PageRequest.PageSize);
+        IPaginate<Domain.Entities.Quizzes.Quiz> quiz = await _quizRepository.GetListAsync(
+                index: request.PageRequest.Page,
+                size: request.PageRequest.PageSize,
+                include:c=>c.Include(c=>c.SubCategory)
+                    .ThenInclude(c=>c.Category)
+                    .Include(c=>c.Questions)
+                    .Include(c=>c.Lesson));
         QuizListModel mappedQuizListModel =
             _mapper.Map<QuizListModel>(quiz);
         return mappedQuizListModel;

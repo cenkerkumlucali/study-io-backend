@@ -43,7 +43,7 @@ public class EditProfileCommandHandler:IRequestHandler<EditProfileCommandRequest
                 Id = updatedUser.Id,
                 FullName = updatedUser.FirstName + " " + updatedUser.LastName,
                 UserName = updatedUser.UserName,
-                PictureUrl = updatedUser.UserImageFiles.FirstOrDefault()?.Url
+                PictureUrl = updatedUser.UserImageFiles.LastOrDefault()?.Url
             }
         };
         await _elasticSearch.UpdateByElasticIdAsync(model);

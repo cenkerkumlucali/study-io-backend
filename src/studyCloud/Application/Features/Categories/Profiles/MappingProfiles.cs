@@ -23,6 +23,6 @@ public class MappingProfiles:Profile
         CreateMap<IPaginate<Domain.Entities.Categories.Category>,CategoryListModel>().ReverseMap();
         CreateMap<Domain.Entities.Categories.Category,ListCategoryQueryResponse>().ReverseMap();
 
-        CreateMap<Domain.Entities.Categories.Category, GetByIdCategoryCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.Category, GetByIdCategoryQueryResponse>().ReverseMap();
     }
 }

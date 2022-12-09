@@ -1,3 +1,4 @@
+using Domain.Entities.ImageFile;
 using Domain.Enums;
 using BaseEntity = Domain.Entities.Common.BaseEntity;
 

@@ -2,6 +2,6 @@
 
 public class RevokedTokenDto
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Token { get; set; }
 }

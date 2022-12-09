@@ -7,7 +7,7 @@ namespace Domain.Entities.Users;
 [Document(StorageType = StorageType.Json, Prefixes = new []{"StudyIo.RefreshToken"})]
 public class RefreshToken : BaseEntity
 {
-    [Indexed] public int UserId { get; set; }
+    [Indexed] public long UserId { get; set; }
     [Indexed] [RedisIdField] [Searchable] public string Token { get; set; }
     [Indexed] public DateTime Expires { get; set; }
     [Indexed] public DateTime Created { get; set; }

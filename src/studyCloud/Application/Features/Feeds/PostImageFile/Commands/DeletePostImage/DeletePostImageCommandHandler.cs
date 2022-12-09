@@ -17,8 +17,8 @@ public class DeletePostImageCommandHandler:IRequestHandler<DeletePostImageComman
 
     public async Task<DeletePostFileCommandResponse> Handle(DeletePostImageCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImageFile postImage = _mapper.Map<Domain.Entities.Feeds.PostImageFile>(request);
-        Domain.Entities.Feeds.PostImageFile deletedPostImage =
+        Domain.Entities.ImageFile.PostImageFile postImage = _mapper.Map<Domain.Entities.ImageFile.PostImageFile>(request);
+        Domain.Entities.ImageFile.PostImageFile deletedPostImage =
             await _postImageRepository.DeleteAsync(postImage);
         DeletePostFileCommandResponse deletedPostImageDto =
             _mapper.Map<DeletePostFileCommandResponse>(deletedPostImage);

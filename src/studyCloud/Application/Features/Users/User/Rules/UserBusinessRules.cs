@@ -13,7 +13,7 @@ public class UserBusinessRules
         _userRepository = userRepository;
     }
 
-    public async Task UserIdShouldExistWhenSelected(int id)
+    public async Task UserIdShouldExistWhenSelected(long id)
     {
         Domain.Entities.Users.User? result = await _userRepository.GetAsync(b => b.Id == id);
         if (result == null) throw new BusinessException("User not exists.");

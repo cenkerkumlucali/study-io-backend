@@ -4,6 +4,6 @@ namespace Application.Features.Comments.CommentLike.Commands.UnLikeComment;
 
 public class UnLikeCommentCommandRequest:IRequest<UnLikeCommentCommandResponse>
 {
-    public int UserId { get; set; }
-    public int CommentId { get; set; }
+    public long UserId { get; set; }
+    public long CommentId { get; set; }
 }

@@ -2,8 +2,8 @@ namespace Application.Features.Quizzes.Quiz.Commands.CreateQuiz;
 
 public class CreateQuizCommandResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; }
-    public int CategoryId { get; set; }
-    public int SubCategoryId { get; set; }
+    public long CategoryId { get; set; }
+    public long SubCategoryId { get; set; }
 }

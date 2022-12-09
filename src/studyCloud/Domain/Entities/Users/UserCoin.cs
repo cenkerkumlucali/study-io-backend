@@ -4,7 +4,7 @@ namespace Domain.Entities.Users;
 
 public class UserCoin:BaseEntity
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public virtual User User { get; set; }
     public int Coin { get; set; }
 

@@ -4,6 +4,7 @@ using Application.Features.SubCategories.Commands.DeleteSubCategory;
 using Application.Features.SubCategories.Commands.UpdateSubCategory;
 using Application.Features.SubCategories.Models;
 using Application.Features.SubCategories.Queries.GetByIdSubCategory;
+using Application.Features.SubCategories.Queries.GetListByParentId;
 using Application.Features.SubCategories.Queries.GetListSubCategory;
 using AutoMapper;
 
@@ -25,5 +26,6 @@ public class MappingProfiles : Profile
             .ForMember(c => c.CategoryName, opt => opt.MapFrom(c => c.Category.Name)).ReverseMap();
 
         CreateMap<Domain.Entities.Categories.SubCategory, GetByIdSubCategoryQueryResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Categories.SubCategory, GetListByParentIdQueryResponse>().ReverseMap();
     }
 }

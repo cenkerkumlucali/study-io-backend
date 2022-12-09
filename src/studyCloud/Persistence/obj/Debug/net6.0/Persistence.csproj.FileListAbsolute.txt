@@ -38,3 +38,5 @@
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/obj/Debug/net6.0/Persistence.genruntimeconfig.cache
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/bin/Debug/net6.0/Infrastructure.dll
 /Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/bin/Debug/net6.0/Infrastructure.pdb
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/bin/Debug/net6.0/SignalR.dll
+/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Persistence/bin/Debug/net6.0/SignalR.pdb

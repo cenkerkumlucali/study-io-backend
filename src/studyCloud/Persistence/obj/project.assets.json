@@ -2234,6 +2234,23 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "SignalR/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Application": "1.0.0",
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SignalR.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SignalR.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -6882,6 +6899,11 @@
       "type": "project",
       "path": "../Infrastructure/Infrastructure.csproj",
       "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+    },
+    "SignalR/1.0.0": {
+      "type": "project",
+      "path": "../SignalR/SignalR.csproj",
+      "msbuildProject": "../SignalR/SignalR.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6898,6 +6920,7 @@
       "Microsoft.Extensions.Configuration.Json >= 6.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 7.0.0-preview.3.22175.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.7",
+      "SignalR >= 1.0.0",
       "StackExchange.Redis >= 2.5.61"
     ]
   },
@@ -6934,6 +6957,9 @@
             },
             "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj": {
               "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/Infrastructure/Infrastructure.csproj"
+            },
+            "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/SignalR/SignalR.csproj": {
+              "projectPath": "/Users/cenkerkumlucali/codes/StudyCloud/src/studyCloud/SignalR/SignalR.csproj"
             }
           }
         }

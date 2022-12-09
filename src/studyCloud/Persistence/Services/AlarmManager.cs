@@ -19,7 +19,7 @@ public class AlarmManager : IAlarmService
         _alarmRepository = alarmRepository;
     }
 
-    public async Task<IList<AlarmDto>> GetAlarms(int userId, int page, int size)
+    public async Task<IList<AlarmDto>> GetAlarms(long userId, int page, int size)
     {
         IList<AlarmDto> alarmDto =
             (await _alarmRepository.GetListAsync(c => c.TargetId == userId, index: page, size: size,
@@ -29,7 +29,8 @@ public class AlarmManager : IAlarmService
                         .Include(c => c.Comment)
                         .ThenInclude(c => c.CommentImageFiles)
                         .Include(c => c.Post)
-                        .ThenInclude(c => c.PostImageFiles), orderBy: c => c.OrderByDescending(c => c.CreatedDate)))
+                        .ThenInclude(c => c.PostImageFiles), 
+                orderBy: c => c.OrderByDescending(c => c.CreatedDate)))
             .Items.Select(alarm => new AlarmDto()
             {
                 Id = alarm.Id,
@@ -49,12 +50,10 @@ public class AlarmManager : IAlarmService
                 CreatedDate = alarm.CreatedDate
             }).ToList();
         alarmDto = alarmDto.Skip(page * size).Take(size).ToList();
-
-        // List<int> agentIds = alarms.Where(c => c.AlarmType == AlarmType.FOLLOW).Select(c => c.AgentId).ToList();
         return alarmDto;
     }
 
-    public async Task Alert(int agentId, int targetId, int followId)
+    public async Task Alert(long agentId, long targetId, long followId)
     {
         await _alarmRepository.AddAsync(new Alarm
         {
@@ -65,7 +64,7 @@ public class AlarmManager : IAlarmService
         });
     }
 
-    public async Task Alert(AlarmType alarmType, int agentId, int targetId, int postId)
+    public async Task Alert(AlarmType alarmType, long agentId, long targetId, long postId)
     {
         if (!alarmType.Equals(AlarmType.LIKE_POST))
         {
@@ -81,7 +80,7 @@ public class AlarmManager : IAlarmService
         });
     }
 
-    public async Task Alert(AlarmType type, int agentId, int targetId, int postId, int commentId)
+    public async Task Alert(AlarmType type, long agentId, long targetId, long postId, long commentId)
     {
         if (!type.Equals(AlarmType.COMMENT) && !type.Equals(AlarmType.LIKE_COMMENT) &&
             !type.Equals(AlarmType.MENTION_COMMENT))
@@ -99,7 +98,7 @@ public class AlarmManager : IAlarmService
         });
     }
 
-    public async Task AlertBatch(AlarmType type, int agentId, IList<int> targetIds, int postId)
+    public async Task AlertBatch(AlarmType type, long agentId, List<long> targetIds, long postId)
     {
         if (!type.Equals(AlarmType.MENTION_POST))
         {
@@ -109,7 +108,7 @@ public class AlarmManager : IAlarmService
         foreach (var targetId in targetIds) await AddMentionPostAlarms(agentId, targetId, postId);
     }
 
-    public async Task AlertBatch(AlarmType type, int agentId, IList<int> targetIds, int postId, int commentId)
+    public async Task AlertBatch(AlarmType type, long agentId, List<long> targetIds, long postId, long commentId)
     {
         if (!type.Equals(AlarmType.MENTION_COMMENT))
         {
@@ -119,7 +118,7 @@ public class AlarmManager : IAlarmService
         foreach (var targetId in targetIds) await AddMentionCommentAlarms(agentId, targetId, postId, commentId);
     }
 
-    public async Task DeletePost(AlarmType type, int agentId, int targetId, int postId)
+    public async Task DeletePost(AlarmType type, long agentId, long targetId, long postId)
     {
         await DeleteByTypeAndAgentAndTargetAndPost(type, agentId, targetId, postId);
     }
@@ -134,7 +133,7 @@ public class AlarmManager : IAlarmService
         await DeleteByTypeAndAgentAndTargetAndFollow(type, agentId, targetId, followId);
     }
 
-    public async Task DeleteAll(int postId)
+    public async Task DeleteAll(long postId)
     {
         IList<Alarm> alarms = (await _alarmRepository.GetListAsync(c => c.PostId == postId)).Items;
         await _alarmRepository.DeleteRangeAsync(alarms);
@@ -146,7 +145,7 @@ public class AlarmManager : IAlarmService
         await _alarmRepository.DeleteRangeAsync(alarms);
     }
 
-    public async Task DeleteByTypeAndAgentAndTargetAndPost(AlarmType type, int agentId, int targetId, int postId)
+    public async Task DeleteByTypeAndAgentAndTargetAndPost(AlarmType type, long agentId, long targetId, long postId)
     {
         Alarm? getPostAlarm = await _alarmRepository.GetAsync(c =>
             c.AlarmType == type && c.AgentId == agentId && c.TargetId == targetId && c.PostId == postId);
@@ -175,7 +174,7 @@ public class AlarmManager : IAlarmService
         return alarms;
     }
 
-    private async Task AddMentionPostAlarms(int agentId, int targetId, int postId)
+    private async Task AddMentionPostAlarms(long agentId, long targetId, long postId)
     {
         await _alarmRepository.AddAsync(new Alarm
         {
@@ -186,7 +185,7 @@ public class AlarmManager : IAlarmService
         });
     }
 
-    private async Task AddMentionCommentAlarms(int agentId, int targetId, int postId, int commentId)
+    private async Task AddMentionCommentAlarms(long agentId, long targetId, long postId, long commentId)
     {
         await _alarmRepository.AddAsync(new Alarm
         {

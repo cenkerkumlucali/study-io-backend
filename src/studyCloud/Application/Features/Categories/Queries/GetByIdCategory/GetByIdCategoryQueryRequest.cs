@@ -2,8 +2,8 @@ using MediatR;
 
 namespace Application.Features.Categories.Queries.GetByIdCategory;
 
-public class GetByIdCategoryQueryRequest:IRequest<GetByIdCategoryCommandResponse>
+public class GetByIdCategoryQueryRequest:IRequest<GetByIdCategoryQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
    
 }

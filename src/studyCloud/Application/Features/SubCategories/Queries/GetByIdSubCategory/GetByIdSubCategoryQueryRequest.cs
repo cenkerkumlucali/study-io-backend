@@ -4,6 +4,6 @@ namespace Application.Features.SubCategories.Queries.GetByIdSubCategory;
 
 public class GetByIdSubCategoryQueryRequest:IRequest<GetByIdSubCategoryQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
    
 }

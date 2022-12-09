@@ -2,6 +2,6 @@ namespace Application.Features.Follows.Commands.CreateFollow;
 
 public class CreateFollowCommandResponse
 {
-    public int FollowerId { get; set; }
-    public int FollowingId { get; set; }
+    public long FollowerId { get; set; }
+    public long FollowingId { get; set; }
 }

@@ -4,5 +4,5 @@ namespace Application.Features.Lessons.LessonSubject.Commands.DeleteLessonSubjec
 
 public class DeleteLessonSubjectCommandRequest:IRequest<DeleteLessonSubjectCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

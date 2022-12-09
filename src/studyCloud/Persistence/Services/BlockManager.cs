@@ -57,7 +57,7 @@ public class BlockManager : IBlockService
         return true;
     }
 
-    public async Task<List<Block>> GetByUserId(int userId)
+    public async Task<List<Block>> GetByUserId(long userId)
     {
         List<Block> blockedUsers = (await _blockRepository.GetListAsync(c => c.AgentId == userId
             ,include:c=>c.Include(c=>c.Target)
@@ -65,7 +65,7 @@ public class BlockManager : IBlockService
         return blockedUsers;
     }
 
-    private async Task<Block?> FindByMemberIdAndBlockMemberId(int memberId, int blockMemberId)
+    private async Task<Block?> FindByMemberIdAndBlockMemberId(long memberId, long blockMemberId)
     {
         Block? block = await _blockRepository.GetAsync(c => c.AgentId == memberId && c.TargetId == blockMemberId);
         return block;

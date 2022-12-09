@@ -4,6 +4,7 @@ using Application.Features.Quizzes.Quiz.Commands.DeleteQuiz;
 using Application.Features.Quizzes.Quiz.Commands.UpdateQuiz;
 using Application.Features.Quizzes.Quiz.Models;
 using Application.Features.Quizzes.Quiz.Queries.GetByIdQuiz;
+using Application.Features.Quizzes.Quiz.Queries.GetByPublisherId;
 using Application.Features.Quizzes.Quiz.Queries.GetListQuiz;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +51,14 @@ public class QuizzesController:BaseController
         [FromQuery] GetByIdQuizQueryRequest getByIdQuizQuery)
     {
         GetByIdQuizQueryResponse result = await Mediator.Send(getByIdQuizQuery);
+        return Ok(result);
+    }
+    
+    [HttpGet("[action]/{PublisherId}")]
+    public async Task<IActionResult> GetByPublisherId(
+        [FromRoute] GetByPublisherIdQueryRequest getByPublisherIdQueryRequest)
+    {
+        GetByPublisherIdQueryResponse result = await Mediator.Send(getByPublisherIdQueryRequest);
         return Ok(result);
     }
 }

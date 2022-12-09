@@ -4,7 +4,7 @@ namespace Application.Features.Mentions.Queries.GetListMention;
 
 public class ListMentionQueryResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string AgentEmail { get; set; }
     public string TargetEmail { get; set; }
     public string PostContent { get; set; }

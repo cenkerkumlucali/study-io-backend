@@ -2,5 +2,5 @@ namespace Application.Features.Follows.Commands.UnFollow;
 
 public class UnFollowCommandResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

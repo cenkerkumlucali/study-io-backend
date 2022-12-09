@@ -4,7 +4,7 @@ namespace Domain.Entities.Users;
 
 public class UserOperationClaim : BaseEntity
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public int OperationClaimId { get; set; }
 
     public virtual User User { get; set; }

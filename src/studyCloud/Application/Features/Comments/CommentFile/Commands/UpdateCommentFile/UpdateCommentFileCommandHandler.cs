@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Comments;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 
 namespace Application.Features.Comments.CommentFile.Commands.UpdateCommentFile;
@@ -17,8 +18,8 @@ public class UpdateCommentFileCommandHandler:IRequestHandler<UpdateCommentFileCo
 
     public async Task<UpdateCommentFileCommandResponse> Handle(UpdateCommentFileCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Comments.CommentImageFile commentImage = _mapper.Map<Domain.Entities.Comments.CommentImageFile>(request);
-        Domain.Entities.Comments.CommentImageFile createdCommentImage =
+        CommentImageFile commentImage = _mapper.Map<CommentImageFile>(request);
+        CommentImageFile createdCommentImage =
             await _commentImageRepository.UpdateAsync(commentImage);
         UpdateCommentFileCommandResponse  updatedCommentImageDto =
             _mapper.Map<UpdateCommentFileCommandResponse>(createdCommentImage);

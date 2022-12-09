@@ -25,7 +25,7 @@ public class JwtHelper : ITokenHelper
 
     public async Task<AccessToken> CreateToken(User user, IList<OperationClaim> operationClaims)
     {
-        _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+        _accessTokenExpiration = DateTime.Now.AddMonths(_tokenOptions.AccessTokenExpiration);
         SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
         SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
         JwtSecurityToken jwt = await CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
@@ -45,7 +45,7 @@ public class JwtHelper : ITokenHelper
         {
             UserId = user.Id,
             Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-            Expires = DateTime.UtcNow.AddDays(7),
+            Expires = DateTime.UtcNow.AddMonths(2),
             Created = DateTime.UtcNow,
             CreatedByIp = ipAddress
         };

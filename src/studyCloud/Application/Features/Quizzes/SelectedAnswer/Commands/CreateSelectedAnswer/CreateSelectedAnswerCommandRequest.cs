@@ -4,10 +4,8 @@ namespace Application.Features.Quizzes.SelectedAnswer.Commands.CreateSelectedAns
 
 public class CreateSelectedAnswerCommandRequest : IRequest<CreateSelectedAnswerCommandResponse>
 {
-    public int UserId { get; set; }
-    public int QuestionId { get; set; }
-    public int PossibleAnswerId { get; set; }
-    public int QuizHistoryId { get; set; }
-
-    
+    public long UserId { get; set; }
+    public long QuestionId { get; set; }
+    public long AnswerId { get; set; }
+    public long QuizHistoryId { get; set; }
 }

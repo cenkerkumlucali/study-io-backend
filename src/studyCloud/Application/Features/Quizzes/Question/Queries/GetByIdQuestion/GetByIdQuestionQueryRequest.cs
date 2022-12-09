@@ -4,6 +4,6 @@ namespace Application.Features.Quizzes.Question.Queries.GetByIdQuestion;
 
 public class GetByIdQuestionQueryRequest : IRequest<GetByIdQuestionQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

@@ -8,11 +8,11 @@ namespace Domain.Entities;
 
 public class Alarm : BaseEntity
 {
-    public int AgentId { get; set; }
-    public int TargetId { get; set; }
-    public int? PostId { get; set; }
-    public int? CommentId { get; set; }
-    public int? FollowId { get; set; }
+    public long AgentId { get; set; }
+    public long TargetId { get; set; }
+    public long PostId { get; set; }
+    public long CommentId { get; set; }
+    public long FollowId { get; set; }
     public AlarmType AlarmType { get; set; }
     public virtual User? Agent { get; set; }
     public virtual User? Target { get; set; }

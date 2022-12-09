@@ -4,6 +4,6 @@ namespace Application.Features.Quizzes.SelectedAnswer.Queries.GetByIdSelectedAns
 
 public class GetByIdSelectedAnswerQueryRequest : IRequest<GetByIdSelectedAnswerQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
    
 }

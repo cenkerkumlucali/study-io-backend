@@ -4,6 +4,6 @@ namespace Application.Features.Quizzes.SelectedAnswer.Commands.DeleteSelectedAns
 
 public class DeleteSelectedAnswerCommandRequest:IRequest<DeleteSelectedAnswerCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

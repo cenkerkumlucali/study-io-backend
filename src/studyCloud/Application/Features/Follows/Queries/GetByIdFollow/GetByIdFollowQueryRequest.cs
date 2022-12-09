@@ -4,6 +4,6 @@ namespace Application.Features.Follows.Queries.GetByIdFollow;
 
 public class GetByIdFollowQueryRequest:IRequest<GetByIdFollowQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

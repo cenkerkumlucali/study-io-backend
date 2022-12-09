@@ -24,11 +24,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("CommentCommentImageFile", b =>
                 {
-                    b.Property<int>("CommentImageFilesId")
-                        .HasColumnType("integer");
+                    b.Property<long>("CommentImageFilesId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("CommentsId")
-                        .HasColumnType("integer");
+                    b.Property<long>("CommentsId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("CommentImageFilesId", "CommentsId");
 
@@ -39,32 +39,32 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Alarm", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("AgentId")
-                        .HasColumnType("integer");
+                    b.Property<long>("AgentId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("AlarmType")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("CommentId")
-                        .HasColumnType("integer");
+                    b.Property<long>("CommentId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("FollowId")
-                        .HasColumnType("integer");
+                    b.Property<long>("FollowId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TargetId")
-                        .HasColumnType("integer");
+                    b.Property<long>("TargetId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -86,11 +86,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Categories.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -109,14 +109,14 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Categories.SubCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -125,6 +125,9 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -132,16 +135,18 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("ParentId");
+
                     b.ToTable("SubCategories");
                 });
 
             modelBuilder.Entity("Domain.Entities.Comments.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -150,17 +155,17 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -175,14 +180,17 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Comments.CommentLike", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("CommentId")
                         .HasColumnType("integer");
+
+                    b.Property<long>("CommentId1")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -193,22 +201,25 @@ namespace Persistence.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
+                    b.Property<long>("UserId1")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CommentId");
+                    b.HasIndex("CommentId1");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("CommentLikes");
                 });
 
             modelBuilder.Entity("Domain.Entities.Feeds.Post", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -220,8 +231,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -232,23 +243,23 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Feeds.PostLike", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -261,11 +272,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.File", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -299,30 +310,30 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Follow", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("Id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDate");
 
-                    b.Property<int>("FollowerId")
-                        .HasColumnType("integer")
+                    b.Property<long>("FollowerId")
+                        .HasColumnType("bigint")
                         .HasColumnName("FollowerId");
 
-                    b.Property<int>("FollowingId")
-                        .HasColumnType("integer")
+                    b.Property<long>("FollowingId")
+                        .HasColumnType("bigint")
                         .HasColumnName("FollowingId");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -335,19 +346,80 @@ namespace Persistence.Migrations
                     b.ToTable("Follows", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Lessons.Lesson", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("SubCategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("Lessons");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lessons.LessonSubject", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("LessonSubjects");
+                });
+
             modelBuilder.Entity("Domain.Entities.Mention", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("AgentId")
-                        .HasColumnType("integer");
+                    b.Property<long>("AgentId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("CommentId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("CommentId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -355,11 +427,11 @@ namespace Persistence.Migrations
                     b.Property<int>("MentionType")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TargetId")
-                        .HasColumnType("integer");
+                    b.Property<long>("TargetId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -377,16 +449,38 @@ namespace Persistence.Migrations
                     b.ToTable("Mentions");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Publisher", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publishers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Quizzes.Answer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
@@ -395,8 +489,8 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("integer");
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -407,11 +501,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Question", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -419,12 +513,8 @@ namespace Persistence.Migrations
                     b.Property<int>("Difficulty")
                         .HasColumnType("integer");
 
-                    b.Property<int>("QuizId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -438,31 +528,41 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Quiz", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<long?>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("LessonSubjectId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("SubCategoryId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("PublisherId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("SubCategoryId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("LessonId");
+
+                    b.HasIndex("LessonSubjectId");
+
+                    b.HasIndex("PublisherId");
 
                     b.HasIndex("SubCategoryId");
 
@@ -471,11 +571,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Quizzes.QuizHistory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -483,14 +583,14 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("QuizDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("QuizId")
-                        .HasColumnType("integer");
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -503,29 +603,29 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Quizzes.SelectedAnswer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("AnswerId")
-                        .HasColumnType("integer");
+                    b.Property<long>("AnswerId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("integer");
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("QuizHistoryId")
-                        .HasColumnType("integer");
+                    b.Property<long>("QuizHistoryId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -542,20 +642,20 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.Block", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("AgentId")
-                        .HasColumnType("integer");
+                    b.Property<long>("AgentId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TargetId")
-                        .HasColumnType("integer");
+                    b.Property<long>("TargetId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -566,13 +666,53 @@ namespace Persistence.Migrations
                     b.ToTable("Blocks");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Users.Chat", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("FromId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("ToId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromId");
+
+                    b.HasIndex("ToId");
+
+                    b.ToTable("ChatMessages");
+                });
+
             modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("ActivationKey")
                         .HasColumnType("text");
@@ -586,8 +726,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -598,11 +738,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.OperationClaim", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -621,11 +761,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.OtpAuthenticator", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -640,8 +780,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -652,11 +792,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.RefreshToken", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -690,8 +830,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -702,11 +842,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.ResetPasswordAuthentication", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("ActivationKey")
                         .HasColumnType("text");
@@ -720,8 +860,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -732,11 +872,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("AuthenticatorType")
                         .HasColumnType("integer");
@@ -793,11 +933,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.UserCoin", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("Coin")
                         .HasColumnType("integer");
@@ -808,8 +948,8 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -820,11 +960,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Users.UserOperationClaim", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -832,15 +972,18 @@ namespace Persistence.Migrations
                     b.Property<int>("OperationClaimId")
                         .HasColumnType("integer");
 
+                    b.Property<long>("OperationClaimId1")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OperationClaimId");
+                    b.HasIndex("OperationClaimId1");
 
                     b.HasIndex("UserId");
 
@@ -849,11 +992,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("PostPostImageFile", b =>
                 {
-                    b.Property<int>("PostImageFilesId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostImageFilesId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("PostsId")
-                        .HasColumnType("integer");
+                    b.Property<long>("PostsId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("PostImageFilesId", "PostsId");
 
@@ -862,13 +1005,43 @@ namespace Persistence.Migrations
                     b.ToTable("PostPostImageFile");
                 });
 
+            modelBuilder.Entity("PublisherPublisherImage", b =>
+                {
+                    b.Property<long>("PublisherImagesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PublishersId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("PublisherImagesId", "PublishersId");
+
+                    b.HasIndex("PublishersId");
+
+                    b.ToTable("PublisherPublisherImage");
+                });
+
+            modelBuilder.Entity("QuestionQuestionImage", b =>
+                {
+                    b.Property<long>("QuestionImagesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QuestionsId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("QuestionImagesId", "QuestionsId");
+
+                    b.HasIndex("QuestionsId");
+
+                    b.ToTable("QuestionQuestionImage");
+                });
+
             modelBuilder.Entity("UserUserImageFile", b =>
                 {
-                    b.Property<int>("UserImageFilesId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserImageFilesId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("UsersId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UsersId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("UserImageFilesId", "UsersId");
 
@@ -877,21 +1050,35 @@ namespace Persistence.Migrations
                     b.ToTable("UserUserImageFile");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Comments.CommentImageFile", b =>
+            modelBuilder.Entity("Domain.Entities.ImageFile.CommentImageFile", b =>
                 {
                     b.HasBaseType("Domain.Entities.File");
 
                     b.HasDiscriminator().HasValue("CommentImageFile");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Feeds.PostImageFile", b =>
+            modelBuilder.Entity("Domain.Entities.ImageFile.PostImageFile", b =>
                 {
                     b.HasBaseType("Domain.Entities.File");
 
                     b.HasDiscriminator().HasValue("PostImageFile");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Users.UserImageFile", b =>
+            modelBuilder.Entity("Domain.Entities.ImageFile.PublisherImage", b =>
+                {
+                    b.HasBaseType("Domain.Entities.File");
+
+                    b.HasDiscriminator().HasValue("PublisherImage");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ImageFile.QuestionImage", b =>
+                {
+                    b.HasBaseType("Domain.Entities.File");
+
+                    b.HasDiscriminator().HasValue("QuestionImage");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ImageFile.UserImageFile", b =>
                 {
                     b.HasBaseType("Domain.Entities.File");
 
@@ -900,7 +1087,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("CommentCommentImageFile", b =>
                 {
-                    b.HasOne("Domain.Entities.Comments.CommentImageFile", null)
+                    b.HasOne("Domain.Entities.ImageFile.CommentImageFile", null)
                         .WithMany()
                         .HasForeignKey("CommentImageFilesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -923,15 +1110,21 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.Entities.Comments.Comment", "Comment")
                         .WithMany()
-                        .HasForeignKey("CommentId");
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Follow", "Follow")
                         .WithMany()
-                        .HasForeignKey("FollowId");
+                        .HasForeignKey("FollowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Feeds.Post", "Post")
                         .WithMany()
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "Target")
                         .WithMany()
@@ -958,13 +1151,19 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Domain.Entities.Categories.SubCategory", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId");
+
                     b.Navigation("Category");
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Domain.Entities.Comments.Comment", b =>
                 {
                     b.HasOne("Domain.Entities.Comments.Comment", "Parent")
-                        .WithMany("Childrens")
+                        .WithMany("Children")
                         .HasForeignKey("ParentId");
 
                     b.HasOne("Domain.Entities.Feeds.Post", "Post")
@@ -990,13 +1189,13 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.Comments.Comment", "Comment")
                         .WithMany("CommentLikes")
-                        .HasForeignKey("CommentId")
+                        .HasForeignKey("CommentId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1058,6 +1257,34 @@ namespace Persistence.Migrations
                     b.Navigation("Following");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Lessons.Lesson", b =>
+                {
+                    b.HasOne("Domain.Entities.Categories.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lessons.LessonSubject", b =>
+                {
+                    b.HasOne("Domain.Entities.Lessons.Lesson", "Lesson")
+                        .WithMany("LessonSubjects")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Lessons.LessonSubject", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Lesson");
+
+                    b.Navigation("Parent");
+                });
+
             modelBuilder.Entity("Domain.Entities.Mention", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "Agent")
@@ -1072,7 +1299,9 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.Entities.Feeds.Post", "Post")
                         .WithMany()
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "Target")
                         .WithMany()
@@ -1103,7 +1332,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Quizzes.Question", b =>
                 {
                     b.HasOne("Domain.Entities.Quizzes.Quiz", "Quiz")
-                        .WithMany()
+                        .WithMany("Questions")
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1113,19 +1342,27 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Quiz", b =>
                 {
-                    b.HasOne("Domain.Entities.Categories.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Domain.Entities.Lessons.Lesson", "Lesson")
+                        .WithMany("Quizzes")
+                        .HasForeignKey("LessonId");
+
+                    b.HasOne("Domain.Entities.Lessons.LessonSubject", "LessonSubject")
+                        .WithMany("Quizzes")
+                        .HasForeignKey("LessonSubjectId");
+
+                    b.HasOne("Domain.Entities.Publisher", "Publisher")
+                        .WithMany("Quizzes")
+                        .HasForeignKey("PublisherId");
 
                     b.HasOne("Domain.Entities.Categories.SubCategory", "SubCategory")
                         .WithMany()
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubCategoryId");
 
-                    b.Navigation("Category");
+                    b.Navigation("Lesson");
+
+                    b.Navigation("LessonSubject");
+
+                    b.Navigation("Publisher");
 
                     b.Navigation("SubCategory");
                 });
@@ -1203,6 +1440,25 @@ namespace Persistence.Migrations
                     b.Navigation("Target");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Users.Chat", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.User", "From")
+                        .WithMany()
+                        .HasForeignKey("FromId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Users.User", "To")
+                        .WithMany()
+                        .HasForeignKey("ToId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("From");
+
+                    b.Navigation("To");
+                });
+
             modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "User")
@@ -1262,7 +1518,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.Users.OperationClaim", "OperationClaim")
                         .WithMany()
-                        .HasForeignKey("OperationClaimId")
+                        .HasForeignKey("OperationClaimId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1279,7 +1535,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("PostPostImageFile", b =>
                 {
-                    b.HasOne("Domain.Entities.Feeds.PostImageFile", null)
+                    b.HasOne("Domain.Entities.ImageFile.PostImageFile", null)
                         .WithMany()
                         .HasForeignKey("PostImageFilesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1292,9 +1548,39 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PublisherPublisherImage", b =>
+                {
+                    b.HasOne("Domain.Entities.ImageFile.PublisherImage", null)
+                        .WithMany()
+                        .HasForeignKey("PublisherImagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Publisher", null)
+                        .WithMany()
+                        .HasForeignKey("PublishersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("QuestionQuestionImage", b =>
+                {
+                    b.HasOne("Domain.Entities.ImageFile.QuestionImage", null)
+                        .WithMany()
+                        .HasForeignKey("QuestionImagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Quizzes.Question", null)
+                        .WithMany()
+                        .HasForeignKey("QuestionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("UserUserImageFile", b =>
                 {
-                    b.HasOne("Domain.Entities.Users.UserImageFile", null)
+                    b.HasOne("Domain.Entities.ImageFile.UserImageFile", null)
                         .WithMany()
                         .HasForeignKey("UserImageFilesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1314,7 +1600,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Comments.Comment", b =>
                 {
-                    b.Navigation("Childrens");
+                    b.Navigation("Children");
 
                     b.Navigation("CommentLikes");
                 });
@@ -1326,9 +1612,33 @@ namespace Persistence.Migrations
                     b.Navigation("PostLikes");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Lessons.Lesson", b =>
+                {
+                    b.Navigation("LessonSubjects");
+
+                    b.Navigation("Quizzes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lessons.LessonSubject", b =>
+                {
+                    b.Navigation("Children");
+
+                    b.Navigation("Quizzes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Publisher", b =>
+                {
+                    b.Navigation("Quizzes");
+                });
+
             modelBuilder.Entity("Domain.Entities.Quizzes.Question", b =>
                 {
                     b.Navigation("Answers");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Quizzes.Quiz", b =>
+                {
+                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.User", b =>

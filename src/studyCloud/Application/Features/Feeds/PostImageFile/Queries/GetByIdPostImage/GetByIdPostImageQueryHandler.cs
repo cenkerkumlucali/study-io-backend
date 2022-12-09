@@ -17,7 +17,7 @@ public class GetByIdPostImageQueryHandler:IRequestHandler<GetByIdPostImageQueryR
 
     public async Task<GetByIdPostFileQueryResponse> Handle(GetByIdPostImageQueryRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Feeds.PostImageFile? postImage =
+        Domain.Entities.ImageFile.PostImageFile? postImage =
             await _postImageRepository.GetAsync(c => c.Id == request.Id);
         GetByIdPostFileQueryResponse getByIdPostImageDto =
             _mapper.Map<GetByIdPostFileQueryResponse>(postImage);

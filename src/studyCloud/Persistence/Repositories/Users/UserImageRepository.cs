@@ -1,4 +1,5 @@
 using Application.Repositories.Services.Users;
+using Domain.Entities.ImageFile;
 using Domain.Entities.Users;
 using Persistence.Contexts;
 

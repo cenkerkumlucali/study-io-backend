@@ -4,7 +4,7 @@ namespace Domain.Entities.Users;
 
 public class EmailAuthenticator : BaseEntity
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public string? ActivationKey { get; set; }
     public bool IsVerified { get; set; }
 

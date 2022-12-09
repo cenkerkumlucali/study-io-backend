@@ -15,7 +15,7 @@ public class FollowManager : IFollowService
         _followRepository = followRepository;
     }
 
-    public async Task<Follow> FindByMemberIdAndFollowMemberId(int memberId, int followMemberId)
+    public async Task<Follow> FindByMemberIdAndFollowMemberId(long memberId, long followMemberId)
     {
         Follow? follow =
             await _followRepository.GetAsync(c => c.FollowerId == memberId && c.FollowingId == followMemberId);
@@ -38,7 +38,7 @@ public class FollowManager : IFollowService
         return await _followRepository.DeleteAsync(findFollow);
     }
 
-    public async Task<FollowerDto> GetFollowers(int memberId)
+    public async Task<FollowerDto> GetFollowers(long memberId)
     {
         List<Follow> following = await _followRepository.GetAllAsync(c => c.FollowingId == memberId,
             include: c => c.Include(c => c.Follower).Include(c => c.Following));
@@ -69,7 +69,7 @@ public class FollowManager : IFollowService
         };
     }
 
-    public async Task<List<Follow>> GetFollowings(int memberId)
+    public async Task<List<Follow>> GetFollowings(long memberId)
     {
         List<Follow> followings = await _followRepository.GetAllAsync(c => c.FollowerId == memberId,
             include: c => c.Include(c => c.Following)

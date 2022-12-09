@@ -3,6 +3,7 @@ using Application.Features.SubCategories.Commands.DeleteSubCategory;
 using Application.Features.SubCategories.Commands.UpdateSubCategory;
 using Application.Features.SubCategories.Models;
 using Application.Features.SubCategories.Queries.GetByIdSubCategory;
+using Application.Features.SubCategories.Queries.GetListByParentId;
 using Application.Features.SubCategories.Queries.GetListSubCategory;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,6 +50,14 @@ public class SubCategoriesController:BaseController
         [FromQuery] GetByIdSubCategoryQueryRequest getByIdSubCategoryQuery)
     {
         GetByIdSubCategoryQueryResponse result = await Mediator.Send(getByIdSubCategoryQuery);
+        return Ok(result);
+    }
+    
+    [HttpGet("[action]/{ParentId}")]
+    public async Task<IActionResult> GetListByParentId(
+        [FromRoute] GetListByParentIdQueryRequest getListByParentIdQueryRequest)
+    {
+        List<GetListByParentIdQueryResponse> result = await Mediator.Send(getListByParentIdQueryRequest);
         return Ok(result);
     }
 }

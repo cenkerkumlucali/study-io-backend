@@ -1,4 +1,5 @@
 using Application.Repositories.Services.Quizzes;
+using Domain.Entities.ImageFile;
 using Domain.Entities.Quizzes;
 using Persistence.Contexts;
 

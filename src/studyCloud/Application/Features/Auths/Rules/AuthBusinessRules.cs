@@ -72,7 +72,7 @@ public class AuthBusinessRules
         if (user != null) throw new BusinessException("User mail already exists.");
     }
 
-    public async Task UserPasswordShouldBeMatch(int id, string password)
+    public async Task UserPasswordShouldBeMatch(long id, string password)
     {
         User? user = await _userRepository.GetAsync(u => u.Id == id);
         if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))

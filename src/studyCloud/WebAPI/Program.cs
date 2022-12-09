@@ -12,6 +12,8 @@ using Microsoft.OpenApi.Models;
 using Persistence;
 using Persistence.Contexts;
 using Redis.OM;
+using SignalR;
+using SignalR.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 static IHost BuildWebHost(IConfiguration configuration, string[] args) =>
@@ -38,6 +40,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddSignalRServices();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -95,6 +98,7 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
+
 app.UseStaticFiles();
 
 app.UseCors();
@@ -106,5 +110,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHubs();
 
 app.Run();

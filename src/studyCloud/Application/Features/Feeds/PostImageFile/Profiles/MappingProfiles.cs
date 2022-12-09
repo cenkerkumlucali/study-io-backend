@@ -13,16 +13,16 @@ public class MappingProfiles:Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Domain.Entities.Feeds.PostImageFile, CreatePostImageFileCommandResponse>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile, CreatePostImageFileCommandRequest>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile, DeletePostFileCommandResponse>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile, DeletePostImageCommandRequest>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile, UpdatePostImageFileQueryResponse>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile, UpdatePostImageCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, CreatePostImageFileCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, CreatePostImageFileCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, DeletePostFileCommandResponse>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, DeletePostImageCommandRequest>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, UpdatePostImageFileQueryResponse>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, UpdatePostImageCommandRequest>().ReverseMap();
         
-        CreateMap<IPaginate<Domain.Entities.Feeds.PostImageFile>,PostImageListModel>().ReverseMap();
-        CreateMap<Domain.Entities.Feeds.PostImageFile,ListPostImageFileQueryResponse>().ReverseMap();
+        CreateMap<IPaginate<Domain.Entities.ImageFile.PostImageFile>,PostImageListModel>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile,ListPostImageFileQueryResponse>().ReverseMap();
 
-        CreateMap<Domain.Entities.Feeds.PostImageFile, GetByIdPostFileQueryResponse>().ReverseMap();
+        CreateMap<Domain.Entities.ImageFile.PostImageFile, GetByIdPostFileQueryResponse>().ReverseMap();
     }
 }

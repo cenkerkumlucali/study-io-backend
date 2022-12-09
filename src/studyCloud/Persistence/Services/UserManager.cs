@@ -38,7 +38,7 @@ public class UserManager : IUserService
         return user;
     }
 
-    public async Task<User> GetById(int id)
+    public async Task<User> GetById(long id)
     {
         User? user = await _userRepository.GetAsync(u => u.Id == id,
             include: c => c.Include(c => c.UserImageFiles)
@@ -52,7 +52,7 @@ public class UserManager : IUserService
         return users;
     }
 
-    public async Task<IList<User>> GetAllByIdIn(ICollection<int> ids)
+    public async Task<IList<User>> GetAllByIdIn(ICollection<long> ids)
     {
         IList<User> users = (await _userRepository.GetListAsync(c => ids.Contains(c.Id),include:c=>c.Include(c=>c.UserImageFiles))).Items;
         return users;
@@ -72,13 +72,13 @@ public class UserManager : IUserService
         return user;
     }
 
-    public async Task<ProfileDto> GetUserProfile(int targetId, int memberId)
+    public async Task<ProfileDto> GetUserProfile(long targetId, long memberId)
     {
         User targetUser = await GetById(targetId);
         return await GetUserProfileByLoginMemberIdAndTargetId(memberId, targetUser.Id);
     }
 
-    public async Task<ProfileDto> GetUserProfileByLoginMemberIdAndTargetId(int loginUserId, int targetId)
+    public async Task<ProfileDto> GetUserProfileByLoginMemberIdAndTargetId(long loginUserId, long targetId)
     {
         var user = await GetById(targetId);
         return new ProfileDto
@@ -121,7 +121,7 @@ public class UserManager : IUserService
         return true;
     }
 
-    private async Task<IList<PostListDto>> getPosts(int targetId)
+    private async Task<IList<PostListDto>> getPosts(long targetId)
     {
         IList<PostListDto> posts = (await _postRepository.GetListAsync(c => c.UserId == targetId,
                 include: c => c.Include(c => c.User)
@@ -142,40 +142,40 @@ public class UserManager : IUserService
         return posts;
     }
 
-    private async Task<int> getPostCount(int targetId)
+    private async Task<int> getPostCount(long targetId)
     {
         return (await _postRepository.GetListAsync(c => c.UserId == targetId)).Count;
     }
 
-    private async Task<int> getFollowingCount(int targetId)
+    private async Task<int> getFollowingCount(long targetId)
     {
         return (await _followRepository.GetListAsync(c => c.FollowerId == targetId)).Count;
     }
 
-    private async Task<int> getFollowerCount(int targetId)
+    private async Task<int> getFollowerCount(long targetId)
     {
         return (await _followRepository.GetListAsync(c => c.FollowingId == targetId)).Count;
     }
 
-    private async Task<bool> isFollowing(int loginUserId, int targetId)
+    private async Task<bool> isFollowing(long loginUserId, long targetId)
     {
         return (await _followRepository.GetListAsync(c => c.FollowerId == loginUserId && c.FollowingId == targetId))
             .Items.Any();
     }
 
-    private async Task<bool> isFollower(int loginUserId, int targetId)
+    private async Task<bool> isFollower(long loginUserId, long targetId)
     {
         return (await _followRepository.GetListAsync(c => c.FollowerId == targetId && c.FollowingId == loginUserId))
             .Items.Any();
     }
 
-    private async Task<bool> isBlocking(int loginUserId, int targetId)
+    private async Task<bool> isBlocking(long loginUserId, long targetId)
     {
         return (await _blockRepository.GetListAsync(c => c.AgentId == loginUserId && c.TargetId == targetId)).Items
             .Any();
     }
 
-    private async Task<bool> isBlocked(int loginUserId, int targetId)
+    private async Task<bool> isBlocked(long loginUserId, long targetId)
     {
         return (await _blockRepository.GetListAsync(c => c.AgentId == targetId && c.TargetId == loginUserId)).Items
             .Any();

@@ -5,7 +5,7 @@ namespace Domain.Entities.Users;
 
 public class OtpAuthenticator : BaseEntity
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public byte[] SecretKey { get; set; }
     public bool IsVerified { get; set; }
 

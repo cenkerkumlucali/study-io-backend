@@ -7,5 +7,5 @@ public interface IPostService
 {
     Task<PostUploadDto> Upload(PostUploadDto post);
     Task<Post> Delete(Post post);
-    Task<List<object>> GetPostPageOfFollowingMembersByUserId(int userId, int page, int size);
+    Task<List<object>> GetPostPageOfFollowingMembersByUserId(long userId, int page, int size);
 }

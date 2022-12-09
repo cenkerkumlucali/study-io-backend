@@ -11,5 +11,5 @@ public interface IMentionService
     Task<List<Mention>> MentionMembers(User user, Post post);
     Task<List<Mention>> MentionMembers(User user, Comment comment);
     Task<bool> DeleteAll(Post post);
-    Task<bool> DeleteAll(List<int> comments);
+    Task<bool> DeleteAll(List<long> comments);
 }

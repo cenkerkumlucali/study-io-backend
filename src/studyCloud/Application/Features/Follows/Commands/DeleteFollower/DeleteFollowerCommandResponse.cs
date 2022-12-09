@@ -2,6 +2,6 @@ namespace Application.Features.Follows.Commands.DeleteFollower;
 
 public class DeleteFollowerCommandResponse
 {
-    public int? FollowerId { get; set; }
-    public int? FollowingId { get; set; }
+    public long? FollowerId { get; set; }
+    public long? FollowingId { get; set; }
 }

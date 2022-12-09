@@ -2,5 +2,5 @@ namespace Application.Features.Quizzes.SelectedAnswer.Commands.DeleteSelectedAns
 
 public class DeleteSelectedAnswerCommandResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

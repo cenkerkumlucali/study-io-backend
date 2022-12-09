@@ -2,7 +2,7 @@
 using Domain.Entities.Users;
 using Persistence.Contexts;
 
-namespace Persistence.Repositories;
+namespace Persistence.Repositories.Users;
 
 public class EmailAuthenticatorRepository : EfRepositoryBase<EmailAuthenticator, BaseDbContext>,
                                             IEmailAuthenticatorRepository

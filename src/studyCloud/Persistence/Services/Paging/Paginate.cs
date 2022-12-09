@@ -106,7 +106,7 @@ internal class Paginate<TSource, TResult> : IPaginate<TResult>
 
     public int From { get; }
 
-    public IList<TResult> Items { get; }
+    public IList<TResult> Items { get; set; }
 
     public bool HasPrevious => Index - From > 0;
 

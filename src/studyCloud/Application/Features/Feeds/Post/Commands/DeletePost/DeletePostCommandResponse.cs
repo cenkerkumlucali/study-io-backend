@@ -2,5 +2,5 @@ namespace Application.Features.Feeds.Post.Commands.DeletePost;
 
 public class DeletePostCommandResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

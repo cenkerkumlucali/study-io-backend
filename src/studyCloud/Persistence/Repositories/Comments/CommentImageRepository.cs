@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Comments;
 using Domain.Entities.Comments;
+using Domain.Entities.ImageFile;
 using Persistence.Contexts;
 
 namespace Persistence.Repositories.Comments;

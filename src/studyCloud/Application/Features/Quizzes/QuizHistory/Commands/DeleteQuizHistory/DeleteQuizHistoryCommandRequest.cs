@@ -4,6 +4,6 @@ namespace Application.Features.Quizzes.QuizHistory.Commands.DeleteQuizHistory;
 
 public class DeleteQuizHistoryCommandRequest:IRequest<DeleteQuizHistoryCommandResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     
 }

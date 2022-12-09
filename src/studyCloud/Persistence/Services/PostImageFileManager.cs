@@ -5,6 +5,7 @@ using Application.DTOs.Storage.AWS;
 using Application.Repositories.Services.Feeds;
 using Application.Repositories.Services.Files;
 using Domain.Entities.Feeds;
+using Domain.Entities.ImageFile;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +29,7 @@ public class PostImageFileManager : IPostImageFileService
         _fileRepository = fileRepository;
     }
 
-    public async Task Upload(int commentId, IFormFileCollection files)
+    public async Task Upload(long commentId, IFormFileCollection files)
     {
         List<(string fileName, string pathOrContainerName)> result =
             await _storageService.UploadAsync("study.io-post-image", files);

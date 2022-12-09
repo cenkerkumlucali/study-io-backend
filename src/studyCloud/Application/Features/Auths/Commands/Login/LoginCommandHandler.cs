@@ -49,9 +49,9 @@ public class LoginCommandHandler : IRequestHandler<LoginCommandRequest, LoginCom
         }
 
         AccessToken createdAccessToken = await _authService.CreateAccessToken(user);
-        RefreshToken createdRefreshToken =
+        Domain.Entities.Users.RefreshToken createdRefreshToken =
             await _authService.CreateRefreshToken(user, request.IPAddress);
-        RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
+        Domain.Entities.Users.RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
 
         loginCommandResponse.AccessToken = createdAccessToken;
         loginCommandResponse.RefreshToken = addedRefreshToken;

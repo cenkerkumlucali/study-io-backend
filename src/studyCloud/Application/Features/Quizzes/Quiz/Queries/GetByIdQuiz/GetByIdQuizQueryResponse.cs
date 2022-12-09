@@ -2,8 +2,8 @@ namespace Application.Features.Quizzes.Quiz.Queries.GetByIdQuiz;
 
 public class GetByIdQuizQueryResponse
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; }
-    public int CategoryName { get; set; }
-    public int SubCategoryName { get; set; }
+    public long CategoryName { get; set; }
+    public long SubCategoryName { get; set; }
 }

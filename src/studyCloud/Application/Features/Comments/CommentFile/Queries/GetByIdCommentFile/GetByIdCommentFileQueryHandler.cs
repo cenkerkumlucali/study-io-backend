@@ -1,5 +1,6 @@
 using Application.Repositories.Services.Comments;
 using AutoMapper;
+using Domain.Entities.ImageFile;
 using MediatR;
 
 namespace Application.Features.Comments.CommentFile.Queries.GetByIdCommentFile;
@@ -17,7 +18,7 @@ public class GetByIdCommentFileQueryHandler:IRequestHandler<GetByIdCommentFileQu
 
     public async Task<GetByIdCommentFileQueryResponse> Handle(GetByIdCommentFileQueryRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.Comments.CommentImageFile? commentImage =
+        CommentImageFile? commentImage =
             await _commentImageRepository.GetAsync(c => c.Id == request.Id);
         GetByIdCommentFileQueryResponse getByIdCommentImageDto =
             _mapper.Map<GetByIdCommentFileQueryResponse>(commentImage);

@@ -6,7 +6,7 @@ namespace Application.Features.Comments.CommentLike.Queries.GetByIdCommentLike;
 
 public class GetByIdCommentLikeQueryRequest:IRequest<GetByIdCommentLikeQueryResponse>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public class GetByIdCommentLikeQueryHandler:IRequestHandler<GetByIdCommentLikeQueryRequest,GetByIdCommentLikeQueryResponse>
     {
         private ICommentLikeRepository _commentLikeRepository;

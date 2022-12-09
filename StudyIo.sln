@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "src\studyCloud\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.EmailSender", "src\studyCloud\RabbitMQ.EmailSender\RabbitMQ.EmailSender.csproj", "{2205DBC1-0348-4E10-BA34-F8D301B54A44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR", "src\studyCloud\SignalR\SignalR.csproj", "{5F54240B-B111-4707-9AC5-4E46D5F17663}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,7 @@ Global
 		{AC900911-EA7D-411E-BEC0-F1840C9E1573} = {B3DA423B-01E3-44F4-B302-6E68A74732A6}
 		{6BD74151-BD48-480A-A1EF-771FE678D06D} = {B3DA423B-01E3-44F4-B302-6E68A74732A6}
 		{2205DBC1-0348-4E10-BA34-F8D301B54A44} = {B3DA423B-01E3-44F4-B302-6E68A74732A6}
+		{5F54240B-B111-4707-9AC5-4E46D5F17663} = {B3DA423B-01E3-44F4-B302-6E68A74732A6}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{176F4B16-5E44-4358-9B3E-5913A29CC566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -55,5 +58,9 @@ Global
 		{2205DBC1-0348-4E10-BA34-F8D301B54A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2205DBC1-0348-4E10-BA34-F8D301B54A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2205DBC1-0348-4E10-BA34-F8D301B54A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F54240B-B111-4707-9AC5-4E46D5F17663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F54240B-B111-4707-9AC5-4E46D5F17663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F54240B-B111-4707-9AC5-4E46D5F17663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F54240B-B111-4707-9AC5-4E46D5F17663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
