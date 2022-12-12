@@ -25,34 +25,9 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\Hubs" />
-    <Folder Include="Features\Comments\CommentFile\Constants" />
-    <Folder Include="Features\Comments\CommentFile\Rules" />
-    <Folder Include="Features\Comments\CommentLike\Constants" />
-    <Folder Include="Features\Comments\CommentLike\Rules" />
-    <Folder Include="Features\Comments\Comment\Constants" />
-    <Folder Include="Features\Comments\Comment\Rules" />
-    <Folder Include="Features\Feeds\PostImageFile\Constants" />
-    <Folder Include="Features\Feeds\PostImageFile\Rules" />
-    <Folder Include="Features\Feeds\PostLike\Constants" />
-    <Folder Include="Features\Feeds\PostLike\Dtos" />
-    <Folder Include="Features\Feeds\PostLike\Rules" />
-    <Folder Include="Features\Feeds\Post\Constants" />
-    <Folder Include="Features\Feeds\Post\Rules" />
     <Folder Include="Features\Follows\Rules" />
     <Folder Include="Features\Mentions\Constants" />
     <Folder Include="Features\Mentions\Rules" />
-    <Folder Include="Features\Quizzes\Answer\Constants" />
-    <Folder Include="Features\Quizzes\Answer\Rules" />
-    <Folder Include="Features\Quizzes\Question\Constants" />
-    <Folder Include="Features\Quizzes\Question\Rules" />
-    <Folder Include="Features\Quizzes\QuizHistory\Constants" />
-    <Folder Include="Features\Quizzes\QuizHistory\Dtos" />
-    <Folder Include="Features\Quizzes\QuizHistory\Rules" />
-    <Folder Include="Features\Quizzes\Quiz\Constants" />
-    <Folder Include="Features\Quizzes\Quiz\Rules" />
-    <Folder Include="Features\Quizzes\SelectedAnswer\Constants" />
-    <Folder Include="Features\Quizzes\SelectedAnswer\Dtos" />
-    <Folder Include="Features\Quizzes\SelectedAnswer\Rules" />
     <Folder Include="Features\SubCategories\Constants" />
     <Folder Include="Features\SubCategories\Dtos" />
     <Folder Include="Features\SubCategories\Rules" />

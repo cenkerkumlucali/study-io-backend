@@ -1,5 +1,5 @@
 using Application.Abstractions.Services.Paging;
-using Application.Features.Feeds.Post.Dtos;
+using Application.Features.Post.Dtos;
 using Application.Features.Users.User.Commands.CreateUser;
 using Application.Features.Users.User.Commands.DeleteUser;
 using Application.Features.Users.User.Commands.EditProfile;

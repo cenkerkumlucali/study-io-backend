@@ -1,4 +1,4 @@
-using Application.Features.Feeds.Post.Dtos;
+using Application.Features.Post.Dtos;
 using Domain.Entities.Feeds;
 
 namespace Application.Abstractions.Services;
