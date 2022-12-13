@@ -1,6 +1,7 @@
 using System.Reflection;
 using Application.Features.Auths.Rules;
 using Application.Features.Categories.Rules;
+using Application.Features.FlashCards.Rules;
 using Application.Features.Users.User.Rules;
 using FluentValidation;
 using MediatR;
@@ -17,7 +18,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<CategoryBusinessRules>();
         services.AddScoped<UserBusinessRules>();
         services.AddScoped<AuthBusinessRules>();
-        
+        services.AddScoped<FlashCardBusinessRules>();
         return services;
 
     }
