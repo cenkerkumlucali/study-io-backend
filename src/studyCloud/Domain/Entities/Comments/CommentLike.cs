@@ -5,8 +5,8 @@ namespace Domain.Entities.Comments;
 
 public class CommentLike : BaseEntity
 {
-    public int UserId { get; set; }
-    public int CommentId { get; set; }
+    public long UserId { get; set; }
+    public long CommentId { get; set; }
     public virtual User User { get; set; }
     public virtual Comment Comment { get; set; }
 
