@@ -1,7 +1,7 @@
 using Application.DTOs.Paging;
-using Application.Features.FlashCard.Queries.GetListByLessonSubjectId;
+using Application.Features.FlashCards.Queries.GetListByLessonSubjectId;
 
-namespace Application.Features.FlashCard.Models;
+namespace Application.Features.FlashCards.Models;
 
 public class GetByLessonSubjectIdListModel:BasePageableModel
 {

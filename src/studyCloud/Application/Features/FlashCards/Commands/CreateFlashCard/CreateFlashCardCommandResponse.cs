@@ -1,4 +1,4 @@
-namespace Application.Features.FlashCard.Commands.CreateFlashCard;
+namespace Application.Features.FlashCards.Commands.CreateFlashCard;
 
 public class CreateFlashCardCommandResponse
 {

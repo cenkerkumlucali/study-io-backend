@@ -2,7 +2,7 @@ using Application.Repositories.Services.FlashCards;
 using AutoMapper;
 using MediatR;
 
-namespace Application.Features.FlashCard.Commands.UpdateFlashCard;
+namespace Application.Features.FlashCards.Commands.UpdateFlashCard;
 
 public class
     UpdateFlashCardCommandHandler : IRequestHandler<UpdateFlashCardCommandRequest, UpdateFlashCardCommandResponse>

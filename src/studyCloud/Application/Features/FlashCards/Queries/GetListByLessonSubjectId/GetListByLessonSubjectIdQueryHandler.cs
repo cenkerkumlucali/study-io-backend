@@ -1,11 +1,11 @@
 using Application.Abstractions.Services.Paging;
-using Application.Features.FlashCard.Models;
+using Application.Features.FlashCards.Models;
 using Application.Repositories.Services.FlashCards;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.FlashCard.Queries.GetListByLessonSubjectId;
+namespace Application.Features.FlashCards.Queries.GetListByLessonSubjectId;
 
 public class
     GetListByLessonSubjectIdQueryHandler : IRequestHandler<GetListByLessonSubjectIdQueryRequest,

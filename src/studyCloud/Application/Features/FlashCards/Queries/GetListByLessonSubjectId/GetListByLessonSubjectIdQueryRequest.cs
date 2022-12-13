@@ -1,8 +1,8 @@
-using Application.Features.FlashCard.Models;
+using Application.Features.FlashCards.Models;
 using Application.RequestParameters;
 using MediatR;
 
-namespace Application.Features.FlashCard.Queries.GetListByLessonSubjectId;
+namespace Application.Features.FlashCards.Queries.GetListByLessonSubjectId;
 
 public class GetListByLessonSubjectIdQueryRequest:IRequest<GetByLessonSubjectIdListModel>
 {

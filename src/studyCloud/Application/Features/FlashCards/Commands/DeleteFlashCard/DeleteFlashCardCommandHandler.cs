@@ -2,7 +2,7 @@ using Application.Repositories.Services.FlashCards;
 using AutoMapper;
 using MediatR;
 
-namespace Application.Features.FlashCard.Commands.DeleteFlashCard;
+namespace Application.Features.FlashCards.Commands.DeleteFlashCard;
 
 public class DeleteFlashCardCommandHandler:IRequestHandler<DeleteFlashCardCommandRequest,DeleteFlashCardCommandResponse>
 {

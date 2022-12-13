@@ -1,4 +1,4 @@
-namespace Application.Features.FlashCard.Queries.GetListByLessonSubjectId;
+namespace Application.Features.FlashCards.Queries.GetListByLessonSubjectId;
 
 public class GetListByLessonSubjectIdQueryResponse
 {

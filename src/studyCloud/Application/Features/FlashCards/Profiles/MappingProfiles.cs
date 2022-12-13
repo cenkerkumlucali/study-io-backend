@@ -1,12 +1,12 @@
 using Application.Abstractions.Services.Paging;
-using Application.Features.FlashCard.Commands.CreateFlashCard;
-using Application.Features.FlashCard.Commands.DeleteFlashCard;
-using Application.Features.FlashCard.Commands.UpdateFlashCard;
-using Application.Features.FlashCard.Models;
-using Application.Features.FlashCard.Queries.GetListByLessonSubjectId;
+using Application.Features.FlashCards.Commands.CreateFlashCard;
+using Application.Features.FlashCards.Commands.DeleteFlashCard;
+using Application.Features.FlashCards.Commands.UpdateFlashCard;
+using Application.Features.FlashCards.Models;
+using Application.Features.FlashCards.Queries.GetListByLessonSubjectId;
 using AutoMapper;
 
-namespace Application.Features.FlashCard.Profiles;
+namespace Application.Features.FlashCards.Profiles;
 
 public class MappingProfiles : Profile
 {

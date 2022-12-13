@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Features.FlashCard.Commands.DeleteFlashCard;
+namespace Application.Features.FlashCards.Commands.DeleteFlashCard;
 
 public class DeleteFlashCardCommandRequest:IRequest<DeleteFlashCardCommandResponse>
 {

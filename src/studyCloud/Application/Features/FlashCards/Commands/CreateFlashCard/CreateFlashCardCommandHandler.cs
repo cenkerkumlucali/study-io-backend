@@ -1,24 +1,29 @@
+using Application.Features.FlashCards.Rules;
 using Application.Repositories.Services.FlashCards;
 using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.FlashCard.Commands.CreateFlashCard;
+namespace Application.Features.FlashCards.Commands.CreateFlashCard;
 
 public class CreateFlashCardCommandHandler:IRequestHandler<CreateFlashCardCommandRequest,CreateFlashCardCommandResponse>
 {
     private readonly IFlashCardRepository _flashCardRepository;
+    private readonly FlashCardBusinessRules _flashCardBusinessRules;
     private IMapper _mapper;
 
-    public CreateFlashCardCommandHandler(IFlashCardRepository flashCardRepository, IMapper mapper)
+    public CreateFlashCardCommandHandler(IFlashCardRepository flashCardRepository, IMapper mapper, FlashCardBusinessRules flashCardBusinessRules)
     {
         _flashCardRepository = flashCardRepository;
         _mapper = mapper;
+        _flashCardBusinessRules = flashCardBusinessRules;
     }
 
     public async Task<CreateFlashCardCommandResponse> Handle(CreateFlashCardCommandRequest request, CancellationToken cancellationToken)
     {
-        Domain.Entities.FlashCard? mappedFlashCard = _mapper.Map<Domain.Entities.FlashCard>(request);
-        Domain.Entities.FlashCard createdFlashCard = await _flashCardRepository.AddAsync(mappedFlashCard);
+        FlashCard? mappedFlashCard = _mapper.Map<FlashCard>(request);
+        await _flashCardBusinessRules.FlashCardNotSame(mappedFlashCard);
+        FlashCard createdFlashCard = await _flashCardRepository.AddAsync(mappedFlashCard);
         CreateFlashCardCommandResponse? mappedCreatedFlashCard = _mapper.Map<CreateFlashCardCommandResponse>(createdFlashCard);
         return mappedCreatedFlashCard;
     }

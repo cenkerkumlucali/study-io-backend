@@ -1,4 +1,4 @@
-namespace Application.Features.FlashCard.Commands.UpdateFlashCard;
+namespace Application.Features.FlashCards.Commands.UpdateFlashCard;
 
 public class UpdateFlashCardCommandResponse
 {
