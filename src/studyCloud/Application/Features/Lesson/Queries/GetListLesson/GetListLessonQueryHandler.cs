@@ -1,24 +1,27 @@
-using Application.Repositories.Services.Lessons;
+using Application.Abstractions.Services;
 using AutoMapper;
+using Domain.Entities.Categories;
 using MediatR;
 
 namespace Application.Features.Lesson.Queries.GetListLesson;
 
-public class GetListLessonQueryHandler:IRequestHandler<GetListLessonQueryRequest,List<GetListLessonQueryResponse>>
+public class GetListLessonQueryHandler : IRequestHandler<GetListLessonQueryRequest, List<GetListLessonQueryResponse>>
 {
-    private readonly ILessonRepository _lessonRepository;
+    private readonly ICategoryService _categoryService;
     private IMapper _mapper;
 
-    public GetListLessonQueryHandler(ILessonRepository lessonRepository, IMapper mapper)
+    public GetListLessonQueryHandler(IMapper mapper, ICategoryService categoryService)
     {
-        _lessonRepository = lessonRepository;
         _mapper = mapper;
+        _categoryService = categoryService;
     }
 
-    public async Task<List<GetListLessonQueryResponse>> Handle(GetListLessonQueryRequest request, CancellationToken cancellationToken)
+    public async Task<List<GetListLessonQueryResponse>> Handle(GetListLessonQueryRequest request,
+        CancellationToken cancellationToken)
     {
-        List<Domain.Entities.Lessons.Lesson> lessons = await _lessonRepository.GetAllAsync(c=>c.SubCategoryId != 21);
-        List<GetListLessonQueryResponse>? mappedLessons = _mapper.Map<List<GetListLessonQueryResponse>>(lessons);
+        List<Category> lesson = await _categoryService.GetListAsync();
+
+        List<GetListLessonQueryResponse>? mappedLessons = _mapper.Map<List<GetListLessonQueryResponse>>(lesson);
         return mappedLessons;
     }
 }
