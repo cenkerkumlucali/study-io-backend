@@ -19,15 +19,15 @@ public class GetByIdLessonQueryHandler:IRequestHandler<GetByIdLessonQueryRequest
     public async Task<List<GetByIdLessonQueryResponse>> Handle(GetByIdLessonQueryRequest request, CancellationToken cancellationToken)
     {
         List<Domain.Entities.Lessons.Lesson> lesson = await _lessonRepository.GetAllAsync(c => c.Id == request.Id,
-            include: c => c.Include(c => c.SubCategory)
-                .Include(c => c.LessonSubjects)
-                .ThenInclude(c => c.Parent)
+            include: c => c.Include(c=>c.Category).Include(c => c.SubCategory)
+                .Include(c => c.LessonSubjects).ThenInclude(c => c.Parent)
                 .Include(c => c.LessonSubjects).ThenInclude(c => c.Children));
         
         lesson = lesson
             .Select(p => new Domain.Entities.Lessons.Lesson 
             { 
                 Name = p.Name,
+                Category = p.Category,
                 SubCategory = p.SubCategory,
                 LessonSubjects = p.LessonSubjects.Where(c=>c.ParentId is null).ToList(),
             }).ToList();
