@@ -1,10 +1,10 @@
-using Application.Features.Lessons.Lesson.Commands.CreateLesson;
-using Application.Features.Lessons.Lesson.Commands.DeleteLesson;
-using Application.Features.Lessons.Lesson.Commands.UpdateLesson;
-using Application.Features.Lessons.Lesson.Queries.GetLessonById;
-using Application.Features.Lessons.Lesson.Queries.GetListBySubCategory;
-using Application.Features.Lessons.Lesson.Queries.GetListLesson;
-using Application.Features.Lessons.Lesson.Queries.GetListLessonByDynamic;
+using Application.Features.Lesson.Commands.CreateLesson;
+using Application.Features.Lesson.Commands.DeleteLesson;
+using Application.Features.Lesson.Commands.UpdateLesson;
+using Application.Features.Lesson.Queries.GetLessonById;
+using Application.Features.Lesson.Queries.GetListBySubCategory;
+using Application.Features.Lesson.Queries.GetListLesson;
+using Application.Features.Lesson.Queries.GetListLessonByDynamic;
 using Application.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +22,7 @@ public class LessonsController : BaseController
         return Created("", response);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateLessonCommandRequest updateLessonCommand)
     {

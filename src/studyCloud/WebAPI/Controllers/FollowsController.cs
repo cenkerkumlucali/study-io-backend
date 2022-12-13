@@ -23,7 +23,7 @@ public class FollowsController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateFollowCommandRequest updateFollowCommand)
     {

@@ -1,6 +1,6 @@
-using Application.Features.Comments.CommentLike.Models;
-using Application.Features.Comments.CommentLike.Queries.GetByIdCommentLike;
-using Application.Features.Comments.CommentLike.Queries.GetListCommentLike;
+using Application.Features.CommentLike.Models;
+using Application.Features.CommentLike.Queries.GetByIdCommentLike;
+using Application.Features.CommentLike.Queries.GetListCommentLike;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Comments;

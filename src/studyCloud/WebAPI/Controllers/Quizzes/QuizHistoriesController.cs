@@ -1,9 +1,9 @@
-using Application.Features.Quizzes.QuizHistory.Commands.CreateQuizHistory;
-using Application.Features.Quizzes.QuizHistory.Commands.DeleteQuizHistory;
-using Application.Features.Quizzes.QuizHistory.Commands.UpdateQuizHistory;
-using Application.Features.Quizzes.QuizHistory.Models;
-using Application.Features.Quizzes.QuizHistory.Queries.GetByIdQuizHistory;
-using Application.Features.Quizzes.QuizHistory.Queries.GetListQuizHistory;
+using Application.Features.QuizHistory.Commands.CreateQuizHistory;
+using Application.Features.QuizHistory.Commands.DeleteQuizHistory;
+using Application.Features.QuizHistory.Commands.UpdateQuizHistory;
+using Application.Features.QuizHistory.Models;
+using Application.Features.QuizHistory.Queries.GetByIdQuizHistory;
+using Application.Features.QuizHistory.Queries.GetListQuizHistory;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Quizzes;
@@ -20,7 +20,7 @@ public class QuizHistoriesController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateQuizHistoryCommandRequest updateQuizHistoryCommand)
     {

@@ -1,17 +1,16 @@
-using Application.Features.Comments.Comment.Commands.CreateComment;
-using Application.Features.Comments.Comment.Commands.DeleteComment;
-using Application.Features.Comments.Comment.Commands.UpdateComment;
-using Application.Features.Comments.Comment.Models;
-using Application.Features.Comments.Comment.Queries.GetByIdComment;
-using Application.Features.Comments.Comment.Queries.GetByPostIdComment;
-using Application.Features.Comments.Comment.Queries.GetListComment;
-using Application.Features.Comments.CommentFile.Commands.CreateCommentFile;
-using Application.Features.Comments.CommentFile.Commands.DeleteCommentFile;
-using Application.Features.Comments.CommentFile.Queries.GetListCommentFile;
-using Application.Features.Comments.CommentLike.Commands.LikeComment;
-using Application.Features.Comments.CommentLike.Commands.UnLikeComment;
-using Application.Features.Comments.CommentLike.Queries.GetUsersLikedComment;
-using Application.Features.Feeds.PostLike.Queries.GetMembersLikedPost;
+using Application.Features.Comment.Commands.CreateComment;
+using Application.Features.Comment.Commands.DeleteComment;
+using Application.Features.Comment.Commands.UpdateComment;
+using Application.Features.Comment.Models;
+using Application.Features.Comment.Queries.GetByIdComment;
+using Application.Features.Comment.Queries.GetByPostIdComment;
+using Application.Features.Comment.Queries.GetListComment;
+using Application.Features.CommentFile.Commands.CreateCommentFile;
+using Application.Features.CommentFile.Commands.DeleteCommentFile;
+using Application.Features.CommentFile.Queries.GetListCommentFile;
+using Application.Features.CommentLike.Commands.LikeComment;
+using Application.Features.CommentLike.Commands.UnLikeComment;
+using Application.Features.CommentLike.Queries.GetUsersLikedComment;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Comments;
@@ -28,7 +27,7 @@ public class CommentsController : BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateCommentCommandRequest updateCommentCommand)
     {

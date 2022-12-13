@@ -1,9 +1,9 @@
-using Application.Features.Quizzes.Answer.Commands.CreateAnswer;
-using Application.Features.Quizzes.Answer.Commands.DeleteAnswer;
-using Application.Features.Quizzes.Answer.Commands.UpdateAnswer;
-using Application.Features.Quizzes.Answer.Models;
-using Application.Features.Quizzes.Answer.Queries.GetByIdAnswer;
-using Application.Features.Quizzes.Answer.Queries.GetListAnswer;
+using Application.Features.Answer.Commands.CreateAnswer;
+using Application.Features.Answer.Commands.DeleteAnswer;
+using Application.Features.Answer.Commands.UpdateAnswer;
+using Application.Features.Answer.Models;
+using Application.Features.Answer.Queries.GetByIdAnswer;
+using Application.Features.Answer.Queries.GetListAnswer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Quizzes;
@@ -20,7 +20,7 @@ public class AnswersController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateAnswerCommandRequest updateAnswerCommand)
     {

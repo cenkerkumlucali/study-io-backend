@@ -1,6 +1,6 @@
-using Application.Features.Lessons.LessonSubject.Commands.CreateLessonSubject;
-using Application.Features.Lessons.LessonSubject.Commands.DeleteLessonSubject;
-using Application.Features.Lessons.LessonSubject.Commands.UpdateLessonSubject;
+using Application.Features.LessonSubject.Commands.CreateLessonSubject;
+using Application.Features.LessonSubject.Commands.DeleteLessonSubject;
+using Application.Features.LessonSubject.Commands.UpdateLessonSubject;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -17,7 +17,7 @@ public class LessonSubjectsController : BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateLessonSubjectCommandRequest updateLessonSubjectCommand)
     {

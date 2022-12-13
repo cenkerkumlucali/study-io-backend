@@ -20,7 +20,7 @@ public class MentionsController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateMentionCommandRequest updateMentionCommand)
     {

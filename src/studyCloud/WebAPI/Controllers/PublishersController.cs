@@ -19,7 +19,7 @@ public class PublishersController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdatePublisherCommandRequest updatePublisherCommand)
     {

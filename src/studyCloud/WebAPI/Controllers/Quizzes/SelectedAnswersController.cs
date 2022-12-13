@@ -1,9 +1,9 @@
-using Application.Features.Quizzes.SelectedAnswer.Commands.CreateSelectedAnswer;
-using Application.Features.Quizzes.SelectedAnswer.Commands.DeleteSelectedAnswer;
-using Application.Features.Quizzes.SelectedAnswer.Commands.UpdateSelectedAnswer;
-using Application.Features.Quizzes.SelectedAnswer.Models;
-using Application.Features.Quizzes.SelectedAnswer.Queries.GetByIdSelectedAnswer;
-using Application.Features.Quizzes.SelectedAnswer.Queries.GetListSelectedAnswer;
+using Application.Features.SelectedAnswer.Commands.CreateSelectedAnswer;
+using Application.Features.SelectedAnswer.Commands.DeleteSelectedAnswer;
+using Application.Features.SelectedAnswer.Commands.UpdateSelectedAnswer;
+using Application.Features.SelectedAnswer.Models;
+using Application.Features.SelectedAnswer.Queries.GetByIdSelectedAnswer;
+using Application.Features.SelectedAnswer.Queries.GetListSelectedAnswer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Quizzes;
@@ -20,7 +20,7 @@ public class SelectedAnswersController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateSelectedAnswerCommandRequest updateSelectedAnswerCommand)
     {

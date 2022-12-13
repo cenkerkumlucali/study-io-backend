@@ -1,11 +1,11 @@
-using Application.Features.Quizzes.Answer.Dtos;
-using Application.Features.Quizzes.Question.Commands.CreateQuestion;
-using Application.Features.Quizzes.Question.Commands.DeleteQuestion;
-using Application.Features.Quizzes.Question.Commands.UpdateQuestion;
-using Application.Features.Quizzes.Question.Models;
-using Application.Features.Quizzes.Question.Queries.GetByIdQuestion;
-using Application.Features.Quizzes.Question.Queries.GetListByQuizId;
-using Application.Features.Quizzes.Question.Queries.GetListQuestion;
+using Application.Features.Answer.Dtos;
+using Application.Features.Question.Commands.CreateQuestion;
+using Application.Features.Question.Commands.DeleteQuestion;
+using Application.Features.Question.Commands.UpdateQuestion;
+using Application.Features.Question.Models;
+using Application.Features.Question.Queries.GetByIdQuestion;
+using Application.Features.Question.Queries.GetListByQuizId;
+using Application.Features.Question.Queries.GetListQuestion;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Quizzes;
@@ -51,7 +51,7 @@ public class QuestionsController:BaseController
 ]
      */
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateQuestionCommandRequest updateQuestionCommand)
     {
@@ -83,7 +83,7 @@ public class QuestionsController:BaseController
         return Ok(result);
     }
     [HttpGet("[action]/{QuizId}")]
-    public async Task<IActionResult> GetById(
+    public async Task<IActionResult> GetListByQuizId(
         [FromQuery] GetListByQuizIdQueryRequest getListByQuizIdQueryRequest)
     {
         GetByQuizIdModel result = await Mediator.Send(getListByQuizIdQueryRequest);

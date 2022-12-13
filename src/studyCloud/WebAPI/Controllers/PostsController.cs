@@ -1,17 +1,17 @@
-using Application.Features.Feeds.Post.Commands.CreatePost;
-using Application.Features.Feeds.Post.Commands.DeletePost;
-using Application.Features.Feeds.Post.Commands.UpdatePost;
-using Application.Features.Feeds.Post.Models;
-using Application.Features.Feeds.Post.Queries.GetByIdPost;
-using Application.Features.Feeds.Post.Queries.GetListByUserId;
-using Application.Features.Feeds.Post.Queries.GetListPost;
-using Application.Features.Feeds.PostImageFile.Commands.CreatePostImage;
-using Application.Features.Feeds.PostImageFile.Commands.DeletePostImage;
-using Application.Features.Feeds.PostImageFile.Models;
-using Application.Features.Feeds.PostImageFile.Queries.GetListPostImage;
-using Application.Features.Feeds.PostLike.Commands.LikePost;
-using Application.Features.Feeds.PostLike.Commands.UnLikePost;
-using Application.Features.Feeds.PostLike.Queries.GetMembersLikedPost;
+using Application.Features.Post.Commands.CreatePost;
+using Application.Features.Post.Commands.DeletePost;
+using Application.Features.Post.Commands.UpdatePost;
+using Application.Features.Post.Models;
+using Application.Features.Post.Queries.GetByIdPost;
+using Application.Features.Post.Queries.GetListByUserId;
+using Application.Features.Post.Queries.GetListPost;
+using Application.Features.PostImageFile.Commands.CreatePostImage;
+using Application.Features.PostImageFile.Commands.DeletePostImage;
+using Application.Features.PostImageFile.Models;
+using Application.Features.PostImageFile.Queries.GetListPostImage;
+using Application.Features.PostLike.Commands.LikePost;
+using Application.Features.PostLike.Commands.UnLikePost;
+using Application.Features.PostLike.Queries.GetMembersLikedPost;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -28,7 +28,7 @@ public class PostsController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdatePostCommandRequest updatePostCommand)
     {

@@ -1,11 +1,10 @@
-using Application.Features.Quizzes.Question.Models;
-using Application.Features.Quizzes.Quiz.Commands.CreateQuiz;
-using Application.Features.Quizzes.Quiz.Commands.DeleteQuiz;
-using Application.Features.Quizzes.Quiz.Commands.UpdateQuiz;
-using Application.Features.Quizzes.Quiz.Models;
-using Application.Features.Quizzes.Quiz.Queries.GetByIdQuiz;
-using Application.Features.Quizzes.Quiz.Queries.GetByPublisherId;
-using Application.Features.Quizzes.Quiz.Queries.GetListQuiz;
+using Application.Features.Quiz.Commands.CreateQuiz;
+using Application.Features.Quiz.Commands.DeleteQuiz;
+using Application.Features.Quiz.Commands.UpdateQuiz;
+using Application.Features.Quiz.Models;
+using Application.Features.Quiz.Queries.GetByIdQuiz;
+using Application.Features.Quiz.Queries.GetByPublisherId;
+using Application.Features.Quiz.Queries.GetListQuiz;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Quizzes;
@@ -22,7 +21,7 @@ public class QuizzesController:BaseController
         return Created("", result);
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> Update(
         [FromBody] UpdateQuizCommandRequest updateQuizCommand)
     {
