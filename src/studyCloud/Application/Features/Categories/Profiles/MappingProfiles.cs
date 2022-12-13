@@ -2,6 +2,7 @@ using Application.Abstractions.Services.Paging;
 using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Commands.DeleteCategory;
 using Application.Features.Categories.Commands.UpdateCategory;
+using Application.Features.Categories.Dtos;
 using Application.Features.Categories.Models;
 using Application.Features.Categories.Queries.GetByIdCategory;
 using Application.Features.Categories.Queries.GetListCategory;
@@ -24,5 +25,11 @@ public class MappingProfiles:Profile
         CreateMap<Domain.Entities.Categories.Category,ListCategoryQueryResponse>().ReverseMap();
 
         CreateMap<Domain.Entities.Categories.Category, GetByIdCategoryQueryResponse>().ReverseMap();
+
+        CreateMap<Domain.Entities.Categories.Category, LessonCategoryDto>()
+            .ForMember(c=>c.Name, opt=>opt.MapFrom(c=>c.Name))
+            .ForMember(c=>c.SubCategories, opt=>opt.MapFrom(c=>c.SubCategories))
+            .ForMember(c=>c.Lessons, opt=>opt.MapFrom(c=>c.Lessons))
+            .ReverseMap();
     }
 }
