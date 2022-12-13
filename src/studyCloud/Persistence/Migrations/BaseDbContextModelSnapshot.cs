@@ -34,7 +34,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CommentsId");
 
-                    b.ToTable("CommentCommentImageFile");
+                    b.ToTable("CommentCommentImageFile", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Alarm", b =>
@@ -66,7 +66,7 @@ namespace Persistence.Migrations
                     b.Property<long>("TargetId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -81,7 +81,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("TargetId");
 
-                    b.ToTable("Alarms");
+                    b.ToTable("Alarms", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Categories.Category", b =>
@@ -99,12 +99,12 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Categories.SubCategory", b =>
@@ -128,7 +128,7 @@ namespace Persistence.Migrations
                     b.Property<long?>("ParentId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -137,7 +137,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Comments.Comment", b =>
@@ -161,7 +161,7 @@ namespace Persistence.Migrations
                     b.Property<long>("PostId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -175,7 +175,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Comments.CommentLike", b =>
@@ -186,31 +186,25 @@ namespace Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("CommentId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("CommentId1")
+                    b.Property<long>("CommentId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("UserId1")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommentId1");
+                    b.HasIndex("CommentId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("CommentLikes");
+                    b.ToTable("CommentLikes", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Feeds.Post", b =>
@@ -228,7 +222,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -238,7 +232,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Feeds.PostLike", b =>
@@ -255,7 +249,7 @@ namespace Persistence.Migrations
                     b.Property<long>("PostId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -267,7 +261,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PostLikes");
+                    b.ToTable("PostLikes", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.File", b =>
@@ -303,9 +297,41 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Files");
+                    b.ToTable("Files", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("File");
+                });
+
+            modelBuilder.Entity("Domain.Entities.FlashCard", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("LessonSubjectId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonSubjectId");
+
+                    b.ToTable("FlashCards", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Follow", b =>
@@ -329,7 +355,7 @@ namespace Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("FollowingId");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long?>("UserId")
@@ -354,6 +380,9 @@ namespace Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<long?>("CategoryId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -361,17 +390,19 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("SubCategoryId")
+                    b.Property<long?>("SubCategoryId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("SubCategoryId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Lessons.LessonSubject", b =>
@@ -395,7 +426,7 @@ namespace Persistence.Migrations
                     b.Property<long?>("ParentId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -404,7 +435,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("LessonSubjects");
+                    b.ToTable("LessonSubjects", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Mention", b =>
@@ -433,7 +464,7 @@ namespace Persistence.Migrations
                     b.Property<long>("TargetId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -446,7 +477,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("TargetId");
 
-                    b.ToTable("Mentions");
+                    b.ToTable("Mentions", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Publisher", b =>
@@ -464,12 +495,12 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publishers");
+                    b.ToTable("Publishers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Answer", b =>
@@ -496,7 +527,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("Answers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Question", b =>
@@ -516,14 +547,14 @@ namespace Persistence.Migrations
                     b.Property<long>("QuizId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Quizzes.Quiz", b =>
@@ -553,7 +584,7 @@ namespace Persistence.Migrations
                     b.Property<long?>("SubCategoryId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -566,7 +597,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("SubCategoryId");
 
-                    b.ToTable("Quizzes");
+                    b.ToTable("Quizzes", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Quizzes.QuizHistory", b =>
@@ -586,7 +617,7 @@ namespace Persistence.Migrations
                     b.Property<long>("QuizId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -598,7 +629,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("QuizHistories");
+                    b.ToTable("QuizHistories", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Quizzes.SelectedAnswer", b =>
@@ -621,7 +652,7 @@ namespace Persistence.Migrations
                     b.Property<long>("QuizHistoryId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -637,7 +668,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("SelectedAnswers");
+                    b.ToTable("SelectedAnswers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.Block", b =>
@@ -663,7 +694,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("TargetId");
 
-                    b.ToTable("Blocks");
+                    b.ToTable("Blocks", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.Chat", b =>
@@ -694,7 +725,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -703,7 +734,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ToId");
 
-                    b.ToTable("ChatMessages");
+                    b.ToTable("ChatMessages", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.EmailAuthenticator", b =>
@@ -723,7 +754,7 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsVerified")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -733,7 +764,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EmailAuthenticators");
+                    b.ToTable("EmailAuthenticators", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.OperationClaim", b =>
@@ -751,12 +782,12 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
-                    b.ToTable("OperationClaim");
+                    b.ToTable("OperationClaim", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.OtpAuthenticator", b =>
@@ -777,7 +808,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -787,7 +818,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("OtpAuthenticators");
+                    b.ToTable("OtpAuthenticators", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.RefreshToken", b =>
@@ -827,7 +858,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -837,7 +868,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshToken");
+                    b.ToTable("RefreshToken", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.ResetPasswordAuthentication", b =>
@@ -857,7 +888,7 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsVerified")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -867,7 +898,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ResetPasswordAuthentications");
+                    b.ToTable("ResetPasswordAuthentications", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.User", b =>
@@ -919,7 +950,7 @@ namespace Persistence.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserName")
@@ -928,7 +959,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.UserCoin", b =>
@@ -945,7 +976,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -955,7 +986,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserCoins");
+                    b.ToTable("UserCoins", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Users.UserOperationClaim", b =>
@@ -969,13 +1000,10 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("OperationClaimId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("OperationClaimId1")
+                    b.Property<long>("OperationClaimId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("UserId")
@@ -983,11 +1011,11 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OperationClaimId1");
+                    b.HasIndex("OperationClaimId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserOperationClaim");
+                    b.ToTable("UserOperationClaim", (string)null);
                 });
 
             modelBuilder.Entity("PostPostImageFile", b =>
@@ -1002,7 +1030,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PostsId");
 
-                    b.ToTable("PostPostImageFile");
+                    b.ToTable("PostPostImageFile", (string)null);
                 });
 
             modelBuilder.Entity("PublisherPublisherImage", b =>
@@ -1017,7 +1045,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PublishersId");
 
-                    b.ToTable("PublisherPublisherImage");
+                    b.ToTable("PublisherPublisherImage", (string)null);
                 });
 
             modelBuilder.Entity("QuestionQuestionImage", b =>
@@ -1032,7 +1060,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("QuestionsId");
 
-                    b.ToTable("QuestionQuestionImage");
+                    b.ToTable("QuestionQuestionImage", (string)null);
                 });
 
             modelBuilder.Entity("UserUserImageFile", b =>
@@ -1047,7 +1075,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("UserUserImageFile");
+                    b.ToTable("UserUserImageFile", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.ImageFile.CommentImageFile", b =>
@@ -1189,13 +1217,13 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.Comments.Comment", "Comment")
                         .WithMany("CommentLikes")
-                        .HasForeignKey("CommentId1")
+                        .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1234,6 +1262,17 @@ namespace Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Domain.Entities.FlashCard", b =>
+                {
+                    b.HasOne("Domain.Entities.Lessons.LessonSubject", "LessonSubject")
+                        .WithMany()
+                        .HasForeignKey("LessonSubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LessonSubject");
+                });
+
             modelBuilder.Entity("Domain.Entities.Follow", b =>
                 {
                     b.HasOne("Domain.Entities.Users.User", "Follower")
@@ -1259,11 +1298,15 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Lessons.Lesson", b =>
                 {
+                    b.HasOne("Domain.Entities.Categories.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("Domain.Entities.Categories.SubCategory", "SubCategory")
                         .WithMany()
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubCategoryId");
+
+                    b.Navigation("Category");
 
                     b.Navigation("SubCategory");
                 });
@@ -1518,7 +1561,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.Users.OperationClaim", "OperationClaim")
                         .WithMany()
-                        .HasForeignKey("OperationClaimId1")
+                        .HasForeignKey("OperationClaimId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

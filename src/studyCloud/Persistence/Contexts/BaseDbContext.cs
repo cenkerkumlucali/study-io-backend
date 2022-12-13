@@ -44,6 +44,7 @@ namespace Persistence.Contexts
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<PublisherImage> PublisherImages { get; set; }
         public DbSet<Chat> ChatMessages { get; set; }
+        public DbSet<FlashCard> FlashCards { get; set; }
 
         public BaseDbContext(DbContextOptions options) : base(options)
         {
@@ -77,6 +78,15 @@ namespace Persistence.Contexts
                 a.HasOne(x => x.Following).WithMany().HasForeignKey(x => x.FollowingId).OnDelete(DeleteBehavior.Restrict);
                 a.HasOne(x => x.Follower).WithMany().HasForeignKey(x => x.FollowerId).OnDelete(DeleteBehavior.Restrict);
             });
+            // modelBuilder.Entity<CommentLike>(c =>
+            // {
+            //     c.ToTable("CommentLikes").HasKey(k => k.Id);
+            //     c.Property(p => p.Id).HasColumnName("Id");
+            //     c.Property(p => p.CommentId).HasColumnName("CommentId");
+            //     c.Property(p => p.UserId).HasColumnName("UserId");
+            //     c.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
+            //     c.HasOne(x => x.Comment).WithMany().HasForeignKey(x => x.CommentId).OnDelete(DeleteBehavior.Restrict);
+            // });
         }
     }
 }
