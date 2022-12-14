@@ -1,5 +1,5 @@
 using Application.Abstractions.Services;
-using Application.Features.Feeds.Post.Dtos;
+using Application.Features.Post.Dtos;
 using Application.Features.Users.User.Dtos;
 using Application.Repositories.Services.Feeds;
 using Application.Repositories.Services.Follows;
