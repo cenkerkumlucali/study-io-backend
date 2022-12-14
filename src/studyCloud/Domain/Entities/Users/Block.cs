@@ -10,7 +10,7 @@ public class Block : BaseEntity
     public User Agent { get; set; }
     public User Target { get; set; }
     
-    [NotMapped] public override DateTime UpdatedDate { get; set; }
+    [NotMapped] public override DateTime? UpdatedDate { get; set; }
     
     
 }

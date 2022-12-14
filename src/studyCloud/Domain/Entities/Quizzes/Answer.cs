@@ -10,7 +10,7 @@ public class Answer:BaseEntity
     public string? Content { get; set; }
     public bool IsCorrect { get; set; }
     [NotMapped]
-    public override DateTime UpdatedDate { get; set; }
+    public override DateTime? UpdatedDate { get; set; }
 
     public Answer()
     {
