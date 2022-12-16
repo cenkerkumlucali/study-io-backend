@@ -10,5 +10,5 @@ public class File : BaseEntity
     public string Storage { get; set; }
     public string Url { get; set; }
     [NotMapped]
-    public override DateTime UpdatedDate { get; set; }
+    public override DateTime? UpdatedDate { get; set; }
 }
