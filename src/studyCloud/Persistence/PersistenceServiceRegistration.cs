@@ -4,6 +4,7 @@ using Application.Repositories.Services.Categories;
 using Application.Repositories.Services.Comments;
 using Application.Repositories.Services.Feeds;
 using Application.Repositories.Services.Files;
+using Application.Repositories.Services.FlashCards;
 using Application.Repositories.Services.Follows;
 using Application.Repositories.Services.Lessons;
 using Application.Repositories.Services.Mentions;
@@ -22,6 +23,7 @@ using Persistence.Repositories.Categories;
 using Persistence.Repositories.Comments;
 using Persistence.Repositories.Feeds;
 using Persistence.Repositories.Files;
+using Persistence.Repositories.FlashCards;
 using Persistence.Repositories.Follows;
 using Persistence.Repositories.Lessons;
 using Persistence.Repositories.Mentions;
@@ -76,6 +78,7 @@ namespace Persistence
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IPublisherImageRepository, PublisherImageRepository>();
             services.AddScoped<IChatRepository, ChatRepository>();
+            services.AddScoped<IFlashCardRepository, FlashCardRepository>();
             
 
             services.AddScoped<IAuthService, AuthManager>();
@@ -96,6 +99,8 @@ namespace Persistence
             services.AddScoped<IPublisherService, PublisherManager>();
             services.AddScoped<IPublisherImageService, PublisherImageManager>();
             services.AddScoped<IChatService, ChatManager>();
+            services.AddScoped<ILessonService, LessonManager>();
+            services.AddScoped<ICategoryService, CategoryManager>();
             
             return services;
         }
