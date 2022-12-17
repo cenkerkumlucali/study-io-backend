@@ -52,7 +52,7 @@ public class MailService : IMailService
     public async Task SendPasswordResetMailAsync(string to,string fullName,string authenticatorCode)
     {
         string mail =
-        $"Merhaba <strong>{fullName}</strong><br>Eğer yeni şifre talebinde bulunduysanız aşağıdaki kod ile şifrenizi yenileyebilirsiniz.<br><strong>{authenticatorCode}</strong><br><br><span style=\"font-size:12px;\">NOT : Eğer ki bu talep tarafınızca gerçekleştirilmemişse lütfen bu maili ciddiye almayınız.</span><br>Saygılarımızla...<br><br><br>Study.Io";
+        $"Merhaba <strong>{fullName}</strong><br>Eğer yeni şifre talebinde bulunduysanız aşağıdaki kod ile şifrenizi yenileyebilirsiniz.<br><strong>{authenticatorCode}</strong><br><br><span style=\"font-size:12px;\">NOT : Eğer ki bu talep tarafınızca gerçekleştirilmemişse lütfen bu maili ciddiye almayınız.</span><br>Saygılarımızla...<br><br><br>Study.Io"; 
         await SendMailAsync(to, "Şifre Yenileme Talebi", mail);
     }
 
